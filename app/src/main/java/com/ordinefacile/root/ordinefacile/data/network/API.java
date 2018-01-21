@@ -12,10 +12,6 @@ import rx.Observable;
 
 public interface API {
 
-  //  @FormUrlEncoded
-  //  @GET("qr_scan/")
-   // Observable<Store> getStoreDetails(@Field("qrCode") String qrCode);
-
     @GET("qr_scan/{qrcode}")
     Observable<Store> getStoreDetails(@Path("qrcode") String id);
 
