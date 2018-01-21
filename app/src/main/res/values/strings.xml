@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OrdineFacile</string>
+    <string name="title_activity_goto_scan">GotoScan</string>
+    <string name="start_scan">Start scan</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="permission_already">Permission already granted</string>
+</resources>
