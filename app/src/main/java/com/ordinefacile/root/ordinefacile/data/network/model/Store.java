@@ -16,7 +16,7 @@ public class Store {
     private String message;
     @SerializedName("data")
     @Expose
-    private Data data;
+    private StoreData data;
 
     public Boolean getError() {
         return error;
@@ -34,11 +34,11 @@ public class Store {
         this.message = message;
     }
 
-    public Data getData() {
+    public StoreData getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(StoreData data) {
         this.data = data;
     }
 }

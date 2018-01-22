@@ -11,10 +11,16 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
+import com.ordinefacile.root.ordinefacile.ui.mainmenu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.selectlanguage.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -34,9 +40,6 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
-
-        Toast.makeText(getApplicationContext(),"SCANNER",Toast.LENGTH_LONG).cancel();
-
 
         scannerPresenter = new ScannerPresenter(this);
         scannerPresenter.checkForPermission();
@@ -97,8 +100,9 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     }
 
     @Override
-    public void goToMenuActivity() {
-        Intent i = new Intent(this, MenuActivity.class);
+    public void goToMenuActivity(String s) {
+        Intent i = new Intent(this, MainMenuActivity.class);
+        i.putExtra("storeId",s);
         startActivity(i);
         finish();
     }
@@ -137,8 +141,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         Log.e(TAG, rawResult.getText());
         Log.e(TAG, rawResult.getBarcodeFormat().toString());
 
-        scannerPresenter.getStoreDetail(result);
-        //scannerPresenter.goToMenuAtivity();
+        scannerPresenter.getStoreDetail(Util.substring(result,"http://"));
 
     }
 
@@ -152,5 +155,34 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
                 requestPermission();
             }
         }
+    }
+
+    public void qrCodeNotValid() {
+        Toast.makeText(getApplicationContext(),"Qr code is not valid",Toast.LENGTH_LONG).show();
+        mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
+        mScannerView.startCamera();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_info) {
+
+            Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_language) {
+            Intent intent = new Intent(getApplicationContext(),SelectLanguageActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 26
@@ -43,5 +44,18 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
 
+    //inject view butterknife
+    compile 'com.jakewharton:butterknife:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    //debug database and sharepreference
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
+
+    //database ormlite
+    compile 'com.j256.ormlite:ormlite-android:5.0'
+
+    //circleimage
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
 
 }

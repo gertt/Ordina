@@ -22,8 +22,23 @@
         <activity
             android:name=".ui.menu.MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.menu_detail.MenuDetailActivity"
+            android:label="@string/title_activity_menu_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.help.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.selectlanguage.SelectLanguageActivity"
+            android:label="@string/title_activity_select_language"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.mainmenu.MainMenuActivity"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

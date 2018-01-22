@@ -2,6 +2,7 @@ package com.ordinefacile.root.ordinefacile.ui.scan;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.Store;
@@ -19,6 +20,7 @@ public class ScannerPresenter {
 
     ScannerActivity scannerActivity;
     ApiHelper apiHelper;
+    Gson gson = new Gson();
 
     public ScannerPresenter(ScannerActivity scannerActivity) {
         this.scannerActivity = scannerActivity;
@@ -38,13 +40,13 @@ public class ScannerPresenter {
         return scannerActivity.checkPermission();
     }
 
-    public void goToMenuAtivity() {
-        scannerActivity.goToMenuActivity();
+    public void goToMenuAtivity(String id) {
+        scannerActivity.goToMenuActivity(id);
     }
 
     public void getStoreDetail(String qrCode) {
 
-        apiHelper.getStoreDetails("yak2kzin")
+        apiHelper.getStoreDetails(qrCode)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Store>() {
@@ -56,13 +58,16 @@ public class ScannerPresenter {
                     @Override
                     public void onError(Throwable e) {
                         Log.e("Problem : ", e.getMessage());
+                        scannerActivity.qrCodeNotValid();
+
                     }
 
                     @Override
                     public void onNext(Store store) {
-                        Log.e("Next  : ", store.getData().getName());
+                        Log.d("Next  : ", store.getData().getName());
+                        String id = gson.toJson(store.getData().getId());
+                        goToMenuAtivity(id);
                     }
-
                 });
     }
 }

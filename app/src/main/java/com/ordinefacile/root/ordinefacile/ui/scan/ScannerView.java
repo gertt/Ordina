@@ -12,5 +12,5 @@ public interface ScannerView {
     void requestPermission();
     boolean checkPermission();
     void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener);
-    void goToMenuActivity();
+    void goToMenuActivity(String s);
 }

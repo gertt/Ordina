@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by root on 1/20/18.
  */
 
-public class Data {
+public class StoreData {
 
 
     @SerializedName("id")
