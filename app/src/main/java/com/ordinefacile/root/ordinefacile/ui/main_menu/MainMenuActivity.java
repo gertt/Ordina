@@ -1,20 +1,14 @@
-package com.ordinefacile.root.ordinefacile.ui.mainmenu;
+package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.menu.MenuPresenter;
-
-import butterknife.BindView;
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
@@ -71,7 +65,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
         i.putExtra("storeId",id);
         startActivity(i);
-        finish();
+        //finish();
 
     }
 }

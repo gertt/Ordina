@@ -1,19 +1,16 @@
-package com.ordinefacile.root.ordinefacile.ui.selectlanguage;
+package com.ordinefacile.root.ordinefacile.ui.select_language;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.ordinefacile.root.ordinefacile.R;
 
 public class SelectLanguageActivity extends AppCompatActivity {
-
-
 
     private Button buttonBackSelectLanguage;
 
@@ -24,24 +21,27 @@ public class SelectLanguageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);
 
 
-        buttonBackSelectLanguage = (Button)findViewById(R.id.button_back_selectlanguage);
-        buttonBackSelectLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
 
     }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ordinefacile.root.ordinefacile.utils;
+package com.ordinefacile.root.ordinefacile.data.prefs;
 
 /**
  * Created by root on 1/22/18.

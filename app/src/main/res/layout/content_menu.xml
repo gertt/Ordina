@@ -9,11 +9,18 @@
     tools:showIn="@layout/activity_menu">
 
 
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipe_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_marginTop="5dp"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    </com.baoyz.widget.PullRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -7,7 +7,6 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategories;
 import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
-import com.ordinefacile.root.ordinefacile.ui.mainmenu.MainMenuActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +31,6 @@ public class MenuPresenter {
         this.menuActivity = menuActivity;
         apiHelper = new AppApiHelper();
     }
-
-
-
 
     public void getStoreId() {
         menuActivity.getStoreId();

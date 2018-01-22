@@ -17,9 +17,8 @@ import android.widget.Toast;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
-import com.ordinefacile.root.ordinefacile.ui.mainmenu.MainMenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.selectlanguage.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -104,7 +103,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId",s);
         startActivity(i);
-        finish();
+        //finish();
     }
 
     @Override
