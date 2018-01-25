@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
+import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     private List<StoreCategoriesData> feedItemList;
     private Context context;
+    ParseImage parseImage;
 
     public MenuActivityAdapter(Context context, List<StoreCategoriesData> feedItemList) {
 
@@ -41,9 +44,12 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
         final StoreCategoriesData feedItem = feedItemList.get(position);
-        holder.txt_name.setText("  "+feedItem.getName()+"  ");
+
+        parseImage = new ParseImage(context);
+        parseImage.parseimage(feedItem.get);
+
+        holder.imageView.setText("  "+feedItem.getName()+"  ");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +59,7 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
                 i.putExtra("categoryId",feedItem.getId()+"");
                 context.startActivity(i);
 
-                Toast.makeText(context, "Recycle Click  "+holder.txt_name.getText().toString()+" "+feedItem.getId(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, "Recycle Click  "+holder.txt_name.getText().toString()+" "+feedItem.getId(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,11 +74,13 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txt_name;
+        public ImageView imageView_pc;
+
+
 
         public ViewHolder(View itemView) {
         super(itemView);
-        txt_name = (TextView) itemView.findViewById(R.id.txt_name);
+            imageView_pc = (ImageView) itemView.findViewById(R.id.txt_name);
 
         }
     }

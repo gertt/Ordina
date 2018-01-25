@@ -46,12 +46,8 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             public void onClick(View view) {
 
                 Toast.makeText(getApplicationContext(),"SERVICE",Toast.LENGTH_LONG).show();
-
-
             }
         });
-
-
     }
 
     @Override

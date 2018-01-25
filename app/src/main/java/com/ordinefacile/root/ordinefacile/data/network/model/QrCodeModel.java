@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by root on 1/20/18.
  */
 
-public class Store {
+public class QrCodeModel {
     @SerializedName("error")
     @Expose
     private Boolean error;

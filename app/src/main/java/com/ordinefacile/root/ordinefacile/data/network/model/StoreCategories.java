@@ -18,7 +18,7 @@ public class StoreCategories {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<StoreCategoriesData> data = null;
+    private StoreCategoriesData data;
 
     public Boolean getError() {
         return error;
@@ -36,11 +36,11 @@ public class StoreCategories {
         this.message = message;
     }
 
-    public List<StoreCategoriesData> getData() {
+    public StoreCategoriesData getData() {
         return data;
     }
 
-    public void setData(List<StoreCategoriesData> data) {
+    public void setData(StoreCategoriesData storeCategoriesData) {
         this.data = data;
     }
 }

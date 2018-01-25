@@ -8,24 +8,28 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class StoreCategoriesData {
-        @SerializedName("id")
-        @Expose
-        private Integer id;
-        @SerializedName("store_id")
-        @Expose
-        private String storeId;
-        @SerializedName("name")
-        @Expose
-        private String name;
-        @SerializedName("deleted_at")
-        @Expose
-        private Object deletedAt;
-        @SerializedName("created_at")
-        @Expose
-        private String createdAt;
-        @SerializedName("updated_at")
-        @Expose
-        private String updatedAt;
+
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+    @SerializedName("store_id")
+    @Expose
+    private String storeId;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("deleted_at")
+    @Expose
+    private Object deletedAt;
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+    @SerializedName("updated_at")
+    @Expose
+    private String updatedAt;
+    @SerializedName("images")
+    @Expose
+    private List<Image> images = null;
 
     public Integer getId() {
         return id;
@@ -75,4 +79,11 @@ public class StoreCategoriesData {
         this.updatedAt = updatedAt;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 }

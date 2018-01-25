@@ -5,7 +5,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
-import com.ordinefacile.root.ordinefacile.data.network.model.Store;
+import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -49,7 +49,7 @@ public class ScannerPresenter {
         apiHelper.getStoreDetails(qrCode)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Store>() {
+                .subscribe(new Subscriber<QrCodeModel>() {
                     @Override
                     public void onCompleted() {
                         //
@@ -63,9 +63,9 @@ public class ScannerPresenter {
                     }
 
                     @Override
-                    public void onNext(Store store) {
-                        Log.d("Next  : ", store.getData().getName());
-                        String id = gson.toJson(store.getData().getId());
+                    public void onNext(QrCodeModel qrCodeModel) {
+                        Log.d("Next  : ", qrCodeModel.getData().getName());
+                        String id = gson.toJson(qrCodeModel.getData().getId());
                         goToMenuAtivity(id);
                     }
                 });

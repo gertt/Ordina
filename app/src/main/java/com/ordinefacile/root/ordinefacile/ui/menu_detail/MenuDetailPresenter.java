@@ -7,9 +7,6 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-import com.ordinefacile.root.ordinefacile.data.network.model.Store;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
-import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
