@@ -9,7 +9,7 @@ import java.util.List;
  * Created by user on 1/22/2018.
  */
 
-public class StoreCategories {
+public class CategoriesModel {
     @SerializedName("error")
     @Expose
     private Boolean error;
@@ -18,7 +18,7 @@ public class StoreCategories {
     private String message;
     @SerializedName("data")
     @Expose
-    private StoreCategoriesData data;
+    private List<CategoriesDataModel> data = null;
 
     public Boolean getError() {
         return error;
@@ -36,12 +36,11 @@ public class StoreCategories {
         this.message = message;
     }
 
-    public StoreCategoriesData getData() {
+    public List<CategoriesDataModel> getData() {
         return data;
     }
 
-    public void setData(StoreCategoriesData storeCategoriesData) {
+    public void setData(List<CategoriesDataModel> data) {
         this.data = data;
     }
 }
-

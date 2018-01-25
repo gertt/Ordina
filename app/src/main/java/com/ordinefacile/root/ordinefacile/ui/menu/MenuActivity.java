@@ -1,25 +1,18 @@
 package com.ordinefacile.root.ordinefacile.ui.menu;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategories;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesImagesModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity implements MenuView{
@@ -71,9 +64,10 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     }
 
     @Override
-    public void getListStoreCategories(List<StoreCategoriesData> feedItemList) {
+    public void getListStoreCategories(List<CategoriesDataModel> feedItemList) {
         adapter = new MenuActivityAdapter(getApplicationContext(), feedItemList);
         mRecyclerView.setAdapter(adapter);
+        System.out.println(feedItemList.size());
         adapter.notifyDataSetChanged();
         swipe_menu.setRefreshing(false);
     }

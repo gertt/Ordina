@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
 
 import java.util.List;
 

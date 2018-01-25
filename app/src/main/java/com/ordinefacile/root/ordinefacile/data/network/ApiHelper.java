@@ -1,7 +1,7 @@
 package com.ordinefacile.root.ordinefacile.data.network;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategories;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 
 import rx.Observable;
 
@@ -12,7 +12,7 @@ import rx.Observable;
 public interface ApiHelper {
 
       Observable<QrCodeModel> getStoreDetails(String qrCode);
-      Observable<StoreCategories> getStoreCategories(int id);
+      Observable<CategoriesModel> getStoreCategories(int id);
       Observable<MenuDishes> getMenuDishes(int id);
 
 }

@@ -30,6 +30,8 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
     SelectLanguagePersenter selectLanguagePersenter;
 
+    Button buttonBackSelectLanguage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,18 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
         button_en = (RadioButton) findViewById(R.id.radioButton_en);
         button_it = (RadioButton)findViewById(R.id.radioButton_it);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);
+
+
+        buttonBackSelectLanguage = (Button)findViewById(R.id.button_back_selectlanguage);
+        buttonBackSelectLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         selectLanguagePersenter = new SelectLanguagePersenter(this,getApplicationContext());
 

@@ -3,11 +3,13 @@ package com.ordinefacile.root.ordinefacile.data.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by user on 1/22/2018.
  */
 
-public class StoreCategoriesData {
+public class CategoriesDataModel {
 
     @SerializedName("id")
     @Expose
@@ -29,7 +31,7 @@ public class StoreCategoriesData {
     private String updatedAt;
     @SerializedName("images")
     @Expose
-    private List<Image> images = null;
+    private List<CategoriesImagesModel> images = null;
 
     public Integer getId() {
         return id;
@@ -79,11 +81,11 @@ public class StoreCategoriesData {
         this.updatedAt = updatedAt;
     }
 
-    public List<Image> getImages() {
+    public List<CategoriesImagesModel> getImages() {
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(List<CategoriesImagesModel> images) {
         this.images = images;
     }
 }

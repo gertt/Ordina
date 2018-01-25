@@ -3,17 +3,21 @@ package com.ordinefacile.root.ordinefacile.ui.menu;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
+import com.ordinefacile.root.ordinefacile.data.network.APIClient;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesImagesModel;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
+import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import java.util.List;
 
@@ -23,12 +27,11 @@ import java.util.List;
 
 public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapter.ViewHolder>{
 
-    private List<StoreCategoriesData> feedItemList;
+    private List<CategoriesDataModel> feedItemList;
     private Context context;
     ParseImage parseImage;
 
-    public MenuActivityAdapter(Context context, List<StoreCategoriesData> feedItemList) {
-
+    public MenuActivityAdapter(Context context, List<CategoriesDataModel> feedItemList) {
         this.feedItemList = feedItemList;
         this.context = context;
 
@@ -44,12 +47,14 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final StoreCategoriesData feedItem = feedItemList.get(position);
+        final CategoriesDataModel feedItem = feedItemList.get(position);
 
-        parseImage = new ParseImage(context);
-        parseImage.parseimage(feedItem.get);
 
-        holder.imageView.setText("  "+feedItem.getName()+"  ");
+        for(int i = 0 ;i<feedItem.getImages().size();i++){
+            Glide.with(context)
+                    .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
+                    .into(holder.imageView);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,13 +79,13 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView imageView_pc;
+        private ImageView imageView;
 
 
 
         public ViewHolder(View itemView) {
         super(itemView);
-            imageView_pc = (ImageView) itemView.findViewById(R.id.txt_name);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
 
         }
     }

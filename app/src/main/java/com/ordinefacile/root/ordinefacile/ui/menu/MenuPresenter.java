@@ -5,8 +5,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategories;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class MenuPresenter {
     ApiHelper apiHelper;
     Gson gson = new Gson();
 
-    List<StoreCategoriesData> feedItemList;
+    List<CategoriesDataModel> feedItemList;
 
     public MenuPresenter(MenuActivity menuActivity) {
         this.menuActivity = menuActivity;
@@ -40,7 +40,7 @@ public class MenuPresenter {
         apiHelper.getStoreCategories(Integer.parseInt(id))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<StoreCategories>() {
+                .subscribe(new Subscriber<CategoriesModel>() {
                     @Override
                     public void onCompleted() {
                         //
@@ -52,13 +52,13 @@ public class MenuPresenter {
                     }
 
                     @Override
-                    public void onNext(StoreCategories storeCategories) {
-                      // Log.e("onNext : ", storeCategories);
+                    public void onNext(CategoriesModel categoriesModel) {
+                     //  Log.e("onNext : ", categoriesModel);
                         feedItemList = new ArrayList<>();
-                        Log.d("size : ",""+storeCategories.getData().size());
-                        for(int i = 0;i<storeCategories.getData().size();i++){
-                            feedItemList.add(storeCategories.getData().get(i));
+                        for(int i = 0;i<categoriesModel.getData().size();i++){
+                            feedItemList.add(categoriesModel.getData().get(i));
                         }
+                        Log.d("size : ",""+categoriesModel.getData().size());
                         menuActivity.getListStoreCategories(feedItemList);
                     }
 

@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="title_activity_menu_detail">MenuDetail-it</string>
+
+    <string name="title_activity_select_language">SelectLanguageActivity-it</string>
+    <string name="title_activity_main_menu">MainMenuActivity-it</string>
+
+
+    <string name="app_name">OrdineFacile-it</string>
+    <string name="action_settings">Settings-it</string>
+    <string name="title_activity_help">HelpActivity-it</string>
+    <string name="title_activity_select_langue">SelectLangueActivity-it</string>
+    <string name="title_activity_menu">MenuActivity-it</string>
+    <string name="menu">Menu-it</string>
+    <string name="call_service">Call Service-it</string>
+    <string name="title_activity_list_category">ListCategoryActivity-it</string>
+    <string name="title_activity_my_order">MyOrderActivity-it</string>
+    <string name="my_order">My Order-it</string>
+    <string name="title_activity_goto_scan">GotoScan-it</string>
+    <string name="start_scan">Start scan-it</string>
+    <string name="permission_already">Permission already granted-it</string>
+</resources>

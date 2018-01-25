@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.menu;
 
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategories;
-import com.ordinefacile.root.ordinefacile.data.network.model.StoreCategoriesData;
+import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 
 import java.util.List;
 
@@ -11,5 +10,5 @@ import java.util.List;
 
 public interface MenuView {
     void getStoreId();
-    void getListStoreCategories(List<StoreCategoriesData> feedItemList);
+    void getListStoreCategories(List<CategoriesDataModel> feedItemList);
 }
