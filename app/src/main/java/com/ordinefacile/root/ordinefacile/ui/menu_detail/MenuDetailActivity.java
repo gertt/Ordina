@@ -22,7 +22,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     private RecyclerView mRecyclerView;
     private MenuDetailAdapter adapter;
 
-    PullRefreshLayout swipe_menu;
+   // PullRefreshLayout swipe_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
-        swipe_menu = (PullRefreshLayout) findViewById(R.id.swipe_menu);
-        swipe_menu.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                menuDetailPresenter.getMenuDishes(categoryId);
-            }
-        });
+       // swipe_menu = (PullRefreshLayout) findViewById(R.id.swipe_menu);
+      //  swipe_menu.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+      //      @Override
+     //       public void onRefresh() {
+     //           menuDetailPresenter.getMenuDishes(categoryId);
+     //       }
+     //   });
 
     }
 
@@ -61,6 +61,8 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         categoryId = getIntent().getExtras().getString("categoryId","");
         if(categoryId != null || !categoryId.equalsIgnoreCase("")){
             menuDetailPresenter.getMenuDishes(categoryId);
+
+            System.out.print("jsjs"+categoryId);
         }
     }
 
@@ -69,7 +71,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        swipe_menu.setRefreshing(false);
+      //  swipe_menu.setRefreshing(false);
     }
 
     @Override

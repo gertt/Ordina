@@ -51,7 +51,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         });
     }
 
-
     @Override
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
@@ -65,7 +64,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txt_name = (TextView) itemView.findViewById(R.id.txt_name);
+            txt_name = (TextView) itemView.findViewById(R.id.textView5);
 
         }
     }

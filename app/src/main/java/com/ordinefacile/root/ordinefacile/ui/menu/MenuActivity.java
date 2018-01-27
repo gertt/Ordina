@@ -3,6 +3,7 @@ package com.ordinefacile.root.ordinefacile.ui.menu;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -37,7 +38,8 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
         menuPresenter.getStoreId();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+
         mRecyclerView.setPadding(25, 25, 25, 25);
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
@@ -74,8 +76,9 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
+        finish();
+        super.onBackPressed();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

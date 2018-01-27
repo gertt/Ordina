@@ -22,12 +22,10 @@ public class HelpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_help);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.title_activity_help);
+
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_help);
-
-
 
         buttonBackHelp =(Button)findViewById(R.id.button_back_help);
 

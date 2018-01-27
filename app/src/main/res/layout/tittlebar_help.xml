@@ -31,7 +31,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="116dp"
         android:gravity="center"
-        android:text="Help"
+        android:text="@string/title_activity_help"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/button_back_help"

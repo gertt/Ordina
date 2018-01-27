@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -67,7 +68,10 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
             public void onClick(View v) {
                 LocaleHelper.setLocale(getApplicationContext(), "en");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
-                startActivity(refreshIntent);
+               startActivity(refreshIntent);
+
+               // Snackbar.make(v,"Language is changed ", Snackbar.LENGTH_LONG)
+                 //       .setAction("Action", null).show();
 
             }
         });
@@ -79,6 +83,9 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
                 LocaleHelper.setLocale(getApplicationContext(), "it");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
                 startActivity(refreshIntent);
+              //  Snackbar.make(v,"Language is changed ", Snackbar.LENGTH_LONG)
+               //         .setAction("Action", null).show();
+
             }
         });
 
