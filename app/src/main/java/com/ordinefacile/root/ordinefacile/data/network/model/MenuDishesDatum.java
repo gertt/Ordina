@@ -3,12 +3,13 @@ package com.ordinefacile.root.ordinefacile.data.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by user on 1/22/2018.
  */
 
 public class MenuDishesDatum {
-
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -39,6 +40,9 @@ public class MenuDishesDatum {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("images")
+    @Expose
+    private List<MenuDishesImage> images = null;
 
     public Integer getId() {
         return id;
@@ -120,4 +124,13 @@ public class MenuDishesDatum {
         this.updatedAt = updatedAt;
     }
 
+    public List<MenuDishesImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<MenuDishesImage> images) {
+        this.images = images;
+    }
+
 }
+

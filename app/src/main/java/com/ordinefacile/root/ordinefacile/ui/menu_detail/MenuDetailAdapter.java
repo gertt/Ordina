@@ -5,11 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.utils.GlideApp;
+import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import java.util.List;
 
@@ -43,6 +46,24 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         final MenuDishesDatum feedItem = feedItemList.get(position);
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
 
+        for(int i = 0 ;i<feedItem.getImages().size();i++){
+            //   Glide.with(context)
+            //          .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
+            //          .into(holder.imageView);
+
+
+            GlideApp.with(context)
+                    .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
+                    .override(440,400)
+                    .into(holder.imageviews);
+
+
+        }
+
+
+
+        //
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,10 +82,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
+        private ImageView imageviews;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txt_name = (TextView) itemView.findViewById(R.id.textView5);
+            imageviews = (ImageView) itemView.findViewById(R.id.imageView2);
 
         }
     }

@@ -1,16 +1,21 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
+import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+
 import java.util.List;
 
 public class MenuDetailActivity extends AppCompatActivity implements MenuDetailView{
@@ -22,7 +27,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     private RecyclerView mRecyclerView;
     private MenuDetailAdapter adapter;
 
-   // PullRefreshLayout swipe_menu;
+    PullRefreshLayout swipe_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(R.string.menu);
 
         menuDetailPresenter = new MenuDetailPresenter(this);
 
@@ -46,13 +52,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
-       // swipe_menu = (PullRefreshLayout) findViewById(R.id.swipe_menu);
-      //  swipe_menu.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-      //      @Override
-     //       public void onRefresh() {
-     //           menuDetailPresenter.getMenuDishes(categoryId);
-     //       }
-     //   });
+        swipe_menu = (PullRefreshLayout) findViewById(R.id.swipe_menu);
+        swipe_menu.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                menuDetailPresenter.getMenuDishes(categoryId);
+            }
+        });
 
     }
 
@@ -71,7 +77,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-      //  swipe_menu.setRefreshing(false);
+        swipe_menu.setRefreshing(false);
     }
 
     @Override
@@ -81,6 +87,17 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_info) {
+
+          //  Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
+          //  startActivity(intent);
+        }
+        if (id == R.id.action_language) {
+         //   Intent intent = new Intent(getApplicationContext(),SelectLanguageActivity.class);
+         //   startActivity(intent);
+        }
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
@@ -88,5 +105,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
 }
