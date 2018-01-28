@@ -52,6 +52,7 @@ dependencies {
     debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
 
 
+
     //database ormlite
     compile 'com.j256.ormlite:ormlite-android:5.0'
 

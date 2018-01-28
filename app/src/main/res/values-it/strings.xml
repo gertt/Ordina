@@ -8,7 +8,7 @@
 
     <string name="app_name">OrdineFacile-it</string>
     <string name="action_settings">Settings-it</string>
-    <string name="title_activity_help">HelpActivity-it</string>
+    <string name="title_activity_help">Help-it</string>
     <string name="title_activity_select_langue">SelectLangueActivity-it</string>
     <string name="title_activity_menu">MenuActivity-it</string>
     <string name="menu">Menu-it</string>

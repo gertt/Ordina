@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\ADMIN\AndroidStudioProjects\ordinefacile\app\app.iml" filepath="C:\Users\ADMIN\AndroidStudioProjects\ordinefacile\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ordinafacilesstep1.iml" filepath="$PROJECT_DIR$/.idea/ordinafacilesstep1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ordinefacile.iml" filepath="$PROJECT_DIR$/.idea/ordinefacile.iml" />
       <module fileurl="file://C:\Users\ADMIN\AndroidStudioProjects\ordinefacile\ordinefacilework.iml" filepath="C:\Users\ADMIN\AndroidStudioProjects\ordinefacile\ordinefacilework.iml" />
     </modules>

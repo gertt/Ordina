@@ -44,7 +44,7 @@ public class ScannerPresenter {
         scannerActivity.goToMenuActivity(id);
     }
 
-    public void getStoreDetail(String qrCode) {
+    public void getStoreDetail(final String qrCode) {
 
         apiHelper.getStoreDetails(qrCode)
                 .subscribeOn(Schedulers.newThread())
@@ -65,8 +65,10 @@ public class ScannerPresenter {
                     @Override
                     public void onNext(QrCodeModel qrCodeModel) {
                         Log.d("Next  : ", qrCodeModel.getData().getName());
-                        String id = gson.toJson(qrCodeModel.getData().getId());
-                        goToMenuAtivity(id);
+                        if(qrCodeModel.getError() == false){
+                            String id = gson.toJson(qrCodeModel.getData().getId());
+                            goToMenuAtivity(id);
+                        }
                     }
                 });
     }

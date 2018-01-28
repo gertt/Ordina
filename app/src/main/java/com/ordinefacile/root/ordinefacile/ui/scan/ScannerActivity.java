@@ -43,6 +43,8 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         scannerPresenter = new ScannerPresenter(this);
         scannerPresenter.checkForPermission();
 
+
+
     }
 
     @Override
@@ -101,7 +103,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     @Override
     public void goToMenuActivity(String s) {
         Intent i = new Intent(this, MainMenuActivity.class);
-        i.putExtra("storeId",s);
+        i.putExtra("storeId","3");
         startActivity(i);
         //finish();
     }

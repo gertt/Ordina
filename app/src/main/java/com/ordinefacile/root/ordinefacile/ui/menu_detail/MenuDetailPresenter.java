@@ -48,7 +48,7 @@ public class MenuDetailPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("Problem : ", e.getMessage());
+                        Log.d("Problem : ", e.getMessage());
 
                     }
 
@@ -56,10 +56,12 @@ public class MenuDetailPresenter {
                     public void onNext(MenuDishes menuDishes) {
                         feedItemList = new ArrayList<>();
                         Log.d("size : ",""+menuDishes.getData().size());
-                        for(int i = 0;i<menuDishes.getData().size();i++){
-                            feedItemList.add(menuDishes.getData().get(i));
+                        if(menuDishes.getError() == false){
+                            for(int i = 0;i<menuDishes.getData().size();i++){
+                                feedItemList.add(menuDishes.getData().get(i));
+                            }
+                            menuDetailActivity.getListDished(feedItemList);
                         }
-                        menuDetailActivity.getListDished(feedItemList);
                     }
 
                 });

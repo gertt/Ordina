@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
@@ -34,6 +36,8 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             @Override
             public void onClick(View view) {
 
+
+
                 mainMenuPresenter.getStoredId();
 
                 Toast.makeText(getApplicationContext(),"menu",Toast.LENGTH_LONG).show();
@@ -44,6 +48,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         button_call_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 Toast.makeText(getApplicationContext(),"SERVICE",Toast.LENGTH_LONG).show();
             }

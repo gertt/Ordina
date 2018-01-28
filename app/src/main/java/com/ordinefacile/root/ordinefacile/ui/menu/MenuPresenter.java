@@ -48,20 +48,21 @@ public class MenuPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("Problem : ", e.getMessage());
+                        Log.d("Problem : ", e.getMessage());
                     }
 
                     @Override
                     public void onNext(CategoriesModel categoriesModel) {
                      //  Log.e("onNext : ", categoriesModel);
                         feedItemList = new ArrayList<>();
-                        for(int i = 0;i<categoriesModel.getData().size();i++){
-                            feedItemList.add(categoriesModel.getData().get(i));
+                        if(categoriesModel.getError() == false){
+                            for(int i = 0;i<categoriesModel.getData().size();i++){
+                                feedItemList.add(categoriesModel.getData().get(i));
+                            }
+                            Log.d("size : ",""+categoriesModel.getData().size());
+                            menuActivity.getListStoreCategories(feedItemList);
                         }
-                        Log.d("size : ",""+categoriesModel.getData().size());
-                        menuActivity.getListStoreCategories(feedItemList);
                     }
-
                 });
     }
 
