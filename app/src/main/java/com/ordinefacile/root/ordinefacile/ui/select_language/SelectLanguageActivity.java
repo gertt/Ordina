@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
@@ -27,7 +28,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
     private RadioButton button_en;
     private  RadioButton button_it;
-    Locale mylocale;
+    SaveData saveData;
 
     SelectLanguagePersenter selectLanguagePersenter;
 
@@ -45,6 +46,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
         button_en = (RadioButton) findViewById(R.id.radioButton_en);
         button_it = (RadioButton)findViewById(R.id.radioButton_it);
+        saveData = new SaveData(this);
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);
@@ -67,25 +69,19 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
             @Override
             public void onClick(View v) {
                 LocaleHelper.setLocale(getApplicationContext(), "en");
+                saveData.saveLanguage("en");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
-               startActivity(refreshIntent);
-
-               // Snackbar.make(v,"Language is changed ", Snackbar.LENGTH_LONG)
-                 //       .setAction("Action", null).show();
-
+                startActivity(refreshIntent);
             }
         });
 
         button_it.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LocaleHelper.setLocale(getApplicationContext(), "it");
+                saveData.saveLanguage("it");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
                 startActivity(refreshIntent);
-              //  Snackbar.make(v,"Language is changed ", Snackbar.LENGTH_LONG)
-               //         .setAction("Action", null).show();
-
             }
         });
 

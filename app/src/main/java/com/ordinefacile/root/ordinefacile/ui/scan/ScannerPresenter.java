@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,11 +21,13 @@ public class ScannerPresenter {
 
     ScannerActivity scannerActivity;
     ApiHelper apiHelper;
+    SaveData saveData;
     Gson gson = new Gson();
 
     public ScannerPresenter(ScannerActivity scannerActivity) {
         this.scannerActivity = scannerActivity;
         apiHelper = new AppApiHelper();
+        saveData = new SaveData(scannerActivity);
     }
 
     public void checkForPermission(){
@@ -71,5 +74,15 @@ public class ScannerPresenter {
                         }
                     }
                 });
+    }
+
+    public void checkForLanguage() {
+        if(saveData.getLanguage() != null){
+            if(saveData.getLanguage().equalsIgnoreCase("it")){
+                scannerActivity.getAppLanguageIt();
+            }else if(saveData.getLanguage().equalsIgnoreCase("en")){
+                scannerActivity.getAppLanguageEn();
+            }
+        }
     }
 }

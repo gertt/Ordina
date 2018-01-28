@@ -1,28 +1,19 @@
 package com.ordinefacile.root.ordinefacile.ui.menu;
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.APIClient;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesImagesModel;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import java.util.List;
-
-import static com.ordinefacile.root.ordinefacile.R2.attr.height;
 
 /**
  * Created by user on 1/22/2018.

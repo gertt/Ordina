@@ -49,6 +49,7 @@ public class MenuPresenter {
                     @Override
                     public void onError(Throwable e) {
                         Log.d("Problem : ", e.getMessage());
+                        menuActivity.dissapearSwipeToRefresh();
                     }
 
                     @Override

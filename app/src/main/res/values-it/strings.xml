@@ -19,4 +19,7 @@
     <string name="title_activity_goto_scan">GotoScan-it</string>
     <string name="start_scan">Start scan-it</string>
     <string name="permission_already">Permission already granted-it</string>
+    <string name="permission_granted">Permission Granted, Now you can access camera -it</string>
+    <string name="permission_denied">Permission Denied, You cannot access and camera -it</string>
+    <string name="need_to_allow_access">You need to allow access to both the permissions -it</string>
 </resources>

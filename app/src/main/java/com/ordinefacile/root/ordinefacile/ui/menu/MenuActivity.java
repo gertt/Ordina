@@ -4,15 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesImagesModel;
 
 import java.util.List;
 
@@ -71,6 +67,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
         adapter.notifyDataSetChanged();
+        swipe_menu.setRefreshing(false);
+    }
+
+    @Override
+    public void dissapearSwipeToRefresh() {
         swipe_menu.setRefreshing(false);
     }
 

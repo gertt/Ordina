@@ -19,6 +19,7 @@ import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -32,6 +33,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     private static int camId = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     ScannerPresenter scannerPresenter;
+    Toast t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         setContentView(mScannerView);
 
         scannerPresenter = new ScannerPresenter(this);
+        scannerPresenter.checkForLanguage();
+        t = Toast.makeText(getApplicationContext(), R.string.permission_denied, Toast.LENGTH_LONG);
         scannerPresenter.checkForPermission();
 
 
@@ -66,12 +70,12 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (cameraAccepted){
-                        Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access camera", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.permission_granted, Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access and camera", Toast.LENGTH_LONG).show();
+                        t.show();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-                                showMessageOKCancel("You need to allow access to both the permissions",
+                                showMessageOKCancel(getString(R.string.need_to_allow_access),
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -92,20 +96,28 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
     @Override
     public void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new android.support.v7.app.AlertDialog.Builder(ScannerActivity.this)
+       /* new android.support.v7.app.AlertDialog.Builder(ScannerActivity.this)
                 .setMessage(message)
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)
                 .create()
-                .show();
+                .show();*/
     }
-
     @Override
     public void goToMenuActivity(String s) {
         Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId","3");
         startActivity(i);
         //finish();
+    }
+
+    @Override
+    public void getAppLanguageIt() {
+        LocaleHelper.setLocale(getApplicationContext(), "it");
+    }
+    @Override
+    public void getAppLanguageEn() {
+        LocaleHelper.setLocale(getApplicationContext(), "en");
     }
 
     @Override
@@ -131,6 +143,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     @Override
     public void onDestroy() {
         super.onDestroy();
+        t.cancel();
         mScannerView.stopCamera();
         mScannerView = null;
     }
@@ -185,5 +198,18 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop();
+        t.cancel();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

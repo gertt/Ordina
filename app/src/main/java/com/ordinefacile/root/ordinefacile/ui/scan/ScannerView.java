@@ -13,4 +13,6 @@ public interface ScannerView {
     boolean checkPermission();
     void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener);
     void goToMenuActivity(String s);
+    void getAppLanguageIt();
+    void getAppLanguageEn();
 }

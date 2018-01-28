@@ -81,6 +81,11 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     }
 
     @Override
+    public void dissapearSwipeToRefresh() {
+        swipe_menu.setRefreshing(false);
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
