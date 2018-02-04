@@ -43,37 +43,20 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final CategoriesDataModel feedItem = feedItemList.get(position);
 
-
         for(int i = 0 ;i<feedItem.getImages().size();i++){
-         //   Glide.with(context)
-          //          .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
-          //          .into(holder.imageView);
 
-
-                GlideApp.with(context)
-                        .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
-                        .override(400,400)
-                        .into(holder.imageView);
-
-
+            parseImage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageView);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(context,MenuDetailActivity.class);
                 intent.putExtra("categoryId", feedItem.getId()+"");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 
-
-             //   Intent i = new Intent(context, MenuDetailActivity.class);
-             //   i.putExtra("categoryId",feedItem.getId()+"");
-              //  holder.startActivity(i);
-
-               // Toast.makeText(context, "Recycle Click  "+holder.txt_name.getText().toString()+" "+feedItem.getId(), Toast.LENGTH_SHORT).show();
             }
         });
 

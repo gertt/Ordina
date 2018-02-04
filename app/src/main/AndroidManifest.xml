@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ordinefacile.root.ordinefacile">
 
-
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -46,6 +44,10 @@
         <activity
             android:name=".ui.main_menu.MainMenuActivity"
             android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.my_order.MyOrderActivity"
+            android:label="@string/title_activity_my_order"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

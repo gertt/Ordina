@@ -22,15 +22,21 @@ public class MenuDishesDatum {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("price")
+    @Expose
+    private String price;
     @SerializedName("image")
     @Expose
     private Object image;
     @SerializedName("metrics")
     @Expose
-    private Object metrics;
+    private String metrics;
     @SerializedName("size")
     @Expose
-    private Object size;
+    private String size;
+    @SerializedName("description")
+    @Expose
+    private String description;
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
@@ -76,6 +82,14 @@ public class MenuDishesDatum {
         this.name = name;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     public Object getImage() {
         return image;
     }
@@ -84,20 +98,28 @@ public class MenuDishesDatum {
         this.image = image;
     }
 
-    public Object getMetrics() {
+    public String getMetrics() {
         return metrics;
     }
 
-    public void setMetrics(Object metrics) {
+    public void setMetrics(String metrics) {
         this.metrics = metrics;
     }
 
-    public Object getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(Object size) {
+    public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Object getDeletedAt() {
@@ -133,4 +155,5 @@ public class MenuDishesDatum {
     }
 
 }
+
 

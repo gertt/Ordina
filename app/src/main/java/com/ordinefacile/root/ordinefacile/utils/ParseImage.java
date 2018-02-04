@@ -22,12 +22,11 @@ public class ParseImage {
 
         String  input = url.toString();
         input = input.replace(" ", "");
-        Glide.with(context)
-                .load("http://restaurant.softmate.org/"+input)
-       // .load("http://restaurant.softmate.org/storage/images/product_categories/e3ea51dd047185745f2d7fe86f70b0b139694197.jpeg")
-                //.centerCrop()
-                //.placeholder(R.drawable.photoholder)
+        GlideApp.with(context)
+                .load(Util.IMAGE_URL+input)
+                .override(400,400)
                 .into(imageView);
+
     }
 
 }

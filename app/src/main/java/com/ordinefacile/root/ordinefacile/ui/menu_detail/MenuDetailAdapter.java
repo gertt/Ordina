@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.utils.GlideApp;
+import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import java.util.List;
@@ -24,11 +25,14 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
     private List<MenuDishesDatum> feedItemList;
     private Context context;
+    private ParseImage parseimage;
+
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList) {
 
         this.feedItemList = feedItemList;
         this.context = context;
+        parseimage = new ParseImage(context);
 
     }
 
@@ -45,24 +49,15 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         final MenuDishesDatum feedItem = feedItemList.get(position);
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
+        holder.price.setText("  "+feedItem.getPrice()+"  ");
+        holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+        holder.description.setText("  "+feedItem.getDescription()+"  ");
 
         for(int i = 0 ;i<feedItem.getImages().size();i++){
-            //   Glide.with(context)
-            //          .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
-            //          .into(holder.imageView);
 
-
-            GlideApp.with(context)
-                    .load(Util.IMAGE_URL+feedItem.getImages().get(i).getPath())
-                    .override(440,400)
-                    .into(holder.imageviews);
-
+            parseimage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageviews);
 
         }
-
-
-
-        //
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,12 +78,18 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         private TextView txt_name;
         private ImageView imageviews;
+        private TextView price;
+        private TextView metric;
+        private TextView description;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             txt_name = (TextView) itemView.findViewById(R.id.textView5);
             imageviews = (ImageView) itemView.findViewById(R.id.imageView2);
-
+            price = (TextView) itemView.findViewById(R.id.textView_price);
+            metric = (TextView) itemView.findViewById(R.id.textView_metric);
+            description = (TextView) itemView.findViewById(R.id.textView_description);
         }
     }
 }

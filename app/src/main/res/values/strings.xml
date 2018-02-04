@@ -1,9 +1,6 @@
 <resources>
 
 
-
-
-
     <string name="title_activity_menu_detail">MenuDetail</string>
 
     <string name="title_activity_select_language">SelectLanguageActivity</string>
@@ -32,5 +29,7 @@
     <string name="permission_granted">Permission Granted, Now you can access camera</string>
     <string name="permission_denied">Permission Denied, You cannot access and camera</string>
     <string name="need_to_allow_access">You need to allow access to both the permissions</string>
+    <string name="price">price</string>
+    <string name="description">description</string>
 
 </resources>
