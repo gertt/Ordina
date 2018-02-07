@@ -1,8 +1,15 @@
 package com.ordinefacile.root.ordinefacile.ui.menu;
 
+import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperations;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
+import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
@@ -23,13 +30,23 @@ public class MenuPresenter {
 
     MenuActivity menuActivity;
     ApiHelper apiHelper;
+    DatabaseOperationsImp dbOperations;
     Gson gson = new Gson();
+    Context context;
+
+    Orders orders;
+    DatabaseHelper databaseHelper;
+
 
     List<CategoriesDataModel> feedItemList;
 
-    public MenuPresenter(MenuActivity menuActivity) {
+    public MenuPresenter(MenuActivity menuActivity,Context context) {
         this.menuActivity = menuActivity;
+        this.context = context;
         apiHelper = new AppApiHelper();
+        dbOperations = new DatabaseOperationsImp(this.menuActivity);
+        orders = new Orders();
+        databaseHelper = new DatabaseHelper(context);
     }
 
     public void getStoreId() {
@@ -67,4 +84,46 @@ public class MenuPresenter {
                 });
     }
 
+    public void getListProducts(){
+        dbOperations.read().subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<Orders>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("","");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("","");
+                    }
+
+                    @Override
+                    public void onNext(List<Orders> orders) {
+                        Log.d("","");
+
+                        for (int i=0;i<orders.size();i++){
+
+                            String ss = orders.get(i).getmName();
+
+                        }
+                    }
+
+                });
+    }
+
+    public void insertData() {
+
+        try {
+            orders.setmName("222");
+            orders.setmReferenceID("222");
+            orders.setmQuantity("333");
+            orders.setmUserOrder("wwww");
+            databaseHelper.getUserDao().create(orders);
+        } catch (java.sql.SQLException e) {
+
+            Toast.makeText(context,"ssss"+e,Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
 }

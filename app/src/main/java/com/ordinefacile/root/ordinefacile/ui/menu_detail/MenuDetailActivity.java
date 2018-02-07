@@ -29,6 +29,8 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     PullRefreshLayout swipe_menu;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.menu);
 
-        menuDetailPresenter = new MenuDetailPresenter(this);
+        menuDetailPresenter = new MenuDetailPresenter(getApplicationContext(),this);
 
         menuDetailPresenter.getCategoryId();
 
@@ -74,7 +76,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     @Override
     public void getListDished(List<MenuDishesDatum> feedItemList) {
-        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList);
+        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList,menuDetailPresenter);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         swipe_menu.setRefreshing(false);
@@ -84,6 +86,8 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     public void dissapearSwipeToRefresh() {
         swipe_menu.setRefreshing(false);
     }
+
+
 
     @Override
     public void onBackPressed() {

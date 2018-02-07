@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+
+import com.amitshekhar.DebugDB;
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
@@ -30,8 +32,15 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        // getSupportActionBar().setHomeButtonEnabled(true);
 
-        menuPresenter = new MenuPresenter(this);
+        menuPresenter = new MenuPresenter(this,getApplicationContext());
         menuPresenter.getStoreId();
+
+        String x = DebugDB.getAddressLog();
+
+      //  Open http://192.168.1.4:8080 in your browser
+
+        menuPresenter.insertData();
+        menuPresenter.getListProducts();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));

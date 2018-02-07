@@ -5,6 +5,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by root on 1/20/18.
