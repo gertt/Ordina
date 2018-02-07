@@ -97,8 +97,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
            System.out.println(SSJ);
                 System.out.println(SSJ);
 
-                String ss =SSJ;
-                String sHs =SSJ;
 
 /*
 
