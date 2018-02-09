@@ -10,7 +10,7 @@ import rx.Observable;
 
 public interface DatabaseOperations {
 
-    boolean create(Orders p);
+    Observable create(Orders p);
     Observable<List<Orders>> read();
     boolean update(Orders p);
     boolean delete(Orders p);

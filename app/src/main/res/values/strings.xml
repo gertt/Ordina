@@ -31,5 +31,7 @@
     <string name="need_to_allow_access">You need to allow access to both the permissions</string>
     <string name="price">price</string>
     <string name="description">description</string>
+    <string name="title_activity_add_product">AddProductActivity</string>
+    <string name="setquantity">Se Quantity !</string>
 
 </resources>

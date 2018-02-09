@@ -29,19 +29,14 @@ public class DatabaseOperationsImp implements DatabaseOperations{
     }
 
     @Override
-    public boolean create(Orders p) {
-        try {
-            userDao.create(p);
+    public Observable create(Orders p) {
 
-            Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p))
-                    .subscribeOn(Schedulers.io())
-                    .subscribe();
+           // userDao.create(p);
+            Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p));
+                  //  .subscribeOn(Schedulers.io())
+                  //  .subscribe();
+           return Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p));
 
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     @Override

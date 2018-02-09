@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,13 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-import com.ordinefacile.root.ordinefacile.utils.Util;
+
 
 import java.util.List;
 
@@ -31,8 +29,8 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     int score = 0 ;
    MenuDetailPresenter menuDetailPresenter;
 
-    String SSJ;
 
+    String urlImg;
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
 
@@ -41,10 +39,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         parseimage = new ParseImage(context);
         this.menuDetailPresenter = menuDetailPresenter;
 
-
     }
-
-
 
     @Override
     public MenuDetailAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -67,40 +62,29 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
             parseimage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageviews);
 
+             urlImg=feedItem.getImages().get(i).getPath().toString();
         }
-
-
-
-
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                menuDetailPresenter.checkQuantityOrGoActivity(
+                        holder.txt_add.getText().toString(),
+                        holder.txt_name.getText().toString(),
+                        holder.price.getText().toString(),
+                        holder.metric.getText().toString(),
+                        holder.description.getText().toString(),urlImg, v);
 
-                Snackbar.make(v,"Percakto sasine !!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               // menuDetailPresenter.checkQuantityOrGoActivity();
+
 
             }
         });
-
-
         holder.btn_increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String textnumberstring = holder.txt_add.getText().toString();
-
-           menuDetailPresenter.sendStringToPresenter(textnumberstring);
-
-
-           System.out.println(SSJ);
-                System.out.println(SSJ);
-
-
-/*
-
-
 
                 if (textnumberstring.equalsIgnoreCase("Add")){
 
@@ -110,7 +94,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                        numberInt++;
                         holder.txt_add.setText(""+numberInt);
 
-
                 }else if (!textnumberstring.equalsIgnoreCase("Add")){
                     int score = Integer.parseInt(textnumberstring);
                     int numberInt = score;
@@ -119,7 +102,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     holder.txt_add.setText(""+numberInt);
 
                 }
-*/
                 Snackbar.make(v,holder.txt_name.getText(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
@@ -129,8 +111,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         holder.btn_decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 String textnumberstring = holder.txt_add.getText().toString();
 
                 if (textnumberstring.equalsIgnoreCase("Add")){
@@ -152,18 +132,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     numberInt--;
                     holder.txt_add.setText(""+numberInt);
 
-
                 }
 
                 Snackbar.make(v,holder.txt_name.getText(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
-
-
             }
         });
-
-
     }
 
     @Override
@@ -173,13 +147,10 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     }
 
     @Override
-    public void sendAdapternumver(String s) {
-
-       SSJ=s;
-
+    public void selectQuantity(View v) {
+        Snackbar.make(v,R.string.setquantity, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
-
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
@@ -191,9 +162,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         private Button btn_increment;
         private Button btn_decrement;
 
-
-
-
         public ViewHolder(View itemView) {
             super(itemView);
             txt_name = (TextView) itemView.findViewById(R.id.textView5);
@@ -204,7 +172,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             btn_increment = (Button) itemView.findViewById(R.id.button_increment);
             btn_decrement = (Button) itemView.findViewById(R.id.button_decrement);
             txt_add = (TextView) itemView.findViewById(R.id.textView_add);
-
 
         }
     }

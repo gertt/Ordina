@@ -19,8 +19,6 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
     String id;
     MainMenuPresenter mainMenuPresenter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

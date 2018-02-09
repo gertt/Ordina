@@ -48,6 +48,10 @@
         <activity
             android:name=".ui.my_order.MyOrderActivity"
             android:label="@string/title_activity_my_order"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.add_product.AddProductActivity"
+            android:label="@string/title_activity_add_product"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

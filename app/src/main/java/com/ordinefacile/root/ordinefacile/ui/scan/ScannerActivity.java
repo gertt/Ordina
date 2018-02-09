@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.amitshekhar.DebugDB;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
@@ -48,6 +50,14 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         scannerPresenter.checkForPermission();
 
 
+
+        String x = DebugDB.getAddressLog();
+
+      //  s5 Open http://192.168.100.58:8080 in your browser
+
+        Intent i = new Intent(this, MainMenuActivity.class);
+        i.putExtra("storeId","3");
+        startActivity(i);
 
     }
 
@@ -106,7 +116,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     @Override
     public void goToMenuActivity(String s) {
         Intent i = new Intent(this, MainMenuActivity.class);
-        i.putExtra("storeId","3");
+        i.putExtra("storeId",s);
         startActivity(i);
         //finish();
     }
