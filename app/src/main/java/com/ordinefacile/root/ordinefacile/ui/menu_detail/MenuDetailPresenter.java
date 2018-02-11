@@ -86,32 +86,11 @@ public class MenuDetailPresenter {
 
     }
 
- /*   public void checkQuantitys(String s, String s1, String s2, String s3, View v) {
-
-        if (!quantity.equalsIgnoreCase("Add")){
-
-            menuDetailAdapter.goToAddActivity();
-
-            Intent intent = new Intent(context,MenuDetailActivity.class);
-            intent.putExtra("categoryId", txt_add.getText().toString()+"");
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-
-        }else {
-
-            menuDetailAdapter.selectQuantity(v);
-        }
-    }
-
-    public void checkQuantity(String s, String s1, String s2, String s3, String urlImg, View v) {
-    }
-*/
     public void checkQuantityOrGoActiviDty() {
 
         Intent intent = new Intent(context,AddProductActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-
 
     }
 
@@ -120,6 +99,7 @@ public class MenuDetailPresenter {
         if (!quantity.equalsIgnoreCase("Add")){
 
             Intent intent = new Intent(context,AddProductActivity.class);
+            intent.putExtra("categoryDetailQuantity", quantity);
             intent.putExtra("categoryDetailName", name);
             intent.putExtra("categoryDetailPrice",price);
             intent.putExtra("categoryDetailMetric", metric);

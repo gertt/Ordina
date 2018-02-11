@@ -53,7 +53,11 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
         String x = DebugDB.getAddressLog();
 
-      //  s5 Open http://192.168.100.58:8080 in your browser
+     //   Open http://192.168.1.4:8080 in your browser house
+
+      //  s5 Open http://192.168.100.58:8080 in your browser work
+
+        //Open http://0.0.0.0:8080 in your browser
 
         Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId","3");
