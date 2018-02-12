@@ -66,7 +66,11 @@ public class MyOrderPresenter {
                         feedItemList = new ArrayList<Orders>();
                         for (int i=0;i<orders.size();i++){
 
+
+
+
                             String ss = orders.get(i).getmName();
+                            feedItemList.add(orders.get(i));
 
                             myOrderActivity.listAdapter(feedItemList);
 

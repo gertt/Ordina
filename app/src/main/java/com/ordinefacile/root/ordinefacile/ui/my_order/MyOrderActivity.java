@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.ordinefacile.root.ordinefacile.R;
@@ -18,8 +19,9 @@ import java.util.List;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
+    private static final String TAG = "My Debug";
     private RecyclerView mRecyclerView;
-    private MenuActivityAdapter adapter;
+    private MyOrderAdapter adapter;
 
     MyOrderPresenter myOrderPresenter;
 
@@ -34,7 +36,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         myOrderPresenter.getListProducts();
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
 
@@ -51,9 +53,11 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @Override
     public void listAdapter(List<Orders> feedItemList) {
 
-        adapter = new MenuActivityAdapter(getApplicationContext(), feedItemList);
+
+        adapter = new MyOrderAdapter(getApplicationContext(), feedItemList);
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
+        Log.d(TAG,feedItemList.toString());
         adapter.notifyDataSetChanged();
 
 

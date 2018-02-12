@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
@@ -24,21 +25,16 @@ import java.util.List;
 
 public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder>  {
 
-    private List<MenuDishesDatum> feedItemList;
+    private List<Orders> feedItemList;
     private Context context;
     private ParseImage parseimage;
-    int score = 0 ;
-    MenuDetailPresenter menuDetailPresenter;
 
-
-    String urlImg;
-
-    public MyOrderAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
+    public MyOrderAdapter(Context context, List<Orders> feedItemList) {
 
         this.feedItemList = feedItemList;
         this.context = context;
         parseimage = new ParseImage(context);
-        this.menuDetailPresenter = menuDetailPresenter;
+
 
     }
 
@@ -54,11 +50,8 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     @Override
     public void onBindViewHolder(final MyOrderAdapter.ViewHolder holder, int position) {
 
-        final MenuDishesDatum feedItem = feedItemList.get(position);
-        holder.txt_name.setText("  "+feedItem.getName()+"  ");
-
-
-
+        final Orders feedItem = feedItemList.get(position);
+        holder.txt_name.setText("  "+feedItem.getmDescr()+"  ");
 
 
 
