@@ -6,13 +6,19 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperations;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.network.APIClient;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import rx.Observable;
+import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -41,25 +47,25 @@ public class AddProductPresenter {
         databaseHelper = new DatabaseHelper(context);
     }
 
-    public void getListProducts(){
+    public void getListProducts() {
         dbOperations.read().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<Orders>>() {
                     @Override
                     public void onCompleted() {
-                        Log.d("","");
+                        Log.d("", "");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("","");
+                        Log.d("", "");
                     }
 
                     @Override
                     public void onNext(List<Orders> orders) {
-                        Log.d("","");
+                        Log.d("", "");
 
-                        for (int i=0;i<orders.size();i++){
+                        for (int i = 0; i < orders.size(); i++) {
 
                             String ss = orders.get(i).getmName();
 
@@ -69,55 +75,59 @@ public class AddProductPresenter {
                 });
     }
 
+    public void inserData2(String quantity, String name, String price, String metric, String description, String urlImage) {
+
+        // orders.setmQuantity(quantity);
+        //  orders.setmName(name);
+        //  orders.setmPrice(price);
+        //   orders.setmMetric(metric);
+
+        //   orders.setmDescriptions(description);
+        //   orders.setmUrl_Image(urlImage);
+        //   orders.setmUserOrder("USER");
+
+        orders.setmQuantity("as");
+        orders.setmName("as");
+        orders.setmPrice("as");
+        orders.setmMetric("asas");
+
+        orders.setmDescriptions("asas");
+        orders.setmUrl_Image("ass");
+        orders.setmUserOrder("USER");
+
+      String emri = orders.toString();
 
 
-    public void inserData(){
+        ArrayList<Orders> xList;
+      //  xList = new ArrayList<Orders> (Arrays.asList((Assessment[])oStream.readObject()));
 
-        orders.setmName("sss");
-        orders.setmReferenceID("ss");
-        orders.setmQuantity("sss");
-        orders.setmUserOrder("sss");
 
         dbOperations.create(orders).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Orders>>() {
+                .subscribe(new Subscriber<Orders> () {
                     @Override
                     public void onCompleted() {
-                        Log.d("","");
+                        Log.d("", "");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("","");
+                        Log.d("", "");
                     }
 
                     @Override
-                    public void onNext(List<Orders> orders) {
-                        Log.d("","");
+                    public void onNext(Orders orders) {
+                      //  Log.d("", "");
 
-                        for (int i=0;i<orders.size();i++){
+                    //    for (int i = 0; i < orders.size(); i++) {
 
-                            String ss = orders.get(i).getmName();
+                     //       String ss = orders.get(i).getmName();
 
-                        }
+                     //   }
                     }
 
                 });
-    }
 
-    public void insertData() {
-
-        try {
-            orders.setmName("222");
-            orders.setmReferenceID("222");
-            orders.setmQuantity("333");
-            orders.setmUserOrder("wwww");
-            databaseHelper.getUserDao().create(orders);
-        } catch (java.sql.SQLException e) {
-
-            Toast.makeText(context,"ssss"+e,Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
     }
 
 }

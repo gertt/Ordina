@@ -31,12 +31,9 @@ public class DatabaseOperationsImp implements DatabaseOperations{
     @Override
     public Observable create(Orders p) {
 
-           // userDao.create(p);
             Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p));
-                  //  .subscribeOn(Schedulers.io())
-                  //  .subscribe();
-           return Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p));
 
+           return Observable.fromCallable(() ->  helper.getUserDao().createOrUpdate(p));
     }
 
     @Override

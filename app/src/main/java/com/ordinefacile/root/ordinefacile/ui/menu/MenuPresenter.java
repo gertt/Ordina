@@ -120,7 +120,7 @@ public class MenuPresenter {
 
 
         orders.setmName("sss");
-        orders.setmReferenceID("ss");
+     //   orders.setmReferenceID("ss");
         orders.setmQuantity("sss");
         orders.setmUserOrder("sss");
 
@@ -162,7 +162,7 @@ public class MenuPresenter {
 
         try {
             orders.setmName("222");
-            orders.setmReferenceID("222");
+
             orders.setmQuantity("333");
             orders.setmUserOrder("wwww");
             databaseHelper.getUserDao().create(orders);

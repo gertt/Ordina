@@ -15,8 +15,13 @@ public class Orders {
     public static final String FIELD_NAME_ID     = "id";
     public static final String FIELD_NAME_NAME   = "name";
     public static final String FIELD_QUANTITY_NAME   = "quantity";
-    public static final String FIELD_REFERENCE_ID_NAME   = "reference_id";
+    public static final String FIELD_DESCRIPTION   = "descriptions";
     public static final String FIELD_USER_ORDER   = "user_order";
+    public static final String FIELD_PRICE   = "price";
+    public static final String FIELD_METRIC   = "metric";
+    public static final String FIELD_URLIMAGE   = "url_image";
+    public static final String FIELD_DESCR   = "descr";
+
 
     @DatabaseField(columnName = FIELD_NAME_ID, generatedId = true, unique = true)
     private int mId;
@@ -27,11 +32,23 @@ public class Orders {
     @DatabaseField(columnName = FIELD_QUANTITY_NAME)
     private String mQuantity;
 
-    @DatabaseField(columnName = FIELD_REFERENCE_ID_NAME)
-    private String mReferenceID;
+    @DatabaseField(columnName = FIELD_DESCRIPTION)
+    private String mDescriptions;
 
     @DatabaseField(columnName = FIELD_USER_ORDER)
     private String mUserOrder;
+
+    @DatabaseField(columnName = FIELD_PRICE)
+    private String mPrice;
+
+    @DatabaseField(columnName = FIELD_METRIC)
+    private String mMetric;
+
+    @DatabaseField(columnName = FIELD_URLIMAGE)
+    private String mUrl_Image ;
+
+    @DatabaseField(columnName = FIELD_DESCR)
+    private String mDescr ;
 
 
     public Orders() {
@@ -48,14 +65,29 @@ public class Orders {
         this.mQuantity = mQuantity;
     }
 
-    public void setmReferenceID(String mReferenceID) {
-        this.mReferenceID = mReferenceID;
+    public void setmDescriptions(String mDescriptions) {
+        this.mDescriptions = mDescriptions;
     }
 
     public void setmUserOrder(String mUserOrder) {
         this.mUserOrder = mUserOrder;
     }
 
+    public void setmPrice(String mPrice) {
+        this.mPrice = mPrice;
+    }
+
+    public void setmMetric(String mMetric) {
+        this.mMetric = mMetric;
+    }
+
+    public void setmUrl_Image(String mUrl_Image) {
+        this.mUrl_Image = mUrl_Image;
+    }
+
+    public void setmDescr(String mDescr) {
+        this.mDescr = mDescr;
+    }
     /** Getters & Setters **/
 
     public static String getFieldNameId() {
@@ -67,15 +99,28 @@ public class Orders {
     public static String getFieldNameQuantity() {
         return FIELD_QUANTITY_NAME;
     }
-    public static String getFieldReferenceIdName() {
-        return FIELD_REFERENCE_ID_NAME;
+    public static String getFieldDescription() {
+        return FIELD_DESCRIPTION;
     }
 
     public static String getFieldUserOrder() {
         return FIELD_USER_ORDER;
     }
 
+    public static String getFieldPrice() {
+        return FIELD_PRICE;
+    }
 
+    public static String getFieldMetric() {
+        return FIELD_METRIC;
+    }
+
+    public static String getFieldUrlimage() {
+        return FIELD_URLIMAGE;
+    }
+    public static String getFieldDescr() {
+        return FIELD_DESCR;
+    }
 
     public int getmId() {
         return mId;
@@ -86,12 +131,27 @@ public class Orders {
     public String getmQuantity() {
         return mQuantity;
     }
-    public String getmReferenceID() {
-        return mReferenceID;
+    public String getmDescriptions() {
+        return mDescriptions;
     }
 
     public String getmUserOrder() {
         return mUserOrder;
     }
 
+
+    public String getmPrice() {
+        return mPrice;
+    }
+
+    public String getmMetric() {
+        return mMetric;
+    }
+
+    public String getmUrl_Image() {
+        return mUrl_Image;
+    }
+    public String getmDescr() {
+        return mDescr;
+    }
 }
