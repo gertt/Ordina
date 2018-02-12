@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/versioni1"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -40,18 +40,7 @@
         app:layout_constraintStart_toStartOf="@+id/button_menu"
         app:layout_constraintTop_toBottomOf="@+id/button_menu" />
 
-    <ImageView
-        android:id="@+id/imageView_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
-        app:layout_constraintEnd_toEndOf="@+id/button_call_service"
-        app:layout_constraintStart_toStartOf="@+id/button_call_service"
-        app:layout_constraintTop_toBottomOf="@+id/button_call_service"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:ignore="VectorDrawableCompat" />
+
 
 
 </android.support.constraint.ConstraintLayout>

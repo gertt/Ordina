@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
@@ -87,6 +88,9 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
                 Snackbar.make(v,"Addet", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
+                startActivity(intent);
 
             }
         });
