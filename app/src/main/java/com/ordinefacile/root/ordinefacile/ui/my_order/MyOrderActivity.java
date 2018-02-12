@@ -11,7 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivityAdapter;
+
+import java.util.List;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
@@ -45,4 +48,14 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     }
 
+    @Override
+    public void listAdapter(List<Orders> feedItemList) {
+
+        adapter = new MenuActivityAdapter(getApplicationContext(), feedItemList);
+        mRecyclerView.setAdapter(adapter);
+        System.out.println(feedItemList.size());
+        adapter.notifyDataSetChanged();
+
+
+    }
 }

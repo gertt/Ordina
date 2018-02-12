@@ -11,6 +11,7 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscriber;
@@ -62,9 +63,12 @@ public class MyOrderPresenter {
                     public void onNext(List<Orders> orders) {
                         Log.d("","");
 
+                        feedItemList = new ArrayList<Orders>();
                         for (int i=0;i<orders.size();i++){
 
                             String ss = orders.get(i).getmName();
+
+                            myOrderActivity.listAdapter(feedItemList);
 
                         }
                     }

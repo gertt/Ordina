@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 import com.ordinefacile.root.ordinefacile.utils.GlideApp;
@@ -21,11 +22,11 @@ import java.util.List;
 
 public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapter.ViewHolder>{
 
-    private List<CategoriesDataModel> feedItemList;
+    private List<Orders> feedItemList;
     private Context context;
     ParseImage parseImage;
 
-    public MenuActivityAdapter(Context context, List<CategoriesDataModel> feedItemList) {
+    public MenuActivityAdapter(Context context, List<Orders> feedItemList) {
         this.feedItemList = feedItemList;
         this.context = context;
         parseImage =new ParseImage(context);
@@ -41,39 +42,23 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final CategoriesDataModel feedItem = feedItemList.get(position);
+        final Orders feedItem = feedItemList.get(position);
 
-        for(int i = 0 ;i<feedItem.getImages().size();i++){
+        for(int i = 0 ;i<feedItem.getmDescr().length();i++){
 
-            parseImage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageView);
+            parseImage.parseimage(feedItem.getmDescr(),holder.imageView);
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(context,MenuDetailActivity.class);
-                intent.putExtra("categoryId", feedItem.getId()+"");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-
-            }
-        });
-
     }
-
     @Override
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
 
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-
-
 
         public ViewHolder(View itemView) {
         super(itemView);
