@@ -25,9 +25,19 @@ public class SaveData {
         editor.commit();
     }
 
+    public void saveNumberCall(String number_call){
+        editor.putString("number_call", number_call);
+        editor.commit();
+    }
+
 
     public String getLanguage(){
         return preferences.getString("language", "");
+
+    }
+
+    public String getNumberCall(){
+        return preferences.getString("number_call", "");
 
     }
 }

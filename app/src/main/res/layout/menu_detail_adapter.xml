@@ -36,7 +36,6 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
         android:layout_marginLeft="8dp" />
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="116dp"
@@ -85,45 +84,41 @@
         android:layout_marginLeft="20dp" />
 
     <View
+
         android:id="@+id/view2"
-        android:layout_width="99dp"
+        android:layout_width="120dp"
         android:layout_height="35dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/view_round_corner"
         app:layout_constraintStart_toStartOf="@+id/textView_description"
-        app:layout_constraintTop_toBottomOf="@+id/textView_description"
-        android:layout_marginLeft="96dp">
+        app:layout_constraintTop_toBottomOf="@+id/textView_description">
 
     </View>
 
     <Button
         android:id="@+id/button_decrement"
-        android:layout_width="20dp"
-        android:layout_height="15dp"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="3dp"
         android:background="@drawable/ic_minus"
         app:layout_constraintEnd_toStartOf="@+id/textView_add"
-        app:layout_constraintTop_toTopOf="@+id/textView_add"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView_add" />
 
 
     <Button
         android:id="@+id/button_increment"
-        android:layout_width="20dp"
-        android:layout_height="15dp"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="3dp"
         android:background="@drawable/ic_plus"
         app:layout_constraintStart_toEndOf="@+id/textView_add"
-        app:layout_constraintTop_toTopOf="@+id/textView_add"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView_add" />
 
     <TextView
         android:id="@+id/textView_add"
-        android:layout_width="31dp"
-        android:layout_height="15dp"
+        android:layout_width="41dp"
+        android:layout_height="21dp"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -134,8 +129,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

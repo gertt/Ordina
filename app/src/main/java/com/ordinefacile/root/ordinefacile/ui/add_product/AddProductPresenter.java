@@ -47,60 +47,18 @@ public class AddProductPresenter {
         databaseHelper = new DatabaseHelper(context);
     }
 
-    public void getListProducts() {
-        dbOperations.read().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Orders>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("", "");
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("", "");
-                    }
+    public void inserData(String quantity, String name, String price, String metric, String description, String urlImage) {
 
-                    @Override
-                    public void onNext(List<Orders> orders) {
-                        Log.d("", "");
-
-                        for (int i = 0; i < orders.size(); i++) {
-
-                            String ss = orders.get(i).getmName();
-
-                        }
-                    }
-
-                });
-    }
-
-    public void inserData2(String quantity, String name, String price, String metric, String description, String urlImage) {
-
-        // orders.setmQuantity(quantity);
-        //  orders.setmName(name);
-        //  orders.setmPrice(price);
-        //   orders.setmMetric(metric);
-
-        //   orders.setmDescriptions(description);
-        //   orders.setmUrl_Image(urlImage);
-        //   orders.setmUserOrder("USER");
-
-        orders.setmQuantity("as");
-        orders.setmName("as");
-        orders.setmPrice("as");
-        orders.setmMetric("asas");
-
-        orders.setmDescriptions("asas");
-        orders.setmUrl_Image("ass");
+        orders.setmQuantity(quantity);
+        orders.setmName(name);
+        orders.setmPrice(price);
+        orders.setmMetric(metric);
+        orders.setmDescriptions(description);
+        orders.setmUrl_Image(urlImage);
         orders.setmUserOrder("USER");
 
       String emri = orders.toString();
-
-
-        ArrayList<Orders> xList;
-      //  xList = new ArrayList<Orders> (Arrays.asList((Assessment[])oStream.readObject()));
-
 
         dbOperations.create(orders).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -118,11 +76,8 @@ public class AddProductPresenter {
                     @Override
                     public void onNext(Orders orders) {
                       //  Log.d("", "");
-
                     //    for (int i = 0; i < orders.size(); i++) {
-
                      //       String ss = orders.get(i).getmName();
-
                      //   }
                     }
 

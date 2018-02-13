@@ -33,5 +33,6 @@
     <string name="description">description</string>
     <string name="title_activity_add_product">AddProductActivity</string>
     <string name="setquantity">Se Quantity !</string>
+    <string name="numberIncorrect">Your Number Is Incorrect</string>
 
 </resources>

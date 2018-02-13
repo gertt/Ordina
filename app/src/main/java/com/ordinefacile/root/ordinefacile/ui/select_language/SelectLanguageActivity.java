@@ -34,7 +34,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
     Button buttonBackSelectLanguage;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

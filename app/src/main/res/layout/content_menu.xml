@@ -10,11 +10,8 @@
     tools:showIn="@layout/activity_menu">
 
 <android.support.constraint.ConstraintLayout
-    android:background="@drawable/versioni2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
 
     <com.baoyz.widget.PullRefreshLayout
         android:id="@+id/swipe_menu"
@@ -28,8 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.baoyz.widget.PullRefreshLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>
 

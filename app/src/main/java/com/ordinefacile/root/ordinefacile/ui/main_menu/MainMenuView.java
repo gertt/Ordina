@@ -8,4 +8,8 @@ public interface MainMenuView   {
 
     void getStoreId();
     void goToMenu();
+
+    void callNumber(String numberCall);
+
+    void callNumberIncorrect();
 }

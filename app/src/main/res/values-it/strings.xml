@@ -22,4 +22,6 @@
     <string name="permission_granted">Permission Granted, Now you can access camera -it</string>
     <string name="permission_denied">Permission Denied, You cannot access and camera -it</string>
     <string name="need_to_allow_access">You need to allow access to both the permissions -it</string>
+
+    <string name="numberIncorrect">Your Number Is Incorrect-it</string>
 </resources>

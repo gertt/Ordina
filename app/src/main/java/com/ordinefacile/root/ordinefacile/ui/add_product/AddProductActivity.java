@@ -83,7 +83,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
             public void onClick(View v) {
 
 
-                addProductPresenter.inserData2(quantity,name,price,metric,description,urlImage);
+                addProductPresenter.inserData(quantity,name,price,metric,description,urlImage);
 
 
                 Snackbar.make(v,"Addet", Snackbar.LENGTH_LONG)

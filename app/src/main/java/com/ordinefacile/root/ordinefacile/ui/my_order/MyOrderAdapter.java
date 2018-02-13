@@ -3,6 +3,7 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder>  {
 
+    private static final String TAG = "My Debugg";
     private List<Orders> feedItemList;
     private Context context;
     private ParseImage parseimage;
@@ -51,9 +53,15 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     public void onBindViewHolder(final MyOrderAdapter.ViewHolder holder, int position) {
 
         final Orders feedItem = feedItemList.get(position);
-        holder.txt_name.setText("  "+feedItem.getmDescr()+"  ");
+        holder.txt_name.setText("  "+feedItem.getmName()+"  ");
 
+        holder.txt_name.setText("  "+feedItem.getmName()+"  ");
 
+        holder.price.setText("  "+feedItem.getmName()+"  ");
+               for (int i = 0;i<feedItemList.size();i++){
+                   Log.d(TAG,feedItemList.get(i).getmName());
+
+               }
 
     }
 
@@ -67,13 +75,15 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
+        private TextView price;
+
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txt_name = (TextView) itemView.findViewById(R.id.textView5);
+            txt_name = (TextView) itemView.findViewById(R.id.textView_myorder);
            // imageviews = (ImageView) itemView.findViewById(R.id.imageView2);
-          //  price = (TextView) itemView.findViewById(R.id.textView_price);
+            price = (TextView) itemView.findViewById(R.id.textView_myorder);
       //      metric = (TextView) itemView.findViewById(R.id.textView_metric);
        //     description = (TextView) itemView.findViewById(R.id.textView_description);
        //     btn_increment = (Button) itemView.findViewById(R.id.button_increment);

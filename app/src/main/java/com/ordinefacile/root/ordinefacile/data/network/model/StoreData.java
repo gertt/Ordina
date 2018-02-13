@@ -9,19 +9,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class StoreData {
 
-
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("user_id")
-    @Expose
-    private Object userId;
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("qr_code")
     @Expose
     private String qrCode;
+    @SerializedName("pin")
+    @Expose
+    private String pin;
     @SerializedName("image")
     @Expose
     private Object image;
@@ -34,6 +33,12 @@ public class StoreData {
     @SerializedName("city")
     @Expose
     private Object city;
+    @SerializedName("phone_1")
+    @Expose
+    private Object phone1;
+    @SerializedName("phone_2")
+    @Expose
+    private Object phone2;
     @SerializedName("social_fcb")
     @Expose
     private Object socialFcb;
@@ -61,14 +66,6 @@ public class StoreData {
         this.id = id;
     }
 
-    public Object getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Object userId) {
-        this.userId = userId;
-    }
-
     public String getName() {
         return name;
     }
@@ -83,6 +80,14 @@ public class StoreData {
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public Object getImage() {
@@ -115,6 +120,22 @@ public class StoreData {
 
     public void setCity(Object city) {
         this.city = city;
+    }
+
+    public Object getPhone1() {
+        return phone1;
+    }
+
+    public void setPhone1(Object phone1) {
+        this.phone1 = phone1;
+    }
+
+    public Object getPhone2() {
+        return phone2;
+    }
+
+    public void setPhone2(Object phone2) {
+        this.phone2 = phone2;
     }
 
     public Object getSocialFcb() {
@@ -164,4 +185,6 @@ public class StoreData {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }
+

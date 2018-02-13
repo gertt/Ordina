@@ -15,8 +15,8 @@ import com.j256.ormlite.table.TableUtils;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-    private static final String DATABASE_NAME    = "ormlite.db";
-    private static final int    DATABASE_VERSION = 26;
+    private static final String DATABASE_NAME    = "ordinafacile.db";
+    private static final int    DATABASE_VERSION = 1;
 
     private Dao<Orders, Integer> mUserDao = null;
 
