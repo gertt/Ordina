@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,7 +58,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         holder.txt_name.setText("  "+feedItem.getmName()+"  ");
 
-        holder.price.setText("  "+feedItem.getmName()+"  ");
+       // holder.price.setText("  "+feedItem.getmName()+"  ");
                for (int i = 0;i<feedItemList.size();i++){
                    Log.d(TAG,feedItemList.get(i).getmName());
 
@@ -71,24 +72,23 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
-        private TextView price;
-
-
+        private TextView txt_price;
+        private  ImageView imag_myorder;
+        private TextView txt_metric;
+        private ImageButton btn_info;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txt_name = (TextView) itemView.findViewById(R.id.textView_myorder);
-           // imageviews = (ImageView) itemView.findViewById(R.id.imageView2);
-            price = (TextView) itemView.findViewById(R.id.textView_myorder);
-      //      metric = (TextView) itemView.findViewById(R.id.textView_metric);
-       //     description = (TextView) itemView.findViewById(R.id.textView_description);
-       //     btn_increment = (Button) itemView.findViewById(R.id.button_increment);
-       //     btn_decrement = (Button) itemView.findViewById(R.id.button_decrement);
-        //    txt_add = (TextView) itemView.findViewById(R.id.textView_add);
+
+            txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name);
+            imag_myorder = (ImageView) itemView.findViewById(R.id.circularImageView_myorder);
+            txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price);
+            txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
+            btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
+
 
         }
     }

@@ -13,15 +13,14 @@
         android:layout_height="127dp"
         android:layout_marginTop="20dp"
         android:background="@color/myorder_yellow"
-        app:layout_constraintEnd_toEndOf="@+id/circularImageView"
+        app:layout_constraintEnd_toEndOf="@+id/circularImageView_myorder"
         app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="@+id/circularImageView"
-        app:layout_constraintTop_toTopOf="@+id/circularImageView" />
+        app:layout_constraintStart_toStartOf="@+id/circularImageView_myorder"
+        app:layout_constraintTop_toTopOf="@+id/circularImageView_myorder" />
 
 
     <TextView
-
-        android:id="@+id/textView_myorder"
+        android:id="@+id/textView_myorder_name"
         android:layout_width="202dp"
         android:layout_height="29dp"
         android:layout_marginStart="12dp"
@@ -32,8 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView_myorder"
-
+        android:id="@+id/textView_myorder_metric"
         android:layout_width="162dp"
         android:layout_height="23dp"
         android:layout_marginStart="12dp"
@@ -44,7 +42,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView_myorder_price"
         android:layout_width="110dp"
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
@@ -55,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/circularImageView"
+        android:id="@+id/circularImageView_myorder"
         android:layout_width="93dp"
         android:layout_height="72dp"
         android:layout_marginBottom="8dp"
@@ -78,7 +76,7 @@
         android:layout_marginRight="8dp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButton_myorder_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
