@@ -76,7 +76,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         private TextView txt_name;
         private TextView txt_price;
-        private  ImageView imag_myorder;
+        private ImageView imag_myorder;
         private TextView txt_metric;
         private ImageButton btn_info;
 
@@ -88,7 +88,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price);
             txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
             btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
-
 
         }
     }

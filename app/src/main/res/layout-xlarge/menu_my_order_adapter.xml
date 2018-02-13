@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="728dp"
-        android:layout_height="227dp"
+        android:layout_height="237dp"
         android:layout_marginTop="36dp"
         android:background="@color/myorder_yellow"
         app:layout_constraintEnd_toEndOf="@+id/circularImageView_myorder"
@@ -20,44 +20,43 @@
 
     <TextView
         android:id="@+id/textView_myorder_name"
-        android:layout_width="247dp"
-        android:layout_height="36dp"
+        android:layout_width="369dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Titulli i produktit"
         android:textColor="@color/myorder_titleproduct_black"
-        android:textSize="19sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView_myorder_metric"
-        android:textSize="19sp"
         android:layout_width="200dp"
-        android:layout_height="36dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="76dp"
         android:text="250ml"
         android:textColor="@color/myorder_titleproduct_black"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteY="136dp" />
 
     <TextView
         android:id="@+id/textView_myorder_price"
-        android:layout_width="160dp"
-        android:layout_height="36dp"
+        android:layout_width="187dp"
+        android:layout_height="52dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="208dp"
         android:text="cmimi i produktit"
         android:textColor="@color/white"
-        android:textSize="19sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/circularImageView_myorder"
-        android:layout_width="145dp"
-        android:layout_height="109dp"
+        android:layout_width="185dp"
+        android:layout_height="139dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="32dp"
@@ -77,15 +76,15 @@
 
     <ImageButton
         android:id="@+id/imageButton_myorder_info"
-        android:layout_width="62dp"
-        android:layout_height="66dp"
+        android:layout_width="82dp"
+        android:layout_height="76dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="#0000"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:srcCompat="@drawable/ic_info" />
 
