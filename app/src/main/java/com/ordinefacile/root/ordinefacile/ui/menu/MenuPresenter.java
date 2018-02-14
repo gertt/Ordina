@@ -85,91 +85,9 @@ public class MenuPresenter {
                 });
     }
 
-    public void getListProducts(){
-        dbOperations.read().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Orders>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("","");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("","");
-                    }
-
-                    @Override
-                    public void onNext(List<Orders> orders) {
-                        Log.d("","");
-
-                        for (int i=0;i<orders.size();i++){
-
-                            String ss = orders.get(i).getmName();
-
-                        }
-                    }
-
-                });
-    }
 
 
 
-    public void inserData(){
 
 
-
-        orders.setmName("sss");
-     //   orders.setmReferenceID("ss");
-        orders.setmQuantity("sss");
-        orders.setmUserOrder("sss");
-
-        try {
-            databaseHelper.getUserDao().createOrUpdate(orders);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        dbOperations.create(orders).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Orders>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("","");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("","");
-                    }
-
-                    @Override
-                    public void onNext(List<Orders> orders) {
-                        Log.d("","");
-
-                        for (int i=0;i<orders.size();i++){
-
-                            String ss = orders.get(i).getmName();
-
-                        }
-                    }
-
-                });
-    }
-
-    public void insertData() {
-
-        try {
-            orders.setmName("222");
-
-            orders.setmQuantity("333");
-            orders.setmUserOrder("wwww");
-            databaseHelper.getUserDao().create(orders);
-        } catch (java.sql.SQLException e) {
-
-            Toast.makeText(context,"ssss"+e,Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
-    }
 }

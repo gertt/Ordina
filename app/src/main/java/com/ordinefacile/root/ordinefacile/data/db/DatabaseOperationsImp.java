@@ -88,7 +88,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
     public boolean checkIfExist(Orders p) {
         List<Orders> results = null;
         try {
-            results = userDao.queryBuilder().where().eq("first_name",p.getmId()).query();
+            results = userDao.queryBuilder().where().eq("name",p.getmId()).query();
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
             return false;

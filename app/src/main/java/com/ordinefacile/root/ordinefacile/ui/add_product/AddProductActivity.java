@@ -83,7 +83,8 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
             public void onClick(View v) {
 
 
-                addProductPresenter.inserData(quantity,name,price,metric,description,urlImage);
+               addProductPresenter.inserData(quantity,name,price,metric,description,urlImage);
+                addProductPresenter.checkIfExdist();
 
 
                 Snackbar.make(v,"Addet", Snackbar.LENGTH_LONG)
@@ -94,9 +95,6 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
             }
         });
-
-
-
 
     }
     @Override

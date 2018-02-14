@@ -29,8 +29,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     PullRefreshLayout swipe_menu;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

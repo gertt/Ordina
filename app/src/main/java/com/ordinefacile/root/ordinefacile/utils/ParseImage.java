@@ -1,6 +1,8 @@
 package com.ordinefacile.root.ordinefacile.utils;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -23,8 +25,10 @@ public class ParseImage {
         String  input = url.toString();
         input = input.replace(" ", "");
         GlideApp.with(context)
+               // .placeholder(placeholder)
                 .load(Util.IMAGE_URL+input)
                 .override(600,600)
+
                 .into(imageView);
 
     }

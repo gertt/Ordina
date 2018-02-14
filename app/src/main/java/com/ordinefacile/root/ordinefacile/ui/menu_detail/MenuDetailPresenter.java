@@ -80,20 +80,6 @@ public class MenuDetailPresenter {
 
 
 
-    public void checkQuantisty(String quantity, View v) {
-
-
-
-    }
-
-    public void checkQuantityOrGoActiviDty() {
-
-        Intent intent = new Intent(context,AddProductActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-
-    }
-
     public void checkQuantityOrGoActivity(String quantity,String name, String price, String metric, String description, String urlImg, View v) {
 
         if (!quantity.equalsIgnoreCase("Add")){

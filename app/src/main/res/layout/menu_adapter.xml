@@ -9,6 +9,7 @@
 
 
     <ImageView
+        android:src="@drawable/placeholder"
         android:id="@+id/imageView"
         android:layout_width="152dp"
         android:layout_height="130dp"

@@ -5,20 +5,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperations;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
-import com.ordinefacile.root.ordinefacile.data.network.APIClient;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -32,6 +26,7 @@ public class AddProductPresenter {
 
     AddProductActivity addProductActivity;
     Context context;
+    RuntimeExceptionDao<Orders, Integer> userDao;
 
     ApiHelper apiHelper;
     DatabaseOperationsImp dbOperations;
@@ -45,10 +40,11 @@ public class AddProductPresenter {
         orders = new Orders();
         dbOperations = new DatabaseOperationsImp(context);
         databaseHelper = new DatabaseHelper(context);
+        userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
     }
 
-
-    public void inserData(String quantity, String name, String price, String metric, String description, String urlImage) {
+    public void inserData(String quantity, String name, String price,
+                          String metric, String description, String urlImage) {
 
         orders.setmQuantity(quantity);
         orders.setmName(name);
@@ -85,4 +81,54 @@ public class AddProductPresenter {
 
     }
 
+    public boolean update() {
+        if(checkIfExist() == true){
+            UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
+            try {
+                updateBuilder.where().eq("name", orders.getmName());
+                updateBuilder.updateColumnValue("quantity" , orders.getmQuantity());
+                updateBuilder.update();
+                return true;
+            } catch (java.sql.SQLException e) {
+                e.printStackTrace();
+                return false;
+
+            }
+        }
+        return false;
+    }
+    public boolean checkIfExist() {
+        List<Orders> results = null;
+        try {
+            results = userDao.queryBuilder().where().eq("name",orders.getmName()).query();
+
+            String DDJD=orders.getmName().toString();
+            String DDwJD=orders.getmName().toString();
+
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        if(results.size() == 0){
+
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean checkIfExdist() {
+        List<Orders> results = null;
+        try {
+            results = userDao.queryBuilder().where().eq("name","Nicholaus Simonis").query();
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        if(results.size() == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
