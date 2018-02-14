@@ -10,6 +10,7 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.add_product.AddProductActivity;
 
 import java.util.ArrayList;
@@ -30,15 +31,15 @@ public class MenuDetailPresenter {
     Gson gson = new Gson();
     Context context;
     MenuDetailAdapter menuDetailAdapter;
-
     List<MenuDishesDatum> feedItemList;
-
+    SaveData saveData;
 
     public MenuDetailPresenter( Context context,MenuDetailActivity menuDetailActivity) {
         this.menuDetailActivity = menuDetailActivity;
         this.context = context ;
         apiHelper = new AppApiHelper();
         menuDetailAdapter =  new  MenuDetailAdapter(context,feedItemList,this);
+        saveData = new SaveData(context);
 
     }
 
@@ -97,6 +98,16 @@ public class MenuDetailPresenter {
         }else {
 
             menuDetailAdapter.selectQuantity(v);
+        }
+    }
+
+    public void checknumber() {
+
+        if (!saveData.getNumberCall().equalsIgnoreCase("")){
+
+            menuDetailActivity.callNumber(saveData.getNumberCall());
+        }else {
+            menuDetailActivity.callNumberIncorrect();
         }
     }
 }

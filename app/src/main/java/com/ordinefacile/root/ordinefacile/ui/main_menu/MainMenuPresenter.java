@@ -33,7 +33,7 @@ public class MainMenuPresenter {
     }
 
     public void checknumber() {
-        if (saveData.getNumberCall()!=null){
+        if (!saveData.getNumberCall().equalsIgnoreCase("")){
 
             mainMenuActivity.callNumber(saveData.getNumberCall());
         }else {

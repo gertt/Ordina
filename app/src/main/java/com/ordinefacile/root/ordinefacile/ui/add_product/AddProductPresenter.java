@@ -12,6 +12,8 @@ import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+
 import java.util.List;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -33,6 +35,7 @@ public class AddProductPresenter {
     Gson gson = new Gson();
     Orders orders;
     DatabaseHelper databaseHelper;
+    SaveData saveData;
 
     public AddProductPresenter(AddProductActivity addProductActivity, Context context) {
         this.addProductActivity = addProductActivity;
@@ -41,6 +44,7 @@ public class AddProductPresenter {
         dbOperations = new DatabaseOperationsImp(context);
         databaseHelper = new DatabaseHelper(context);
         userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
+        saveData = new SaveData(context);
     }
 
     public void inserData(String quantity, String name, String price,
@@ -54,7 +58,6 @@ public class AddProductPresenter {
         orders.setmUrl_Image(urlImage);
         orders.setmUserOrder("USER");
 
-      String emri = orders.toString();
 
         dbOperations.create(orders).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,22 +74,19 @@ public class AddProductPresenter {
 
                     @Override
                     public void onNext(Orders orders) {
-                      //  Log.d("", "");
-                    //    for (int i = 0; i < orders.size(); i++) {
-                     //       String ss = orders.get(i).getmName();
-                     //   }
+
                     }
 
                 });
 
     }
 
-    public boolean update(String p,String q) {
-        if(checkIfExdist(p) == true){
+    public boolean update(String quantity,String name ,String price,String metric,String description,String urlimage) {
+        if(checkIfExdist(name) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
-                updateBuilder.where().eq("name",p);
-                updateBuilder.updateColumnValue("quantity" ,q);
+                updateBuilder.where().eq("name",name);
+                updateBuilder.updateColumnValue("quantity" ,quantity);
                 updateBuilder.update();
                 return true;
             } catch (java.sql.SQLException e) {
@@ -94,10 +94,12 @@ public class AddProductPresenter {
                 return false;
 
             }
+        }else if (checkIfExdist(name) == false){
+            inserData(quantity,name,price,metric,description,urlimage);
+
         }
         return false;
     }
-
 
     public boolean checkIfExdist(String p)
     {
@@ -113,5 +115,16 @@ public class AddProductPresenter {
         }else{
             return true;
         }
+    }
+
+    public void checknumber() {
+
+        if (!saveData.getNumberCall().equalsIgnoreCase("")){
+
+            addProductActivity.callNumber(saveData.getNumberCall());
+        }else {
+            addProductActivity.callNumberIncorrect();
+        }
+
     }
 }

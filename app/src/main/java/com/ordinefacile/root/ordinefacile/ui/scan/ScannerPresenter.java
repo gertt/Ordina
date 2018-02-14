@@ -74,6 +74,8 @@ public class ScannerPresenter {
                             if (qrCodeModel.getData().getPhone1()!=null){
 
                                 saveData.saveNumberCall(qrCodeModel.getData().getPhone1().toString());
+                            }else {
+                                saveData.saveNumberCall("");
                             }
 
                             goToMenuAtivity(id);

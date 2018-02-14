@@ -5,4 +5,7 @@ package com.ordinefacile.root.ordinefacile.ui.add_product;
  */
 
 public interface AddProductView {
+    void callNumber(String numberCall);
+
+    void callNumberIncorrect();
 }

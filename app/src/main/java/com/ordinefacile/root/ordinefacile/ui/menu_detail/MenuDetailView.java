@@ -16,4 +16,7 @@ public interface MenuDetailView {
 
     void dissapearSwipeToRefresh();
 
+    void callNumber(String numberCall);
+
+    void callNumberIncorrect();
 }

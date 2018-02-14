@@ -4,13 +4,13 @@
 
 
     <item
-        android:id="@+id/action_info"
-        android:icon="@drawable/ic_my_order"
+        android:id="@+id/action_call_service"
+        android:icon="@mipmap/ic_call_service"
         android:title="profile"
         app:showAsAction="always"  />
     <item
-        android:id="@+id/action_language"
-        android:icon="@drawable/ic_my_order"
+        android:id="@+id/action_my_order"
+        android:icon="@mipmap/ic_my_order"
         android:title="profile2"
         app:showAsAction="always"  />
 

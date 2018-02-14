@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,11 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 
 import java.util.List;
@@ -85,6 +88,20 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         swipe_menu.setRefreshing(false);
     }
 
+    @Override
+    public void callNumber(String numberCall) {
+
+        Intent call = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", numberCall, null));
+        startActivity(call);
+
+
+    }
+
+    @Override
+    public void callNumberIncorrect() {
+        Toast.makeText(getApplicationContext(),R.string.numberIncorrect,Toast.LENGTH_LONG).show();
+
+    }
 
 
     @Override
@@ -95,14 +112,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_info) {
+        if (id == R.id.action_call_service) {
 
-          //  Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
-          //  startActivity(intent);
+            menuDetailPresenter.checknumber();
         }
-        if (id == R.id.action_language) {
-         //   Intent intent = new Intent(getApplicationContext(),SelectLanguageActivity.class);
-         //   startActivity(intent);
+        if (id == R.id.action_my_order) {
+          Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
+            startActivity(intent);
         }
 
         switch (item.getItemId()) {

@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.add_product;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
@@ -82,12 +84,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
             @Override
             public void onClick(View v) {
 
-
-               addProductPresenter.inserData(quantity,name,price,metric,description,urlImage);
-                addProductPresenter.update(name,quantity);
-
-                Snackbar.make(v,"Addet", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                addProductPresenter.update(quantity, name,price,metric,description,urlImage);
 
                 Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
                 startActivity(intent);
@@ -104,14 +101,13 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_info) {
+        if (id == R.id.action_call_service) {
 
-            //  Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
-            //  startActivity(intent);
+            addProductPresenter.checknumber();
         }
-        if (id == R.id.action_language) {
-            //   Intent intent = new Intent(getApplicationContext(),SelectLanguageActivity.class);
-            //   startActivity(intent);
+        if (id == R.id.action_my_order) {
+               Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
+               startActivity(intent);
         }
 
         switch (item.getItemId()) {
@@ -129,4 +125,17 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public void callNumber(String numberCall) {
+
+        Intent call = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", numberCall, null));
+        startActivity(call);
+
+    }
+
+    @Override
+    public void callNumberIncorrect() {
+
+        Toast.makeText(getApplicationContext(),R.string.numberIncorrect,Toast.LENGTH_LONG).show();
+    }
 }

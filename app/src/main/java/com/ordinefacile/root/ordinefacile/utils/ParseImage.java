@@ -28,7 +28,6 @@ public class ParseImage {
                // .placeholder(placeholder)
                 .load(Util.IMAGE_URL+input)
                 .override(600,600)
-
                 .into(imageView);
 
     }

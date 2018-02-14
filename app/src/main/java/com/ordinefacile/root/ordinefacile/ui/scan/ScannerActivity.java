@@ -58,7 +58,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
       //  s5 Open http://192.168.100.58:8080 in your browser work
 
         //Open http://0.0.0.0:8080 in your browser
-        Intent i = new Intent(this, MainMenuActivity.class);
+       Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId","3");
         startActivity(i);
 
