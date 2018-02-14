@@ -81,12 +81,12 @@ public class AddProductPresenter {
 
     }
 
-    public boolean update(String p) {
+    public boolean update(String p,String q) {
         if(checkIfExdist(p) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
-                updateBuilder.where().eq("name", orders.getmName());
-                updateBuilder.updateColumnValue("quantity" , orders.getmQuantity());
+                updateBuilder.where().eq("name",p);
+                updateBuilder.updateColumnValue("quantity" ,q);
                 updateBuilder.update();
                 return true;
             } catch (java.sql.SQLException e) {
@@ -97,29 +97,10 @@ public class AddProductPresenter {
         }
         return false;
     }
-    public boolean checkIfExist() {
-        List<Orders> results = null;
-        try {
-            results = userDao.queryBuilder().where().eq("name",orders.getmName()).query();
 
-            String DDJD=orders.getmName().toString();
-            String DDwJD=orders.getmName().toString();
-
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        if(results.size() == 0){
-
-            return false;
-        }else{
-            return true;
-        }
-    }
 
     public boolean checkIfExdist(String p)
     {
-
         List<Orders> results = null;
         try {
             results = userDao.queryBuilder().where().eq("name",p).query();
@@ -133,6 +114,4 @@ public class AddProductPresenter {
             return true;
         }
     }
-
-
 }

@@ -84,8 +84,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
 
                addProductPresenter.inserData(quantity,name,price,metric,description,urlImage);
-                addProductPresenter.update(name);
-
+                addProductPresenter.update(name,quantity);
 
                 Snackbar.make(v,"Addet", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
