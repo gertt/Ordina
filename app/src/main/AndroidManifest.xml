@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.scan.ScannerActivity">
+        <activity android:name=".ui.code_scan.CodeOrScanActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,6 +54,11 @@
             android:name=".ui.add_product.AddProductActivity"
             android:label="@string/title_activity_add_product"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.scan.ScannerActivity"
+            android:label="@string/scan_activity">
+
+        </activity>
     </application>
 
 </manifest>

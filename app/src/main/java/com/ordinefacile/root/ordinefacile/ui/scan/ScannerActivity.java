@@ -55,12 +55,14 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
      //   Open http://192.168.1.4:8080 in your browser house
 
+        //Open http://192.168.232.2:8080 in your browser
+
       //  s5 Open http://192.168.100.58:8080 in your browser work
 
         //Open http://0.0.0.0:8080 in your browser
-       Intent i = new Intent(this, MainMenuActivity.class);
-        i.putExtra("storeId","3");
-        startActivity(i);
+     //  Intent i = new Intent(this, MainMenuActivity.class);
+      //  i.putExtra("storeId","3");
+      //  startActivity(i);
 
     }
 
@@ -185,7 +187,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     }
 
     public void qrCodeNotValid() {
-        Toast.makeText(getApplicationContext(),"Qr code is not valid",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),R.string.qrcode_not_valid,Toast.LENGTH_LONG).show();
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
         mScannerView.startCamera();
     }
@@ -218,11 +220,5 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         super.onStop();
         t.cancel();
     }
-    @Override
-    public void onBackPressed() {
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
-    }
+
 }

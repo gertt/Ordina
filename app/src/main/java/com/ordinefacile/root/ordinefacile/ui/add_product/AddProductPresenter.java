@@ -47,9 +47,10 @@ public class AddProductPresenter {
         saveData = new SaveData(context);
     }
 
-    public void inserData(String quantity, String name, String price,
+    public void inserData(Float final_price, Float quantity, String name, Float price,
                           String metric, String description, String urlImage) {
 
+        orders.setmFinalPrice(final_price);
         orders.setmQuantity(quantity);
         orders.setmName(name);
         orders.setmPrice(price);
@@ -81,12 +82,13 @@ public class AddProductPresenter {
 
     }
 
-    public boolean update(String quantity,String name ,String price,String metric,String description,String urlimage) {
+    public boolean update(Float final_price, Float quantity, String name, Float price, String metric, String description, String urlimage) {
         if(checkIfExdist(name) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
                 updateBuilder.where().eq("name",name);
                 updateBuilder.updateColumnValue("quantity" ,quantity);
+                updateBuilder.updateColumnValue("final_price" ,final_price);
                 updateBuilder.update();
                 return true;
             } catch (java.sql.SQLException e) {
@@ -95,7 +97,7 @@ public class AddProductPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(quantity,name,price,metric,description,urlimage);
+            inserData(final_price ,quantity,name,price,metric,description,urlimage);
 
         }
         return false;

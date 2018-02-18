@@ -7,16 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity"
-    tools:showIn="@layout/activity_main_menu">
-
+    tools:context="com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity"
+    tools:showIn="@layout/activity_code_or_scan">
     <Button
+        android:textStyle="bold"
         android:textSize="18sp"
-        android:id="@+id/button_menu"
+        android:id="@+id/button_scan_qr"
         android:layout_width="186dp"
         android:layout_height="58dp"
         android:background="@drawable/my_button_bg"
-        android:text="@string/menu"
+        android:text="@string/scanQR"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,20 +25,21 @@
         app:layout_constraintVertical_bias="0.346" />
 
     <Button
+        android:textStyle="bold"
         android:textSize="18sp"
-        android:id="@+id/button_call_service"
+        android:id="@+id/button_isert_pin"
         android:layout_width="186dp"
         android:layout_height="58dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/my_button_bg"
-        android:text="@string/call_service"
+        android:text="@string/insert_pin"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/button_menu"
+        app:layout_constraintEnd_toEndOf="@+id/button_scan_qr"
         app:layout_constraintHorizontal_bias="0.846"
-        app:layout_constraintStart_toStartOf="@+id/button_menu"
-        app:layout_constraintTop_toBottomOf="@+id/button_menu" />
+        app:layout_constraintStart_toStartOf="@+id/button_scan_qr"
+        app:layout_constraintTop_toBottomOf="@+id/button_scan_qr" />
 
     <ImageView
         android:id="@+id/imageView_menu"
@@ -46,11 +47,11 @@
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="128dp"
         android:background="@mipmap/ic_android"
-        app:layout_constraintEnd_toEndOf="@+id/button_call_service"
-        app:layout_constraintStart_toStartOf="@+id/button_call_service"
-        app:layout_constraintTop_toBottomOf="@+id/button_call_service"
+        app:layout_constraintEnd_toEndOf="@+id/button_isert_pin"
+        app:layout_constraintStart_toStartOf="@+id/button_isert_pin"
+        app:layout_constraintTop_toBottomOf="@+id/button_isert_pin"
         tools:ignore="VectorDrawableCompat" />
 
 

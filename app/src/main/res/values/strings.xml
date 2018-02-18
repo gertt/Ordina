@@ -36,5 +36,12 @@
     <string name="numberIncorrect">The Number Is Unviable</string>
     <string name="menu_myorder">My Order</string>
     <string name="add_to_cart">ADD TO CART</string>
+    <string name="scanQR">Scan QR Code</string>
+    <string name="insert_pin">Insert Pin</string>
+    <string name="scan_activity" />
+    <string name="insert">INSERT</string>
+    <string name="cancel">CANCEL</string>
+    <string name="qrcode_not_valid">Qr code is not valid</string>
+    <string name="pin_not_valid">Pin code is not valid</string>
 
 </resources>

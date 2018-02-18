@@ -28,8 +28,8 @@
         </com.baoyz.widget.PullRefreshLayout>
 
         <ImageView
-            android:layout_width="156dp"
-            android:layout_height="127dp"
+            android:layout_width="143dp"
+            android:layout_height="143dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"

@@ -16,6 +16,7 @@
     <color name="help_green">#90DFAA</color>
     <color name="myorder_green">#00D26A</color>
     <color name="myorder_yellow">#F29C20</color>
+    <color name="material_dialog">#666666</color>
     <!-- Text sizes -->
     <dimen name="text_size_small">14.0sp</dimen>
     <dimen name="text_size_medium">16.0sp</dimen>

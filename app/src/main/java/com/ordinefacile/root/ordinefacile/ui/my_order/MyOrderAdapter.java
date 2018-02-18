@@ -62,7 +62,11 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         holder.txt_name.setText(feedItem.getmName());
 
-        holder.txt_price.setText(feedItem.getmPrice());
+      //  String flosstring =feedItem.getmPrice();
+
+        String final_price = String.valueOf(feedItem.getmFinalPrice());
+
+        holder.txt_price.setText(final_price);
 
         holder.txt_metric.setText(feedItem.getmMetric());
         holder.txt_metric.setText(feedItem.getmMetric());

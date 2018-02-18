@@ -10,7 +10,8 @@
     tools:context="com.ordinefacile.root.ordinefacile.ui.help.HelpActivity"
     tools:showIn="@layout/activity_help">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="162dp"
         android:layout_height="140dp"

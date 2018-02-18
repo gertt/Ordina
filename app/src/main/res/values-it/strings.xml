@@ -25,5 +25,11 @@
     <string name="numberIncorrect">The Number Is Unviable-it</string>
     <string name="menu_myorder">My Order-it</string>
     <string name="add_to_cart">ADD TO CART-it</string>
+    <string name="scanQR">Scan QR Code-it</string>
+    <string name="insert_pin">Insert Pin-it</string>
+    <string name="scan_activity" />
+    <string name="qrcode_not_valid">Qr code is not valid-it</string>
+    <string name="pin_not_valid">Pin code is not valid-it</string>
+
 
 </resources>

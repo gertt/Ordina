@@ -21,6 +21,7 @@ public class Orders {
     public static final String FIELD_METRIC   = "metric";
     public static final String FIELD_URLIMAGE   = "url_image";
     public static final String FIELD_DESCR   = "descr";
+    public static final String FIELD_FINAL_PRICE   = "final_price";
 
 
     @DatabaseField(columnName = FIELD_NAME_ID, generatedId = true, unique = true)
@@ -30,7 +31,7 @@ public class Orders {
     private String mName;
 
     @DatabaseField(columnName = FIELD_QUANTITY_NAME)
-    private String mQuantity;
+    private Float mQuantity;
 
     @DatabaseField(columnName = FIELD_DESCRIPTION)
     private String mDescriptions;
@@ -39,7 +40,7 @@ public class Orders {
     private String mUserOrder;
 
     @DatabaseField(columnName = FIELD_PRICE)
-    private String mPrice;
+    private Float mPrice;
 
     @DatabaseField(columnName = FIELD_METRIC)
     private String mMetric;
@@ -49,6 +50,10 @@ public class Orders {
 
     @DatabaseField(columnName = FIELD_DESCR)
     private String mDescr ;
+
+    @DatabaseField(columnName = FIELD_FINAL_PRICE)
+    private float mFinalPrice ;
+
 
 
     public Orders() {
@@ -61,7 +66,7 @@ public class Orders {
     public void setmName(String mName) {
         this.mName = mName;
     }
-    public void setmQuantity(String mQuantity) {
+    public void setmQuantity(Float mQuantity) {
         this.mQuantity = mQuantity;
     }
 
@@ -73,7 +78,7 @@ public class Orders {
         this.mUserOrder = mUserOrder;
     }
 
-    public void setmPrice(String mPrice) {
+    public void setmPrice(Float mPrice) {
         this.mPrice = mPrice;
     }
 
@@ -88,6 +93,13 @@ public class Orders {
     public void setmDescr(String mDescr) {
         this.mDescr = mDescr;
     }
+
+    public void setmFinalPrice(Float mFinalPrice) {
+        this.mFinalPrice = mFinalPrice;
+    }
+
+
+
     /** Getters & Setters **/
 
     public static String getFieldNameId() {
@@ -121,6 +133,9 @@ public class Orders {
     public static String getFieldDescr() {
         return FIELD_DESCR;
     }
+    public static String getFieldFinalPrice() {
+        return FIELD_FINAL_PRICE;
+    }
 
     public int getmId() {
         return mId;
@@ -128,7 +143,7 @@ public class Orders {
     public String getmName() {
         return mName;
     }
-    public String getmQuantity() {
+    public Float getmQuantity() {
         return mQuantity;
     }
     public String getmDescriptions() {
@@ -140,7 +155,7 @@ public class Orders {
     }
 
 
-    public String getmPrice() {
+    public Float getmPrice() {
         return mPrice;
     }
 
@@ -153,5 +168,9 @@ public class Orders {
     }
     public String getmDescr() {
         return mDescr;
+    }
+
+    public Float getmFinalPrice() {
+        return mFinalPrice;
     }
 }

@@ -30,6 +30,11 @@ public class SaveData {
         editor.commit();
     }
 
+    public void saveQr(String qr){
+        editor.putString("number_qr", qr);
+        editor.commit();
+    }
+
 
     public String getLanguage(){
         return preferences.getString("language", "");
@@ -38,6 +43,11 @@ public class SaveData {
 
     public String getNumberCall(){
         return preferences.getString("number_call", "");
+
+    }
+
+    public String getQr(){
+        return preferences.getString("number_qr", "");
 
     }
 }

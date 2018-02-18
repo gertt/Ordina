@@ -1,5 +1,6 @@
-package com.ordinefacile.root.ordinefacile.ui.scan;
+package com.ordinefacile.root.ordinefacile.ui.code_scan;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -13,56 +14,39 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by root on 1/20/18.
+ * Created by Eljo on 2/18/2018.
  */
 
-public class ScannerPresenter {
-    private String TAG = "ScannerPresenter ";
+public class CodeOrScanPresenter {
 
-    ScannerActivity scannerActivity;
+    Context context;
+    CodeOrScanActivity codeOrScanActivity;
     ApiHelper apiHelper;
     SaveData saveData;
     Gson gson = new Gson();
 
-    public ScannerPresenter(ScannerActivity scannerActivity) {
-        this.scannerActivity = scannerActivity;
+    public CodeOrScanPresenter(Context context, CodeOrScanActivity codeOrScanActivity) {
+        this.context = context;
+        this.codeOrScanActivity = codeOrScanActivity;
         apiHelper = new AppApiHelper();
-        saveData = new SaveData(scannerActivity);
+        saveData = new SaveData(context);
     }
 
-    public void checkForPermission(){
-        scannerActivity.checkIfPermissionNeeded();
-    }
+    public void getStoreDetailByPin(final String pin) {
 
-    public void requestPermission() {
-        scannerActivity.requestPermission();
-    }
-
-
-    public boolean checkPermission() {
-        return scannerActivity.checkPermission();
-    }
-
-    public void goToMenuAtivity(String id) {
-        scannerActivity.goToMenuActivity(id);
-
-    }
-
-    public void getStoreDetail(final String qrCode) {
-
-        apiHelper.getStoreDetails(qrCode)
+        apiHelper.getStoreDetails(pin)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<QrCodeModel>() {
                     @Override
                     public void onCompleted() {
-                        //
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.e("Problem : ", e.getMessage());
-                        scannerActivity.qrCodeNotValid();
+                        codeOrScanActivity.pinInvalid();
 
                     }
 
@@ -79,20 +63,9 @@ public class ScannerPresenter {
                             }else {
                                 saveData.saveNumberCall("");
                             }
-
-                            goToMenuAtivity(id);
+                            codeOrScanActivity.goToMenuAtivity(id);
                         }
                     }
                 });
-    }
-
-    public void checkForLanguage() {
-        if(saveData.getLanguage() != null){
-            if(saveData.getLanguage().equalsIgnoreCase("it")){
-                scannerActivity.getAppLanguageIt();
-            }else if(saveData.getLanguage().equalsIgnoreCase("en")){
-                scannerActivity.getAppLanguageEn();
-            }
-        }
     }
 }
