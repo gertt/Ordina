@@ -1,5 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.code_scan;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -32,7 +33,11 @@ public class CodeOrScanPresenter {
         saveData = new SaveData(context);
     }
 
-    public void getStoreDetailByPin(final String pin) {
+    public void getStoreDetailByPin(String pin) {
+
+        if (pin.equalsIgnoreCase("")||pin==null){
+            codeOrScanActivity.pinInvalid();
+        }else {
 
         apiHelper.getStoreDetails(pin)
                 .subscribeOn(Schedulers.newThread())
@@ -67,5 +72,6 @@ public class CodeOrScanPresenter {
                         }
                     }
                 });
+    }
     }
 }

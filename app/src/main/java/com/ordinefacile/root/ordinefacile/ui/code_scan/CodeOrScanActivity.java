@@ -16,6 +16,7 @@ import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 
+
 public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScanView{
 
 
@@ -26,12 +27,14 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
     CodeOrScanPresenter codeOrScanPresenter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_or_scan);
 
-       codeOrScanPresenter = new CodeOrScanPresenter(getApplicationContext(),this);
+        codeOrScanPresenter = new CodeOrScanPresenter(getApplicationContext(),this);
+
 
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
         btn_pin = (Button)findViewById(R.id.button_isert_pin);
@@ -50,6 +53,9 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
             public void onClick(View v) {
 
                 showMaterialDialog();
+
+            //    dialogInsertPin.feedback();
+
             }
         });
 
@@ -66,7 +72,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         ViewGroup.LayoutParams params = getWindow().getAttributes();
         params.height = ViewGroup.LayoutParams.FILL_PARENT;
         getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
-
 
         final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
         final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
@@ -85,9 +90,9 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
             @Override
             public void onClick(View v) {
 
-                String emri = edt_pin.getText().toString();
+                String pin = edt_pin.getText().toString();
 
-                codeOrScanPresenter.getStoreDetailByPin(emri);
+                codeOrScanPresenter.getStoreDetailByPin(pin);
 
             }
         });
