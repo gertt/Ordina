@@ -34,7 +34,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
     private TextView txt_metric;
     private TextView txt_description;
 
-    private Button btn_add;
+    private View view4;
 
     private ImageView img_urlImage;
 
@@ -70,7 +70,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         txt_metric = (TextView)findViewById(R.id.textView_metric);
         txt_description = (TextView)findViewById(R.id.textView_description);
         img_urlImage = (ImageView)findViewById(R.id.imageView_addproduct);
-        btn_add = (Button)findViewById(R.id.button_addTo_Cart);
+        view4 = (View)findViewById(R.id.view4);
 
         txt_quantity.setText(quantity);
         txt_name.setText(name);
@@ -80,7 +80,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         parseImage.parseimage(urlImage,img_urlImage);
 
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
+        view4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
