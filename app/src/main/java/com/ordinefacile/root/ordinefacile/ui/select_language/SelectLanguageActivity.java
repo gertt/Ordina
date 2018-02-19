@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
@@ -69,7 +70,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
             public void onClick(View v) {
                 LocaleHelper.setLocale(getApplicationContext(), "en");
                 saveData.saveLanguage("en");
-                Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
+                Intent refreshIntent=new Intent(SelectLanguageActivity.this,CodeOrScanActivity.class);
                 startActivity(refreshIntent);
             }
         });
@@ -79,7 +80,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
             public void onClick(View v) {
                 LocaleHelper.setLocale(getApplicationContext(), "it");
                 saveData.saveLanguage("it");
-                Intent refreshIntent=new Intent(SelectLanguageActivity.this,ScannerActivity.class);
+                Intent refreshIntent=new Intent(SelectLanguageActivity.this,CodeOrScanActivity.class);
                 startActivity(refreshIntent);
             }
         });

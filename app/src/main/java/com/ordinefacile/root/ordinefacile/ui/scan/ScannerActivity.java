@@ -191,6 +191,8 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
         mScannerView.startCamera();
     }
+
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -214,7 +216,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         }
         return super.onOptionsItemSelected(item);
     }
-
+*/
     @Override
     protected void onStop () {
         super.onStop();

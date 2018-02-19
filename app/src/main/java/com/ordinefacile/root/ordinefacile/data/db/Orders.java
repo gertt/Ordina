@@ -54,8 +54,6 @@ public class Orders {
     @DatabaseField(columnName = FIELD_FINAL_PRICE)
     private float mFinalPrice ;
 
-
-
     public Orders() {
         // Don't forget the empty constructor, needed by ORMLite.
     }

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,13 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
+import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
 
 
 public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScanView{
-
-
 
     private Button btn_scan;
     private Button btn_pin;
@@ -27,13 +30,13 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
     CodeOrScanPresenter codeOrScanPresenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_or_scan);
 
         codeOrScanPresenter = new CodeOrScanPresenter(getApplicationContext(),this);
+        codeOrScanPresenter.checkForLanguage();
 
 
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
@@ -91,7 +94,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
             public void onClick(View v) {
 
                 String pin = edt_pin.getText().toString();
-
                 codeOrScanPresenter.getStoreDetailByPin(pin);
 
             }
@@ -120,7 +122,38 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId",id);
         startActivity(i);
-
-
     }
+
+    @Override
+    public void getAppLanguageIt() {
+        LocaleHelper.setLocale(getApplicationContext(), "it");
+    }
+    @Override
+    public void getAppLanguageEn() {
+        LocaleHelper.setLocale(getApplicationContext(), "en");
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_info) {
+
+            Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_language) {
+            Intent intent = new Intent(getApplicationContext(),SelectLanguageActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

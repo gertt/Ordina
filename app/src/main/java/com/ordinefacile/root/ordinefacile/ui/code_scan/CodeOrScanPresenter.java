@@ -74,4 +74,13 @@ public class CodeOrScanPresenter {
                 });
     }
     }
+    public void checkForLanguage() {
+        if(saveData.getLanguage() != null){
+            if(saveData.getLanguage().equalsIgnoreCase("it")){
+                codeOrScanActivity.getAppLanguageIt();
+            }else if(saveData.getLanguage().equalsIgnoreCase("en")){
+                codeOrScanActivity.getAppLanguageEn();
+            }
+        }
+    }
 }

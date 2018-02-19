@@ -12,4 +12,7 @@ public interface CodeOrScanView {
     void goToMenuAtivity(String id);
 
 
+    void getAppLanguageIt();
+
+    void getAppLanguageEn();
 }
