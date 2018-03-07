@@ -10,7 +10,6 @@ import java.util.List;
  */
 
 public class CategoriesDataModel {
-
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -88,4 +87,5 @@ public class CategoriesDataModel {
     public void setImages(List<CategoriesImagesModel> images) {
         this.images = images;
     }
+
 }

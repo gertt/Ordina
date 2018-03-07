@@ -25,8 +25,8 @@ public class ParseImage {
         String  input = url.toString();
         input = input.replace(" ", "");
         GlideApp.with(context)
-               // .placeholder(placeholder)
                 .load(Util.IMAGE_URL+input)
+                .placeholder(R.drawable.photoholder)
                 .override(600,600)
                 .into(imageView);
 

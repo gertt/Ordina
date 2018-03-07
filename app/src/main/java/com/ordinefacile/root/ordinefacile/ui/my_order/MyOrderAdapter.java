@@ -3,12 +3,14 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,11 +20,13 @@ import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 
+import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
 import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -35,12 +39,14 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     private List<Orders> feedItemList;
     private Context context;
     private ParseImage parseimage;
+    MaterialDialog materialDialog;
 
     public MyOrderAdapter(Context context, List<Orders> feedItemList) {
 
         this.feedItemList = feedItemList;
         this.context = context;
         parseimage = new ParseImage(context);
+        materialDialog = new MaterialDialog();
 
 
     }
@@ -64,7 +70,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
       //  String flosstring =feedItem.getmPrice();
 
-        String final_price = String.valueOf(feedItem.getmFinalPrice());
+        String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
 
         holder.txt_price.setText(final_price);
 
@@ -78,8 +84,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             @Override
             public void onClick(View v) {
 
-                Snackbar.make(v,"CLICLED INFO", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                materialDialog.createDialog(context,feedItem.getmName(),String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice())+""));
             }
         });
 
@@ -117,5 +122,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder);
         }
     }
+
 }
 

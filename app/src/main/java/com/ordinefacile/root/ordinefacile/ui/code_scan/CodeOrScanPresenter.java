@@ -60,8 +60,6 @@ public class CodeOrScanPresenter {
                         Log.d("Next  : ", qrCodeModel.getData().getName());
                         if(qrCodeModel.getError() == false){
                             String id = gson.toJson(qrCodeModel.getData().getId());
-                            String id2 = gson.toJson(qrCodeModel.getData().getQrCode());
-                            saveData.saveQr(id2);
                             if (qrCodeModel.getData().getPhone1()!=null){
 
                                 saveData.saveNumberCall(qrCodeModel.getData().getPhone1().toString());

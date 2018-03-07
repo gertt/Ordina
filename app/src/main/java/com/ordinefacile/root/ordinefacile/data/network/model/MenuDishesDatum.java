@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 public class MenuDishesDatum {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -155,5 +156,4 @@ public class MenuDishesDatum {
     }
 
 }
-
 

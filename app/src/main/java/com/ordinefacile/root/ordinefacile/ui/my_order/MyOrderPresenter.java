@@ -43,8 +43,6 @@ public class MyOrderPresenter {
         databaseHelper = new DatabaseHelper(context);
     }
 
-
-
     public void getListProducts(){
         dbOperations.read().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +71,6 @@ public class MyOrderPresenter {
 
                         }
                     }
-
                 });
     }
 }

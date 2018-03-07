@@ -10,10 +10,9 @@
     tools:showIn="@layout/activity_add_product">
 
     <ImageView
-
         android:id="@+id/imageView_addproduct"
-        android:layout_width="430dp"
-        android:layout_height="430dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/white"
@@ -26,7 +25,7 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="430dp"
+        android:layout_width="400dp"
         android:layout_height="114dp"
         android:layout_marginStart="8dp"
         android:background="@color/white"
@@ -98,6 +97,7 @@
         android:layout_marginTop="5dp"
         android:padding="5dp"
         android:text="Description"
+        android:maxLength="171"
         android:textColor="@color/myorder_titleproduct_black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -113,7 +113,7 @@
         android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view3"
-        app:layout_constraintVertical_bias="0.886"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp">
 
     </View>

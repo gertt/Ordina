@@ -58,7 +58,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     public void listAdapter(List<Orders> feedItemList) {
 
 
-        adapter = new MyOrderAdapter(getApplicationContext(), feedItemList);
+        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList);
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
         Log.d(TAG,feedItemList.toString());

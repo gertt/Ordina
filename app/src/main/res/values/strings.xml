@@ -43,5 +43,8 @@
     <string name="cancel">CANCEL</string>
     <string name="qrcode_not_valid">Qr code is not valid</string>
     <string name="pin_not_valid">Pin code is not valid</string>
+    <string name="ok">Ok</string>
+    <string name="title_activity_dialog">Dialog</string>
+    <string name="info">Information</string>
 
 </resources>

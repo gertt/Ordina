@@ -15,39 +15,33 @@ public class StoreData {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("qr_code")
-    @Expose
-    private String qrCode;
     @SerializedName("pin")
     @Expose
     private String pin;
-    @SerializedName("image")
-    @Expose
-    private Object image;
     @SerializedName("location")
     @Expose
-    private Object location;
+    private String location;
     @SerializedName("address")
     @Expose
-    private Object address;
+    private String address;
     @SerializedName("city")
     @Expose
-    private Object city;
+    private String city;
     @SerializedName("phone_1")
     @Expose
-    private Object phone1;
+    private String phone1;
     @SerializedName("phone_2")
     @Expose
     private Object phone2;
     @SerializedName("social_fcb")
     @Expose
-    private Object socialFcb;
+    private String socialFcb;
     @SerializedName("social_goo")
     @Expose
-    private Object socialGoo;
+    private String socialGoo;
     @SerializedName("social_insta")
     @Expose
-    private Object socialInsta;
+    private String socialInsta;
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
@@ -74,14 +68,6 @@ public class StoreData {
         this.name = name;
     }
 
-    public String getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
-    }
-
     public String getPin() {
         return pin;
     }
@@ -90,43 +76,35 @@ public class StoreData {
         this.pin = pin;
     }
 
-    public Object getImage() {
-        return image;
-    }
-
-    public void setImage(Object image) {
-        this.image = image;
-    }
-
-    public Object getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Object location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
-    public Object getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Object address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public Object getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(Object city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public Object getPhone1() {
+    public String getPhone1() {
         return phone1;
     }
 
-    public void setPhone1(Object phone1) {
+    public void setPhone1(String phone1) {
         this.phone1 = phone1;
     }
 
@@ -138,27 +116,27 @@ public class StoreData {
         this.phone2 = phone2;
     }
 
-    public Object getSocialFcb() {
+    public String getSocialFcb() {
         return socialFcb;
     }
 
-    public void setSocialFcb(Object socialFcb) {
+    public void setSocialFcb(String socialFcb) {
         this.socialFcb = socialFcb;
     }
 
-    public Object getSocialGoo() {
+    public String getSocialGoo() {
         return socialGoo;
     }
 
-    public void setSocialGoo(Object socialGoo) {
+    public void setSocialGoo(String socialGoo) {
         this.socialGoo = socialGoo;
     }
 
-    public Object getSocialInsta() {
+    public String getSocialInsta() {
         return socialInsta;
     }
 
-    public void setSocialInsta(Object socialInsta) {
+    public void setSocialInsta(String socialInsta) {
         this.socialInsta = socialInsta;
     }
 
@@ -187,4 +165,3 @@ public class StoreData {
     }
 
 }
-

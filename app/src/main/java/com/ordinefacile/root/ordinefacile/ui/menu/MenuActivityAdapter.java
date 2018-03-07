@@ -46,6 +46,7 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
         for(int i = 0 ;i<feedItem.getImages().size();i++){
 
          //   holder.imageView.setBackgroundResource(R.drawable.photoholder);
+            System.out.println("imazhi "+feedItem.getImages().get(i).getPath());
 
             parseImage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageView);
         }

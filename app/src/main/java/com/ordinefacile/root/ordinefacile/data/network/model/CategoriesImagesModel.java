@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class CategoriesImagesModel {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -140,4 +141,5 @@ public class CategoriesImagesModel {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

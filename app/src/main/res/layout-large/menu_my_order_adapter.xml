@@ -48,6 +48,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView_myorder" />
 
     <TextView
+        android:paddingLeft="4dp"
         android:id="@+id/textView_myorder_price"
         android:layout_width="160dp"
         android:layout_height="36dp"

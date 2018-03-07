@@ -102,6 +102,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         alertDialog.show();
 
     }
+
     @Override
     public void onBackPressed() {
         Intent a = new Intent(Intent.ACTION_MAIN);
