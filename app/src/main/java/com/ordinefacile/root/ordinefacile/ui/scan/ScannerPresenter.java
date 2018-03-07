@@ -49,7 +49,7 @@ public class ScannerPresenter {
     }
 
     public void getStoreDetail(final String qrCode) {
-
+        System.out.println("qr code : "+qrCode);
         apiHelper.getStoreDetails(qrCode)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -70,10 +70,10 @@ public class ScannerPresenter {
                     public void onNext(QrCodeModel qrCodeModel) {
                         Log.d("Next  : ", qrCodeModel.getData().getName());
                         if(qrCodeModel.getError() == false){
-                            String id = gson.toJson(qrCodeModel.getData().getId());
-                            if (qrCodeModel.getData().getPhone1()!=null){
+                            String id = gson.toJson(qrCodeModel.getData().getStore().getId());
+                            if (qrCodeModel.getData().getStore().getPhone1()!=null){
 
-                                saveData.saveNumberCall(qrCodeModel.getData().getPhone1().toString());
+                                saveData.saveNumberCall(qrCodeModel.getData().getStore().getPhone1().toString());
                             }else {
                                 saveData.saveNumberCall("");
                             }

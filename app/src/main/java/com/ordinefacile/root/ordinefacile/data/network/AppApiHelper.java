@@ -2,6 +2,7 @@ package com.ordinefacile.root.ordinefacile.data.network;
 
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
+import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 
 import rx.Observable;
@@ -18,6 +19,11 @@ public class AppApiHelper implements ApiHelper{
     @Override
     public Observable<QrCodeModel> getStoreDetails(String qrCode) {
         return apiService.getStoreDetails(qrCode);
+    }
+
+    @Override
+    public Observable<PinModel> getStoreDetailsPin(String pin) {
+        return apiService.getStoreDetailsByPin(pin);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
+import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
@@ -39,10 +40,10 @@ public class CodeOrScanPresenter {
             codeOrScanActivity.pinInvalid();
         }else {
 
-        apiHelper.getStoreDetails(pin)
+        apiHelper.getStoreDetailsPin(pin)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<QrCodeModel>() {
+                .subscribe(new Subscriber<PinModel>() {
                     @Override
                     public void onCompleted() {
 
@@ -56,17 +57,19 @@ public class CodeOrScanPresenter {
                     }
 
                     @Override
-                    public void onNext(QrCodeModel qrCodeModel) {
-                        Log.d("Next  : ", qrCodeModel.getData().getName());
-                        if(qrCodeModel.getError() == false){
-                            String id = gson.toJson(qrCodeModel.getData().getId());
-                            if (qrCodeModel.getData().getPhone1()!=null){
+                    public void onNext(PinModel pinModel) {
+                        Log.d("Next  : ", pinModel.getData().getName());
+                        if(pinModel.getError() == false){
+                            String id = gson.toJson(pinModel.getData().getId());
+                            if (pinModel.getData().getPhone1()!=null){
 
-                                saveData.saveNumberCall(qrCodeModel.getData().getPhone1().toString());
+
+                                saveData.saveNumberCall(pinModel.getData().getPhone1().toString());
                             }else {
                                 saveData.saveNumberCall("");
                             }
                             codeOrScanActivity.goToMenuAtivity(id);
+                            System.out.println("imazhi "+id);
                         }
                     }
                 });
