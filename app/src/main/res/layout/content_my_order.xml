@@ -10,10 +10,8 @@
     tools:context="com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity"
     tools:showIn="@layout/activity_my_order">
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_myorder"
-
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

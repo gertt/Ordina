@@ -17,6 +17,7 @@ import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
+import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistory;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 
 import java.util.List;
@@ -118,6 +119,11 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         }
         if (id == R.id.action_my_order) {
           Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.action_history) {
+            Intent intent = new Intent(getApplicationContext(),OrderHistory.class);
             startActivity(intent);
         }
 

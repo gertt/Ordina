@@ -14,4 +14,11 @@
         android:title="profile2"
         app:showAsAction="always"  />
 
+    <item
+        android:id="@+id/action_history"
+        android:icon="@mipmap/action_history"
+        android:title="profile2"
+        app:showAsAction="always"  />
+
+
 </menu>

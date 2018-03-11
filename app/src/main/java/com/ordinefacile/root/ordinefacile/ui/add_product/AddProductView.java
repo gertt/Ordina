@@ -8,4 +8,6 @@ public interface AddProductView {
     void callNumber(String numberCall);
 
     void callNumberIncorrect();
+
+    void goToMyOrder();
 }

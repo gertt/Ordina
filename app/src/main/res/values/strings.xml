@@ -46,5 +46,6 @@
     <string name="ok">Ok</string>
     <string name="title_activity_dialog">Dialog</string>
     <string name="info">Information</string>
+    <string name="title_activity_order_history">OrderHistory</string>
 
 </resources>

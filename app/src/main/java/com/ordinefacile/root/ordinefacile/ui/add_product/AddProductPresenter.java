@@ -15,6 +15,8 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
 import java.util.List;
+
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -48,7 +50,7 @@ public class AddProductPresenter {
     }
 
     public void inserData(Float final_price, Float quantity, String name, Float price,
-                          String metric, String description, String urlImage) {
+                          String metric, String description, String urlImage,String id_table,String id_product) {
 
         orders.setmFinalPrice(final_price);
         orders.setmQuantity(quantity);
@@ -57,12 +59,12 @@ public class AddProductPresenter {
         orders.setmMetric(metric);
         orders.setmDescriptions(description);
         orders.setmUrl_Image(urlImage);
-        orders.setmUserOrder("USER");
-
+        orders.setmIdTable(id_table);
+        orders.setmIdProduct(id_product);
 
         dbOperations.create(orders).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Orders> () {
+                .subscribe(new Subscriber<Integer> () {
                     @Override
                     public void onCompleted() {
                         Log.d("", "");
@@ -74,7 +76,9 @@ public class AddProductPresenter {
                     }
 
                     @Override
-                    public void onNext(Orders orders) {
+                    public void onNext(Integer orders) {
+
+                        addProductActivity.goToMyOrder();
 
                     }
 
@@ -82,7 +86,8 @@ public class AddProductPresenter {
 
     }
 
-    public boolean update(Float final_price, Float quantity, String name, Float price, String metric, String description, String urlimage) {
+    public boolean update(Float final_price, Float quantity, String name, Float price,
+                          String metric, String description, String urlimage,String id_table,String id_product) {
         if(checkIfExdist(name) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
@@ -97,7 +102,7 @@ public class AddProductPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(final_price ,quantity,name,price,metric,description,urlimage);
+            inserData(final_price ,quantity,name,price,metric,description,urlimage,id_table,id_product);
 
         }
         return false;
@@ -129,4 +134,7 @@ public class AddProductPresenter {
         }
 
     }
+
+
+
 }

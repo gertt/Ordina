@@ -41,9 +41,14 @@ public class MenuPresenter {
 
     List<CategoriesDataModel> feedItemList;
 
+
+
     public MenuPresenter(MenuActivity menuActivity,Context context) {
         this.menuActivity = menuActivity;
         this.context = context;
+
+
+
         apiHelper = new AppApiHelper();
         dbOperations = new DatabaseOperationsImp(this.menuActivity);
         orders = new Orders();
@@ -52,6 +57,7 @@ public class MenuPresenter {
 
     public void getStoreId() {
         menuActivity.getStoreId();
+
     }
 
     public void getStoreCategories(String id) {
@@ -84,6 +90,7 @@ public class MenuPresenter {
                     }
                 });
     }
+
 
 
 

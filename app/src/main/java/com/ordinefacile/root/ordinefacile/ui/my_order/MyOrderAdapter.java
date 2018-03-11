@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
@@ -40,11 +41,14 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     private Context context;
     private ParseImage parseimage;
     MaterialDialog materialDialog;
+    MyOrderPresenter myOrderPresenter;
+    MyOrderActivity myOrderActivity;
 
-    public MyOrderAdapter(Context context, List<Orders> feedItemList) {
+    public MyOrderAdapter(Context context, List<Orders> feedItemList,MyOrderActivity myOrderActivity) {
 
         this.feedItemList = feedItemList;
         this.context = context;
+        this.myOrderActivity = myOrderActivity;
         parseimage = new ParseImage(context);
         materialDialog = new MaterialDialog();
 
@@ -56,6 +60,8 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.menu_my_order_adapter, parent, false);
+
+        myOrderPresenter = new MyOrderPresenter(context,myOrderActivity);
         return new MyOrderAdapter.ViewHolder(itemView);
     }
 
@@ -65,21 +71,18 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         final Orders feedItem = feedItemList.get(position);
         holder.txt_name.setText(feedItem.getmName());
-
         holder.txt_name.setText(feedItem.getmName());
-
-      //  String flosstring =feedItem.getmPrice();
 
         String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
 
         holder.txt_price.setText(final_price);
-
         holder.txt_metric.setText(feedItem.getmMetric());
         holder.txt_metric.setText(feedItem.getmMetric());
 
         parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
 
         holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
+
         holder.btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,10 +91,19 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             }
         });
 
-               for (int i = 0;i<feedItemList.size();i++){
-                   Log.d(TAG,feedItemList.get(i).getmName());
 
-               }
+        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(context,position+"MY  POSITION",+Toast.LENGTH_LONG).show();
+
+                myOrderPresenter.delete(231);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -104,11 +116,14 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         private TextView txt_name;
         private TextView txt_price;
+        private TextView txt_metric;
 
         private CircularImageView imag_myorder_pick;
 
-        private TextView txt_metric;
         private ImageButton btn_info;
+        private ImageButton btn_delete;
+
+
         private ImageView img_bacground;
 
         public ViewHolder(View itemView) {
@@ -120,6 +135,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
             btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
             img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder);
+            btn_delete = (ImageButton) itemView.findViewById(R.id.imageButton_delete);
         }
     }
 

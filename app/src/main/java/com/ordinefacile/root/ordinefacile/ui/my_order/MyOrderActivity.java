@@ -2,6 +2,7 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivityAdapter;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
@@ -26,7 +29,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     private MyOrderAdapter adapter;
 
     MyOrderPresenter myOrderPresenter;
-
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +40,15 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.menu_myorder);
-
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
+        dbHelper = new DatabaseHelper(getApplicationContext());
 
         myOrderPresenter = new MyOrderPresenter(getApplicationContext(),this);
         myOrderPresenter.getListProducts();
+      //  myOrderPresenter.getlist();
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
 
@@ -52,13 +57,21 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
     }
 
     @Override
     public void listAdapter(List<Orders> feedItemList) {
 
-
-        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList);
+        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList,this);
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
         Log.d(TAG,feedItemList.toString());

@@ -27,10 +27,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     private Context context;
     private ParseImage parseimage;
     int score = 0 ;
-   MenuDetailPresenter menuDetailPresenter;
 
-
+    MenuDetailPresenter menuDetailPresenter;
     String urlImg;
+
+    String id_product;
+    String name;
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
 
@@ -58,23 +60,36 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         holder.metric.setText("  "+feedItem.getMetrics()+"  ");
         holder.description.setText("  "+feedItem.getDescription()+"  ");
 
-        for(int i = 0 ;i<feedItem.getImages().size();i++){
+        Integer emir = feedItem.getId();
 
-            parseimage.parseimage(feedItem.getImages().get(i).getPath(),holder.imageviews);
+        for(int i = 0 ;i<feedItem.getImages().size();i++) {
 
-             urlImg=feedItem.getImages().get(i).getPath().toString();
+            parseimage.parseimage(feedItem.getImages().get(i).getPath(), holder.imageviews);
+
+            urlImg = feedItem.getImages().get(i).getPath().toString();
+            id_product = feedItem.getImages().get(i).getProductId();
+             name = feedItem.getName();
         }
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                String numberAsString = String.valueOf(feedItem.getId());
+
+                String djdh =  id_product;
+
+                System.out.print(id_product);
+                System.out.print(name);
+
+                String djdj = holder.txt_name.getText().toString();
 
                 menuDetailPresenter.checkQuantityOrGoActivity(
                         holder.txt_add.getText().toString(),
                         holder.txt_name.getText().toString(),
                         holder.price.getText().toString(),
                         holder.metric.getText().toString(),
-                        holder.description.getText().toString(),urlImg, v);
+                        holder.description.getText().toString(),urlImg,numberAsString, v);
 
                // menuDetailPresenter.checkQuantityOrGoActivity();
 

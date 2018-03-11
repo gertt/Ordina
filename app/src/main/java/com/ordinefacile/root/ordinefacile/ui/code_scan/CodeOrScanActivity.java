@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
@@ -42,6 +43,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
         btn_pin = (Button)findViewById(R.id.button_isert_pin);
 
+
+        String x = DebugDB.getAddressLog();
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

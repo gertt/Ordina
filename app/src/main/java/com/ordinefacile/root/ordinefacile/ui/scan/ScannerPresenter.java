@@ -70,10 +70,12 @@ public class ScannerPresenter {
                     public void onNext(QrCodeModel qrCodeModel) {
                         Log.d("Next  : ", qrCodeModel.getData().getName());
                         if(qrCodeModel.getError() == false){
+                            System.out.println("elio prifti : "+qrCodeModel.getMessage());
                             String id = gson.toJson(qrCodeModel.getData().getStore().getId());
                             if (qrCodeModel.getData().getStore().getPhone1()!=null){
 
                                 saveData.saveNumberCall(qrCodeModel.getData().getStore().getPhone1().toString());
+                                saveData.saveIdTable(qrCode);
                             }else {
                                 saveData.saveNumberCall("");
                             }

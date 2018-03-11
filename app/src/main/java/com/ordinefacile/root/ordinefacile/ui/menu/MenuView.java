@@ -12,4 +12,5 @@ public interface MenuView {
     void getStoreId();
     void getListStoreCategories(List<CategoriesDataModel> feedItemList);
     void dissapearSwipeToRefresh();
+
 }

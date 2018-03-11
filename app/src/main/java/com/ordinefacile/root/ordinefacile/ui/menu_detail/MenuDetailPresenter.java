@@ -79,10 +79,11 @@ public class MenuDetailPresenter {
                 });
     }
 
+    public void checkQuantityOrGoActivity(String quantity,String name,
+                                          String price, String metric, String description,
+                                          String urlImg,String id_product, View v) {
 
-
-    public void checkQuantityOrGoActivity(String quantity,String name, String price, String metric, String description, String urlImg, View v) {
-
+        System.out.print(id_product);
         if (!quantity.equalsIgnoreCase("Add")){
 
             Intent intent = new Intent(context,AddProductActivity.class);
@@ -92,6 +93,7 @@ public class MenuDetailPresenter {
             intent.putExtra("categoryDetailMetric", metric);
             intent.putExtra("categoryDetailDescription", description);
             intent.putExtra("categoryDetailUrlImg", urlImg);
+            intent.putExtra("categoryDetaiIdProduct", id_product);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 

@@ -65,6 +65,7 @@ public class CodeOrScanPresenter {
 
 
                                 saveData.saveNumberCall(pinModel.getData().getPhone1().toString());
+                                saveData.saveIdTable(pin);
                             }else {
                                 saveData.saveNumberCall("");
                             }

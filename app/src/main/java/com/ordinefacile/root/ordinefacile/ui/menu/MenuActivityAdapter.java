@@ -9,10 +9,7 @@ import android.widget.ImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
-import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-import com.ordinefacile.root.ordinefacile.utils.Util;
-
 import java.util.List;
 
 /**
@@ -84,4 +81,5 @@ public class MenuActivityAdapter extends RecyclerView.Adapter<MenuActivityAdapte
 
         }
     }
+
 }

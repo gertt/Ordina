@@ -1,9 +1,14 @@
 package com.ordinefacile.root.ordinefacile.ui.my_order;
 
+import android.accounts.Account;
 import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
@@ -11,6 +16,7 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +37,7 @@ public class MyOrderPresenter {
     DatabaseOperationsImp dbOperations;
     Orders orders;
     DatabaseHelper databaseHelper;
+    RuntimeExceptionDao<Orders, Integer> userDao;
 
     List<Orders> feedItemList;
 
@@ -41,6 +48,7 @@ public class MyOrderPresenter {
         dbOperations = new DatabaseOperationsImp(context);
         orders = new Orders();
         databaseHelper = new DatabaseHelper(context);
+        userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
     }
 
     public void getListProducts(){
@@ -73,4 +81,38 @@ public class MyOrderPresenter {
                     }
                 });
     }
+
+    public  void deletebyid(){
+
+        try {
+            databaseHelper.getUserDao().deleteById(3);
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public  void  delete(int id){
+
+        dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>> () {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("", "");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("", "");
+                    }
+
+                    @Override
+                    public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
+
+                        Log.d("", "");
+                    }
+
+                });
+
+    }
+
 }

@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
+import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistory;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
@@ -27,6 +29,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
     private String metric;
     private String description;
     private String urlImage;
+    private String id_product;
 
     private TextView txt_quantity;
     private TextView txt_name;
@@ -42,7 +45,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
     AddProductPresenter addProductPresenter;
 
-
+    SaveData saveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         parseImage = new ParseImage(getApplicationContext());
+        saveData = new SaveData(getApplicationContext());
         addProductPresenter = new AddProductPresenter(this,getApplicationContext());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -63,6 +67,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         metric = intent.getStringExtra("categoryDetailMetric");
         description = intent.getStringExtra("categoryDetailDescription");
         urlImage = intent.getStringExtra("categoryDetailUrlImg");
+        id_product = intent.getStringExtra("categoryDetaiIdProduct");
 
         txt_quantity = (TextView)findViewById(R.id.textView_quantity);
         txt_name = (TextView)findViewById(R.id.textView_tittle);
@@ -88,13 +93,8 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
                 Float final_price =quantity_price * quantity_float;
 
+                addProductPresenter.update(final_price,quantity_float, name,quantity_price,metric,description,urlImage,saveData.getIdTable(),id_product);
 
-
-
-                addProductPresenter.update(final_price,quantity_float, name,quantity_price,metric,description,urlImage);
-
-                Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
-                startActivity(intent);
 
             }
         });
@@ -116,6 +116,11 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
                Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
                startActivity(intent);
         }
+        if (id == R.id.action_history) {
+            Intent intent = new Intent(getApplicationContext(),OrderHistory.class);
+            startActivity(intent);
+        }
+
 
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -144,5 +149,14 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
     public void callNumberIncorrect() {
 
         Toast.makeText(getApplicationContext(),R.string.numberIncorrect,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void goToMyOrder() {
+
+        Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
+        startActivity(intent);
+
+
     }
 }

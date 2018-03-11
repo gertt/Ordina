@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.data.db;
 
 import android.content.Context;
-import android.database.SQLException;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 import rx.Observable;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Eljo on 2/7/2018.
@@ -29,15 +27,21 @@ public class DatabaseOperationsImp implements DatabaseOperations{
     }
 
     @Override
-    public Observable create(Orders p) {
+    public Observable<Integer> create(Orders p) {
 
-            Observable.fromCallable(() ->  helper.getUserDao().create(p));
+        return Observable.fromCallable(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                int integer = helper.getUserDao().create(p);
+                return integer;
+            }
+        });
 
-           return Observable.fromCallable(() ->  helper.getUserDao().create(p));
     }
 
     @Override
     public Observable<List<Orders>> read() {
+
         return Observable.fromCallable(new Callable<List<Orders>>() {
             @Override
             public List<Orders> call() throws Exception {
@@ -98,5 +102,20 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         }else{
             return true;
         }
+    }
+
+    @Override
+    public Observable<DeleteBuilder<Orders, Integer>>delete2(int d){
+
+        return Observable.fromCallable(new Callable<DeleteBuilder<Orders, Integer>>(){
+            public DeleteBuilder<Orders, Integer> call() throws Exception {
+                DeleteBuilder<Orders, Integer> deleteBuilder = userDao.deleteBuilder();
+                deleteBuilder.where().eq("id_product", d);
+                deleteBuilder.delete();
+                return deleteBuilder;
+            }
+        });
+
+
     }
 }

@@ -30,11 +30,10 @@ public class SaveData {
         editor.commit();
     }
 
-    public void saveQr(String qr){
-        editor.putString("number_qr", qr);
+    public void saveIdTable(String id_table){
+        editor.putString("id_table", id_table);
         editor.commit();
     }
-
 
     public String getLanguage(){
         return preferences.getString("language", "");
@@ -46,8 +45,8 @@ public class SaveData {
 
     }
 
-    public String getQr(){
-        return preferences.getString("number_qr", "");
+    public String getIdTable(){
+        return preferences.getString("id_table", "");
 
     }
 }
