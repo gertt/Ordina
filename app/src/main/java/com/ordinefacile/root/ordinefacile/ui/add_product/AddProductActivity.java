@@ -94,8 +94,6 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
                 Float final_price =quantity_price * quantity_float;
 
                 addProductPresenter.update(final_price,quantity_float, name,quantity_price,metric,description,urlImage,saveData.getIdTable(),id_product);
-
-
             }
         });
 
