@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
 
       //  Open http://192.168.1.4:8080 in your browser
 
-
+       // Open http://192.168.100.58:8080 in your browser  db work s5
      //   menuPresenter.getListProducts();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);

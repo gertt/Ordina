@@ -49,6 +49,16 @@ public class SaveData {
         return preferences.getString("id_table", "");
 
     }
+
+    public void saveTokenFcm(String refreshedToken) {
+        editor.putString("save_token", refreshedToken);
+        editor.commit();
+    }
+
+    public String getTokenFcm(){
+        return preferences.getString("save_token", "");
+
+    }
 }
 
 

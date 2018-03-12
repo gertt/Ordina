@@ -1,16 +1,11 @@
-package com.ordinefacile.root.ordinefacile.ui.my_order;
+package com.ordinefacile.root.ordinefacile.ui.order_history;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,23 +14,22 @@ import android.widget.Toast;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
-import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
-import com.ordinefacile.root.ordinefacile.utils.GlideApp;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderPresenter;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 /**
- * Created by Eljo on 2/1/2018.
+ * Created by user on 3/12/2018.
  */
 
-public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder>  {
+public class OrderHistoryAdapter    {
 
+    /*
     private static final String TAG = "My Debugg";
     private List<Orders> feedItemList;
     private Context context;
@@ -132,6 +126,9 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             btn_delete = (ImageView) itemView.findViewById(R.id.imageButton_delete);
         }
     }
+    */
 
 }
+
+
 

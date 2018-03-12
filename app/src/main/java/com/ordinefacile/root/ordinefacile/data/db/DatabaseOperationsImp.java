@@ -87,7 +87,6 @@ public class DatabaseOperationsImp implements DatabaseOperations{
             return false;
         }
     }
-
     @Override
     public boolean checkIfExist(Orders p) {
         List<Orders> results = null;
@@ -115,7 +114,6 @@ public class DatabaseOperationsImp implements DatabaseOperations{
                 return deleteBuilder;
             }
         });
-
 
     }
 }

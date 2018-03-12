@@ -47,5 +47,6 @@
     <string name="title_activity_dialog">Dialog</string>
     <string name="info">Information</string>
     <string name="title_activity_order_history">OrderHistory</string>
+    <string name="my_history">My History</string>
 
 </resources>

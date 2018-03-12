@@ -3,14 +3,11 @@ package com.ordinefacile.root.ordinefacile.ui.add_product;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +15,7 @@ import android.widget.Toast;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
-import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistory;
+import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
@@ -115,7 +112,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
                startActivity(intent);
         }
         if (id == R.id.action_history) {
-            Intent intent = new Intent(getApplicationContext(),OrderHistory.class);
+            Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);
             startActivity(intent);
         }
 

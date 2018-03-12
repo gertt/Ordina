@@ -89,7 +89,7 @@
         app:srcCompat="@drawable/ic_info" />
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButton_delete"
         android:layout_width="87dp"
         android:layout_height="70dp"
@@ -100,6 +100,6 @@
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="@+id/imageView_myorder"
         app:layout_constraintTop_toTopOf="@+id/imageView_myorder"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_recycle" />
 
 </android.support.constraint.ConstraintLayout>

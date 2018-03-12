@@ -88,13 +88,15 @@ public class AddProductPresenter {
 
     public boolean update(Float final_price, Float quantity, String name, Float price,
                           String metric, String description, String urlimage,String id_table,String id_product) {
-        if(checkIfExdist(name) == true){
+      //  if(checkIfExdist(name) == true){
+          if(checkIfExdist(name) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
                 updateBuilder.where().eq("name",name);
                 updateBuilder.updateColumnValue("quantity" ,quantity);
                 updateBuilder.updateColumnValue("final_price" ,final_price);
                 updateBuilder.update();
+                addProductActivity.goToMyOrder();
                 return true;
             } catch (java.sql.SQLException e) {
                 e.printStackTrace();
@@ -134,7 +136,5 @@ public class AddProductPresenter {
         }
 
     }
-
-
 
 }

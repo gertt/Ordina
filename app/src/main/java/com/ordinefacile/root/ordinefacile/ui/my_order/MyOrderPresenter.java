@@ -82,14 +82,7 @@ public class MyOrderPresenter {
                 });
     }
 
-    public  void deletebyid(){
 
-        try {
-            databaseHelper.getUserDao().deleteById(3);
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-    }
     public  void  delete(int id){
 
         dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
