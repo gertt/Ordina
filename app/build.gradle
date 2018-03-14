@@ -75,7 +75,8 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
 
-
+    //adapter easy
+    compile 'net.idik:slimadapter:2.1.2'
 }
 //firebase
 apply plugin: 'com.google.gms.google-services'

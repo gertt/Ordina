@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -72,6 +73,7 @@ public class MyOrderPresenter {
                         feedItemList = new ArrayList<Orders>();
                         for (int i=0;i<orders.size();i++){
 
+
                             String ss = orders.get(i).getmName();
                             feedItemList.add(orders.get(i));
 
@@ -105,6 +107,11 @@ public class MyOrderPresenter {
                     }
 
                 });
+
+    }
+
+    public  void  send(JsonArray jsonArray){
+
 
     }
 
