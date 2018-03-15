@@ -98,8 +98,8 @@ public class MenuDetailPresenter {
             context.startActivity(intent);
 
         }else {
+            menuDetailActivity.checkQuantity();
 
-            menuDetailAdapter.selectQuantity(v);
         }
     }
 

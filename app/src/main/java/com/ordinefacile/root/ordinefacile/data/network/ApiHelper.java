@@ -16,4 +16,5 @@ public interface ApiHelper {
       Observable<PinModel> getStoreDetailsPin(String pin);
       Observable<CategoriesModel> getStoreCategories(int id);
       Observable<MenuDishes> getMenuDishes(int id);
+
 }

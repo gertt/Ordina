@@ -19,4 +19,6 @@ public interface MenuDetailView {
     void callNumber(String numberCall);
 
     void callNumberIncorrect();
+
+    void checkQuantity();
 }

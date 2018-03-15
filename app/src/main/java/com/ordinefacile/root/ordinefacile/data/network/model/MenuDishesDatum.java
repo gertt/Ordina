@@ -147,6 +147,7 @@ public class MenuDishesDatum {
         this.updatedAt = updatedAt;
     }
 
+
     public List<MenuDishesImage> getImages() {
         return images;
     }

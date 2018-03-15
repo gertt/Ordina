@@ -54,7 +54,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
 
         //Open http://0.0.0.0:8080 in your browser
-       Intent i = new Intent(this, MainMenuActivity.class);
+        Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId","3");
         startActivity(i);
 
@@ -102,7 +102,6 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
                 break;
         }
     }
-
     @Override
     public void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
        /* new android.support.v7.app.AlertDialog.Builder(ScannerActivity.this)

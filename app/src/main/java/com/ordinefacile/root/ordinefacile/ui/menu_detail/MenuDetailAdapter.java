@@ -21,7 +21,7 @@ import java.util.List;
  * Created by user on 1/22/2018.
  */
 
-public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.ViewHolder> implements MenuDetailAdapterView{
+public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.ViewHolder>{
 
     private List<MenuDishesDatum> feedItemList;
     private Context context;
@@ -55,6 +55,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         final MenuDishesDatum feedItem = feedItemList.get(position);
+
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
         holder.price.setText("  "+feedItem.getPrice()+"  ");
         holder.metric.setText("  "+feedItem.getMetrics()+"  ");
@@ -68,7 +69,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
             urlImg = feedItem.getImages().get(i).getPath().toString();
             id_product = feedItem.getImages().get(i).getProductId();
-             name = feedItem.getName();
+            name = feedItem.getName();
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +91,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         holder.price.getText().toString(),
                         holder.metric.getText().toString(),
                         holder.description.getText().toString(),urlImg,numberAsString, v);
-
-               // menuDetailPresenter.checkQuantityOrGoActivity();
 
 
             }
@@ -161,11 +160,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
     }
 
-    @Override
-    public void selectQuantity(View v) {
-        Snackbar.make(v,R.string.setquantity, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;

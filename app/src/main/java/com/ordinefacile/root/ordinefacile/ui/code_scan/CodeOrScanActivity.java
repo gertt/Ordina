@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
@@ -39,7 +38,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         codeOrScanPresenter = new CodeOrScanPresenter(getApplicationContext(),this);
         codeOrScanPresenter.checkForLanguage();
 
-
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
         btn_pin = (Button)findViewById(R.id.button_isert_pin);
 
@@ -64,7 +62,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
             }
         });
-
 
     }
 

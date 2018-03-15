@@ -2,6 +2,9 @@ package com.ordinefacile.root.ordinefacile.data.db;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
@@ -46,6 +49,8 @@ public class DatabaseOperationsImp implements DatabaseOperations{
             @Override
             public List<Orders> call() throws Exception {
                 List<Orders> studentList = userDao.queryForAll();
+                Gson gson = new GsonBuilder().create();
+
                 return studentList;
             }
         });

@@ -48,5 +48,6 @@
     <string name="info">Information</string>
     <string name="title_activity_order_history">OrderHistory</string>
     <string name="my_history">My History</string>
+    <string name="check_quantity">Check Quantity</string>
 
 </resources>
