@@ -79,7 +79,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
 
-        holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
         holder.btn_info.setOnClickListener(new View.OnClickListener() {
             @Override

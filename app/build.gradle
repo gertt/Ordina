@@ -77,6 +77,7 @@ dependencies {
 
     //adapter easy
     compile 'net.idik:slimadapter:2.1.2'
+
 }
 //firebase
 apply plugin: 'com.google.gms.google-services'
