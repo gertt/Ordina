@@ -105,7 +105,6 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @Override
     public void idProduct(int int_product) {
 
-       // id_product=int_product;
 
         myOrderPresenter.delete(int_product);
     }
@@ -152,7 +151,8 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
         }
 
-        idProduct(00);
+        myOrderPresenter.getListProducts();
+
 
     }
 }

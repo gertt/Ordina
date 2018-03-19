@@ -21,6 +21,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +52,8 @@ public class MyOrderPresenter {
     List<Orders> feedItemList;
 
     String json_obj22;
+
+    EventBus bus = EventBus.getDefault();
 
     public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
         this.context = context;
@@ -152,6 +155,7 @@ public class MyOrderPresenter {
 
 
 
+
                         getListProducts();
 
                         Log.d("", "");
@@ -183,6 +187,8 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(MyOrderSendJson myorder) {
                         feedItemList = new ArrayList<>();
+
+
 
                         String myorsder = myorder.getError().toString();
                         String SYHSYH =   myorder.getMessage().toString();
