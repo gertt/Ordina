@@ -2,6 +2,7 @@ package com.ordinefacile.root.ordinefacile.data.network;
 
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
+import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 
@@ -15,6 +16,8 @@ import rx.schedulers.Schedulers;
 public class AppApiHelper implements ApiHelper{
 
     final API apiService = APIClient.getClient().create(API.class);
+
+    final API apiServiceSend = APIClient.createAPI().create(API.class);
 
     @Override
     public Observable<QrCodeModel> getStoreDetails(String qrCode) {
@@ -36,5 +39,9 @@ public class AppApiHelper implements ApiHelper{
         return apiService.getMenuDishes(id);
     }
 
+    @Override
+    public Observable<MyOrderSendJson> sendJson(String data) {
+        return apiServiceSend.sendOrderJson(data);
+    }
 
 }

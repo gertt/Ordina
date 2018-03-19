@@ -9,5 +9,9 @@ import java.util.List;
  */
 
 public interface MyOrderView {
+
     void listAdapter(List<Orders> feedItemList);
+
+
+    void idProduct(int int_product);
 }

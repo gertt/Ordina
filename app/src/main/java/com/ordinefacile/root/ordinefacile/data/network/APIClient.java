@@ -16,6 +16,7 @@ public class APIClient {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

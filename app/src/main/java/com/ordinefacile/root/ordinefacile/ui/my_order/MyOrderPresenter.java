@@ -3,6 +3,7 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 import android.accounts.Account;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,7 +17,9 @@ import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
+import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +50,8 @@ public class MyOrderPresenter {
 
     List<Orders> feedItemList;
 
+    String json_obj22;
+
     public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
         this.context = context;
         this.myOrderActivity = myOrderActivity;
@@ -57,113 +62,82 @@ public class MyOrderPresenter {
         userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
     }
 
-    public void getListProducts(){
+    public void getListProducts() {
         dbOperations.read().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<Orders>>() {
                     @Override
                     public void onCompleted() {
-                        Log.d("","");
+                        Log.d("", "");
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("","");
+                        Log.d("", "");
                     }
+
 
                     @Override
                     public void onNext(List<Orders> orders) {
-                        Log.d("","");
-
-
-                       // JSONArray jsonArr = new JSONArray();
-                      //  JSONObject pnObj = new JSONObject();
-
+                        Log.d("", "");
 
                         try {
-
                             JSONObject jsonObj = new JSONObject();
-
                             JSONArray jsonArr = new JSONArray();
-
-                            jsonObj.put("table_id","xxyy");
-
-                            for (int i=0;i<orders.size();i++){
-
+                            jsonObj.put("table_id", "1");
+                            for (int i = 0; i < orders.size(); i++) {
                                 JSONObject pnObj = new JSONObject();
-
                                 pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
-
                                 pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
-
                                 pnObj.put("mId", orders.get(i).getmId());
-
                                 pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
-
                                 pnObj.put("mIdTable", orders.get(i).getmIdProduct());
-
                                 pnObj.put("mMetric", orders.get(i).getmMetric());
-
                                 pnObj.put("mName", orders.get(i).getmName());
-
                                 pnObj.put("mPrice", orders.get(i).getmPrice());
-
                                 pnObj.put("mQuantity", orders.get(i).getmQuantity());
-
                                 pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
-
                                 jsonArr.put(pnObj);
-
                                 jsonObj.put("order_items", jsonArr);
-
-
                             }
-
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
-
-
                             JSONObject jsonAdd = new JSONObject();
-
-                            jsonAdd.put("device_token","tokeni jone");
-
+                            jsonAdd.put("device_token", "tokeni jone");
                             jsonAdd.put("brand", "samusng");
-
-                            jsonAdd.put("model","smg900f");
-
+                            jsonAdd.put("model", "smg900f");
                             jsonObj.put("device", jsonAdd);
-
-
                             String json_array2 = jsonArr.toString();
                             String json_obj2 = jsonObj.toString();
-                            String json_obj22 = jsonObj.toString();
+                             json_obj22 = jsonObj.toString();
+
+                            //getMenuDishes(json_obj22);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
 
-
                         feedItemList = new ArrayList<Orders>();
-                        for (int i=0;i<orders.size();i++){
-
+                        for (int i = 0; i < orders.size(); i++) {
 
                             String ss = orders.get(i).getmName();
                             feedItemList.add(orders.get(i));
 
-                            myOrderActivity.listAdapter(feedItemList);
-
                         }
+
+                        myOrderActivity.listAdapter(feedItemList);
                     }
                 });
     }
 
 
-    public  void  delete(int id){
+    public void delete(int id) {
 
         dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>> () {
+                .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>>() {
                     @Override
                     public void onCompleted() {
                         Log.d("", "");
@@ -177,6 +151,9 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
 
+
+                        getListProducts();
+
                         Log.d("", "");
                     }
 
@@ -184,9 +161,43 @@ public class MyOrderPresenter {
 
     }
 
-    public  void  send(JsonArray jsonArray){
+
+    public void sendJSON(String categoryId) {
+
+        apiHelper.sendJson(json_obj22)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<MyOrderSendJson>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("Problem : ", e.getMessage());
 
 
+                    }
+
+                    @Override
+                    public void onNext(MyOrderSendJson myorder) {
+                        feedItemList = new ArrayList<>();
+
+                        String myorsder = myorder.getError().toString();
+                        String SYHSYH =   myorder.getMessage().toString();
+                      //  Log.d("size : ", "" + myorder.ge().size());
+
+                    //    dbHelper = new DatabaseHelper(getApplicationContext());
+                    //    deleteDatabase("ormlite.db");
+                    //    uList.clear();
+
+                        getListProducts();
+
+                    }
+
+                });
     }
+
 
 }

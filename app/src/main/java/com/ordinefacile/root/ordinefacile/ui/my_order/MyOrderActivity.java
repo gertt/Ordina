@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
@@ -27,6 +28,10 @@ import net.idik.lib.slimadapter.SlimAdapter;
 import net.idik.lib.slimadapter.SlimInjector;
 import net.idik.lib.slimadapter.viewinjector.IViewInjector;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
@@ -39,6 +44,11 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     DatabaseHelper dbHelper;
     ParseImage parseImage;
     SlimAdapter slimAdapter;
+
+
+    ArrayList<Orders> muylis = new ArrayList<Orders>();
+
+    int id_product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +65,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         myOrderPresenter = new MyOrderPresenter(getApplicationContext(),this);
         myOrderPresenter.getListProducts();
 
-        parseImage = new ParseImage(getApplicationContext());
-
-
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
 
         slimAdapter = SlimAdapter.create();
@@ -67,11 +74,15 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           //  myOrderPresenter.sendMyorder();
+
+                String jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
+                myOrderPresenter.sendJSON(jsoni);
             }
         });
 
@@ -80,62 +91,26 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @Override
     public void listAdapter(List<Orders> feedItemList) {
 
-        slimAdapter.register(R.layout.menu_my_order_adapter, new SlimInjector<Orders>() {
-            @Override
-            public void onInject(final Orders data, IViewInjector injector) {
 
-                injector.with(R.id.circularImageView_myorder, new IViewInjector.Action<ImageView>() {
-                    @Override
-                    public void action(ImageView view) {
-
-                     //   for (int i = 0;i<data.getImages().size();i++){
-
-                            String img_url = data.getmUrl_Image();
-                            parseImage.parseimage(img_url,view);
-
-                     //   }
-                    }
-                })
-
-                        .with(R.id.imageView_myorder, new IViewInjector.Action<ImageView>() {
-                    @Override
-                    public void action(ImageView view) {
-
-
-                        for (int i =0;i<feedItemList.size();i++){
-                            final  Orders ordes1 = feedItemList.get(i);
-
-                            if (ordes1.getmId()%2==0){
-
-                                view.setBackgroundColor( Color.parseColor("#00D26A"));
-
-
-                            }else if (ordes1.getmId()%2!=0){
-                                view.setBackgroundColor( Color.parseColor("#F29C20"));
-
-
-                            }
-
-
-
-                        }
-
-                    }
-                });
-
-
-
-
-
-            }
-
-
-        })
-                .attachTo(mRecyclerView)
-                .updateData(feedItemList);
+        muylis = (ArrayList<Orders>) feedItemList;
+        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList,this);
+        mRecyclerView.setAdapter(adapter);
+        System.out.println(feedItemList.size());
+        Log.d(TAG,feedItemList.toString());
+        adapter.notifyDataSetChanged();
 
 
     }
+
+    @Override
+    public void idProduct(int int_product) {
+
+       // id_product=int_product;
+
+        myOrderPresenter.delete(int_product);
+    }
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -144,12 +119,40 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+    public void Restart()
+    {
+        this.recreate();
+    }
+    @Subscribe
+    public void onEvent(Eventlist event) {
+
+
+        for (int i = 0; i < muylis.size(); i++) {
+
+          String usd =  muylis.get(i).getmUrl_Image();
+          String xusd =  muylis.get(i).getmUrl_Image();
+
+        }
+
+        idProduct(00);
+
     }
 }

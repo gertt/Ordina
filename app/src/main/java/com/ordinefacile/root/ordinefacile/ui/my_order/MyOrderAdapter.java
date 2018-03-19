@@ -27,6 +27,8 @@ import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -44,6 +46,8 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     MyOrderPresenter myOrderPresenter;
     MyOrderActivity myOrderActivity;
 
+    EventBus bus = EventBus.getDefault();
+
     public MyOrderAdapter(Context context, List<Orders> feedItemList,MyOrderActivity myOrderActivity) {
 
         this.feedItemList = feedItemList;
@@ -51,6 +55,8 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         this.myOrderActivity = myOrderActivity;
         parseimage = new ParseImage(context);
         materialDialog = new MaterialDialog();
+
+
 
     }
 
@@ -79,6 +85,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
 
+        holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
         holder.btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,9 +100,19 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context,position+"MY  POSITION",+Toast.LENGTH_LONG).show();
+                Eventlist event = new Eventlist();
+                EventBus.getDefault().post(event);
 
-                myOrderPresenter.delete(231);
+                String myString = feedItem.getmIdProduct();
+                int int_product = Integer.parseInt(myString);
+
+                myOrderActivity.idProduct(int_product);
+
+
+                Toast.makeText(context,feedItem.getmIdProduct()+"MY  POSITION",+Toast.LENGTH_LONG).show();
+
+
+
             }
         });
 
