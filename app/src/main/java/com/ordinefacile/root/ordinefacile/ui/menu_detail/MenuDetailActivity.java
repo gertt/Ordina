@@ -12,8 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
@@ -22,9 +22,15 @@ import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
-import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.utils.ParseImage;
+
+import net.idik.lib.slimadapter.SlimAdapter;
+import net.idik.lib.slimadapter.SlimInjector;
+import net.idik.lib.slimadapter.viewinjector.IViewInjector;
 
 import java.util.List;
+
+import static com.ordinefacile.root.ordinefacile.R2.id.parent;
 
 public class MenuDetailActivity extends AppCompatActivity implements MenuDetailView{
 
@@ -33,13 +39,14 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     MenuDetailPresenter menuDetailPresenter;
 
     private RecyclerView mRecyclerView;
-    private MenuDetailAdapter adapter;
+
 
     PullRefreshLayout swipe_menu;
 
+    SlimAdapter slimAdapter;
 
+    ParseImage parseImage;
     String img_url;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +62,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
         menuDetailPresenter.getCategoryId();
 
-
+        parseImage = new ParseImage(getApplicationContext());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
 
+        slimAdapter = SlimAdapter.create();
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
@@ -89,9 +97,60 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     @Override
     public void getListDished(List<MenuDishesDatum> feedItemList) {
-        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList,menuDetailPresenter);
-        mRecyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+
+        slimAdapter.register(R.layout.menu_detail_adapter, new SlimInjector<MenuDishesDatum>() {
+            @Override
+            public void onInject(final MenuDishesDatum data, IViewInjector injector) {
+                injector.text(R.id.textView5, data.getName())
+                        .text(R.id.textView_price, data.getPrice())
+                        .text(R.id.textView_metric, data.getMetrics())
+                        .text(R.id.textView_description, data.getDescription());
+
+                injector.with(R.id.imageView2, new IViewInjector.Action<ImageView>() {
+                    @Override
+                    public void action(ImageView view) {
+
+                        for (int i = 0;i<data.getImages().size();i++){
+
+                            img_url = data.getImages().get(i).getPath();
+                            parseImage.parseimage(img_url,view);
+
+                        }
+                    }
+                })
+                        .clicked(R.id.view, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                menuDetailPresenter.checkQuantityOrGoActivity(
+                                        "Add",
+                                        data.getName().toString(),
+                                        data.getPrice().toString(),
+                                        data.getMetrics().toString(),
+                                        data.getDescription().toString(),
+                                        img_url,
+                                        data.getId().toString(),
+                                        v);
+                            }
+
+                        });
+            }
+
+        })
+
+                .register(R.layout.menu_detail_adapter, new SlimInjector<USER>() {
+                    @Override
+                    public void onInject(USER data, IViewInjector injector) {
+                        injector.text(R.id.textView_add, data.getName().toString());
+                        String SHSH = data.getName().toString();
+                        String SHASH = data.getName().toString();
+
+                    }
+                })
+                .attachTo(mRecyclerView)
+                .updateData(feedItemList);
+
         swipe_menu.setRefreshing(false);
 
     }

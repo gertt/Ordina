@@ -43,6 +43,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
 
         String x = DebugDB.getAddressLog();
+
+      //  Open http://192.168.100.58:8080 in your browser
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
