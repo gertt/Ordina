@@ -128,11 +128,8 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         private TextView txt_name;
         private TextView txt_price;
         private TextView txt_metric;
-
         private CircularImageView imag_myorder_pick;
-
         private ImageButton btn_info;
-
         private ImageView btn_delete;
         private ImageView img_bacground;
 

@@ -77,7 +77,6 @@ public class MyOrderPresenter {
                         Log.d("", "");
                     }
 
-
                     @Override
                     public void onNext(List<Orders> orders) {
                         Log.d("", "");
@@ -152,6 +151,7 @@ public class MyOrderPresenter {
                     public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
 
 
+
                         getListProducts();
 
                         Log.d("", "");
@@ -188,9 +188,8 @@ public class MyOrderPresenter {
                         String SYHSYH =   myorder.getMessage().toString();
                       //  Log.d("size : ", "" + myorder.ge().size());
 
-                    //    dbHelper = new DatabaseHelper(getApplicationContext());
-                    //    deleteDatabase("ormlite.db");
-                    //    uList.clear();
+                        databaseHelper = new DatabaseHelper(context);
+                        myOrderActivity.deleteDatabase("ordinafacile.db");
 
                         getListProducts();
 
