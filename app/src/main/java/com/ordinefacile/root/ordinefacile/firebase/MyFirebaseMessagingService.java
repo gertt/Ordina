@@ -45,7 +45,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
         NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this)
                .setSmallIcon(R.mipmap.ic_android)
-                .setContentTitle("Ratech")
+                .setContentTitle("Ordina Facile")
                 .setContentText(body)
                 .setAutoCancel(true)
                 .setSound(notificationSound);

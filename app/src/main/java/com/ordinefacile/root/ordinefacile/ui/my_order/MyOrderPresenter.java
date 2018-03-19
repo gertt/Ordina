@@ -159,6 +159,8 @@ public class MyOrderPresenter {
                         getListProducts();
 
                         Log.d("", "");
+
+                        myOrderActivity.listAdapter(feedItemList);
                     }
 
                 });

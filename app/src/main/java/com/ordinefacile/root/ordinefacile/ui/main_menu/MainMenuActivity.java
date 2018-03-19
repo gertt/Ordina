@@ -13,6 +13,7 @@ import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.utils.DebugDatabase;
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
@@ -30,6 +31,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         saveData = new SaveData(getApplicationContext());
 
         mainMenuPresenter = new MainMenuPresenter(this,getApplicationContext());
+
 
 
         button_menu = (Button)findViewById(R.id.button_menu);
