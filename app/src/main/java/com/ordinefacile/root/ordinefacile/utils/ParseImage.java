@@ -19,7 +19,6 @@ public class ParseImage {
         this.context = context;
 
     }
-
     public   void parseimage(String url, ImageView imageView){
 
         String  input = url.toString();
@@ -31,5 +30,4 @@ public class ParseImage {
                 .into(imageView);
 
     }
-
 }

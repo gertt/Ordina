@@ -21,7 +21,6 @@ public class MainMenuPresenter {
 
     }
 
-
     public void getStoredId() {
         mainMenuActivity.getStoreId();
     }
@@ -31,7 +30,6 @@ public class MainMenuPresenter {
             mainMenuActivity.goToMenu();
         }
     }
-
     public void checknumber() {
         if (!saveData.getNumberCall().equalsIgnoreCase("")){
 

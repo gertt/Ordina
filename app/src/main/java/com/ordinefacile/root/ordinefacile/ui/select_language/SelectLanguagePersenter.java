@@ -23,13 +23,11 @@ public class SelectLanguagePersenter {
         String ActualLanguage = LocaleHelper.getLanguage(context);
         if(ActualLanguage.contentEquals("en")){
             selectLanguageActivity.setButtonEnChecket();
-
         }
         if(ActualLanguage.contentEquals("it")){
 
             selectLanguageActivity.setButtonEnUnChecket();
 
         }
-
     }
 }

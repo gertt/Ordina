@@ -17,8 +17,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MyOrderAdapter adapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

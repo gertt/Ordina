@@ -43,11 +43,6 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         t = Toast.makeText(getApplicationContext(), R.string.permission_denied, Toast.LENGTH_LONG);
         scannerPresenter.checkForPermission();
 
-
-     //   Open http://192.168.1.3:8080 in your browser
-
-
-        //Open http://0.0.0.0:8080 in your browser
         Intent i = new Intent(this, MainMenuActivity.class);
         i.putExtra("storeId","3");
         startActivity(i);

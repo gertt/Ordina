@@ -28,8 +28,6 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
         mainMenuPresenter = new MainMenuPresenter(this,getApplicationContext());
 
-
-
         button_menu = (Button)findViewById(R.id.button_menu);
         button_call_service = (Button)findViewById(R.id.button_call_service);
 

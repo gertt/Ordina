@@ -36,7 +36,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
     Button buttonBackSelectLanguage;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +67,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
         selectLanguagePersenter.checkRadioButton();
 
-
         button_en.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +87,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
             }
         });
 
-
-
     }
     @Override
     public void onBackPressed() {
@@ -107,7 +103,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public void setButtonEnChecket() {
         button_en.setChecked(false);

@@ -11,14 +11,9 @@ import java.util.List;
 public interface MenuDetailView {
 
     void getMenuDetails();
-
     void getListDished(List<MenuDishesDatum> feedItemList);
-
     void dissapearSwipeToRefresh();
-
     void callNumber(String numberCall);
-
     void callNumberIncorrect();
-
     void checkQuantity();
 }

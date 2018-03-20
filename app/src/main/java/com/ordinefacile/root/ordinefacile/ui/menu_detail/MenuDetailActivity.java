@@ -52,15 +52,10 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         getSupportActionBar().setTitle(R.string.menu);
 
         menuDetailPresenter = new MenuDetailPresenter(getApplicationContext(),this);
-
         menuDetailPresenter.getCategoryId();
-
-
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
-
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
@@ -117,8 +112,8 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     @Override
     public void checkQuantity() {
-        Toast.makeText(getApplicationContext(),R.string.check_quantity,Toast.LENGTH_LONG).show();
 
+        Toast.makeText(getApplicationContext(),R.string.check_quantity,Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -56,7 +56,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
                 menuPresenter.getStoreCategories(id);
             }
         });
-
     }
 
     @Override
@@ -86,7 +85,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
                         }
                     }
                 })
-
                         .clicked(R.id.imageView, new View.OnClickListener() {
 
                             @Override
