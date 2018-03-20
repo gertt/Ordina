@@ -21,7 +21,10 @@ import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
+import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
+import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 import net.idik.lib.slimadapter.SlimAdapter;
@@ -48,6 +51,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     ArrayList<Orders> muylis = new ArrayList<Orders>();
 
+    String jsoni;
     int id_product;
 
     @Override
@@ -83,10 +87,9 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
             public void onClick(View view) {
 
 
-                deleteDatabase("ordinafacile.db");
-                muylis.clear();
 
-                String jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
+
+                 jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
                 myOrderPresenter.sendJson(jsoni);
             }
         });
@@ -142,22 +145,23 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         EventBus.getDefault().register(this);
     }
 
-
-
     @Subscribe
     public void onEvent(Eventlist event) {
 
+   String sjsj = event.getEmri();
+   String sjssj = event.getEmri();
 
     Toast.makeText(getApplicationContext(),"printoje",Toast.LENGTH_LONG).show();
 
+          if (sjsj.equalsIgnoreCase("myorder_activity")){
 
-    for (int  i = 0;i<muylis.size();i++){
+             // Intent refreshIntent=new Intent(getApplicationContext(),MainMenuActivity.class);
+            //  startActivity(refreshIntent);
 
-        String SD =muylis.get(i).getmIdProduct();
+          }
 
-    }
 
-          myOrderPresenter.getListProducts();
+        myOrderPresenter.sendJson(jsoni);
 
     }
 }

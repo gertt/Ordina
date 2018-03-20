@@ -2,6 +2,7 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 
 import android.accounts.Account;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -176,34 +177,31 @@ public class MyOrderPresenter {
                     public void onCompleted() {
 
 
-
-
-
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d("Problem : ", e.getMessage());
 
-
                     }
 
                     @Override
                     public void onNext(MyOrderSendJson myorder) {
-
-
-
-
-
-
-
                             for (int i = 0; i < feedItemList.size(); i++) {
 
                                 String dd = feedItemList.get(i).getmDescr();
                             }
 
-                        getListProducts();
+                        myOrderActivity.deleteDatabase("ordinafacile.db");
+                        feedItemList.clear();
+
+                        myOrderActivity.listAdapter(feedItemList);
+
+                        Eventlist event = new Eventlist();
+                        event.setEmri("myorder_activity");
+                        EventBus.getDefault().post(event);
+
+
                     }
 
                 });
