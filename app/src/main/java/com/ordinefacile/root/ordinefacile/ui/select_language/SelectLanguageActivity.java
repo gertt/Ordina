@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
@@ -48,6 +49,8 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         button_en = (RadioButton) findViewById(R.id.radioButton_en);
         button_it = (RadioButton)findViewById(R.id.radioButton_it);
         saveData = new SaveData(this);
+
+        String x = DebugDB.getAddressLog();
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);

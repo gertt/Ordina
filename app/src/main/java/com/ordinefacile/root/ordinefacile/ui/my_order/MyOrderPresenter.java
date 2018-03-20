@@ -167,7 +167,7 @@ public class MyOrderPresenter {
     }
 
 
-    public void sendJson(String jsoni) {
+    public void sendJson() {
 
         apiHelper.sendJson(json_obj22)
                 .subscribeOn(Schedulers.newThread())
