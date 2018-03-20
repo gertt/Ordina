@@ -11,16 +11,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.amitshekhar.DebugDB;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
@@ -50,7 +44,13 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         scannerPresenter.checkForPermission();
 
 
+     //   Open http://192.168.1.3:8080 in your browser
 
+
+        //Open http://0.0.0.0:8080 in your browser
+        Intent i = new Intent(this, MainMenuActivity.class);
+        i.putExtra("storeId","3");
+        startActivity(i);
 
     }
 

@@ -7,13 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
-import com.ordinefacile.root.ordinefacile.utils.DebugDatabase;
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 

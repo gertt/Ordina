@@ -112,7 +112,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
                 Toast.makeText(context,feedItem.getmIdProduct()+"MY  POSITION",+Toast.LENGTH_LONG).show();
 
 
-
             }
         });
 

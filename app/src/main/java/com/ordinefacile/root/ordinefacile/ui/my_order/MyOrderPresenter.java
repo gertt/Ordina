@@ -137,6 +137,7 @@ public class MyOrderPresenter {
 
     public void delete(int id) {
 
+
         dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>>() {
@@ -153,14 +154,11 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
 
-
-
-
                         getListProducts();
 
                         Log.d("", "");
 
-                        myOrderActivity.listAdapter(feedItemList);
+                   //     myOrderActivity.listAdapter(feedItemList);
                     }
 
                 });
@@ -168,7 +166,7 @@ public class MyOrderPresenter {
     }
 
 
-    public void sendJSON(String categoryId) {
+    public void sendJson(String jsoni) {
 
         apiHelper.sendJson(json_obj22)
                 .subscribeOn(Schedulers.newThread())
@@ -176,6 +174,11 @@ public class MyOrderPresenter {
                 .subscribe(new Subscriber<MyOrderSendJson>() {
                     @Override
                     public void onCompleted() {
+
+
+
+
+
 
                     }
 
@@ -188,19 +191,19 @@ public class MyOrderPresenter {
 
                     @Override
                     public void onNext(MyOrderSendJson myorder) {
-                        feedItemList = new ArrayList<>();
 
 
 
-                        String myorsder = myorder.getError().toString();
-                        String SYHSYH =   myorder.getMessage().toString();
-                      //  Log.d("size : ", "" + myorder.ge().size());
 
-                        databaseHelper = new DatabaseHelper(context);
-                        myOrderActivity.deleteDatabase("ordinafacile.db");
+
+
+
+                            for (int i = 0; i < feedItemList.size(); i++) {
+
+                                String dd = feedItemList.get(i).getmDescr();
+                            }
 
                         getListProducts();
-
                     }
 
                 });
