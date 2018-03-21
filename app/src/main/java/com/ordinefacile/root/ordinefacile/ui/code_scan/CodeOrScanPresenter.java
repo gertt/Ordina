@@ -36,6 +36,8 @@ public class CodeOrScanPresenter {
 
     public void getStoreDetailByPin(String pin) {
 
+
+
         if (pin.equalsIgnoreCase("")||pin==null){
             codeOrScanActivity.pinInvalid();
         }else {
@@ -61,11 +63,11 @@ public class CodeOrScanPresenter {
                         Log.d("Next  : ", pinModel.getData().getName());
                         if(pinModel.getError() == false){
                             String id = gson.toJson(pinModel.getData().getId());
+
+                            saveData.saveIdTable(pin);
                             if (pinModel.getData().getPhone1()!=null){
-
-
                                 saveData.saveNumberCall(pinModel.getData().getPhone1().toString());
-                                saveData.saveIdTable(pin);
+
                             }else {
                                 saveData.saveNumberCall("");
                             }

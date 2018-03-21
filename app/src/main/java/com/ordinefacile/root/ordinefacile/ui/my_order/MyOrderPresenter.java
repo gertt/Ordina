@@ -3,6 +3,7 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 import android.accounts.Account;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
@@ -43,18 +45,15 @@ public class MyOrderPresenter {
 
     Context context;
     MyOrderActivity myOrderActivity;
-
     ApiHelper apiHelper;
     DatabaseOperationsImp dbOperations;
     Orders orders;
     DatabaseHelper databaseHelper;
     RuntimeExceptionDao<Orders, Integer> userDao;
-
     List<Orders> feedItemList;
-
     String json_obj22;
-
     EventBus bus = EventBus.getDefault();
+    SaveData saveData;
 
     public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
         this.context = context;
@@ -64,6 +63,7 @@ public class MyOrderPresenter {
         orders = new Orders();
         databaseHelper = new DatabaseHelper(context);
         userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
+        saveData = new SaveData(context);
     }
 
     public void getListProducts() {
@@ -88,7 +88,7 @@ public class MyOrderPresenter {
                         try {
                             JSONObject jsonObj = new JSONObject();
                             JSONArray jsonArr = new JSONArray();
-                            jsonObj.put("table_id", "1");
+                            jsonObj.put("table_id", saveData.getIdTable());
                             for (int i = 0; i < orders.size(); i++) {
                                 JSONObject pnObj = new JSONObject();
                                 pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
@@ -107,9 +107,9 @@ public class MyOrderPresenter {
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
-                            jsonAdd.put("device_token", "tokeni jone");
-                            jsonAdd.put("brand", "samusng");
-                            jsonAdd.put("model", "smg900f");
+                            jsonAdd.put("device_token", saveData.getTokenFcm());
+                            jsonAdd.put("brand", Build.MANUFACTURER);
+                            jsonAdd.put("model", Build.MODEL);
                             jsonObj.put("device", jsonAdd);
                             String json_array2 = jsonArr.toString();
                             String json_obj2 = jsonObj.toString();
