@@ -69,6 +69,9 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     @Override
     public void getListStoreCategories(List<CategoriesDataModel> feedItemList) {
 
+
+
+
         slimAdapter.register(R.layout.menu_adapter, new SlimInjector<CategoriesDataModel>() {
             @Override
             public void onInject(final CategoriesDataModel data, IViewInjector injector) {

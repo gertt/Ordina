@@ -121,7 +121,6 @@ public class MyOrderPresenter {
                             e.printStackTrace();
                         }
 
-
                         feedItemList = new ArrayList<Orders>();
                         for (int i = 0; i < orders.size(); i++) {
 
@@ -159,13 +158,11 @@ public class MyOrderPresenter {
 
                         Log.d("", "");
 
-                   //     myOrderActivity.listAdapter(feedItemList);
                     }
 
                 });
 
     }
-
 
     public void sendJson() {
 
@@ -175,7 +172,6 @@ public class MyOrderPresenter {
                 .subscribe(new Subscriber<MyOrderSendJson>() {
                     @Override
                     public void onCompleted() {
-
 
                     }
 
@@ -201,11 +197,9 @@ public class MyOrderPresenter {
                         event.setEmri("myorder_activity");
                         EventBus.getDefault().post(event);
 
-
                     }
 
                 });
     }
-
 
 }
