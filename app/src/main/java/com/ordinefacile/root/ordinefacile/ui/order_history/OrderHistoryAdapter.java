@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
+import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailAdapter;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderPresenter;
@@ -27,72 +29,56 @@ import java.util.List;
  * Created by user on 3/12/2018.
  */
 
-public class OrderHistoryAdapter    {
+public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder>   {
 
-    /*
+
     private static final String TAG = "My Debugg";
-    private List<Orders> feedItemList;
+    private List<OrderHistoryData> feedItemList;
     private Context context;
     private ParseImage parseimage;
     MaterialDialog materialDialog;
-    MyOrderPresenter myOrderPresenter;
-    MyOrderActivity myOrderActivity;
 
-    public MyOrderAdapter(Context context, List<Orders> feedItemList,MyOrderActivity myOrderActivity) {
+
+    public OrderHistoryAdapter(Context context, List<OrderHistoryData> feedItemList) {
 
         this.feedItemList = feedItemList;
         this.context = context;
-        this.myOrderActivity = myOrderActivity;
         parseimage = new ParseImage(context);
         materialDialog = new MaterialDialog();
 
     }
 
     @Override
-    public MyOrderAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OrderHistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.menu_my_order_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.menu_my_order_history_adapter, parent, false);
 
-        myOrderPresenter = new MyOrderPresenter(context,myOrderActivity);
-        return new MyOrderAdapter.ViewHolder(itemView);
+      //  myOrderPresenter = new MyOrderPresenter(context,myOrderActivity);
+        return new OrderHistoryAdapter.ViewHolder(itemView);
     }
 
+
+
     @Override
-    public void onBindViewHolder(final MyOrderAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final OrderHistoryAdapter.ViewHolder holder, int position) {
 
-        final Orders feedItem = feedItemList.get(position);
-        holder.txt_name.setText(feedItem.getmName());
-        holder.txt_name.setText(feedItem.getmName());
+        final OrderHistoryData feedItem = feedItemList.get(position);
+      //  holder.txt_name.setText(feedItem.getmName());
+      //  holder.txt_name.setText(feedItem.getmName());
 
-        String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
+        //String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
 
-        holder.txt_price.setText(final_price);
-        holder.txt_metric.setText(feedItem.getmMetric());
-        holder.txt_metric.setText(feedItem.getmMetric());
+      //  holder.txt_price.setText(final_price);
+     //   holder.txt_metric.setText(feedItem.getmMetric());
+     //   holder.txt_metric.setText(feedItem.getmMetric());
 
-        parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
+       // parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
 
-        holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
-
-        holder.btn_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                materialDialog.createDialog(context,feedItem.getmName(),String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice())+""));
-            }
-        });
+      //  holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
 
-        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Toast.makeText(context,position+"MY  POSITION",+Toast.LENGTH_LONG).show();
-
-                myOrderPresenter.delete(231);
-            }
-        });
 
     }
     @Override
@@ -117,16 +103,16 @@ public class OrderHistoryAdapter    {
         public ViewHolder(View itemView) {
             super(itemView);
 
-            txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name);
-            imag_myorder_pick = (CircularImageView) itemView.findViewById(R.id.circularImageView_myorder);
-            txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price);
-            txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
-            btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
-            img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder);
-            btn_delete = (ImageView) itemView.findViewById(R.id.imageButton_delete);
+         //   txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name);
+         //   imag_myorder_pick = (CircularImageView) itemView.findViewById(R.id.circularImageView_myorder);
+         //   txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price);
+         //   txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
+        //    btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
+         //   img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder);
+         //   btn_delete = (ImageView) itemView.findViewById(R.id.imageButton_delete);
         }
     }
-    */
+
 
 }
 

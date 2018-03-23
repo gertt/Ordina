@@ -11,6 +11,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscriber;
@@ -60,6 +61,7 @@ public class OrderHistoryPresenter {
                     @Override
                     public void onNext(OrderHistory qrCodeModel) {
                         Log.d("Next  : ", qrCodeModel.getMessage());
+                        feedItemList = new ArrayList<>();
 
                         for(int i = 0;i<qrCodeModel.getData().size();i++){
 
