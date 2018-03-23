@@ -1,13 +1,10 @@
-package com.ordinefacile.root.ordinefacile.ui.menu;
+package com.ordinefacile.root.ordinefacile.ui.menu_category;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperations;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
@@ -15,7 +12,6 @@ import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

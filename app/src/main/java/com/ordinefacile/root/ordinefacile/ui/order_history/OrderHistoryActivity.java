@@ -9,13 +9,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
 
+import java.util.List;
 
-public class OrderHistoryActivity extends AppCompatActivity {
+
+public class OrderHistoryActivity extends AppCompatActivity implements OrderHistoryView {
 
     private RecyclerView mRecyclerView;
     private MyOrderAdapter adapter;
+
+     SaveData saveData;
+
+    OrderHistoryPresenter orderHistoryPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +35,12 @@ public class OrderHistoryActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.my_history);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+       orderHistoryPresenter = new OrderHistoryPresenter(getApplicationContext(),this);
+
+       orderHistoryPresenter.getOrderHistory();
+
+
+
 
     }
     @Override
@@ -53,4 +59,9 @@ public class OrderHistoryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void listHistoryOrder(List<OrderHistoryData> feedItemList) {
+
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -54,6 +55,7 @@ public class MyOrderPresenter {
     String json_obj22;
     EventBus bus = EventBus.getDefault();
     SaveData saveData;
+    JSONObject jsonObject;
 
     public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
         this.context = context;
@@ -88,7 +90,7 @@ public class MyOrderPresenter {
                         try {
                             JSONObject jsonObj = new JSONObject();
                             JSONArray jsonArr = new JSONArray();
-                            jsonObj.put("table_id", saveData.getIdTable());
+                            jsonObj.put("table_id", 1);
                             for (int i = 0; i < orders.size(); i++) {
                                 JSONObject pnObj = new JSONObject();
                                 pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
@@ -114,7 +116,9 @@ public class MyOrderPresenter {
                             String json_array2 = jsonArr.toString();
                             String json_obj2 = jsonObj.toString();
                              json_obj22 = jsonObj.toString();
-
+                            jsonObject = jsonObj;
+                            String jssonobbj = jsonObject.toString();
+                            String jssonxobbj = jsonObject.toString();
                             //getMenuDishes(json_obj22);
 
                         } catch (JSONException e) {
@@ -166,10 +170,44 @@ public class MyOrderPresenter {
 
     public void sendJson() {
 
-        apiHelper.sendJson(json_obj22)
+        String json = "{\n" +
+                "\"table_id\":\"1\",\n" +
+                "\"order_items\":[\n" +
+                "{\n" +
+                "\"mDescriptions\":\" Enim quis quidem ten\",\n" +
+                "\"mFinalPrice\":0,\n" +
+                "\"mId\":1,\n" +
+                "\"mIdProduct\":\"252\",\n" +
+                "\"mIdTable\":\"1\",\n" +
+                "\"mMetric\":\" l \",\n" +
+                "\"mName\":\" Charity Littel \",\n" +
+                "\"mPrice\":0,\n" +
+                "\"mQuantity\":0,\n" +
+                "\"mUrl_Image\":\"storage/images/products/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"\n" +
+                "}\n" +
+                "],\n" +
+                "\"device\":{\n" +
+                "\"device_token\":\"dLP0RtONu_4:APA91bGglTMN0V1eCZE1nkpO3jV84yW0TEYo35pkzrqmeQnHVd103EVXwBMh2hJTqnQAeCpGM4GAjtKofQmfyvwQrL7JuX5bIOW07hvMdh8Adkos2402dN-vRAmb6ajRZiTnXnqKjV5q\",\n" +
+                "\"brand\":\"samusng\",\n" +
+                "\"model\":\"smg900f\"\n" +
+                "}\n" +
+                "}";
+
+        try {
+
+            JSONObject obj = new JSONObject(json);
+
+            Log.d("My App", obj.toString());
+
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + json + "\"");
+        }
+
+
+        apiHelper.sendJson(jsonObject)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<MyOrderSendJson>() {
+                .subscribe(new Subscriber<JSONObject>() {
                     @Override
                     public void onCompleted() {
 
@@ -182,11 +220,9 @@ public class MyOrderPresenter {
                     }
 
                     @Override
-                    public void onNext(MyOrderSendJson myorder) {
-                            for (int i = 0; i < feedItemList.size(); i++) {
+                    public void onNext(JSONObject myorder) {
 
-                                String dd = feedItemList.get(i).getmDescr();
-                            }
+                        myorder.toString();
 
                         myOrderActivity.deleteDatabase("ordinafacile.db");
                         feedItemList.clear();

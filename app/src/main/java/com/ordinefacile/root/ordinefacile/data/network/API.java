@@ -1,10 +1,16 @@
 package com.ordinefacile.root.ordinefacile.data.network;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 
+import org.json.JSONObject;
+
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -30,9 +36,11 @@ public interface API {
     @GET("products/category/{id}")
     Observable<MenuDishes> getMenuDishes(@Path("id") int id);
 
-    @FormUrlEncoded
     @POST("orders/create")
-    Observable<MyOrderSendJson> sendOrderJson(@Field("data") String data);
+    Observable<JSONObject> sendOrderJson(@Body JSONObject req);
+
+    @GET("orders/list/{token_fcm}")
+    Observable<OrderHistory> getOrderHistory(@Path("token_fcm") String token_fcm);
 
 }
 

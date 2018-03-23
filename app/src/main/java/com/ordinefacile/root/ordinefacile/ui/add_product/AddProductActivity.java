@@ -18,6 +18,8 @@ import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
+import static com.ordinefacile.root.ordinefacile.utils.Util.Imageplus;
+
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
 
     private String quantity;
@@ -63,7 +65,10 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         price = intent.getStringExtra("categoryDetailPrice");
         metric = intent.getStringExtra("categoryDetailMetric");
         description = intent.getStringExtra("categoryDetailDescription");
-        urlImage = intent.getStringExtra("categoryDetailUrlImg");
+       // urlImage = intent.getStringExtra("categoryDetailUrlImg");
+
+        urlImage = Imageplus;
+
         id_product = intent.getStringExtra("categoryDetaiIdProduct");
 
         txt_quantity = (TextView)findViewById(R.id.textView_quantity);

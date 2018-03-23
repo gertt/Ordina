@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.ui.menu.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 

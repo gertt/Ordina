@@ -1,4 +1,4 @@
-package com.ordinefacile.root.ordinefacile.ui.menu;
+package com.ordinefacile.root.ordinefacile.ui.menu_category;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,8 +68,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     }
     @Override
     public void getListStoreCategories(List<CategoriesDataModel> feedItemList) {
-
-
 
 
         slimAdapter.register(R.layout.menu_adapter, new SlimInjector<CategoriesDataModel>() {

@@ -1,4 +1,4 @@
-package com.ordinefacile.root.ordinefacile.ui.menu;
+package com.ordinefacile.root.ordinefacile.ui.menu_category;
 
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 

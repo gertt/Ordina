@@ -1,10 +1,15 @@
 package com.ordinefacile.root.ordinefacile.data.network;
 
+import com.google.gson.JsonObject;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import rx.Observable;
 import rx.schedulers.Schedulers;
@@ -16,7 +21,6 @@ import rx.schedulers.Schedulers;
 public class AppApiHelper implements ApiHelper{
 
     final API apiService = APIClient.getClient().create(API.class);
-
     final API apiServiceSend = APIClient.createAPI().create(API.class);
 
     @Override
@@ -40,8 +44,12 @@ public class AppApiHelper implements ApiHelper{
     }
 
     @Override
-    public Observable<MyOrderSendJson> sendJson(String data) {
+    public Observable<JSONObject> sendJson(JSONObject data) {
         return apiServiceSend.sendOrderJson(data);
     }
 
+    @Override
+    public Observable<OrderHistory> getOrderHistory(String fcm_token) {
+        return apiService.getOrderHistory(fcm_token);
+    }
 }

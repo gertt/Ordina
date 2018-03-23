@@ -7,6 +7,10 @@ package com.ordinefacile.root.ordinefacile.utils;
 public class Util {
 
     public static String IMAGE_URL = "http://restaurant.softmate.org/";
+    public static String IMAGE_URL2 = " http://test.blackcave.al/";
+    public  static  String Imageplus = "images/services/appliances_repair.png";
+
+
 
     public static String substring(String s1,String s2){
        return s1.replaceAll(s2, "");

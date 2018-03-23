@@ -53,13 +53,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         String x = DebugDB.getAddressLog();
 
 
-        String reqString = Build.MANUFACTURER
-                + " " + Build.MODEL + " " + Build.VERSION.RELEASE
-                + " " + Build.VERSION_CODES.class.getFields()[android.os.Build.VERSION.SDK_INT].getName();
 
-               String  brand = Build.MANUFACTURER;
-                String  DJDJ= Build.MODEL;
-              String  DJxDJ= Build.VERSION.RELEASE;
 
 
         //Open http://192.168.100.58:8080 in your browser

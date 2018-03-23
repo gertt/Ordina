@@ -23,8 +23,6 @@ public class APIClient {
         return retrofit;
     }
 
-
-
     //////////////////// Methot Get Without Headers///////////////////
 
     public static Retrofit getClient() {
