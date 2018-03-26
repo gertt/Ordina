@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.ordinefacile.root.ordinefacile.R;
 
+import static com.ordinefacile.root.ordinefacile.utils.Util.IMAGE_URL;
 import static com.ordinefacile.root.ordinefacile.utils.Util.Imageplus;
 
 /**
@@ -26,7 +27,7 @@ public class ParseImage {
         String  input = url.toString();
         input = input.replace(" ", "");
         GlideApp.with(context)
-                .load(Util.IMAGE_URL2+Imageplus)
+                .load(IMAGE_URL+input)
                 .placeholder(R.drawable.placeholder)
                 .override(600,600)
                 .into(imageView);

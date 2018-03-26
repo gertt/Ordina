@@ -4,11 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Eljo on 3/8/2018.
+ * Created by user on 3/26/2018.
  */
 
-public class PinModel {
-
+public class SendOrderModel {
 
     @SerializedName("error")
     @Expose
@@ -16,9 +15,6 @@ public class PinModel {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("data")
-    @Expose
-    private PinModelData data;
 
     public Boolean getError() {
         return error;
@@ -35,13 +31,4 @@ public class PinModel {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public PinModelData getData() {
-        return data;
-    }
-
-    public void setData(PinModelData data) {
-        this.data = data;
-    }
-
 }

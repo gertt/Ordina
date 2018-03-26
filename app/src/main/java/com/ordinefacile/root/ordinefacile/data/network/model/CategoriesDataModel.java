@@ -28,9 +28,9 @@ public class CategoriesDataModel {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("images")
+    @SerializedName("image")
     @Expose
-    private List<CategoriesImagesModel> images = null;
+    private String image;
 
     public Integer getId() {
         return id;
@@ -80,12 +80,13 @@ public class CategoriesDataModel {
         this.updatedAt = updatedAt;
     }
 
-    public List<CategoriesImagesModel> getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(List<CategoriesImagesModel> images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
+
 
 }

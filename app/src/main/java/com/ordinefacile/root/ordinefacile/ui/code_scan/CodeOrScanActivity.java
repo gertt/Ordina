@@ -95,8 +95,11 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
             @Override
             public void onClick(View v) {
 
-                String pin = edt_pin.getText().toString();
-                codeOrScanPresenter.getStoreDetailByPin(pin);
+                String pin_voucher = edt_pin.getText().toString();
+             //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
+             //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
+
+                codeOrScanPresenter.checkCharacter(pin_voucher);
 
             }
         });

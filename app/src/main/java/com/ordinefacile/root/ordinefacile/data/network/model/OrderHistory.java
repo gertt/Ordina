@@ -3,12 +3,15 @@ package com.ordinefacile.root.ordinefacile.data.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
- * Created by Eljo on 3/8/2018.
+ * Created by user on 3/23/2018.
  */
 
-public class PinModel {
 
+
+public class OrderHistory {
 
     @SerializedName("error")
     @Expose
@@ -18,7 +21,7 @@ public class PinModel {
     private String message;
     @SerializedName("data")
     @Expose
-    private PinModelData data;
+    private List<OrderHistoryData> data = null;
 
     public Boolean getError() {
         return error;
@@ -36,12 +39,13 @@ public class PinModel {
         this.message = message;
     }
 
-    public PinModelData getData() {
+    public List<OrderHistoryData> getData() {
         return data;
     }
 
-    public void setData(PinModelData data) {
+    public void setData(List<OrderHistoryData> data) {
         this.data = data;
     }
 
 }
+

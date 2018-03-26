@@ -4,11 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Eljo on 3/8/2018.
+ * Created by user on 3/26/2018.
  */
 
-public class PinModelData {
-
+public class VauchePinStore {
 
     @SerializedName("id")
     @Expose
@@ -52,9 +51,6 @@ public class PinModelData {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("delivery")
-    @Expose
-    private Boolean delivery;
 
     public Integer getId() {
         return id;
@@ -167,13 +163,4 @@ public class PinModelData {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    public Boolean getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(Boolean delivery) {
-        this.delivery = delivery;
-    }
-
 }

@@ -28,7 +28,7 @@ public class MenuDishesDatum {
     private String price;
     @SerializedName("image")
     @Expose
-    private Object image;
+    private String image;
     @SerializedName("metrics")
     @Expose
     private String metrics;
@@ -47,9 +47,6 @@ public class MenuDishesDatum {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("images")
-    @Expose
-    private List<MenuDishesImage> images = null;
 
     public Integer getId() {
         return id;
@@ -91,11 +88,11 @@ public class MenuDishesDatum {
         this.price = price;
     }
 
-    public Object getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Object image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -146,15 +143,5 @@ public class MenuDishesDatum {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-
-    public List<MenuDishesImage> getImages() {
-        return images;
-    }
-
-    public void setImages(List<MenuDishesImage> images) {
-        this.images = images;
-    }
-
 }
 

@@ -4,10 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by root on 1/20/18.
+ * Created by user on 3/26/2018.
  */
 
-public class StoreData {
+public class QrCodeModelData {
+
 
     @SerializedName("id")
     @Expose
@@ -33,9 +34,12 @@ public class StoreData {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("delivery")
+    @Expose
+    private Boolean delivery;
     @SerializedName("store")
     @Expose
-    private Store store;
+    private QrCodeModelStore qrCodeModelData;
 
     public Integer getId() {
         return id;
@@ -101,11 +105,19 @@ public class StoreData {
         this.updatedAt = updatedAt;
     }
 
-    public Store getStore() {
-        return store;
+    public Boolean getDelivery() {
+        return delivery;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setDelivery(Boolean delivery) {
+        this.delivery = delivery;
+    }
+
+    public QrCodeModelStore getStore() {
+        return qrCodeModelData;
+    }
+
+    public void setStore(QrCodeModelStore store) {
+        this.qrCodeModelData = store;
     }
 }

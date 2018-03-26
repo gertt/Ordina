@@ -7,7 +7,8 @@ import com.google.gson.annotations.SerializedName;
  * Created by Eljo on 3/7/2018.
  */
 
-public class Store {
+public class QrCodeModelStore {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -19,28 +20,28 @@ public class Store {
     private String pin;
     @SerializedName("location")
     @Expose
-    private String location;
+    private Object location;
     @SerializedName("address")
     @Expose
-    private String address;
+    private Object address;
     @SerializedName("city")
     @Expose
-    private String city;
+    private Object city;
     @SerializedName("phone_1")
     @Expose
-    private String phone1;
+    private Object phone1;
     @SerializedName("phone_2")
     @Expose
     private Object phone2;
     @SerializedName("social_fcb")
     @Expose
-    private String socialFcb;
+    private Object socialFcb;
     @SerializedName("social_goo")
     @Expose
-    private String socialGoo;
+    private Object socialGoo;
     @SerializedName("social_insta")
     @Expose
-    private String socialInsta;
+    private Object socialInsta;
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
@@ -75,35 +76,35 @@ public class Store {
         this.pin = pin;
     }
 
-    public String getLocation() {
+    public Object getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Object location) {
         this.location = location;
     }
 
-    public String getAddress() {
+    public Object getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Object address) {
         this.address = address;
     }
 
-    public String getCity() {
+    public Object getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(Object city) {
         this.city = city;
     }
 
-    public String getPhone1() {
+    public Object getPhone1() {
         return phone1;
     }
 
-    public void setPhone1(String phone1) {
+    public void setPhone1(Object phone1) {
         this.phone1 = phone1;
     }
 
@@ -115,27 +116,27 @@ public class Store {
         this.phone2 = phone2;
     }
 
-    public String getSocialFcb() {
+    public Object getSocialFcb() {
         return socialFcb;
     }
 
-    public void setSocialFcb(String socialFcb) {
+    public void setSocialFcb(Object socialFcb) {
         this.socialFcb = socialFcb;
     }
 
-    public String getSocialGoo() {
+    public Object getSocialGoo() {
         return socialGoo;
     }
 
-    public void setSocialGoo(String socialGoo) {
+    public void setSocialGoo(Object socialGoo) {
         this.socialGoo = socialGoo;
     }
 
-    public String getSocialInsta() {
+    public Object getSocialInsta() {
         return socialInsta;
     }
 
-    public void setSocialInsta(String socialInsta) {
+    public void setSocialInsta(Object socialInsta) {
         this.socialInsta = socialInsta;
     }
 

@@ -16,7 +16,7 @@ public class QrCodeModel {
     private String message;
     @SerializedName("data")
     @Expose
-    private StoreData data;
+    private QrCodeModelData data;
 
     public Boolean getError() {
         return error;
@@ -34,11 +34,11 @@ public class QrCodeModel {
         this.message = message;
     }
 
-    public StoreData getData() {
+    public QrCodeModelData getData() {
         return data;
     }
 
-    public void setData(StoreData data) {
+    public void setData(QrCodeModelData data) {
         this.data = data;
     }
 }

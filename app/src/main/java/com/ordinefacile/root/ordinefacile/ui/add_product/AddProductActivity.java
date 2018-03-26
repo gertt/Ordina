@@ -18,7 +18,7 @@ import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
-import static com.ordinefacile.root.ordinefacile.utils.Util.Imageplus;
+
 
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
 
@@ -65,9 +65,10 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         price = intent.getStringExtra("categoryDetailPrice");
         metric = intent.getStringExtra("categoryDetailMetric");
         description = intent.getStringExtra("categoryDetailDescription");
-       // urlImage = intent.getStringExtra("categoryDetailUrlImg");
+        urlImage = intent.getStringExtra("categoryDetailUrlImg");
 
-        urlImage = Imageplus;
+
+
 
         id_product = intent.getStringExtra("categoryDetaiIdProduct");
 
@@ -95,7 +96,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
                 Float final_price =quantity_price * quantity_float;
 
-                addProductPresenter.update(final_price,quantity_float, name,quantity_price,metric,description,urlImage,saveData.getIdTable(),id_product);
+                addProductPresenter.update(final_price,quantity_float, name,quantity_price,metric,description,urlImage,saveData.getEntity(),id_product);
             }
         });
 

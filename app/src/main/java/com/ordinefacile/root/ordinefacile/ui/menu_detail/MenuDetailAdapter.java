@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 
@@ -33,6 +34,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
     String id_product;
     String name;
+    SaveData saveData;
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
 
@@ -40,6 +42,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         this.context = context;
         parseimage = new ParseImage(context);
         this.menuDetailPresenter = menuDetailPresenter;
+        saveData =  new SaveData(context);
 
     }
 
@@ -63,14 +66,25 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         Integer emir = feedItem.getId();
 
-        for(int i = 0 ;i<feedItem.getImages().size();i++) {
 
-            parseimage.parseimage(feedItem.getImages().get(i).getPath(), holder.imageviews);
 
-            urlImg = feedItem.getImages().get(i).getPath().toString();
-            id_product = feedItem.getImages().get(i).getProductId();
-            name = feedItem.getName();
-        }
+        parseimage.parseimage(feedItem.getImage().toString(), holder.imageviews);
+        urlImg = feedItem.getImage().toString();
+        name = feedItem.getName();
+        id_product = feedItem.getProductCategoryId();
+
+    //    for(int i = 0 ;i<feedItem.getImages().size();i++) {
+    //        parseimage.parseimage(feedItem.getImages().get(i).getPath(), holder.imageviews);
+     //       urlImg = feedItem.getImages().get(i).getPath().toString();
+    //        id_product = feedItem.getImages().get(i).getProductId();
+
+   //     }
+
+
+
+
+      //  String jsjus =     saveData.getNumberCharacter();
+      //  String jsjZus =     saveData.getNumberCharacter();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +109,8 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
             }
         });
+
+
         holder.btn_increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

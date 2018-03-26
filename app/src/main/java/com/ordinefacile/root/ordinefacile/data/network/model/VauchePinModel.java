@@ -4,11 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Eljo on 3/8/2018.
+ * Created by user on 3/26/2018.
  */
 
-public class PinModel {
-
+public class VauchePinModel {
 
     @SerializedName("error")
     @Expose
@@ -18,7 +17,7 @@ public class PinModel {
     private String message;
     @SerializedName("data")
     @Expose
-    private PinModelData data;
+    private VauchePinData data;
 
     public Boolean getError() {
         return error;
@@ -36,12 +35,11 @@ public class PinModel {
         this.message = message;
     }
 
-    public PinModelData getData() {
+    public VauchePinData getData() {
         return data;
     }
 
-    public void setData(PinModelData data) {
+    public void setData(VauchePinData data) {
         this.data = data;
     }
-
 }

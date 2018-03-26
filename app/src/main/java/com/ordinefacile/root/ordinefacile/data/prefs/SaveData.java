@@ -30,8 +30,8 @@ public class SaveData {
         editor.commit();
     }
 
-    public void saveIdTable(String id_table){
-        editor.putString("id_table", id_table);
+    public void saveEntity(String entity_id){
+        editor.putString("entity_id", entity_id);
         editor.commit();
     }
 
@@ -45,8 +45,8 @@ public class SaveData {
 
     }
 
-    public String getIdTable(){
-        return preferences.getString("id_table", "");
+    public String getEntity(){
+        return preferences.getString("entity_id", "");
 
     }
 
@@ -57,6 +57,26 @@ public class SaveData {
 
     public String getTokenFcm(){
         return preferences.getString("save_token", "");
+
+    }
+
+    public void saveDeliveryStatus(String deliverystatus) {
+        editor.putString("delivery_status", deliverystatus);
+        editor.commit();
+    }
+
+    public String getDeliveryStatus(){
+        return preferences.getString("delivery_status", "");
+
+    }
+
+    public void saveNumberCharacter(int number_character) {
+        editor.putInt("number_character", number_character);
+        editor.commit();
+    }
+
+    public String getNumberCharacter(){
+        return preferences.getString("number_character", "");
 
     }
 }

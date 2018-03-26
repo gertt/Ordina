@@ -48,6 +48,7 @@ public class ScannerPresenter {
 
     }
 
+
     public void getStoreDetail(final String qrCode) {
         System.out.println("qr code : "+qrCode);
         apiHelper.getStoreDetails(qrCode)
@@ -72,7 +73,11 @@ public class ScannerPresenter {
                         if(qrCodeModel.getError() == false){
                             System.out.println("elio prifti : "+qrCodeModel.getMessage());
                             String id = gson.toJson(qrCodeModel.getData().getStore().getId());
-                            saveData.saveIdTable(qrCode);
+
+                            saveData.saveEntity(qrCode);
+
+                            saveData.saveDeliveryStatus(qrCodeModel.getData().getDelivery().toString());
+
                             if (qrCodeModel.getData().getStore().getPhone1()!=null){
                                 saveData.saveNumberCall(qrCodeModel.getData().getStore().getPhone1().toString());
 

@@ -54,8 +54,6 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
 
 
 
-
-
         //Open http://192.168.100.58:8080 in your browser
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);

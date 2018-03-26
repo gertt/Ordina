@@ -7,6 +7,8 @@ import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,6 +35,14 @@ public class AppApiHelper implements ApiHelper{
         return apiService.getStoreDetailsByPin(pin);
     }
 
+
+    @Override
+    public Observable<VauchePinModel> getStoreDetailsByVoucherCode(String voucher_code) {
+        return apiService.getStoreDetailsByVoucherCode(voucher_code);
+    }
+
+
+
     @Override
     public Observable<CategoriesModel> getStoreCategories(int id) {
         return apiService.getStoreCategories(id);
@@ -44,7 +54,7 @@ public class AppApiHelper implements ApiHelper{
     }
 
     @Override
-    public Observable<JSONObject> sendJson(JSONObject data) {
+    public Observable<SendOrderModel> sendJson(String data) {
         return apiServiceSend.sendOrderJson(data);
     }
 

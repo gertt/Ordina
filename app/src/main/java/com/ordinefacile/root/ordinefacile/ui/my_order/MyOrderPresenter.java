@@ -23,6 +23,7 @@ import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
+import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
 import org.greenrobot.eventbus.EventBus;
@@ -90,7 +91,8 @@ public class MyOrderPresenter {
                         try {
                             JSONObject jsonObj = new JSONObject();
                             JSONArray jsonArr = new JSONArray();
-                            jsonObj.put("table_id", 1);
+                            jsonObj.put("delivery", saveData.getDeliveryStatus());
+                            jsonObj.put("entity_id", saveData.getEntity());
                             for (int i = 0; i < orders.size(); i++) {
                                 JSONObject pnObj = new JSONObject();
                                 pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
@@ -170,44 +172,14 @@ public class MyOrderPresenter {
 
     public void sendJson() {
 
-        String json = "{\n" +
-                "\"table_id\":\"1\",\n" +
-                "\"order_items\":[\n" +
-                "{\n" +
-                "\"mDescriptions\":\" Enim quis quidem ten\",\n" +
-                "\"mFinalPrice\":0,\n" +
-                "\"mId\":1,\n" +
-                "\"mIdProduct\":\"252\",\n" +
-                "\"mIdTable\":\"1\",\n" +
-                "\"mMetric\":\" l \",\n" +
-                "\"mName\":\" Charity Littel \",\n" +
-                "\"mPrice\":0,\n" +
-                "\"mQuantity\":0,\n" +
-                "\"mUrl_Image\":\"storage/images/products/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"\n" +
-                "}\n" +
-                "],\n" +
-                "\"device\":{\n" +
-                "\"device_token\":\"dLP0RtONu_4:APA91bGglTMN0V1eCZE1nkpO3jV84yW0TEYo35pkzrqmeQnHVd103EVXwBMh2hJTqnQAeCpGM4GAjtKofQmfyvwQrL7JuX5bIOW07hvMdh8Adkos2402dN-vRAmb6ajRZiTnXnqKjV5q\",\n" +
-                "\"brand\":\"samusng\",\n" +
-                "\"model\":\"smg900f\"\n" +
-                "}\n" +
-                "}";
-
-        try {
-
-            JSONObject obj = new JSONObject(json);
-
-            Log.d("My App", obj.toString());
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + json + "\"");
-        }
+        String json = "{\"delivery\":true,\"entity_id\":9,\"order_items\":[{\"mDescriptions\":\"  Similique harum dele\",\"mFinalPrice\":60.120003,\"mId\":1,\"mIdProduct\":\"231\",\"mIdTable\":\"231\",\"mMetric\":\"  kg  \",\"mName\":\"  Prof. Gus Grady MD  \",\"mPrice\":20.04,\"mQuantity\":3,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  Illum deleniti iusto\",\"mFinalPrice\":88,\"mId\":2,\"mIdProduct\":\"232\",\"mIdTable\":\"232\",\"mMetric\":\"  g  \",\"mName\":\"  Christopher Gutkowski  \",\"mPrice\":22,\"mQuantity\":4,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  Ea sit quaerat est i\",\"mFinalPrice\":76.08,\"mId\":3,\"mIdProduct\":\"222\",\"mIdTable\":\"222\",\"mMetric\":\"  l  \",\"mName\":\"  Jaleel Kunde MD  \",\"mPrice\":25.36,\"mQuantity\":3,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  In alias nihil fugia\",\"mFinalPrice\":52.94,\"mId\":4,\"mIdProduct\":\"221\",\"mIdTable\":\"221\",\"mMetric\":\"  mg  \",\"mName\":\"  Liam Stark  \",\"mPrice\":26.47,\"mQuantity\":2,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"}],\"device\":{\"device_token\":\"fcyfqZ6gV0U:APA91bH2ptu-l6RCCdf_vjCBxXsWX-2sD06W8rIMlVB4F2jvP1NRTjU2oe5a0z4sxkaykLMRJCpaapHW0BOQXn69inkMOHfePBOOsTkdu4QF8UTD8CCrd5X8bYCTgYFyT59ESvOSk6-9\",\"brand\":\"samsung\",\"model\":\"SM-G900F\"}}\n" +
+                "\n";
 
 
-        apiHelper.sendJson(jsonObject)
+        apiHelper.sendJson(json_obj22)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<JSONObject>() {
+                .subscribe(new Subscriber<SendOrderModel>() {
                     @Override
                     public void onCompleted() {
 
@@ -220,9 +192,11 @@ public class MyOrderPresenter {
                     }
 
                     @Override
-                    public void onNext(JSONObject myorder) {
+                    public void onNext(SendOrderModel myorder) {
 
-                        myorder.toString();
+                     String SJHSJ =    myorder.getMessage();
+                     String SJHSSJ =    myorder.getMessage();
+
 
                         myOrderActivity.deleteDatabase("ordinafacile.db");
                         feedItemList.clear();
