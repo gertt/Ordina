@@ -40,7 +40,7 @@ public interface API {
 
     //category product
     @GET("categories/store/{id}")
-    Observable<CategoriesModel> getStoreCategories(@Path("id") int id);
+    Observable<CategoriesModel> getStoreCategories(@Path("id") String id);
 
     @GET("products/category/{id}")
     Observable<MenuDishes> getMenuDishes(@Path("id") int id);

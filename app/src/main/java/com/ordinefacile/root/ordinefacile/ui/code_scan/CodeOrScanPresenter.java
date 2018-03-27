@@ -93,7 +93,7 @@ public class CodeOrScanPresenter {
 
                     @Override
                     public void onNext(PinModel pinModel) {
-                        Log.d("Next  : ", pinModel.getData().getName());
+                       // Log.d("Next  : ", pinModel.getData().getName());
                         if(pinModel.getError() == false){
                             String id = gson.toJson(pinModel.getData().getId());
 
@@ -140,7 +140,7 @@ public class CodeOrScanPresenter {
                         public void onNext(VauchePinModel pinModel) {
                             Log.d("Next  : ", pinModel.getMessage());
                             if(pinModel.getError() == false){
-                                String id = gson.toJson(pinModel.getData().getId());
+                                String id = gson.toJson(pinModel.getData().getStoreId());
 
                                 saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
                                 saveData.saveEntity(pinModel.getData().getId().toString());
@@ -151,7 +151,8 @@ public class CodeOrScanPresenter {
                                 }else {
                                     saveData.saveNumberCall("");
                                 }
-                                codeOrScanActivity.goToMenuAtivity(id);
+                                codeOrScanActivity.goToMenuAtivity(pinModel.getData().getStoreId());
+
                                 System.out.println("imazhi "+id);
                             }
                         }

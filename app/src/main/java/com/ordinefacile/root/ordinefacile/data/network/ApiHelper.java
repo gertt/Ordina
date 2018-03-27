@@ -8,7 +8,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 
-import org.json.JSONObject;
+
 import rx.Observable;
 
 /**
@@ -23,7 +23,7 @@ public interface ApiHelper {
 
       Observable<VauchePinModel> getStoreDetailsByVoucherCode(String voucher_code);
 
-      Observable<CategoriesModel> getStoreCategories(int id);
+      Observable<CategoriesModel> getStoreCategories(String id);
       Observable<MenuDishes> getMenuDishes(int id);
 
       Observable<SendOrderModel> sendJson(String data);

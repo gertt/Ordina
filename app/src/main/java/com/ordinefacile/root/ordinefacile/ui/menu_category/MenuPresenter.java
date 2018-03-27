@@ -57,7 +57,8 @@ public class MenuPresenter {
     }
 
     public void getStoreCategories(String id) {
-        apiHelper.getStoreCategories(Integer.parseInt(id))
+
+        apiHelper.getStoreCategories("1")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<CategoriesModel>() {

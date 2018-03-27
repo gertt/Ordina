@@ -18,9 +18,9 @@ import static com.ordinefacile.root.ordinefacile.utils.Util.Imageplus;
 public class ParseImage {
 
     Context context;
+
     public ParseImage(Context context) {
         this.context = context;
-
     }
     public   void parseimage(String url, ImageView imageView){
 

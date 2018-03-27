@@ -44,7 +44,7 @@ public class AppApiHelper implements ApiHelper{
 
 
     @Override
-    public Observable<CategoriesModel> getStoreCategories(int id) {
+    public Observable<CategoriesModel> getStoreCategories(String id) {
         return apiService.getStoreCategories(id);
     }
 
