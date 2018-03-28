@@ -70,8 +70,8 @@ public class SaveData {
 
     }
 
-    public void saveNumberCharacter(int number_character) {
-        editor.putInt("number_character", number_character);
+    public void saveNumberCharacter(String number_character) {
+        editor.putString("number_character", number_character);
         editor.commit();
     }
 

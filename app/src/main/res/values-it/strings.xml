@@ -35,6 +35,6 @@
     <string name="info">Information-it</string>
     <string name="my_history">My History-it</string>
     <string name="check_quantity">Check Quantity-it</string>
-
+    <string name="cannot_make_order">you can not make the order-it</string>
 
 </resources>

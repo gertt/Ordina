@@ -50,13 +50,16 @@ public class CodeOrScanPresenter {
         }
         if (number_character==5){
 
-            saveData.saveNumberCharacter(number_character);
+
+            String str = Integer.toString(number_character);
+            saveData.saveNumberCharacter(str);
             System.out.print("kjsjksjks");
             getStoreDetailsByVoucherCode(pin_voucher);
 
         }else  if(number_character>5){
 
-            saveData.saveNumberCharacter(number_character);
+            String str = Integer.toString(number_character);
+            saveData.saveNumberCharacter(str);
 
             System.out.print("kjsjksjks");
             getStoreDetailByPin(pin_voucher);

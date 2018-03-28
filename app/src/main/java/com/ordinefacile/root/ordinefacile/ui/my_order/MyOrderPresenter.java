@@ -172,8 +172,6 @@ public class MyOrderPresenter {
 
     public void sendJson() {
 
-        String json = "{\"delivery\":true,\"entity_id\":9,\"order_items\":[{\"mDescriptions\":\"  Similique harum dele\",\"mFinalPrice\":60.120003,\"mId\":1,\"mIdProduct\":\"231\",\"mIdTable\":\"231\",\"mMetric\":\"  kg  \",\"mName\":\"  Prof. Gus Grady MD  \",\"mPrice\":20.04,\"mQuantity\":3,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  Illum deleniti iusto\",\"mFinalPrice\":88,\"mId\":2,\"mIdProduct\":\"232\",\"mIdTable\":\"232\",\"mMetric\":\"  g  \",\"mName\":\"  Christopher Gutkowski  \",\"mPrice\":22,\"mQuantity\":4,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  Ea sit quaerat est i\",\"mFinalPrice\":76.08,\"mId\":3,\"mIdProduct\":\"222\",\"mIdTable\":\"222\",\"mMetric\":\"  l  \",\"mName\":\"  Jaleel Kunde MD  \",\"mPrice\":25.36,\"mQuantity\":3,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"},{\"mDescriptions\":\"  In alias nihil fugia\",\"mFinalPrice\":52.94,\"mId\":4,\"mIdProduct\":\"221\",\"mIdTable\":\"221\",\"mMetric\":\"  mg  \",\"mName\":\"  Liam Stark  \",\"mPrice\":26.47,\"mQuantity\":2,\"mUrl_Image\":\"media\\/profile\\/store_default.png\"}],\"device\":{\"device_token\":\"fcyfqZ6gV0U:APA91bH2ptu-l6RCCdf_vjCBxXsWX-2sD06W8rIMlVB4F2jvP1NRTjU2oe5a0z4sxkaykLMRJCpaapHW0BOQXn69inkMOHfePBOOsTkdu4QF8UTD8CCrd5X8bYCTgYFyT59ESvOSk6-9\",\"brand\":\"samsung\",\"model\":\"SM-G900F\"}}\n" +
-                "\n";
 
 
         apiHelper.sendJson(json_obj22)
@@ -194,8 +192,13 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(SendOrderModel myorder) {
 
-                     String SJHSJ =    myorder.getMessage();
-                     String SJHSSJ =    myorder.getMessage();
+                        String SJHSJ = myorder.getError().toString();
+                        String SJHSSJ = myorder.getMessage();
+                        if (myorder.getError().toString().equalsIgnoreCase("false")) {
+
+
+                        String SJdHSJ = myorder.getMessage();
+                        String SJdHSSJ = myorder.getMessage();
 
 
                         myOrderActivity.deleteDatabase("ordinafacile.db");
@@ -207,6 +210,7 @@ public class MyOrderPresenter {
                         event.setEmri("myorder_activity");
                         EventBus.getDefault().post(event);
 
+                    }
                     }
 
                 });

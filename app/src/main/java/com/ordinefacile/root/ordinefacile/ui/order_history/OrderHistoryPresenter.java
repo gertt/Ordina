@@ -42,7 +42,7 @@ public class OrderHistoryPresenter {
 
       //  System.out.println("qr code : "+qrCode);
 
-        apiHelper.getOrderHistory("dLP0RtONu_4:APA91bGglTMN0V1eCZE1nkpO3jV84yW0TEYo35pkzrqmeQnHVd103EVXwBMh2hJTqnQAeCpGM4GAjtKofQmfyvwQrL7JuX5bIOW07hvMdh8Adkos2402dN-vRAmb6ajRZiTnXnqKjV5q")
+        apiHelper.getOrderHistory(saveData.getTokenFcm())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<OrderHistory>() {

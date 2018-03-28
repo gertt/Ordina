@@ -49,5 +49,6 @@
     <string name="title_activity_order_history">OrderHistory</string>
     <string name="my_history">My History</string>
     <string name="check_quantity">Check Quantity</string>
+    <string name="cannot_make_order">you can not make the order</string>
 
 </resources>

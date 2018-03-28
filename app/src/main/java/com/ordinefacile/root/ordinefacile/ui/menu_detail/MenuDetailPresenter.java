@@ -98,7 +98,14 @@ public class MenuDetailPresenter {
             context.startActivity(intent);
 
         }else {
-            menuDetailActivity.checkQuantity();
+
+
+            if (!saveData.getNumberCharacter().equalsIgnoreCase("7")){
+                menuDetailActivity.checkQuantity();
+
+            }
+
+
 
         }
     }

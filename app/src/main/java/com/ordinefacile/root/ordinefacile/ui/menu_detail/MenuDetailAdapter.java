@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
@@ -73,18 +75,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         name = feedItem.getName();
         id_product = feedItem.getProductCategoryId();
 
-    //    for(int i = 0 ;i<feedItem.getImages().size();i++) {
-    //        parseimage.parseimage(feedItem.getImages().get(i).getPath(), holder.imageviews);
-     //       urlImg = feedItem.getImages().get(i).getPath().toString();
-    //        id_product = feedItem.getImages().get(i).getProductId();
 
-   //     }
-
-
-
-
-      //  String jsjus =     saveData.getNumberCharacter();
-      //  String jsjZus =     saveData.getNumberCharacter();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +97,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         holder.metric.getText().toString(),
                         holder.description.getText().toString(),urlImg,numberAsString, v);
 
-
             }
         });
 
@@ -114,60 +104,76 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         holder.btn_increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textnumberstring = holder.txt_add.getText().toString();
 
-                if (textnumberstring.equalsIgnoreCase("Add")){
 
-                    int score = 0 ;
-                    int numberInt = score;
 
-                       numberInt++;
-                        holder.txt_add.setText(""+numberInt);
+                if (saveData.getNumberCharacter().equalsIgnoreCase("5")||saveData.getNumberCharacter().equalsIgnoreCase("8")) {
+                    String textnumberstring = holder.txt_add.getText().toString();
 
-                }else if (!textnumberstring.equalsIgnoreCase("Add")){
-                    int score = Integer.parseInt(textnumberstring);
-                    int numberInt = score;
+                    if (textnumberstring.equalsIgnoreCase("Add")) {
 
-                    numberInt++;
-                    holder.txt_add.setText(""+numberInt);
+                        int score = 0;
+                        int numberInt = score;
 
+                        numberInt++;
+                        holder.txt_add.setText("" + numberInt);
+
+                    } else if (!textnumberstring.equalsIgnoreCase("Add")) {
+                        int score = Integer.parseInt(textnumberstring);
+                        int numberInt = score;
+
+                        numberInt++;
+                        holder.txt_add.setText("" + numberInt);
+
+                    }
+                    Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+                }else {
+                    Toast.makeText(context,R.string.cannot_make_order,Toast.LENGTH_LONG).show();
                 }
-                Snackbar.make(v,holder.txt_name.getText(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
             }
         });
 
         holder.btn_decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textnumberstring = holder.txt_add.getText().toString();
 
-                if (textnumberstring.equalsIgnoreCase("Add")){
+                if (saveData.getNumberCharacter().equalsIgnoreCase("5")||saveData.getNumberCharacter().equalsIgnoreCase("8")) {
 
-                    holder.txt_add.setText(""+"Add");
+
+                    String textnumberstring = holder.txt_add.getText().toString();
+
+                    if (textnumberstring.equalsIgnoreCase("Add")) {
+
+                        holder.txt_add.setText("" + "Add");
+
+                    } else {
+                        score = Integer.parseInt(textnumberstring);
+                    }
+
+                    if (score == 1) {
+
+                        holder.txt_add.setText("" + "Add");
+                    } else if (score > 1) {
+
+                        score = Integer.parseInt(textnumberstring);
+                        int numberInt = score;
+
+                        numberInt--;
+                        holder.txt_add.setText("" + numberInt);
+
+                    }
+
+                    Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG);
 
                 }else {
-                    score = Integer.parseInt(textnumberstring);
-                }
-
-                if (score==1){
-
-                    holder.txt_add.setText(""+"Add");
-                }else  if (score>1){
-
-                    score = Integer.parseInt(textnumberstring);
-                    int numberInt = score;
-
-                    numberInt--;
-                    holder.txt_add.setText(""+numberInt);
+                    Toast.makeText(context,R.string.cannot_make_order,Toast.LENGTH_LONG).show();
 
                 }
-
-                Snackbar.make(v,holder.txt_name.getText(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
+
     }
 
     @Override

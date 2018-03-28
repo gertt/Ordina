@@ -57,7 +57,7 @@ public class ScannerPresenter {
                 .subscribe(new Subscriber<QrCodeModel>() {
                     @Override
                     public void onCompleted() {
-                        //
+
                     }
 
                     @Override
@@ -74,7 +74,19 @@ public class ScannerPresenter {
                             System.out.println("elio prifti : "+qrCodeModel.getMessage());
                             String id = gson.toJson(qrCodeModel.getData().getStore().getId());
 
-                            saveData.saveEntity(qrCode);
+                            saveData.saveEntity(qrCodeModel.getData().getStoreId());
+
+                            char[] cArray = qrCode.toCharArray();
+                            int count = 0;
+                            int number_character = 0;
+                            for (int i=0; i < cArray.length; i++){
+
+                                count++;
+                                number_character = count;
+                            }
+
+                            String str = Integer.toString(number_character);
+                            saveData.saveNumberCharacter(str);
 
                             saveData.saveDeliveryStatus(qrCodeModel.getData().getDelivery().toString());
 

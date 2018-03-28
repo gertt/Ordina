@@ -64,7 +64,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     public void onBindViewHolder(final OrderHistoryAdapter.ViewHolder holder, int position) {
 
         final OrderHistoryData feedItem = feedItemList.get(position);
-      //  holder.txt_name.setText(feedItem.getmName());
+        holder.txt_name.setText(feedItem.getStore());
       //  holder.txt_name.setText(feedItem.getmName());
 
         //String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
@@ -103,7 +103,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         public ViewHolder(View itemView) {
             super(itemView);
 
-         //   txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name);
+            txt_name = (TextView) itemView.findViewById(R.id.textView4);
          //   imag_myorder_pick = (CircularImageView) itemView.findViewById(R.id.circularImageView_myorder);
          //   txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price);
          //   txt_metric = (TextView) itemView.findViewById(R.id.textView_myorder_metric);
