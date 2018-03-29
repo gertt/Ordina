@@ -50,5 +50,7 @@
     <string name="my_history">My History</string>
     <string name="check_quantity">Check Quantity</string>
     <string name="cannot_make_order">you can not make the order</string>
+    <string name="price_history">Price</string>
+    <string name="price_history2">Price2</string>
 
 </resources>

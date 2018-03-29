@@ -42,7 +42,7 @@ public class OrderHistoryPresenter {
 
       //  System.out.println("qr code : "+qrCode);
 
-        apiHelper.getOrderHistory(saveData.getTokenFcm())
+        apiHelper.getOrderHistory("exsmEam_f0o:APA91bHriSHPuBHHLavV2s88yWQ_rFX2dDKYE3BRcg88siD_SdsdfpEWKgll_lXVvsc3_RfFV8KRsJdhdsZE7o66dqYrdp5UE0fqzXVNlt1ykj8--HPABHyBJwludDL3kTUVMIl5Rws-")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<OrderHistory>() {
@@ -69,7 +69,6 @@ public class OrderHistoryPresenter {
 
                             orderHistoryActivity.listHistoryOrder(feedItemList);
                         }
-
 
                     }
                 });
