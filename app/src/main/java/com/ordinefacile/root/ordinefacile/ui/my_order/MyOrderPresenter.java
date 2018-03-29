@@ -108,10 +108,11 @@ public class MyOrderPresenter {
                                 jsonArr.put(pnObj);
                                 jsonObj.put("order_items", jsonArr);
                             }
+
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
-                            jsonAdd.put("device_token", saveData.getTokenFcm());
+                            jsonAdd.put("device_token", "23456789");
                             jsonAdd.put("brand", Build.MANUFACTURER);
                             jsonAdd.put("model", Build.MODEL);
                             jsonObj.put("device", jsonAdd);
@@ -172,8 +173,6 @@ public class MyOrderPresenter {
 
     public void sendJson() {
 
-
-
         apiHelper.sendJson(json_obj22)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -192,18 +191,10 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(SendOrderModel myorder) {
 
-                        String SJHSJ = myorder.getError().toString();
-                        String SJHSSJ = myorder.getMessage();
                         if (myorder.getError().toString().equalsIgnoreCase("false")) {
-
-
-                        String SJdHSJ = myorder.getMessage();
-                        String SJdHSSJ = myorder.getMessage();
-
 
                         myOrderActivity.deleteDatabase("ordinafacile.db");
                         feedItemList.clear();
-
                         myOrderActivity.listAdapter(feedItemList);
 
                         Eventlist event = new Eventlist();
