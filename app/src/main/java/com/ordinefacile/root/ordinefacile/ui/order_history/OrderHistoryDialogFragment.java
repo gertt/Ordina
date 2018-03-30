@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryItem;
 
 import java.util.List;
 
@@ -24,11 +25,11 @@ import java.util.List;
 public  class OrderHistoryDialogFragment extends DialogFragment {
     private RecyclerView mRecyclerView;
     private OrderHistoryDialogFragmentAdapter adapter;
-    private List<OrderHistoryData> feedItemList;
+    private List<OrderHistoryItem> feedItemList;
     // this method create view for your Dialog
 
     @SuppressLint("ValidFragment")
-    public OrderHistoryDialogFragment(List<OrderHistoryData> feedItemList) {
+    public OrderHistoryDialogFragment(List<OrderHistoryItem> feedItemList) {
 
         this.feedItemList = feedItemList;
     }

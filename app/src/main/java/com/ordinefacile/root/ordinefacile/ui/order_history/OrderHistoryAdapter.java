@@ -17,8 +17,11 @@ import android.widget.Toast;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryItem;
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +38,8 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     MaterialDialog materialDialog;
 
     FragmentManager fragmentManager;
+
+    ArrayList<OrderHistoryItem> feedItemListItem ;
 
 
     public OrderHistoryAdapter(Context context, List<OrderHistoryData> feedItemList,FragmentManager fragmentManager) {
@@ -60,7 +65,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
 
 
-
     @Override
     public void onBindViewHolder(final OrderHistoryAdapter.ViewHolder holder, int position) {
 
@@ -74,29 +78,37 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice());
         holder.txt_totalitems.setText("Total Items"+" "+feedItem.getTotalItems());
 
+
+    //    for ( int i =0;i<feedItemListItem.size();i++) {
+    //        Toast.makeText(context,feedItemListItem.get(i).getTotal().toString(),Toast.LENGTH_LONG).show();
+   //     }
+
         holder.img_bacground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(context,feedItem.getId().toString(),Toast.LENGTH_LONG).show();
 
 
-                OrderHistoryDialogFragment newFragment = new OrderHistoryDialogFragment(feedItemList);
+                feedItemListItem = new ArrayList<OrderHistoryItem>();
 
+                for ( int i =0;i<feedItem.getItems().size();i++) {
+
+                    feedItemListItem.add(feedItem.getItems().get(i));
+                }
+
+
+                for ( int i =0;i<feedItemListItem.size();i++) {
+
+                    Toast.makeText(context,feedItemListItem.get(i).getPrice().toString(),Toast.LENGTH_LONG).show();
+
+                }
+
+                OrderHistoryDialogFragment newFragment = new OrderHistoryDialogFragment(feedItemListItem);
                 newFragment.show(fragmentManager, "abc");
-
 
 
             }
         });
-      //  holder.txt_name.setText(feedItem.getmName());
-        //String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
-
-      //  holder.txt_price.setText(final_price);
-     //   holder.txt_metric.setText(feedItem.getmMetric());
-     //   holder.txt_metric.setText(feedItem.getmMetric());
-
-      //  holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
 
     }

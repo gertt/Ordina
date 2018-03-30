@@ -1,14 +1,19 @@
 package com.ordinefacile.root.ordinefacile.ui.order_history;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryItem;
+import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 import java.util.List;
 
@@ -18,13 +23,15 @@ import java.util.List;
 
 public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<OrderHistoryDialogFragmentAdapter.ViewHolder>{
 
-    private List<OrderHistoryData> feedItemList;
+    private List<OrderHistoryItem> feedItemList;
     private Context context;
+    ParseImage parseImage;
 
-    public OrderHistoryDialogFragmentAdapter(Context context, List<OrderHistoryData> feedItemList) {
+    public OrderHistoryDialogFragmentAdapter(Context context, List<OrderHistoryItem> feedItemList) {
 
         this.feedItemList = feedItemList;
         this.context = context;
+        parseImage = new ParseImage(context);
 
     }
 
@@ -39,9 +46,12 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-       // final Person feedItem = feedItemList.get(position);
+        final OrderHistoryItem feedItem = feedItemList.get(position);
+        holder.img_bacground_dialog.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
-      //  holder.txt_name.setText("  "+feedItem.getEmri()+"  ");
+
+            holder.txt_name.setText("  "+feedItem.getName()+"  ");
+            parseImage.parseimage(feedItem.getImage(),holder.imag_myorder_pick);
 
     }
 
@@ -54,12 +64,15 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
+        private ImageView img_bacground_dialog;
+        private CircularImageView imag_myorder_pick;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txt_name = (TextView) itemView.findViewById(R.id.textView5);
-
+            txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name_history_dialog);
+            img_bacground_dialog = (ImageView) itemView.findViewById(R.id.imageView_myorder_history_dialog);
+            imag_myorder_pick = (CircularImageView) itemView.findViewById(R.id.circularImageView_myorder_history_dialog);
         }
     }
 }
