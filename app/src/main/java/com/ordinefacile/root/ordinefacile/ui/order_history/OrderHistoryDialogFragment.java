@@ -39,13 +39,6 @@ public  class OrderHistoryDialogFragment extends DialogFragment {
         //inflate layout with recycler view
         View v = inflater.inflate(R.layout.layout_dialog_fragment, container, false);
 
-        Toast.makeText(getActivity(),"ssss",Toast.LENGTH_LONG).show();
-
-      //  for (int i = 0 ;i<feedItemList.size();i++){
-      //      Toast.makeText(getActivity(),feedItemList.get(i).getTotalItems().toString(),Toast.LENGTH_LONG).show();
-       //     feedItemList.get(i).getTotalItems().toString();
-      //  }
-
         mRecyclerView = (RecyclerView) v.findViewById(R.id.recycle_myorder_history);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //setadapter
@@ -55,7 +48,4 @@ public  class OrderHistoryDialogFragment extends DialogFragment {
         //get your recycler view and populate it.
         return v;
     }
-
-
-
 }

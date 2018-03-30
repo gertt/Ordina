@@ -24,7 +24,7 @@
         android:id="@+id/textView_myorder_name_history_dialog"
         android:layout_width="129dp"
         android:layout_height="19dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
         android:text="Titulli i produktit"
         android:textColor="@color/myorder_titleproduct_black"
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/textView_myorder_metric_history_dialog"
-        android:layout_width="103dp"
+        android:layout_width="133dp"
         android:layout_height="17dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="58dp"
@@ -45,8 +45,8 @@
         app:layout_constraintTop_toTopOf="@+id/imageView_myorder_history_dialog" />
 
     <TextView
-        android:id="@+id/textView_myorder_price_history_dialog"
-        android:layout_width="58dp"
+        android:id="@+id/textView_myorder_quantity_history_dialog"
+        android:layout_width="88dp"
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="96dp"
@@ -71,6 +71,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView_myorder_history_dialog"
         app:layout_constraintStart_toStartOf="@+id/imageView_myorder_history_dialog"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/textView_myorder_history_dialog"
+        android:layout_width="99dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="96dp"
+        android:text="TextView"
+        android:textColor="@color/myorder_titleproduct_black"
+        app:layout_constraintStart_toStartOf="@+id/textView_myorder_metric_history_dialog"
+        app:layout_constraintTop_toTopOf="@+id/imageView_myorder_history_dialog" />
 
 
 </android.support.constraint.ConstraintLayout>

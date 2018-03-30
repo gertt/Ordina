@@ -87,25 +87,17 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             @Override
             public void onClick(View view) {
 
-
-
                 feedItemListItem = new ArrayList<OrderHistoryItem>();
-
                 for ( int i =0;i<feedItem.getItems().size();i++) {
 
                     feedItemListItem.add(feedItem.getItems().get(i));
+
                 }
-
-
                 for ( int i =0;i<feedItemListItem.size();i++) {
 
-                    Toast.makeText(context,feedItemListItem.get(i).getPrice().toString(),Toast.LENGTH_LONG).show();
-
                 }
-
                 OrderHistoryDialogFragment newFragment = new OrderHistoryDialogFragment(feedItemListItem);
                 newFragment.show(fragmentManager, "abc");
-
 
             }
         });

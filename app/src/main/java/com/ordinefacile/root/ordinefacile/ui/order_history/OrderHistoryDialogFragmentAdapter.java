@@ -49,8 +49,10 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
         final OrderHistoryItem feedItem = feedItemList.get(position);
         holder.img_bacground_dialog.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
-
             holder.txt_name.setText("  "+feedItem.getName()+"  ");
+            holder.txt_name_dialog.setText("Total Price  "+feedItem.getTotal()+"  ");
+            holder.txt_price_dialog.setText("Price "+feedItem.getPrice()+"  ");
+            holder.txt_quantity_dialog.setText("Quantity "+feedItem.getQuantity()+"  ");
             parseImage.parseimage(feedItem.getImage(),holder.imag_myorder_pick);
 
     }
@@ -64,6 +66,9 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_name;
+        private TextView txt_price_dialog;
+        private TextView txt_quantity_dialog;
+        private TextView txt_name_dialog;
         private ImageView img_bacground_dialog;
         private CircularImageView imag_myorder_pick;
 
@@ -73,6 +78,9 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
             txt_name = (TextView) itemView.findViewById(R.id.textView_myorder_name_history_dialog);
             img_bacground_dialog = (ImageView) itemView.findViewById(R.id.imageView_myorder_history_dialog);
             imag_myorder_pick = (CircularImageView) itemView.findViewById(R.id.circularImageView_myorder_history_dialog);
+            txt_name_dialog = (TextView) itemView.findViewById(R.id.textView_myorder_history_dialog);
+            txt_price_dialog = (TextView) itemView.findViewById(R.id.textView_myorder_metric_history_dialog);
+            txt_quantity_dialog = (TextView) itemView.findViewById(R.id.textView_myorder_quantity_history_dialog);
         }
     }
 }
