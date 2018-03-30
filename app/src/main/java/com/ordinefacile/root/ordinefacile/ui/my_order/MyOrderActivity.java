@@ -114,6 +114,13 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         myOrderPresenter.delete(int_product);
     }
 
+    @Override
+    public void tokenExpired() {
+
+        Toast.makeText(getApplicationContext(),R.string.token_expired,Toast.LENGTH_LONG).show();
+
+    }
+
 
     @Override
     public void onBackPressed() {

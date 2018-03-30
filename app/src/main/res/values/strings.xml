@@ -52,5 +52,6 @@
     <string name="cannot_make_order">you can not make the order</string>
     <string name="price_history">Price</string>
     <string name="price_history2">Price2</string>
+    <string name="token_expired">This token has expired</string>
 
 </resources>

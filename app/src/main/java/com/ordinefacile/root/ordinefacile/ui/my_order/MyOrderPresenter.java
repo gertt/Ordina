@@ -201,7 +201,11 @@ public class MyOrderPresenter {
                         event.setEmri("myorder_activity");
                         EventBus.getDefault().post(event);
 
-                    }
+                    }else if (myorder.getError().toString().equalsIgnoreCase("true")){
+
+                            myOrderActivity.tokenExpired();
+
+                        }
                     }
 
                 });

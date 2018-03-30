@@ -38,5 +38,6 @@
     <string name="cannot_make_order">you can not make the order-it</string>
     <string name="price_history">Price-it</string>
     <string name="price_history2">Price2-it</string>
+    <string name="token_expired">This token has expired-it</string>
 
 </resources>
