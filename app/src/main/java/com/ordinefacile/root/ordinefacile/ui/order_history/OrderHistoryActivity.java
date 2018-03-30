@@ -1,5 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.order_history;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -35,6 +36,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
     private OrderHistoryAdapter adapter;
 
    // PullRefreshLayout swipe_menu;
+   FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.my_history);
+         fm = getFragmentManager();
 
        orderHistoryPresenter = new OrderHistoryPresenter(getApplicationContext(),this);
 
@@ -59,7 +62,6 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
         itemAnimator.setAddDuration(1000);
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
-
 
 
     }
@@ -91,7 +93,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
 
         }
 
-        adapter = new OrderHistoryAdapter(getApplicationContext(), feedItemList);
+        adapter = new OrderHistoryAdapter(getApplicationContext(), feedItemList,fm);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
       //  swipe_menu.setRefreshing(false);

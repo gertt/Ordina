@@ -1,7 +1,11 @@
 package com.ordinefacile.root.ordinefacile.ui.order_history;
 
+
 import android.content.Context;
 import android.graphics.Color;
+import android.app.FragmentManager;
+
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,19 +14,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailAdapter;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderPresenter;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-
-import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -38,15 +34,20 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     private ParseImage parseimage;
     MaterialDialog materialDialog;
 
+    FragmentManager fragmentManager;
 
-    public OrderHistoryAdapter(Context context, List<OrderHistoryData> feedItemList) {
+
+    public OrderHistoryAdapter(Context context, List<OrderHistoryData> feedItemList,FragmentManager fragmentManager) {
 
         this.feedItemList = feedItemList;
+        this.fragmentManager = fragmentManager;
         this.context = context;
         parseimage = new ParseImage(context);
         materialDialog = new MaterialDialog();
 
     }
+
+
 
     @Override
     public OrderHistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -77,7 +78,15 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(context,"u klikua",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,feedItem.getId().toString(),Toast.LENGTH_LONG).show();
+
+
+                OrderHistoryDialogFragment newFragment = new OrderHistoryDialogFragment(feedItemList);
+
+                newFragment.show(fragmentManager, "abc");
+
+
+
             }
         });
       //  holder.txt_name.setText(feedItem.getmName());

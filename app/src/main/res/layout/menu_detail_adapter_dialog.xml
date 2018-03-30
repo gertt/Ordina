@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="116dp"
+        android:layout_height="20dp"
+        android:text="Titulli i Produktit"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+</android.support.constraint.ConstraintLayout>
