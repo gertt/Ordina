@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,7 +54,18 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         String x = DebugDB.getAddressLog();
 
 
+        Boolean boolean1 = Boolean.valueOf("true");
+        boolean boolean2 = Boolean.parseBoolean("true");
 
+        System.out.print("bolean1"+boolean1);
+        System.out.print(boolean1);
+        System.out.print(boolean2);
+        System.out.print(boolean2);
+
+
+        //Open http://192.168.1.3:8080 in your browser
+
+//egwvXx1-Lbw:APA91bG01KVMhUOZKdbyi-MPSJ3G9Q1ol2TqfFZJBLCygIMtM-C9n2d6zZjtmLZ7MVJc-9Dy0eXlooF9WYby3tVP537uQ0u0EdaEq62VI0n167KBkL2oMLEaw9bGplVjf4c1BoYl9E41
         //Open http://192.168.100.58:8080 in your browser
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);

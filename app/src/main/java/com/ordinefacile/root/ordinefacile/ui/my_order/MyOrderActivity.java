@@ -1,41 +1,38 @@
 package com.ordinefacile.root.ordinefacile.ui.my_order;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
-import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
-import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
-import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
-import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
+import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
+import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 import net.idik.lib.slimadapter.SlimAdapter;
-import net.idik.lib.slimadapter.SlimInjector;
-import net.idik.lib.slimadapter.viewinjector.IViewInjector;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ordinefacile.root.ordinefacile.R2.color.myorder_titleproduct_black;
+import static com.ordinefacile.root.ordinefacile.R2.color.myorder_yellow;
+import static com.ordinefacile.root.ordinefacile.R2.color.red;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
@@ -47,12 +44,11 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     DatabaseHelper dbHelper;
     ParseImage parseImage;
     SlimAdapter slimAdapter;
-
+    MaterialDialog progressDialog;
+    MaterialDialog alertDialog;
 
     ArrayList<Orders> muylis = new ArrayList<Orders>();
 
-    String jsoni;
-    int id_product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +82,15 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
             @Override
             public void onClick(View view) {
 
+                progressDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+                        .title(R.string.loading)
+                        .content(R.string.sending_order)
+                        .progress(true, 0)
+                        .cancelable(false)
+                        .widgetColorRes(myorder_yellow)
+                        .progressIndeterminateStyle(false)
+                        .show();
+
                 // jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
                 myOrderPresenter.sendJson();
             }
@@ -109,16 +114,39 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     @Override
     public void idProduct(int int_product) {
-
-
         myOrderPresenter.delete(int_product);
     }
 
     @Override
     public void tokenExpired() {
+        progressDialog.dismiss();
 
-        Toast.makeText(getApplicationContext(),R.string.token_expired,Toast.LENGTH_LONG).show();
+    }
 
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public void sentError() {
+        progressDialog.dismiss();
+        alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+                .title(R.string.error)
+                .content(R.string.not_successfully)
+                .cancelable(false)
+                .positiveColor(myorder_yellow)
+                .positiveText(R.string.try_again)
+                .show();
+
+    }
+
+    @Override
+    public void goToMyOrderHistory() {
+        Intent intent = new Intent(this, OrderHistoryActivity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void dismissDialog() {
+        alertDialog.dismiss();
     }
 
 
@@ -146,25 +174,14 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @Override
     protected void onResume() {
         super.onResume();
+        myOrderPresenter.dismissDialog(alertDialog);
         EventBus.getDefault().register(this);
     }
 
     @Subscribe
     public void onEvent(Eventlist event) {
 
-   String sjsj = event.getEmri();
-   String sjssj = event.getEmri();
-
-    Toast.makeText(getApplicationContext(),"printoje",Toast.LENGTH_LONG).show();
-
-          if (sjsj.equalsIgnoreCase("myorder_activity")){
-
-             // Intent refreshIntent=new Intent(getApplicationContext(),MainMenuActivity.class);
-            //  startActivity(refreshIntent);
-
-          }
-
-
+        progressDialog.dismiss();
         myOrderPresenter.sendJson();
 
     }

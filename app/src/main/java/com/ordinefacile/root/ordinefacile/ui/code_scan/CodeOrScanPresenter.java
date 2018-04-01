@@ -143,7 +143,7 @@ public class CodeOrScanPresenter {
                         public void onNext(VauchePinModel pinModel) {
                             Log.d("Next  : ", pinModel.getMessage());
                             if(pinModel.getError() == false){
-                                String id = gson.toJson(pinModel.getData().getStoreId());
+                                String id = gson.toJson(pinModel.getData().getId());
 
                                 saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
                                 saveData.saveEntity(pinModel.getData().getId().toString());

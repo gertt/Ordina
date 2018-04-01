@@ -14,4 +14,11 @@ public interface MyOrderView {
     void idProduct(int int_product);
 
     void tokenExpired();
+
+    void sentError();
+
+    void goToMyOrderHistory();
+
+
+    void dismissDialog();
 }

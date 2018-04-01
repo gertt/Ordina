@@ -97,7 +97,7 @@ public class ScannerPresenter {
                                 saveData.saveNumberCall("");
                             }
 
-                            goToMenuAtivity(id);
+                            goToMenuAtivity("2");
                         }
                     }
                 });

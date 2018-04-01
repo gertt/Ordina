@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.1"
+        versionName "1.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -78,6 +78,9 @@ dependencies {
     //adapter easy
     compile 'net.idik:slimadapter:2.1.2'
     compile 'org.greenrobot:eventbus:3.1.1'
+
+    //material dialog,loading
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
 }
 //firebase

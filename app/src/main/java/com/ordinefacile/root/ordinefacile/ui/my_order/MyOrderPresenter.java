@@ -2,11 +2,13 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 
 import android.accounts.Account;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -91,7 +93,10 @@ public class MyOrderPresenter {
                         try {
                             JSONObject jsonObj = new JSONObject();
                             JSONArray jsonArr = new JSONArray();
-                            jsonObj.put("delivery", saveData.getDeliveryStatus());
+                            boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
+                            System.out.print(boolean_delivery_status);
+                            System.out.print(boolean_delivery_status);
+                            jsonObj.put("delivery", boolean_delivery_status);
                             jsonObj.put("entity_id", saveData.getEntity());
                             for (int i = 0; i < orders.size(); i++) {
                                 JSONObject pnObj = new JSONObject();
@@ -112,7 +117,7 @@ public class MyOrderPresenter {
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
-                            jsonAdd.put("device_token", "23456789");
+                            jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("brand", Build.MANUFACTURER);
                             jsonAdd.put("model", Build.MODEL);
                             jsonObj.put("device", jsonAdd);
@@ -122,7 +127,6 @@ public class MyOrderPresenter {
                             jsonObject = jsonObj;
                             String jssonobbj = jsonObject.toString();
                             String jssonxobbj = jsonObject.toString();
-                            //getMenuDishes(json_obj22);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -179,12 +183,15 @@ public class MyOrderPresenter {
                 .subscribe(new Subscriber<SendOrderModel>() {
                     @Override
                     public void onCompleted() {
+                        Log.d("","");
+
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d("Problem : ", e.getMessage());
+                        myOrderActivity.sentError();
 
                     }
 
@@ -201,9 +208,12 @@ public class MyOrderPresenter {
                         event.setEmri("myorder_activity");
                         EventBus.getDefault().post(event);
 
+                        myOrderActivity.goToMyOrderHistory();
+
                     }else if (myorder.getError().toString().equalsIgnoreCase("true")){
 
                             myOrderActivity.tokenExpired();
+                            myOrderActivity.sentError();
 
                         }
                     }
@@ -211,4 +221,9 @@ public class MyOrderPresenter {
                 });
     }
 
+    public void dismissDialog(MaterialDialog dialog) {
+        if(dialog != null){
+            myOrderActivity.dismissDialog();
+        }
+    }
 }
