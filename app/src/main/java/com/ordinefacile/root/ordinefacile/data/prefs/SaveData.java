@@ -79,6 +79,16 @@ public class SaveData {
         return preferences.getString("number_character", "");
 
     }
+
+    public void saveQrCode(String qr_code) {
+        editor.putString("qr_code", qr_code);
+        editor.commit();
+    }
+
+    public String getQrCode(){
+        return preferences.getString("qr_code", "");
+
+    }
 }
 
 

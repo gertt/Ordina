@@ -75,6 +75,7 @@ public class ScannerPresenter {
                             String id = gson.toJson(qrCodeModel.getData().getStore().getId());
 
                             saveData.saveEntity(qrCodeModel.getData().getStoreId());
+                            saveData.saveQrCode(qrCode);
 
                             char[] cArray = qrCode.toCharArray();
                             int count = 0;
@@ -97,7 +98,7 @@ public class ScannerPresenter {
                                 saveData.saveNumberCall("");
                             }
 
-                            goToMenuAtivity("2");
+                            goToMenuAtivity(id);
                         }
                     }
                 });
