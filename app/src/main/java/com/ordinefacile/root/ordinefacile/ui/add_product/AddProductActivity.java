@@ -157,7 +157,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
         Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
         startActivity(intent);
-
+        finish();
 
     }
 }

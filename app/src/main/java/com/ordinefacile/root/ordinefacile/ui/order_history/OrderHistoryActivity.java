@@ -85,11 +85,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
 
 
     }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
 
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -116,5 +112,10 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
     @Override
     public void errorLoading() {
         dialog.dismiss();
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+// dont call **super**, if u want disable back button in current screen.
     }
 }

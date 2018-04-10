@@ -13,39 +13,33 @@ public class PinModelData {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("name")
+    @SerializedName("token")
     @Expose
-    private String name;
-    @SerializedName("pin")
+    private String token;
+    @SerializedName("phone")
     @Expose
-    private String pin;
-    @SerializedName("location")
-    @Expose
-    private Object location;
+    private String phone;
     @SerializedName("address")
     @Expose
-    private Object address;
-    @SerializedName("city")
+    private String address;
+    @SerializedName("device_id")
     @Expose
-    private Object city;
-    @SerializedName("phone_1")
+    private Object deviceId;
+    @SerializedName("order_id")
     @Expose
-    private Object phone1;
-    @SerializedName("phone_2")
+    private Object orderId;
+    @SerializedName("store_id")
     @Expose
-    private Object phone2;
-    @SerializedName("social_fcb")
+    private String storeId;
+    @SerializedName("used")
     @Expose
-    private Object socialFcb;
-    @SerializedName("social_goo")
+    private String used;
+    @SerializedName("user_id")
     @Expose
-    private Object socialGoo;
-    @SerializedName("social_insta")
+    private String userId;
+    @SerializedName("expires_at")
     @Expose
-    private Object socialInsta;
-    @SerializedName("deleted_at")
-    @Expose
-    private Object deletedAt;
+    private String expiresAt;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -55,6 +49,9 @@ public class PinModelData {
     @SerializedName("delivery")
     @Expose
     private Boolean delivery;
+    @SerializedName("store")
+    @Expose
+    private PinModelStore store;
 
     public Integer getId() {
         return id;
@@ -64,92 +61,76 @@ public class PinModelData {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getToken() {
+        return token;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public String getPin() {
-        return pin;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Object getLocation() {
-        return location;
-    }
-
-    public void setLocation(Object location) {
-        this.location = location;
-    }
-
-    public Object getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Object address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public Object getCity() {
-        return city;
+    public Object getDeviceId() {
+        return deviceId;
     }
 
-    public void setCity(Object city) {
-        this.city = city;
+    public void setDeviceId(Object deviceId) {
+        this.deviceId = deviceId;
     }
 
-    public Object getPhone1() {
-        return phone1;
+    public Object getOrderId() {
+        return orderId;
     }
 
-    public void setPhone1(Object phone1) {
-        this.phone1 = phone1;
+    public void setOrderId(Object orderId) {
+        this.orderId = orderId;
     }
 
-    public Object getPhone2() {
-        return phone2;
+    public String getStoreId() {
+        return storeId;
     }
 
-    public void setPhone2(Object phone2) {
-        this.phone2 = phone2;
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
-    public Object getSocialFcb() {
-        return socialFcb;
+    public String getUsed() {
+        return used;
     }
 
-    public void setSocialFcb(Object socialFcb) {
-        this.socialFcb = socialFcb;
+    public void setUsed(String used) {
+        this.used = used;
     }
 
-    public Object getSocialGoo() {
-        return socialGoo;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setSocialGoo(Object socialGoo) {
-        this.socialGoo = socialGoo;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Object getSocialInsta() {
-        return socialInsta;
+    public String getExpiresAt() {
+        return expiresAt;
     }
 
-    public void setSocialInsta(Object socialInsta) {
-        this.socialInsta = socialInsta;
-    }
-
-    public Object getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Object deletedAt) {
-        this.deletedAt = deletedAt;
+    public void setExpiresAt(String expiresAt) {
+        this.expiresAt = expiresAt;
     }
 
     public String getCreatedAt() {
@@ -176,4 +157,14 @@ public class PinModelData {
         this.delivery = delivery;
     }
 
+    public PinModelStore getStore() {
+        return store;
+    }
+
+    public void setStore(PinModelStore store) {
+        this.store = store;
+    }
+
 }
+
+

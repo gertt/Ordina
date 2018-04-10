@@ -44,9 +44,9 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         t = Toast.makeText(getApplicationContext(), R.string.permission_denied, Toast.LENGTH_LONG);
         scannerPresenter.checkForPermission();
 
-        //Intent i = new Intent(this, MainMenuActivity.class);
-        //i.putExtra("storeId","2");
-        //startActivity(i);
+      //  Intent i = new Intent(this, MainMenuActivity.class);
+      //  i.putExtra("storeId","1");
+      //  startActivity(i);
 
     }
 

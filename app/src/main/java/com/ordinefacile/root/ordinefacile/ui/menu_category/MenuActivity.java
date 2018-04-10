@@ -78,6 +78,8 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
                     @Override
                     public void action(ImageView view) {
 
+                        System.out.print("imazhijone :"+data.getImage());
+
                         parseImage.parseimage( data.getImage(),view);
 
                     }

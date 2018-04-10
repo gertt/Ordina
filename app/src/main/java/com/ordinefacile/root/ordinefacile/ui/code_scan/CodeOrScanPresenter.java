@@ -38,37 +38,7 @@ public class CodeOrScanPresenter {
     }
 
     public void checkCharacter(String pin_voucher) {
-
-        char[] cArray = pin_voucher.toCharArray();
-
-        int count = 0;
-        int number_character = 0;
-        for (int i=0; i < cArray.length; i++){
-
-            count++;
-            number_character = count;
-        }
-        if (number_character==5){
-
-
-            String str = Integer.toString(number_character);
-            saveData.saveNumberCharacter(str);
-            System.out.print("kjsjksjks");
-            getStoreDetailsByVoucherCode(pin_voucher);
-
-        }else  if(number_character>5){
-
-            String str = Integer.toString(number_character);
-            saveData.saveNumberCharacter(str);
-
-            System.out.print("kjsjksjks");
             getStoreDetailByPin(pin_voucher);
-
-        }else  if (number_character<5){
-
-            codeOrScanActivity.pinInvalid();
-        }
-
 
     }
 
@@ -98,70 +68,29 @@ public class CodeOrScanPresenter {
                     public void onNext(PinModel pinModel) {
                        // Log.d("Next  : ", pinModel.getData().getName());
                         if(pinModel.getError() == false){
-                            String id = gson.toJson(pinModel.getData().getId());
+                            String id = gson.toJson(pinModel.getData().getStore().getId());
 
                             saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
                             saveData.saveEntity(pinModel.getData().getId().toString());
 
-                            if (pinModel.getData().getPhone1()!=null){
-                                saveData.saveNumberCall(pinModel.getData().getPhone1().toString());
+                            if (pinModel.getData().getPhone()!=null){
+                                saveData.saveNumberCall(pinModel.getData().getPhone().toString());
 
                             }else {
                                 saveData.saveNumberCall("");
                             }
                             codeOrScanActivity.goToMenuAtivity(id);
                             System.out.println("imazhi "+id);
+                        }else if (pinModel.getError() ==true){
+
+                            codeOrScanActivity.pinInvalid();
                         }
                     }
                 });
     }
     }
 
-    public void getStoreDetailsByVoucherCode(String voucher_code) {
 
-        if (voucher_code.equalsIgnoreCase("")||voucher_code==null){
-            codeOrScanActivity.pinInvalid();
-        }else {
-
-            apiHelper.getStoreDetailsByVoucherCode(voucher_code)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<VauchePinModel>() {
-                        @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            Log.e("Problem : ", e.getMessage());
-                            codeOrScanActivity.pinInvalid();
-
-                        }
-
-                        @Override
-                        public void onNext(VauchePinModel pinModel) {
-                            Log.d("Next  : ", pinModel.getMessage());
-                            if(pinModel.getError() == false){
-                                String id = gson.toJson(pinModel.getData().getId());
-
-                                saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
-                                saveData.saveEntity(pinModel.getData().getId().toString());
-
-                                if (pinModel.getData().getPhone()!=null){
-                                    saveData.saveNumberCall(pinModel.getData().getPhone().toString());
-
-                                }else {
-                                    saveData.saveNumberCall("");
-                                }
-                                codeOrScanActivity.goToMenuAtivity(pinModel.getData().getStoreId());
-
-                                System.out.println("imazhi "+id);
-                            }
-                        }
-                    });
-        }
-    }
 
     public void checkForLanguage() {
         if(saveData.getLanguage() != null){

@@ -117,6 +117,7 @@ public class MyOrderPresenter {
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
+                          //  jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("brand", Build.MANUFACTURER);
                             jsonAdd.put("model", Build.MODEL);
@@ -204,9 +205,9 @@ public class MyOrderPresenter {
                         feedItemList.clear();
                         myOrderActivity.listAdapter(feedItemList);
 
-                        Eventlist event = new Eventlist();
-                        event.setEmri("myorder_activity");
-                        EventBus.getDefault().post(event);
+                    //    Eventlist event = new Eventlist();
+                   //     event.setEmri("myorder_activity");
+                     //   EventBus.getDefault().post(event);
 
                         myOrderActivity.goToMyOrderHistory();
 

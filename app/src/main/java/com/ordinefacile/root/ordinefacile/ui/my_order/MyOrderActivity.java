@@ -59,11 +59,12 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.menu_myorder);
+
         EventBus bus = EventBus.getDefault();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
         dbHelper = new DatabaseHelper(getApplicationContext());
 
-        myOrderPresenter = new MyOrderPresenter(getApplicationContext(),this);
+        myOrderPresenter = new MyOrderPresenter(getApplicationContext(), this);
         myOrderPresenter.getListProducts();
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -74,7 +75,6 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         itemAnimator.setAddDuration(1000);
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
-
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -103,10 +103,10 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
 
         muylis = (ArrayList<Orders>) feedItemList;
-        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList,this);
+        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList, this);
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
-        Log.d(TAG,feedItemList.toString());
+        Log.d(TAG, feedItemList.toString());
         adapter.notifyDataSetChanged();
 
 
@@ -141,6 +141,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     public void goToMyOrderHistory() {
         Intent intent = new Intent(this, OrderHistoryActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -166,15 +167,18 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         EventBus.getDefault().unregister(this);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         myOrderPresenter.dismissDialog(alertDialog);
+
         EventBus.getDefault().register(this);
     }
 
@@ -185,4 +189,11 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         myOrderPresenter.sendJson();
 
     }
+
+    public void onDestroy() {
+        super.onDestroy();
+    //   progressDialog.dismiss();
+    }
+
+
 }

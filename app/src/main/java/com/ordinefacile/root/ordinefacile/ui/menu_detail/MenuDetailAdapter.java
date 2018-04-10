@@ -105,9 +105,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             @Override
             public void onClick(View v) {
 
-
-
-                if (saveData.getNumberCharacter().equalsIgnoreCase("5")||saveData.getNumberCharacter().equalsIgnoreCase("8")) {
                     String textnumberstring = holder.txt_add.getText().toString();
 
                     if (textnumberstring.equalsIgnoreCase("Add")) {
@@ -128,18 +125,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     }
                     Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-
-                }else {
-                    Toast.makeText(context,R.string.cannot_make_order,Toast.LENGTH_LONG).show();
-                }
             }
         });
 
         holder.btn_decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (saveData.getNumberCharacter().equalsIgnoreCase("5")||saveData.getNumberCharacter().equalsIgnoreCase("8")) {
 
 
                     String textnumberstring = holder.txt_add.getText().toString();
@@ -167,10 +158,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
                     Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG);
 
-                }else {
-                    Toast.makeText(context,R.string.cannot_make_order,Toast.LENGTH_LONG).show();
 
-                }
             }
         });
 
