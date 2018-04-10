@@ -41,7 +41,6 @@ class MyFirebaseInstanceIDServiceextends extends FirebaseMessagingService {
     }
 
 
-
     private void sendNotification(String body,String title) {
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
         notificationIntent.setAction("android.intent.action.MAIN");
