@@ -72,7 +72,8 @@ public class ScannerPresenter {
                         Log.d("Next  : ", qrCodeModel.getData().getName());
                         if(qrCodeModel.getError() == false){
                             System.out.println("elio prifti : "+qrCodeModel.getMessage());
-                            String id = gson.toJson(qrCodeModel.getData().getStore().getId());
+                           // String id = gson.toJson(qrCodeModel.getData().getStore().getId());
+                            String id = qrCodeModel.getData().getStoreId().toString();
 
                             saveData.saveEntity(qrCodeModel.getData().getStoreId());
                             saveData.saveQrCode(qrCode);

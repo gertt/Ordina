@@ -44,6 +44,7 @@ public class CodeOrScanPresenter {
 
     public void getStoreDetailByPin(String pin) {
 
+        saveData.saveQrCode(pin);
         if (pin.equalsIgnoreCase("")||pin==null){
             codeOrScanActivity.pinInvalid();
         }else {
@@ -68,13 +69,14 @@ public class CodeOrScanPresenter {
                     public void onNext(PinModel pinModel) {
                        // Log.d("Next  : ", pinModel.getData().getName());
                         if(pinModel.getError() == false){
-                            String id = gson.toJson(pinModel.getData().getStore().getId());
-
+                          //  String id = gson.toJson(pinModel.getData().getStoreId());
+                            String id = pinModel.getData().getStoreId().toString();
                             saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
+
                             saveData.saveEntity(pinModel.getData().getId().toString());
 
-                            if (pinModel.getData().getPhone()!=null){
-                                saveData.saveNumberCall(pinModel.getData().getPhone().toString());
+                            if (pinModel.getData().getStore().getPhone1()!=null){
+                                saveData.saveNumberCall(pinModel.getData().getStore().getPhone1());
 
                             }else {
                                 saveData.saveNumberCall("");
@@ -89,8 +91,6 @@ public class CodeOrScanPresenter {
                 });
     }
     }
-
-
 
     public void checkForLanguage() {
         if(saveData.getLanguage() != null){
