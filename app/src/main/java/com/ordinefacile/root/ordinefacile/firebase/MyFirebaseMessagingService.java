@@ -31,20 +31,22 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
         Log.d(TAG, "FROM:" + remoteMessage.getFrom());
         //Check if the message contains data
-        if(remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data: " + remoteMessage.getData());
-            sendNotification(remoteMessage.getData().get("body"),remoteMessage.getData().get("title"));
+        if(remoteMessage.getData() !=null ) {
+            Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
+            Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
+
+
         }
         //Check if the message contains notification
-
         if(remoteMessage.getNotification() != null) {
             Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
+            Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
+            sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
+           // sendNotification("order","ready");
         }
     }
 
-
-
-    private void sendNotification(String body,String title) {
+    private void sendNotification2(String body,String title) {
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
         notificationIntent.setAction("android.intent.action.MAIN");
         notificationIntent.addCategory("android.intent.category.LAUNCHER");
@@ -66,5 +68,5 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /*ID of notification*/, notifiBuilder.build());
     }
-
 }
+

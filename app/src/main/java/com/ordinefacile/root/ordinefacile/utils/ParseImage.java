@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.ordinefacile.root.ordinefacile.R;
 
 import static com.ordinefacile.root.ordinefacile.utils.Util.IMAGE_URL;
+import static com.ordinefacile.root.ordinefacile.utils.Util.IMAGE_URL2;
 import static com.ordinefacile.root.ordinefacile.utils.Util.Imageplus;
 
 /**
@@ -36,7 +37,7 @@ public class ParseImage {
 
         input = input.trim();
         GlideApp.with(context)
-                .load(IMAGE_URL+input)
+                .load(IMAGE_URL2+input)
                 .placeholder(R.drawable.placeholder)
                 .override(600,600)
                 .into(imageView);

@@ -7,7 +7,7 @@ package com.ordinefacile.root.ordinefacile.utils;
 public class Util {
 
     public static String IMAGE_URL = "http://restaurant.softmate.org/";
-    public static String IMAGE_URL2 = " http://test.blackcave.al/";
+    public static String IMAGE_URL2 = "http://165.227.201.28/";
     public  static  String Imageplus = "images/services/appliances_repair.png";
 
 

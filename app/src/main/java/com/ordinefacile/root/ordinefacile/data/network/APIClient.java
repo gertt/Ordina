@@ -9,7 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    public static final String BASE_URL = "http://restaurant.softmate.org/api/";
+
+    //http://165.227.201.28/api/qr_scan/C1681
+
+    public static final String BASE_URL = "http://165.227.201.28/api/";
     private static Retrofit retrofit = null;
 
 
