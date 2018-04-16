@@ -75,7 +75,7 @@ public class ScannerPresenter {
                            // String id = gson.toJson(qrCodeModel.getData().getStore().getId());
                             String id = qrCodeModel.getData().getStoreId().toString();
 
-                            saveData.saveEntity(qrCodeModel.getData().getStoreId());
+                            saveData.saveEntity(qrCodeModel.getData().getId().toString());
                             saveData.saveQrCode(qrCode);
 
                             char[] cArray = qrCode.toCharArray();
