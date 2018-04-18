@@ -125,6 +125,20 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     @SuppressLint("ResourceAsColor")
     @Override
+    public void sentErrorInternet() {
+        progressDialog.dismiss();
+        alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+                .title(R.string.error)
+                .content(R.string.not_successfully_internet)
+                .cancelable(false)
+                .positiveColor(myorder_yellow)
+                .positiveText(R.string.try_again)
+                .show();
+
+    }
+
+    @SuppressLint("ResourceAsColor")
+    @Override
     public void sentError() {
         progressDialog.dismiss();
         alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
@@ -136,6 +150,10 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
                 .show();
 
     }
+
+
+
+
 
     @Override
     public void goToMyOrderHistory() {
@@ -194,6 +212,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         super.onDestroy();
     //   progressDialog.dismiss();
     }
+
 
 
 }

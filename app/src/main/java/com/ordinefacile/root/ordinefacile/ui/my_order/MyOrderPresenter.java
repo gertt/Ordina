@@ -27,6 +27,9 @@ import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.network.API;
+import com.ordinefacile.root.ordinefacile.network.APIClient;
+import com.ordinefacile.root.ordinefacile.network.LoginModel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
@@ -37,6 +40,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -186,13 +192,21 @@ public class MyOrderPresenter {
                     public void onCompleted() {
                         Log.d("","");
 
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d("Problem : ", e.getMessage());
-                        myOrderActivity.sentError();
+
+                        postarray(e.getMessage().toString(),json_obj22);
+
+                        if (e.getMessage().equalsIgnoreCase("Failed to connect to /165.227.201.28:80")){
+
+                            myOrderActivity.sentErrorInternet();
+                        }else {
+
+                            myOrderActivity.sentError();
+                        }
 
                     }
 
@@ -226,5 +240,31 @@ public class MyOrderPresenter {
         if(dialog != null){
             myOrderActivity.dismissDialog();
         }
+    }
+
+    public void postarray(String error ,String jsoni) {
+
+        final API apiService = APIClient.createAPI().create(API.class);
+
+        Call<LoginModel> userCallbackCall = apiService.sendErroLogs(error,jsoni);
+        userCallbackCall.enqueue(new Callback<LoginModel>() {
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                if (response.body() != null) {
+
+                    String ejejhe =  response.body().getValue();
+                    String ejdejhe =  response.body().getValue();
+
+                } else {
+
+                }
+            }
+            @Override
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+
+
+            }
+        });
+
     }
 }

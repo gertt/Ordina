@@ -16,6 +16,7 @@ public interface MyOrderView {
     void tokenExpired();
 
     void sentError();
+    void sentErrorInternet();
 
     void goToMyOrderHistory();
 

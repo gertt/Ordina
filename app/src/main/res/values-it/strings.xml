@@ -44,6 +44,7 @@
     <string name="loading_history">Loading your History</string>
     <string name="error">Error</string>
     <string name="not_successfully">Order WAS NOT sent successfully !</string>
+    <string name="not_successfully_internet">Check Internet-it !</string>
     <string name="try_again">Try again</string>
 
 </resources>
