@@ -64,12 +64,16 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
         holder.price.setText("  "+feedItem.getPrice()+"  ");
         holder.metric.setText("  "+feedItem.getMetrics()+"  ");
-        holder.description.setText("  "+feedItem.getDescription()+"  ");
+
+        if (feedItem.getDescription()==null){
+
+            holder.description.setText("  "+"No Description"+"  ");
+        }else {
+
+            holder.description.setText("  "+feedItem.getDescription()+"  ");
+        }
 
         Integer emir = feedItem.getId();
-
-
-
         parseimage.parseimage(feedItem.getImage().toString(), holder.imageviews);
         urlImg = feedItem.getImage().toString();
         name = feedItem.getName();
@@ -183,6 +187,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             txt_name = (TextView) itemView.findViewById(R.id.textView5);
             imageviews = (ImageView) itemView.findViewById(R.id.imageView2);
             price = (TextView) itemView.findViewById(R.id.textView_price);

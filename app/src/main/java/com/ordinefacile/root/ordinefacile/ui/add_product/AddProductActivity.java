@@ -113,10 +113,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
 
             addProductPresenter.checknumber();
         }
-        if (id == R.id.action_my_order) {
-               Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
-               startActivity(intent);
-        }
+
         if (id == R.id.action_history) {
             Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);
             startActivity(intent);

@@ -92,7 +92,11 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
                         .show();
 
                 // jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
-                myOrderPresenter.sendJson();
+
+
+              //  myOrderPresenter.sendJson();
+
+                myOrderPresenter.getListProductsSendJson();
             }
         });
 
@@ -204,7 +208,8 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     public void onEvent(Eventlist event) {
 
         progressDialog.dismiss();
-        myOrderPresenter.sendJson();
+        myOrderPresenter.getListProductsSendJson();
+        //  myOrderPresenter.sendJson();
 
     }
 

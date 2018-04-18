@@ -128,10 +128,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
             menuDetailPresenter.checknumber();
         }
-        if (id == R.id.action_my_order) {
-            Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
-            startActivity(intent);
-        }
 
         if (id == R.id.action_history) {
             Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);

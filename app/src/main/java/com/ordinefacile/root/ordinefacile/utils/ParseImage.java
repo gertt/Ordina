@@ -25,12 +25,8 @@ public class ParseImage {
     }
     public   void parseimage(String url, ImageView imageView){
 
-
-
         String  input = url.toString();
      //   input = input.replace(" ", "");
-
-
 
     System.out.print(url);
         System.out.print(url);

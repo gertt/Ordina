@@ -152,6 +152,82 @@ public class MyOrderPresenter {
                 });
     }
 
+    public void getListProductsSendJson() {
+        dbOperations.read().subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<Orders>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("", "");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("", "");
+                    }
+
+                    @Override
+                    public void onNext(List<Orders> orders) {
+                        Log.d("", "");
+
+                        try {
+                            JSONObject jsonObj = new JSONObject();
+                            JSONArray jsonArr = new JSONArray();
+                            boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
+                            System.out.print(boolean_delivery_status);
+                            System.out.print(boolean_delivery_status);
+                            jsonObj.put("delivery", boolean_delivery_status);
+                            jsonObj.put("entity_id", saveData.getEntity());
+                            for (int i = 0; i < orders.size(); i++) {
+                                JSONObject pnObj = new JSONObject();
+                                pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
+                                pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
+                                pnObj.put("mId", orders.get(i).getmId());
+                                pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
+                                pnObj.put("mIdTable", orders.get(i).getmIdProduct());
+                                pnObj.put("mMetric", orders.get(i).getmMetric());
+                                pnObj.put("mName", orders.get(i).getmName());
+                                pnObj.put("mPrice", orders.get(i).getmPrice());
+                                pnObj.put("mQuantity", orders.get(i).getmQuantity());
+                                pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
+                                jsonArr.put(pnObj);
+                                jsonObj.put("order_items", jsonArr);
+                            }
+
+                            String json_array = jsonArr.toString();
+                            String json_obj = jsonObj.toString();
+                            JSONObject jsonAdd = new JSONObject();
+                            //  jsonAdd.put("device_token", saveData.getTokenFcm());
+                            jsonAdd.put("device_token", saveData.getTokenFcm());
+                            jsonAdd.put("brand", Build.MANUFACTURER);
+                            jsonAdd.put("model", Build.MODEL);
+                            jsonObj.put("device", jsonAdd);
+                            String json_array2 = jsonArr.toString();
+                            String json_obj2 = jsonObj.toString();
+                            json_obj22 = jsonObj.toString();
+                            sendJson(json_obj22);
+                            jsonObject = jsonObj;
+                            String jssonobbj = jsonObject.toString();
+                            String jssonxobbj = jsonObject.toString();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        feedItemList = new ArrayList<Orders>();
+                        for (int i = 0; i < orders.size(); i++) {
+
+                            String ss = orders.get(i).getmName();
+                            feedItemList.add(orders.get(i));
+
+                        }
+
+                        myOrderActivity.listAdapter(feedItemList);
+                    }
+                });
+    }
+
 
     public void delete(int id) {
 
@@ -182,9 +258,9 @@ public class MyOrderPresenter {
 
     }
 
-    public void sendJson() {
+    public void sendJson(String jsonObject2) {
 
-        apiHelper.sendJson(json_obj22)
+        apiHelper.sendJson(jsonObject2)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<SendOrderModel>() {
