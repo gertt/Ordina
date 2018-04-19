@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,23 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
-import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
-
 import java.util.List;
 
 public class MenuDetailActivity extends AppCompatActivity implements MenuDetailView{
-
 
     String categoryId;
     MenuDetailPresenter menuDetailPresenter;
@@ -36,10 +26,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     private MenuDetailAdapter adapter;
 
     PullRefreshLayout swipe_menu;
-
-
-    String img_url;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +107,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         super.onBackPressed();
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -141,6 +128,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -148,4 +136,12 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+       // Toast.makeText(getApplicationContext(), "onRestart", Toast.LENGTH_SHORT).show();
+        adapter.setAdd();
+    }
+
 }

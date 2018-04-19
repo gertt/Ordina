@@ -94,12 +94,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
     }
     @Override
     public void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-       /* new android.support.v7.app.AlertDialog.Builder(ScannerActivity.this)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();*/
+
     }
     @Override
     public void goToMenuActivity(String s) {

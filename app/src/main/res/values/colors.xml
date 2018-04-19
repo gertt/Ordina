@@ -4,13 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="red">#ff0000</color>
-
     <color name="help_bluline">#4281A6</color>
-
     <color name="myorder_titleproduct_black">#000000</color>
     <color name="transparent">#0000</color>
     <color name="menu_background">#EDEDED</color>
-
     <color name="action_bar">#ff0d0d0d</color>
     <color name="white">#ffffffff</color>
     <color name="off_white">#99ffffff</color>

@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
 import android.content.Context;
-
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
 /**

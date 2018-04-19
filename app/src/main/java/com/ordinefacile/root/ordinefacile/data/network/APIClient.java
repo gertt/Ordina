@@ -9,12 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-
-    //http://165.227.201.28/api/qr_scan/C1681
-
     public static final String BASE_URL = "http://165.227.201.28/api/";
-    private static Retrofit retrofit = null;
 
+    private static Retrofit retrofit = null;
 
     public static Retrofit createAPI() {
         if (retrofit==null) {
@@ -27,8 +24,6 @@ public class APIClient {
         return retrofit;
     }
 
-    //////////////////// Methot Get Without Headers///////////////////
-
     public static Retrofit getClient() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
@@ -40,5 +35,4 @@ public class APIClient {
 
         return retrofit;
     }
-
 }

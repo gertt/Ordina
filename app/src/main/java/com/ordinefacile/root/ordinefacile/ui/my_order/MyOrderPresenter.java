@@ -1,48 +1,24 @@
 package com.ordinefacile.root.ordinefacile.ui.my_order;
 
-import android.accounts.Account;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
-import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.stmt.Where;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
-import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
-import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
-import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.network.API;
-import com.ordinefacile.root.ordinefacile.network.APIClient;
-import com.ordinefacile.root.ordinefacile.network.LoginModel;
-
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -119,21 +95,17 @@ public class MyOrderPresenter {
                                 jsonArr.put(pnObj);
                                 jsonObj.put("order_items", jsonArr);
                             }
-
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
-                          //  jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("brand", Build.MANUFACTURER);
                             jsonAdd.put("model", Build.MODEL);
                             jsonObj.put("device", jsonAdd);
                             String json_array2 = jsonArr.toString();
                             String json_obj2 = jsonObj.toString();
-                             json_obj22 = jsonObj.toString();
+                            json_obj22 = jsonObj.toString();
                             jsonObject = jsonObj;
-                            String jssonobbj = jsonObject.toString();
-                            String jssonxobbj = jsonObject.toString();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -146,7 +118,6 @@ public class MyOrderPresenter {
                             feedItemList.add(orders.get(i));
 
                         }
-
                         myOrderActivity.listAdapter(feedItemList);
                     }
                 });
@@ -170,6 +141,12 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(List<Orders> orders) {
                         Log.d("", "");
+
+                        if (orders.size()==0){
+                            myOrderActivity.checkProduct();
+
+                        }else if (orders.size()>0){
+
 
                         try {
                             JSONObject jsonObj = new JSONObject();
@@ -198,7 +175,6 @@ public class MyOrderPresenter {
                             String json_array = jsonArr.toString();
                             String json_obj = jsonObj.toString();
                             JSONObject jsonAdd = new JSONObject();
-                            //  jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("device_token", saveData.getTokenFcm());
                             jsonAdd.put("brand", Build.MANUFACTURER);
                             jsonAdd.put("model", Build.MODEL);
@@ -208,8 +184,6 @@ public class MyOrderPresenter {
                             json_obj22 = jsonObj.toString();
                             sendJson(json_obj22);
                             jsonObject = jsonObj;
-                            String jssonobbj = jsonObject.toString();
-                            String jssonxobbj = jsonObject.toString();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -225,12 +199,12 @@ public class MyOrderPresenter {
 
                         myOrderActivity.listAdapter(feedItemList);
                     }
+
+                    }
                 });
     }
 
-
     public void delete(int id) {
-
 
         dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -268,15 +242,12 @@ public class MyOrderPresenter {
                     public void onCompleted() {
                         Log.d("","");
 
+                        myOrderActivity.showCompleteOrder();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("Problem : ", e.getMessage());
-
-                        postarray(e.getMessage().toString(),json_obj22);
-
-                        if (e.getMessage().equalsIgnoreCase("Failed to connect to /165.227.201.28:80")){
+                        Log.d("Problem : ", e.getMessage());if (e.getMessage().equalsIgnoreCase("Failed to connect to /165.227.201.28:80")){
 
                             myOrderActivity.sentErrorInternet();
                         }else {
@@ -289,15 +260,13 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(SendOrderModel myorder) {
 
+                        myOrderActivity.showSendOrder();
+
                         if (myorder.getError().toString().equalsIgnoreCase("false")) {
 
                         myOrderActivity.deleteDatabase("ordinafacile.db");
                         feedItemList.clear();
                         myOrderActivity.listAdapter(feedItemList);
-
-                    //    Eventlist event = new Eventlist();
-                   //     event.setEmri("myorder_activity");
-                     //   EventBus.getDefault().post(event);
 
                         myOrderActivity.goToMyOrderHistory();
 
@@ -311,36 +280,9 @@ public class MyOrderPresenter {
 
                 });
     }
-
     public void dismissDialog(MaterialDialog dialog) {
         if(dialog != null){
             myOrderActivity.dismissDialog();
         }
-    }
-
-    public void postarray(String error ,String jsoni) {
-
-        final API apiService = APIClient.createAPI().create(API.class);
-
-        Call<LoginModel> userCallbackCall = apiService.sendErroLogs(error,jsoni);
-        userCallbackCall.enqueue(new Callback<LoginModel>() {
-            @Override
-            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-                if (response.body() != null) {
-
-                    String ejejhe =  response.body().getValue();
-                    String ejdejhe =  response.body().getValue();
-
-                } else {
-
-                }
-            }
-            @Override
-            public void onFailure(Call<LoginModel> call, Throwable t) {
-
-
-            }
-        });
-
     }
 }

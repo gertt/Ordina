@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-
 
 
 public class AddProductActivity extends AppCompatActivity  implements  AddProductView {
@@ -66,10 +64,6 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         metric = intent.getStringExtra("categoryDetailMetric");
         description = intent.getStringExtra("categoryDetailDescription");
         urlImage = intent.getStringExtra("categoryDetailUrlImg");
-
-
-
-
         id_product = intent.getStringExtra("categoryDetaiIdProduct");
 
         txt_quantity = (TextView)findViewById(R.id.textView_quantity);
@@ -127,6 +121,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 

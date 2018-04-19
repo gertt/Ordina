@@ -49,7 +49,6 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     ArrayList<Orders> muylis = new ArrayList<Orders>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,25 +75,10 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                progressDialog = new MaterialDialog.Builder(MyOrderActivity.this)
-                        .title(R.string.loading)
-                        .content(R.string.sending_order)
-                        .progress(true, 0)
-                        .cancelable(false)
-                        .widgetColorRes(myorder_yellow)
-                        .progressIndeterminateStyle(false)
-                        .show();
-
-                // jsoni = "{\"table_id\":\"1\",\"order_items\":[{\"mDescriptions\":\"  Aut quasi ex sit cor\",\"mFinalPrice\":36.22,\"mId\":50,\"mIdProduct\":\"213\",\"mIdTable\":\"213\",\"mMetric\":\"  g  \",\"mName\":\"  Ms. Veda Parker V  \",\"mPrice\":36.22,\"mQuantity\":1,\"mUrl_Image\":\"storage\\/images\\/products\\/e3ea51dd047185745f2d7fe86f70b0b1125068784.jpeg\"}],\"device\":{\"device_token\":\"tokeni jone\",\"brand\":\"samusng\",\"model\":\"smg900f\"}}";
-
-
-              //  myOrderPresenter.sendJson();
 
                 myOrderPresenter.getListProductsSendJson();
             }
@@ -105,14 +89,12 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @Override
     public void listAdapter(List<Orders> feedItemList) {
 
-
         muylis = (ArrayList<Orders>) feedItemList;
         adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList, this);
         mRecyclerView.setAdapter(adapter);
         System.out.println(feedItemList.size());
         Log.d(TAG, feedItemList.toString());
         adapter.notifyDataSetChanged();
-
 
     }
 
@@ -130,6 +112,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     @SuppressLint("ResourceAsColor")
     @Override
     public void sentErrorInternet() {
+
         progressDialog.dismiss();
         alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
                 .title(R.string.error)
@@ -155,10 +138,6 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
     }
 
-
-
-
-
     @Override
     public void goToMyOrderHistory() {
         Intent intent = new Intent(this, OrderHistoryActivity.class);
@@ -166,12 +145,36 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         finish();
     }
 
-
     @Override
     public void dismissDialog() {
         alertDialog.dismiss();
     }
 
+    @Override
+    public void checkProduct() {
+
+        Toast.makeText(getApplicationContext(),R.string.no_product_in_cart,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showSendOrder() {
+
+        progressDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+                .title(R.string.loading)
+                .content(R.string.sending_order)
+                .progress(true, 0)
+                .cancelable(false)
+                .widgetColorRes(myorder_yellow)
+                .progressIndeterminateStyle(false)
+                .show();
+
+    }
+
+    @Override
+    public void showCompleteOrder() {
+        progressDialog.dismiss();
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -209,7 +212,6 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
         progressDialog.dismiss();
         myOrderPresenter.getListProductsSendJson();
-        //  myOrderPresenter.sendJson();
 
     }
 
@@ -217,7 +219,4 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
         super.onDestroy();
     //   progressDialog.dismiss();
     }
-
-
-
 }

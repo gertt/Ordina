@@ -119,4 +119,5 @@ public class JsonObejctOrderItem {
     public void setMUrlImage(String mUrlImage) {
         this.mUrlImage = mUrlImage;
     }
+
 }

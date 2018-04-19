@@ -7,7 +7,11 @@ package com.ordinefacile.root.ordinefacile.ui.main_menu;
 public interface MainMenuView   {
 
     void getStoreId();
+
     void goToMenu();
+
     void callNumber(String numberCall);
+
     void callNumberIncorrect();
+
 }

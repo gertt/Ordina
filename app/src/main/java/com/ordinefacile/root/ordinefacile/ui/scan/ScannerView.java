@@ -9,10 +9,17 @@ import android.content.DialogInterface;
 public interface ScannerView {
 
     void checkIfPermissionNeeded();
+
     void requestPermission();
+
     boolean checkPermission();
+
     void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener);
+
     void goToMenuActivity(String s);
+
     void getAppLanguageIt();
+
     void getAppLanguageEn();
+
 }

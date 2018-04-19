@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class QrCodeModel {
+
     @SerializedName("error")
     @Expose
     private Boolean error;

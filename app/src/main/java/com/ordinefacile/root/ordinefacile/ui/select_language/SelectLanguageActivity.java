@@ -50,14 +50,8 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         System.out.print(boolean2);
         System.out.print(boolean2);
 
-
-        //Open http://192.168.1.3:8080 in your browser
-
-//egwvXx1-Lbw:APA91bG01KVMhUOZKdbyi-MPSJ3G9Q1ol2TqfFZJBLCygIMtM-C9n2d6zZjtmLZ7MVJc-9Dy0eXlooF9WYby3tVP537uQ0u0EdaEq62VI0n167KBkL2oMLEaw9bGplVjf4c1BoYl9E41
-        //Open http://192.168.100.58:8080 in your browser
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.tittlebar_select_language);
-
 
         buttonBackSelectLanguage = (Button)findViewById(R.id.button_back_selectlanguage);
         buttonBackSelectLanguage.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +86,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         });
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -107,6 +102,7 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void setButtonEnChecket() {
         button_en.setChecked(false);

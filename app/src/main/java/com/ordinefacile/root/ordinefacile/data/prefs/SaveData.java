@@ -9,10 +9,10 @@ import android.preference.PreferenceManager;
  */
 
 public class SaveData {
+
     Context ctx;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-
 
     public SaveData(Context ctx1){
         this.ctx = ctx1;

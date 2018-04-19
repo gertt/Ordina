@@ -19,13 +19,12 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
     MainMenuPresenter mainMenuPresenter;
     SaveData saveData;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        saveData = new SaveData(getApplicationContext());
 
+        saveData = new SaveData(getApplicationContext());
         mainMenuPresenter = new MainMenuPresenter(this,getApplicationContext());
 
         button_menu = (Button)findViewById(R.id.button_menu);

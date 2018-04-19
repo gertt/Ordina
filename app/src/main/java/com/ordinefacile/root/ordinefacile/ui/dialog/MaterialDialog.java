@@ -7,14 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-
 import com.ordinefacile.root.ordinefacile.R;
-
 
 public class MaterialDialog extends AppCompatActivity {
 
     static Dialog dialog;
-
     TextView txt_ok;
     TextView nameTxtt;
     TextView contentTxt;
@@ -28,17 +25,13 @@ public class MaterialDialog extends AppCompatActivity {
 
     }
 
-
     public void createDialog(Context context,String productName,String productPrice) {
         dialog = new Dialog(context);
-
-        //SET TITLE
         dialog.setTitle(R.string.info);
-
-        //set content
         dialog.setContentView(R.layout.layout_dialog);
 
         txt_ok = dialog.findViewById(R.id.txt_ok);
+
         txt_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +47,4 @@ public class MaterialDialog extends AppCompatActivity {
         dialog.show();
 
     }
-
-
-
 }

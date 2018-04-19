@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryItem;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 

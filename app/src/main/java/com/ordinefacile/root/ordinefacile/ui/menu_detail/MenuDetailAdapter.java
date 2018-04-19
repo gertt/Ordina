@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,13 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-
 
 import java.util.List;
 
@@ -37,6 +33,9 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     String id_product;
     String name;
     SaveData saveData;
+    ViewHolder holder1;
+
+
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
 
@@ -59,6 +58,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
+        holder1 = holder;
         final MenuDishesDatum feedItem = feedItemList.get(position);
 
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
@@ -162,7 +162,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
                     Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG);
 
-
             }
         });
 
@@ -172,6 +171,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
 
+    }
+
+    public void setAdd() {
+
+
+        holder1.txt_add.setText("" + "Add");
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

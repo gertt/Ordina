@@ -1,11 +1,8 @@
 <resources>
 
     <string name="title_activity_menu_detail">MenuDetail-it</string>
-
     <string name="title_activity_select_language">SelectLanguageActivity-it</string>
     <string name="title_activity_main_menu">MainMenuActivity-it</string>
-
-
     <string name="app_name">OrdineFacile-it</string>
     <string name="action_settings">Settings-it</string>
     <string name="title_activity_help">Help-it</string>
@@ -46,5 +43,6 @@
     <string name="not_successfully">Order WAS NOT sent successfully !</string>
     <string name="not_successfully_internet">Check Internet-it !</string>
     <string name="try_again">Try again</string>
+    <string name="no_product_in_cart">No product in card-it!</string>
 
 </resources>

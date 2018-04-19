@@ -56,8 +56,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         parseimage = new ParseImage(context);
         materialDialog = new MaterialDialog();
 
-
-
     }
 
     @Override
@@ -95,7 +93,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             }
         });
 
-
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,10 +104,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
                 int int_product = Integer.parseInt(myString);
 
                 myOrderActivity.idProduct(int_product);
-
-
-                Toast.makeText(context,feedItem.getmIdProduct()+"MY  POSITION",+Toast.LENGTH_LONG).show();
-
 
             }
         });

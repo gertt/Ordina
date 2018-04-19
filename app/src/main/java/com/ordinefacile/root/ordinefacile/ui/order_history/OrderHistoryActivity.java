@@ -2,29 +2,18 @@ package com.ordinefacile.root.ordinefacile.ui.order_history;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
-import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailAdapter;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
-
 import java.util.List;
-
 import static com.ordinefacile.root.ordinefacile.R2.color.myorder_yellow;
 
 
@@ -49,10 +38,9 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.my_history);
-         fm = getFragmentManager();
+        fm = getFragmentManager();
 
        orderHistoryPresenter = new OrderHistoryPresenter(getApplicationContext(),this);
-
 
        orderHistoryPresenter.getOrderHistory();
 
@@ -65,24 +53,22 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
                 .progressIndeterminateStyle(false)
                 .show();
 
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder_history);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
-
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
         swipe_menu = (PullRefreshLayout) findViewById(R.id.swipe_myorder_history);
+
         swipe_menu.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 orderHistoryPresenter.getOrderHistory();
             }
         });
-
 
     }
 
@@ -96,7 +82,6 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void listHistoryOrder(List<OrderHistoryData> feedItemList) {
@@ -116,6 +101,6 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-// dont call **super**, if u want disable back button in current screen.
+
     }
 }

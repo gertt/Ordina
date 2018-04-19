@@ -7,5 +7,7 @@ package com.ordinefacile.root.ordinefacile.ui.select_language;
 public interface SelectLanguageView {
 
     void setButtonEnChecket();
+
     void setButtonEnUnChecket();
+
 }

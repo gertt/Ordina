@@ -26,30 +26,32 @@ import rx.Observable;
 
 public interface API {
 
-    // scan and pin
+    // scan and qrcocde
     @GET("qr_scan/{qrcode}")
     Observable<QrCodeModel> getStoreDetails(@Path("qrcode") String qrCode);
 
+    // scan and pin
     @GET("qr_scan/{pin}")
     Observable<PinModel> getStoreDetailsByPin(@Path("pin") String pin);
 
-
+    // scan and voucher_code
     @GET("qr_scan/{voucher_code}")
     Observable<VauchePinModel> getStoreDetailsByVoucherCode(@Path("voucher_code") String voucher_code);
-
 
     //category product
     @GET("categories/store/{id}")
     Observable<CategoriesModel> getStoreCategories(@Path("id") String id);
 
+    //category category
     @GET("products/category/{id}")
     Observable<MenuDishes> getMenuDishes(@Path("id") int id);
 
-
+    //send order
     @FormUrlEncoded
     @POST("orders/create")
     Observable<SendOrderModel> sendOrderJson(@Field("data") String data);
 
+    //get my order history
     @GET("orders/list/{token_fcm}")
     Observable<OrderHistory> getOrderHistory(@Path("token_fcm") String token_fcm);
 

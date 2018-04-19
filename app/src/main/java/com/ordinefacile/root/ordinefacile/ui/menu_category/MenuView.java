@@ -9,8 +9,11 @@ import java.util.List;
  */
 
 public interface MenuView {
+
     void getStoreId();
+
     void getListStoreCategories(List<CategoriesDataModel> feedItemList);
+
     void dissapearSwipeToRefresh();
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 public class CategoriesModel {
+
     @SerializedName("error")
     @Expose
     private Boolean error;

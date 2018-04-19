@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class CategoriesModelData {
+
     @SerializedName("id")
     @Expose
     private Integer id;

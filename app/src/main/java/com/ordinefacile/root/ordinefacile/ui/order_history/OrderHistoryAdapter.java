@@ -1,11 +1,8 @@
 package com.ordinefacile.root.ordinefacile.ui.order_history;
 
-
 import android.content.Context;
 import android.graphics.Color;
 import android.app.FragmentManager;
-
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryData;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistoryItem;
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +24,6 @@ import java.util.List;
  */
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder>   {
-
 
     private static final String TAG = "My Debugg";
     private List<OrderHistoryData> feedItemList;
@@ -52,8 +46,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     }
 
-
-
     @Override
     public OrderHistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -71,13 +63,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         final OrderHistoryData feedItem = feedItemList.get(position);
         holder.img_bacground.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
-
         parseimage.parseimage(feedItem.getStoreImage().toString(),holder.imag_myorder_pick);
         holder.txt_name.setText(feedItem.getStore());
         holder.txt_status.setText("Status "+feedItem.getStatus());
         holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice());
         holder.txt_totalitems.setText("Total Items"+" "+feedItem.getTotalItems());
-
 
     //    for ( int i =0;i<feedItemListItem.size();i++) {
     //        Toast.makeText(context,feedItemListItem.get(i).getTotal().toString(),Toast.LENGTH_LONG).show();
@@ -102,8 +92,8 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             }
         });
 
-
     }
+
     @Override
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
@@ -130,7 +120,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             txt_status = (TextView) itemView.findViewById(R.id.textview_status_history);
             txt_price = (TextView) itemView.findViewById(R.id.textView_myorder_price_history);
             txt_totalitems = (TextView) itemView.findViewById(R.id.textview_totalitems_history);
-
         //    btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
             img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder_history);
          //   btn_delete = (ImageView) itemView.findViewById(R.id.imageButton_delete);

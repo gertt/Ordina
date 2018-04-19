@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.select_language;
 
 import android.content.Context;
-
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
 
 /**
@@ -16,6 +15,7 @@ public class SelectLanguagePersenter {
     public SelectLanguagePersenter(SelectLanguageActivity selectLanguageActivity, Context context) {
         this.selectLanguageActivity = selectLanguageActivity;
         this.context = context;
+
     }
 
     public void checkRadioButton() {
