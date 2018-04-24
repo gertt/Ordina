@@ -22,4 +22,7 @@ public interface MenuDetailView {
 
     void checkQuantity();
 
+    void showFloating();
+
+    void hideFloating();
 }

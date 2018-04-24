@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import net.idik.lib.slimadapter.SlimAdapter;
@@ -28,11 +30,13 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     RecyclerView mRecyclerView;
     SlimAdapter slimAdapter;
     String id;
+    SaveData saveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        saveData = new SaveData(getApplicationContext());
 
         menuPresenter = new MenuPresenter(this,getApplicationContext());
         menuPresenter.getStoreId();
@@ -60,7 +64,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
 
     @Override
     public void getStoreId() {
-        id = getIntent().getExtras().getString("storeId","");
+        id = saveData.getStoreId();
         if(id != null || !id.equalsIgnoreCase("")){
             menuPresenter.getStoreCategories(id);
 
@@ -89,10 +93,14 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
                             @Override
                             public void onClick(View view) {
 
+                                saveData.saveDishesId(data.getId().toString());
                                 Intent intent = new Intent(getApplicationContext(),MenuDetailActivity.class);
-                                intent.putExtra("categoryId", data.getId().toString()+"");
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                getApplicationContext().startActivity(intent);
+                                startActivity(intent);
+
+
+                              //  intent.putExtra("categoryId", data.getId().toString()+"");
+                              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                               // getApplicationContext().startActivity(intent);
 
                             }
 
@@ -113,8 +121,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     @Override
     public void onBackPressed() {
 
-        finish();
-        super.onBackPressed();
+       // finish();
+      // super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+        startActivity(intent);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

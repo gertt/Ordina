@@ -48,6 +48,8 @@ public class MenuDishesDatum {
     @Expose
     private String updatedAt;
 
+    private String addtext;
+
     public Integer getId() {
         return id;
     }
@@ -142,6 +144,14 @@ public class MenuDishesDatum {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getAddtext() {
+        return addtext;
+    }
+
+    public void setAddtext(String addtext) {
+        this.addtext = createdAt;
     }
 }
 

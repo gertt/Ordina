@@ -114,7 +114,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         return Observable.fromCallable(new Callable<DeleteBuilder<Orders, Integer>>(){
             public DeleteBuilder<Orders, Integer> call() throws Exception {
                 DeleteBuilder<Orders, Integer> deleteBuilder = userDao.deleteBuilder();
-                deleteBuilder.where().eq("id_product", d);
+                deleteBuilder.where().eq("id_product_cart", d);
                 deleteBuilder.delete();
                 return deleteBuilder;
             }

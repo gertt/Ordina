@@ -29,12 +29,10 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
     MenuDetailPresenter menuDetailPresenter;
     String urlImg;
-
     String id_product;
     String name;
     SaveData saveData;
     ViewHolder holder1;
-
 
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
@@ -59,7 +57,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder1 = holder;
-        final MenuDishesDatum feedItem = feedItemList.get(position);
+        MenuDishesDatum  feedItem = feedItemList.get(position);
 
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
         holder.price.setText("  "+feedItem.getPrice()+"  ");
@@ -79,32 +77,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         name = feedItem.getName();
         id_product = feedItem.getProductCategoryId();
 
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                String numberAsString = String.valueOf(feedItem.getId());
-
-                String djdh =  id_product;
-
-                System.out.print(id_product);
-                System.out.print(name);
-
-                String djdj = holder.txt_name.getText().toString();
-
-                menuDetailPresenter.checkQuantityOrGoActivity(
-                        holder.txt_add.getText().toString(),
-                        holder.txt_name.getText().toString(),
-                        holder.price.getText().toString(),
-                        holder.metric.getText().toString(),
-                        holder.description.getText().toString(),urlImg,numberAsString, v);
-
-            }
-        });
-
-
         holder.btn_increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +87,20 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
                         int score = 0;
                         int numberInt = score;
-
                         numberInt++;
                         holder.txt_add.setText("" + numberInt);
+
+
+
+                        Float quantity_float = Float.valueOf(numberInt);
+                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
+                        Float final_price = quantity_price * quantity_float;
+
+                        String id_product_cart = feedItem.getId().toString();
+
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
+
 
                     } else if (!textnumberstring.equalsIgnoreCase("Add")) {
                         int score = Integer.parseInt(textnumberstring);
@@ -126,7 +109,15 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         numberInt++;
                         holder.txt_add.setText("" + numberInt);
 
+                        Float quantity_float = Float.valueOf(numberInt);
+                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
+                        Float final_price = quantity_price * quantity_float;
+                        String id_product_cart = feedItem.getId().toString();
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
+
                     }
+
                     Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
             }
@@ -136,12 +127,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             @Override
             public void onClick(View v) {
 
-
                     String textnumberstring = holder.txt_add.getText().toString();
 
                     if (textnumberstring.equalsIgnoreCase("Add")) {
 
                         holder.txt_add.setText("" + "Add");
+
 
                     } else {
                         score = Integer.parseInt(textnumberstring);
@@ -150,6 +141,11 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     if (score == 1) {
 
                         holder.txt_add.setText("" + "Add");
+
+
+                        int int_product = Integer.parseInt(feedItem.getId().toString());
+                        menuDetailPresenter.delete(int_product);
+
                     } else if (score > 1) {
 
                         score = Integer.parseInt(textnumberstring);
@@ -157,6 +153,13 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
                         numberInt--;
                         holder.txt_add.setText("" + numberInt);
+
+                        Float quantity_float = Float.valueOf(numberInt);
+                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
+                        Float final_price = quantity_price * quantity_float;
+                        String id_product_cart = feedItem.getId().toString();
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
                     }
 
@@ -171,12 +174,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);
 
-    }
-
-    public void setAdd() {
-
-
-        holder1.txt_add.setText("" + "Add");
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -8,18 +8,18 @@ import android.content.DialogInterface;
 
 public interface ScannerView {
 
-    void checkIfPermissionNeeded();
+  void checkIfPermissionNeeded();
 
-    void requestPermission();
+  void requestPermission();
 
-    boolean checkPermission();
+  boolean checkPermission();
 
-    void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener);
+  void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener);
 
-    void goToMenuActivity(String s);
+  void goToMenuActivity();
 
-    void getAppLanguageIt();
+  void getAppLanguageIt();
 
-    void getAppLanguageEn();
+  void getAppLanguageEn();
 
 }

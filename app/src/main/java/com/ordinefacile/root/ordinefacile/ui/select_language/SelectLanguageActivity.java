@@ -41,6 +41,9 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         String x = DebugDB.getAddressLog();
 
         //Open http://192.168.0.177:8080 in your browser
+      //  Open http://192.168.100.58:8080 in your browser
+
+        //Open http://192.168.1.3:8080 in your browser
 
         Boolean boolean1 = Boolean.valueOf("true");
         boolean boolean2 = Boolean.parseBoolean("true");

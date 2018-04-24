@@ -100,7 +100,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
                 Eventlist event = new Eventlist();
                 EventBus.getDefault().post(event);
 
-                String myString = feedItem.getmIdProduct();
+                String myString = feedItem.getmIdProductCart();
                 int int_product = Integer.parseInt(myString);
 
                 myOrderActivity.idProduct(int_product);
@@ -109,6 +109,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         });
 
     }
+
     @Override
     public int getItemCount() {
         return (null != feedItemList ? feedItemList.size() : 0);

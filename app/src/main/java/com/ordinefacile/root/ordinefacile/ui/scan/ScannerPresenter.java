@@ -43,8 +43,8 @@ public class ScannerPresenter {
         return scannerActivity.checkPermission();
     }
 
-    public void goToMenuAtivity(String id) {
-        scannerActivity.goToMenuActivity(id);
+    public void goToMenuAtivity() {
+        scannerActivity.goToMenuActivity();
 
     }
 
@@ -99,7 +99,8 @@ public class ScannerPresenter {
                                 saveData.saveNumberCall("");
                             }
 
-                            goToMenuAtivity(id);
+                            saveData.saveStoreId(id);
+                            goToMenuAtivity();
                         }
                     }
                 });

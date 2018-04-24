@@ -51,14 +51,14 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
     @Override
     public void getStoreId() {
-        id = getIntent().getExtras().getString("storeId","");
+        id = saveData.getStoreId();
         mainMenuPresenter.goToMenu(id);
     }
 
     @Override
     public void goToMenu() {
         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-        i.putExtra("storeId",id);
+      //  i.putExtra("storeId",id);
         startActivity(i);
         //finish();
 

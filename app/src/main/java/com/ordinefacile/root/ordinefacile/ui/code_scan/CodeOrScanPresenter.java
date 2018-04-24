@@ -24,82 +24,88 @@ import rx.schedulers.Schedulers;
 
 public class CodeOrScanPresenter {
 
-    Context context;
-    CodeOrScanActivity codeOrScanActivity;
-    ApiHelper apiHelper;
-    SaveData saveData;
-    Gson gson = new Gson();
+  Context context;
+  CodeOrScanActivity codeOrScanActivity;
+  ApiHelper apiHelper;
+  SaveData saveData;
+  Gson gson = new Gson();
 
-    public CodeOrScanPresenter(Context context, CodeOrScanActivity codeOrScanActivity) {
-        this.context = context;
-        this.codeOrScanActivity = codeOrScanActivity;
-        apiHelper = new AppApiHelper();
-        saveData = new SaveData(context);
-    }
+  public CodeOrScanPresenter(Context context, CodeOrScanActivity codeOrScanActivity) {
+    this.context = context;
+    this.codeOrScanActivity = codeOrScanActivity;
+    apiHelper = new AppApiHelper();
+    saveData = new SaveData(context);
+  }
 
-    public void checkCharacter(String pin_voucher) {
-            getStoreDetailByPin(pin_voucher);
+  public void checkCharacter(String pin_voucher) {
+    getStoreDetailByPin(pin_voucher);
 
-    }
+  }
 
-    public void getStoreDetailByPin(String pin) {
+  public void getStoreDetailByPin(String pin) {
 
-        saveData.saveQrCode(pin);
-        if (pin.equalsIgnoreCase("")||pin==null){
-            codeOrScanActivity.pinInvalid();
-        }else {
+    saveData.saveQrCode(pin);
+    if (pin.equalsIgnoreCase("")||pin==null){
+      codeOrScanActivity.pinInvalid();
+    }else {
 
-        apiHelper.getStoreDetailsPin(pin)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PinModel>() {
-                    @Override
-                    public void onCompleted() {
+      apiHelper.getStoreDetailsPin(pin)
+              .subscribeOn(Schedulers.newThread())
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(new Subscriber<PinModel>() {
+                @Override
+                public void onCompleted() {
 
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                  Log.e("Problem : ", e.getMessage());
+                  codeOrScanActivity.pinInvalid();
+
+                }
+
+                @Override
+                public void onNext(PinModel pinModel) {
+                  // Log.d("Next  : ", pinModel.getData().getName());
+                  if(pinModel.getError() == false){
+                    //  String id = gson.toJson(pinModel.getData().getStoreId());
+                    String id = pinModel.getData().getStoreId().toString();
+                    saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
+
+                    saveData.saveEntity(pinModel.getData().getId().toString());
+
+                    if (pinModel.getData().getStore().getPhone1()!=null){
+                      saveData.saveNumberCall(pinModel.getData().getStore().getPhone1());
+
+                    }else {
+                      saveData.saveNumberCall("");
                     }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("Problem : ", e.getMessage());
-                        codeOrScanActivity.pinInvalid();
+                    saveData.saveStoreId(id);
 
-                    }
+                    codeOrScanActivity.goToMenuAtivity();
 
-                    @Override
-                    public void onNext(PinModel pinModel) {
-                       // Log.d("Next  : ", pinModel.getData().getName());
-                        if(pinModel.getError() == false){
-                          //  String id = gson.toJson(pinModel.getData().getStoreId());
-                            String id = pinModel.getData().getStoreId().toString();
-                            saveData.saveDeliveryStatus(pinModel.getData().getDelivery().toString());
 
-                            saveData.saveEntity(pinModel.getData().getId().toString());
 
-                            if (pinModel.getData().getStore().getPhone1()!=null){
-                                saveData.saveNumberCall(pinModel.getData().getStore().getPhone1());
+                    System.out.println("imazhi "+id);
+                  }else if (pinModel.getError() ==true){
 
-                            }else {
-                                saveData.saveNumberCall("");
-                            }
-                            codeOrScanActivity.goToMenuAtivity(id);
-                            System.out.println("imazhi "+id);
-                        }else if (pinModel.getError() ==true){
-
-                            codeOrScanActivity.pinInvalid();
-                        }
-                    }
-                });
+                    codeOrScanActivity.pinInvalid();
+                  }
+                }
+              });
     }
-    }
+  }
 
-    public void checkForLanguage() {
-        if(saveData.getLanguage() != null){
-            if(saveData.getLanguage().equalsIgnoreCase("it")){
-                codeOrScanActivity.getAppLanguageIt();
-            }else if(saveData.getLanguage().equalsIgnoreCase("en")){
-                codeOrScanActivity.getAppLanguageEn();
-            }
-        }
+  public void checkForLanguage() {
+    if(saveData.getLanguage() != null){
+      if(saveData.getLanguage().equalsIgnoreCase("it")){
+        codeOrScanActivity.getAppLanguageIt();
+      }else if(saveData.getLanguage().equalsIgnoreCase("en")){
+        codeOrScanActivity.getAppLanguageEn();
+      }
     }
+  }
 
 }

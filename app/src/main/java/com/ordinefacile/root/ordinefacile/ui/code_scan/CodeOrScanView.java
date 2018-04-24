@@ -10,7 +10,7 @@ public interface CodeOrScanView {
 
     void pinInvalid();
 
-    void goToMenuAtivity(String id);
+    void goToMenuAtivity();
 
     void getAppLanguageIt();
 

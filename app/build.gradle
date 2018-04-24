@@ -54,6 +54,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
 
+
     //debug database and sharepreference
     debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
 
@@ -74,6 +75,7 @@ dependencies {
     //firebase
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
+
 
     //adapter easy
     compile 'net.idik:slimadapter:2.1.2'

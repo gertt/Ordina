@@ -89,6 +89,26 @@ public class SaveData {
         return preferences.getString("qr_code", "");
 
     }
+
+    public void saveDishesId(String dishes_id) {
+        editor.putString("dishes_id", dishes_id);
+        editor.commit();
+    }
+
+    public String getDishesId(){
+        return preferences.getString("dishes_id", "");
+
+    }
+
+    public void saveStoreId(String store_id) {
+        editor.putString("store_id", store_id);
+        editor.commit();
+    }
+
+    public String getStoreId(){
+        return preferences.getString("store_id", "");
+
+    }
 }
 
 

@@ -36,187 +36,201 @@ import static com.ordinefacile.root.ordinefacile.R2.color.red;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
-    private static final String TAG = "My Debug";
-    private RecyclerView mRecyclerView;
-    private MyOrderAdapter adapter;
+  private static final String TAG = "My Debug";
+  private RecyclerView mRecyclerView;
+  private MyOrderAdapter adapter;
 
-    MyOrderPresenter myOrderPresenter;
-    DatabaseHelper dbHelper;
-    ParseImage parseImage;
-    SlimAdapter slimAdapter;
-    MaterialDialog progressDialog;
-    MaterialDialog alertDialog;
+  MyOrderPresenter myOrderPresenter;
+  DatabaseHelper dbHelper;
+  ParseImage parseImage;
+  SlimAdapter slimAdapter;
+  MaterialDialog progressDialog;
+  MaterialDialog alertDialog;
 
-    ArrayList<Orders> muylis = new ArrayList<Orders>();
+  ArrayList<Orders> muylis = new ArrayList<Orders>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_order);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle(R.string.menu_myorder);
+  FloatingActionButton fab;
 
-        EventBus bus = EventBus.getDefault();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
-        dbHelper = new DatabaseHelper(getApplicationContext());
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_my_order);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setHomeButtonEnabled(true);
+    getSupportActionBar().setTitle(R.string.menu_myorder);
 
-        myOrderPresenter = new MyOrderPresenter(getApplicationContext(), this);
-        myOrderPresenter.getListProducts();
+    EventBus bus = EventBus.getDefault();
+    mRecyclerView = (RecyclerView) findViewById(R.id.recycle_myorder);
+    dbHelper = new DatabaseHelper(getApplicationContext());
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mRecyclerView.setPadding(25, 25, 25, 25);
+    myOrderPresenter = new MyOrderPresenter(getApplicationContext(), this);
+    myOrderPresenter.getListProducts();
 
-        slimAdapter = SlimAdapter.create();
-        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
-        itemAnimator.setAddDuration(1000);
-        itemAnimator.setRemoveDuration(1000);
-        mRecyclerView.setItemAnimator(itemAnimator);
+    mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+    mRecyclerView.setPadding(25, 25, 25, 25);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    slimAdapter = SlimAdapter.create();
+    RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+    itemAnimator.setAddDuration(1000);
+    itemAnimator.setRemoveDuration(1000);
+    mRecyclerView.setItemAnimator(itemAnimator);
 
-                myOrderPresenter.getListProductsSendJson();
-            }
-        });
+    fab = (FloatingActionButton) findViewById(R.id.fab);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
 
-    }
-
-    @Override
-    public void listAdapter(List<Orders> feedItemList) {
-
-        muylis = (ArrayList<Orders>) feedItemList;
-        adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList, this);
-        mRecyclerView.setAdapter(adapter);
-        System.out.println(feedItemList.size());
-        Log.d(TAG, feedItemList.toString());
-        adapter.notifyDataSetChanged();
-
-    }
-
-    @Override
-    public void idProduct(int int_product) {
-        myOrderPresenter.delete(int_product);
-    }
-
-    @Override
-    public void tokenExpired() {
-        progressDialog.dismiss();
-
-    }
-
-    @SuppressLint("ResourceAsColor")
-    @Override
-    public void sentErrorInternet() {
-
-        progressDialog.dismiss();
-        alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
-                .title(R.string.error)
-                .content(R.string.not_successfully_internet)
-                .cancelable(false)
-                .positiveColor(myorder_yellow)
-                .positiveText(R.string.try_again)
-                .show();
-
-    }
-
-    @SuppressLint("ResourceAsColor")
-    @Override
-    public void sentError() {
-        progressDialog.dismiss();
-        alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
-                .title(R.string.error)
-                .content(R.string.not_successfully)
-                .cancelable(false)
-                .positiveColor(myorder_yellow)
-                .positiveText(R.string.try_again)
-                .show();
-
-    }
-
-    @Override
-    public void goToMyOrderHistory() {
-        Intent intent = new Intent(this, OrderHistoryActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void dismissDialog() {
-        alertDialog.dismiss();
-    }
-
-    @Override
-    public void checkProduct() {
-
-        Toast.makeText(getApplicationContext(),R.string.no_product_in_cart,Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void showSendOrder() {
-
-        progressDialog = new MaterialDialog.Builder(MyOrderActivity.this)
-                .title(R.string.loading)
-                .content(R.string.sending_order)
-                .progress(true, 0)
-                .cancelable(false)
-                .widgetColorRes(myorder_yellow)
-                .progressIndeterminateStyle(false)
-                .show();
-
-    }
-
-    @Override
-    public void showCompleteOrder() {
-        progressDialog.dismiss();
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        myOrderPresenter.dismissDialog(alertDialog);
-
-        EventBus.getDefault().register(this);
-    }
-
-    @Subscribe
-    public void onEvent(Eventlist event) {
-
-        progressDialog.dismiss();
         myOrderPresenter.getListProductsSendJson();
+      }
+    });
 
+  }
+
+  @Override
+  public void listAdapter(List<Orders> feedItemList) {
+
+    muylis = (ArrayList<Orders>) feedItemList;
+    adapter = new MyOrderAdapter(MyOrderActivity.this, feedItemList, this);
+    mRecyclerView.setAdapter(adapter);
+    System.out.println(feedItemList.size());
+    Log.d(TAG, feedItemList.toString());
+    adapter.notifyDataSetChanged();
+
+  }
+
+  @Override
+  public void idProduct(int int_product) {
+    myOrderPresenter.delete(int_product);
+  }
+
+  @Override
+  public void tokenExpired() {
+    progressDialog.dismiss();
+
+  }
+
+  @SuppressLint("ResourceAsColor")
+  @Override
+  public void sentErrorInternet() {
+
+    progressDialog.dismiss();
+    alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+            .title(R.string.error)
+            .content(R.string.not_successfully_internet)
+            .cancelable(false)
+            .positiveColor(myorder_yellow)
+            .positiveText(R.string.try_again)
+            .show();
+
+  }
+
+  @SuppressLint("ResourceAsColor")
+  @Override
+  public void sentError() {
+    progressDialog.dismiss();
+    alertDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+            .title(R.string.error)
+            .content(R.string.not_successfully)
+            .cancelable(false)
+            .positiveColor(myorder_yellow)
+            .positiveText(R.string.try_again)
+            .show();
+
+  }
+
+  @Override
+  public void goToMyOrderHistory() {
+    Intent intent = new Intent(this, OrderHistoryActivity.class);
+    startActivity(intent);
+    finish();
+  }
+
+  @Override
+  public void dismissDialog() {
+    alertDialog.dismiss();
+  }
+
+  @Override
+  public void checkProduct() {
+
+    Toast.makeText(getApplicationContext(),R.string.no_product_in_cart,Toast.LENGTH_LONG).show();
+  }
+
+  @Override
+  public void showSendOrder() {
+
+    progressDialog = new MaterialDialog.Builder(MyOrderActivity.this)
+            .title(R.string.loading)
+            .content(R.string.sending_order)
+            .progress(true, 0)
+            .cancelable(false)
+            .widgetColorRes(myorder_yellow)
+            .progressIndeterminateStyle(false)
+            .show();
+
+  }
+
+  @Override
+  public void showCompleteOrder() {
+    progressDialog.dismiss();
+
+  }
+
+  @Override
+  public void showFloating() {
+    fab.show();
+
+  }
+
+  @Override
+  public void hideFloating() {
+    fab.hide();
+
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
     }
+    return super.onOptionsItemSelected(item);
+  }
 
-    public void onDestroy() {
-        super.onDestroy();
+  @Override
+  protected void onPause() {
+    super.onPause();
+    EventBus.getDefault().unregister(this);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    myOrderPresenter.dismissDialog(alertDialog);
+
+    EventBus.getDefault().register(this);
+  }
+
+  @Subscribe
+  public void onEvent(Eventlist event) {
+
+    progressDialog.dismiss();
+    myOrderPresenter.getListProductsSendJson();
+
+  }
+
+  public void onDestroy() {
+    super.onDestroy();
     //   progressDialog.dismiss();
-    }
+  }
 }

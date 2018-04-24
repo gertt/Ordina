@@ -3,17 +3,23 @@ package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import java.util.List;
 
@@ -27,6 +33,12 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     PullRefreshLayout swipe_menu;
 
+    List<MenuDishesDatum> feedItemList2;
+
+    FloatingActionButton fab;
+
+    SaveData saveData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +49,18 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.menu);
 
+        saveData = new SaveData(getApplicationContext());
+
+
+
         menuDetailPresenter = new MenuDetailPresenter(getApplicationContext(),this);
+        menuDetailPresenter.checkHideShowFloating();
         menuDetailPresenter.getCategoryId();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
+
+
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
@@ -56,21 +75,36 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
             }
         });
 
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(getApplicationContext(), MyOrderActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public void getMenuDetails() {
-        categoryId = getIntent().getExtras().getString("categoryId","");
+      //  categoryId = getIntent().getExtras().getString("categoryId","");
+        categoryId = saveData.getDishesId();
         if(categoryId != null || !categoryId.equalsIgnoreCase("")){
             menuDetailPresenter.getMenuDishes(categoryId);
 
-            System.out.print("jsjs"+categoryId);
+
         }
     }
 
     @Override
     public void getListDished(List<MenuDishesDatum> feedItemList) {
-        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList,menuDetailPresenter);
+
+        feedItemList2 = feedItemList ;
+        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList2,menuDetailPresenter);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         swipe_menu.setRefreshing(false);
@@ -103,8 +137,22 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     }
 
     @Override
+    public void showFloating() {
+        fab.show();
+
+    }
+
+    @Override
+    public void hideFloating() {
+
+        fab.hide();
+    }
+
+    @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
+        startActivity(intent);
 
     }
 
@@ -120,6 +168,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
             Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);
             startActivity(intent);
         }
+
 
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -137,11 +186,16 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-       // Toast.makeText(getApplicationContext(), "onRestart", Toast.LENGTH_SHORT).show();
-        adapter.setAdd();
-    }
 
+    public void onRestart()
+    {
+        super.onRestart();
+        menuDetailPresenter.checkHideShowFloating();
+        adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList2,menuDetailPresenter);
+        mRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
+    }
 }
+

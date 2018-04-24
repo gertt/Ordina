@@ -97,9 +97,9 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
     }
     @Override
-    public void goToMenuActivity(String s) {
+    public void goToMenuActivity() {
         Intent i = new Intent(this, MainMenuActivity.class);
-        i.putExtra("storeId",s);
+       // i.putExtra("storeId",s);
         startActivity(i);
         //finish();
     }

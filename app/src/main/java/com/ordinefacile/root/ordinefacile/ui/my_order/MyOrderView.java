@@ -29,4 +29,8 @@ public interface MyOrderView {
     void showSendOrder();
 
     void showCompleteOrder();
+
+    void showFloating();
+
+    void hideFloating();
 }

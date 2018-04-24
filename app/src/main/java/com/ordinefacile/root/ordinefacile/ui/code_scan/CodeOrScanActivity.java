@@ -99,7 +99,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
              //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
              //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
 
-                codeOrScanPresenter.checkCharacter(pin_voucher);
+                codeOrScanPresenter.checkCharacter("NT-C59B");
 
             }
         });
@@ -123,10 +123,10 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     }
 
     @Override
-    public void goToMenuAtivity(String id) {
+    public void goToMenuAtivity() {
         alertDialog.dismiss();
         Intent i = new Intent(this, MainMenuActivity.class);
-        i.putExtra("storeId",id);
+      //  i.putExtra("storeId",id);
         startActivity(i);
     }
 

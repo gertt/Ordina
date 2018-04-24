@@ -50,7 +50,7 @@ public class AddProductPresenter {
     }
 
     public void inserData(Float final_price, Float quantity, String name, Float price,
-                          String metric, String description, String urlImage,String id_table,String id_product) {
+                          String metric, String description, String urlImage,String id_table,String id_product){
 
         orders.setmFinalPrice(final_price);
         orders.setmQuantity(quantity);

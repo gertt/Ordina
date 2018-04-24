@@ -21,6 +21,7 @@ import com.j256.ormlite.table.DatabaseTable;
     public static final String FIELD_FINAL_PRICE   = "final_price";
     public static final String FIELD_ID_TABLE   = "id_table";
     public static final String FIELD_ID_PRODUCT   = "id_product";
+    public static final String FIELD_ID_PRODUCT_CART   = "id_product_cart";
 
 
     @DatabaseField(columnName = FIELD_NAME_ID, generatedId = true, unique = true)  private int mId;
@@ -44,6 +45,8 @@ import com.j256.ormlite.table.DatabaseTable;
     @DatabaseField(columnName = FIELD_ID_TABLE)  private String mIdTable ;
 
     @DatabaseField(columnName = FIELD_ID_PRODUCT)  private String mIdProduct ;
+
+    @DatabaseField(columnName = FIELD_ID_PRODUCT_CART)  private String mIdProductCart ;
 
     public Orders() {
         // Don't forget the empty constructor, needed by ORMLite.
@@ -92,6 +95,10 @@ import com.j256.ormlite.table.DatabaseTable;
     public void setmIdProduct(String mIdProduct) {
         this.mIdProduct = mIdProduct;
     }
+
+    public void setmIdProductCart(String mIdProductCart) {
+        this.mIdProductCart = mIdProductCart;
+    }
     /** Getters **/
 
     public static String getFieldNameId() {
@@ -136,6 +143,10 @@ import com.j256.ormlite.table.DatabaseTable;
 
     public static String getFieldIdProduct() {
         return FIELD_ID_PRODUCT;
+    }
+
+    public static String getFieldIdProductCart() {
+        return FIELD_ID_PRODUCT_CART;
     }
 
     /** Setters **/
@@ -183,4 +194,9 @@ import com.j256.ormlite.table.DatabaseTable;
     public String getmIdProduct() {
         return mIdProduct;
     }
+
+    public String getmIdProductCart() {
+        return mIdProductCart;
+    }
+
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="320dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,8 +26,8 @@
         android:id="@+id/textView_myorder_name"
         android:layout_width="369dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Titulli i produktit"
         android:textColor="@color/myorder_titleproduct_black"
         android:textSize="25sp"
@@ -35,28 +36,33 @@
 
     <TextView
         android:id="@+id/textView_myorder_metric"
-        android:layout_width="200dp"
+        android:layout_width="195dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
         android:text="250ml"
         android:textColor="@color/myorder_titleproduct_black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView_myorder"
-        app:layout_constraintTop_toTopOf="@+id/imageView_myorder" />
+        app:layout_constraintEnd_toEndOf="@+id/textView_myorder_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_myorder_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView_myorder_name" />
 
     <TextView
-        android:paddingLeft="4dp"
         android:id="@+id/textView_myorder_price"
-        android:layout_width="152dp"
+        android:layout_width="86dp"
         android:layout_height="52dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="4dp"
         android:text="cmimi i produktit"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView_myorder"
-        app:layout_constraintTop_toTopOf="@+id/imageView_myorder" />
+        app:layout_constraintEnd_toEndOf="@+id/textView_myorder_metric"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_myorder_metric"
+        app:layout_constraintTop_toBottomOf="@+id/textView_myorder_metric" />
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/circularImageView_myorder"
@@ -77,14 +83,12 @@
         android:id="@+id/imageButton_myorder_info"
         android:layout_width="82dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:background="#0000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_myorder"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_myorder"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="@+id/imageView_myorder"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_myorder_price"
+        app:layout_constraintStart_toEndOf="@+id/textView_myorder_price"
+        app:layout_constraintTop_toTopOf="@+id/textView_myorder_price"
         app:srcCompat="@drawable/ic_info" />
 
 

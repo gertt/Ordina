@@ -85,6 +85,7 @@ public class AddProductActivity extends AppCompatActivity  implements  AddProduc
         view4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Float quantity_float =Float.parseFloat(quantity);
                 Float quantity_price =Float.parseFloat(price);
 

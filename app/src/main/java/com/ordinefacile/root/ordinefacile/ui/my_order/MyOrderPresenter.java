@@ -29,31 +29,264 @@ import rx.schedulers.Schedulers;
 
 public class MyOrderPresenter {
 
-    Context context;
-    MyOrderActivity myOrderActivity;
-    ApiHelper apiHelper;
-    DatabaseOperationsImp dbOperations;
-    Orders orders;
-    DatabaseHelper databaseHelper;
-    RuntimeExceptionDao<Orders, Integer> userDao;
-    List<Orders> feedItemList;
-    String json_obj22;
-    EventBus bus = EventBus.getDefault();
-    SaveData saveData;
-    JSONObject jsonObject;
+  Context context;
+  MyOrderActivity myOrderActivity;
+  ApiHelper apiHelper;
+  DatabaseOperationsImp dbOperations;
+  Orders orders;
+  DatabaseHelper databaseHelper;
+  RuntimeExceptionDao<Orders, Integer> userDao;
+  List<Orders> feedItemList;
+  String json_obj22;
+  EventBus bus = EventBus.getDefault();
+  SaveData saveData;
+  JSONObject jsonObject;
 
-    public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
-        this.context = context;
-        this.myOrderActivity = myOrderActivity;
-        apiHelper = new AppApiHelper();
-        dbOperations = new DatabaseOperationsImp(context);
-        orders = new Orders();
-        databaseHelper = new DatabaseHelper(context);
-        userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
-        saveData = new SaveData(context);
+  public MyOrderPresenter(Context context, MyOrderActivity myOrderActivity) {
+    this.context = context;
+    this.myOrderActivity = myOrderActivity;
+    apiHelper = new AppApiHelper();
+    dbOperations = new DatabaseOperationsImp(context);
+    orders = new Orders();
+    databaseHelper = new DatabaseHelper(context);
+    userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
+    saveData = new SaveData(context);
+  }
+
+  public void getListProducts() {
+    dbOperations.read().subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<List<Orders>>() {
+              @Override
+              public void onCompleted() {
+                Log.d("", "");
+
+              }
+
+              @Override
+              public void onError(Throwable e) {
+                Log.d("", "");
+              }
+
+              @Override
+              public void onNext(List<Orders> orders) {
+                Log.d("", "");
+
+                try {
+                  JSONObject jsonObj = new JSONObject();
+                  JSONArray jsonArr = new JSONArray();
+                  boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
+                  System.out.print(boolean_delivery_status);
+                  System.out.print(boolean_delivery_status);
+                  jsonObj.put("delivery", boolean_delivery_status);
+                  jsonObj.put("entity_id", saveData.getEntity());
+                  for (int i = 0; i < orders.size(); i++) {
+                    JSONObject pnObj = new JSONObject();
+                    pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
+                    pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
+                    pnObj.put("mId", orders.get(i).getmId());
+                    pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
+                    pnObj.put("mIdTable", orders.get(i).getmIdProduct());
+                    pnObj.put("mMetric", orders.get(i).getmMetric());
+                    pnObj.put("mName", orders.get(i).getmName());
+                    pnObj.put("mPrice", orders.get(i).getmPrice());
+                    pnObj.put("mQuantity", orders.get(i).getmQuantity());
+                    pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
+                    jsonArr.put(pnObj);
+                    jsonObj.put("order_items", jsonArr);
+                  }
+                  String json_array = jsonArr.toString();
+                  String json_obj = jsonObj.toString();
+                  JSONObject jsonAdd = new JSONObject();
+                  jsonAdd.put("device_token", saveData.getTokenFcm());
+                  jsonAdd.put("brand", Build.MANUFACTURER);
+                  jsonAdd.put("model", Build.MODEL);
+                  jsonObj.put("device", jsonAdd);
+                  String json_array2 = jsonArr.toString();
+                  String json_obj2 = jsonObj.toString();
+                  json_obj22 = jsonObj.toString();
+                  jsonObject = jsonObj;
+
+                } catch (JSONException e) {
+                  e.printStackTrace();
+                }
+
+                feedItemList = new ArrayList<Orders>();
+                for (int i = 0; i < orders.size(); i++) {
+
+                  String ss = orders.get(i).getmName();
+                  feedItemList.add(orders.get(i));
+
+                }
+                myOrderActivity.listAdapter(feedItemList);
+              }
+            });
+  }
+
+  public void getListProductsSendJson() {
+    dbOperations.read().subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<List<Orders>>() {
+              @Override
+              public void onCompleted() {
+                Log.d("", "");
+
+              }
+
+              @Override
+              public void onError(Throwable e) {
+                Log.d("", "");
+              }
+
+              @Override
+              public void onNext(List<Orders> orders) {
+                Log.d("", "");
+
+                if (orders.size()==0){
+                  myOrderActivity.checkProduct();
+
+                }else if (orders.size()>0){
+
+
+                  try {
+                    JSONObject jsonObj = new JSONObject();
+                    JSONArray jsonArr = new JSONArray();
+                    boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
+                    System.out.print(boolean_delivery_status);
+                    System.out.print(boolean_delivery_status);
+                    jsonObj.put("delivery", boolean_delivery_status);
+                    jsonObj.put("entity_id", saveData.getEntity());
+                    for (int i = 0; i < orders.size(); i++) {
+                      JSONObject pnObj = new JSONObject();
+                      pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
+                      pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
+                      pnObj.put("mId", orders.get(i).getmId());
+                      pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
+                      pnObj.put("mIdTable", orders.get(i).getmIdProduct());
+                      pnObj.put("mMetric", orders.get(i).getmMetric());
+                      pnObj.put("mName", orders.get(i).getmName());
+                      pnObj.put("mPrice", orders.get(i).getmPrice());
+                      pnObj.put("mQuantity", orders.get(i).getmQuantity());
+                      pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
+                      jsonArr.put(pnObj);
+                      jsonObj.put("order_items", jsonArr);
+                    }
+
+                    String json_array = jsonArr.toString();
+                    String json_obj = jsonObj.toString();
+                    JSONObject jsonAdd = new JSONObject();
+                    jsonAdd.put("device_token", saveData.getTokenFcm());
+                    jsonAdd.put("brand", Build.MANUFACTURER);
+                    jsonAdd.put("model", Build.MODEL);
+                    jsonObj.put("device", jsonAdd);
+                    String json_array2 = jsonArr.toString();
+                    String json_obj2 = jsonObj.toString();
+                    json_obj22 = jsonObj.toString();
+                    sendJson(json_obj22);
+                    jsonObject = jsonObj;
+
+                  } catch (JSONException e) {
+                    e.printStackTrace();
+                  }
+
+                  feedItemList = new ArrayList<Orders>();
+                  for (int i = 0; i < orders.size(); i++) {
+
+                    String ss = orders.get(i).getmName();
+                    feedItemList.add(orders.get(i));
+
+                  }
+
+                  myOrderActivity.listAdapter(feedItemList);
+                }
+
+              }
+            });
+  }
+
+  public void delete(int id) {
+
+    dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>>() {
+              @Override
+              public void onCompleted() {
+                Log.d("", "");
+              }
+
+              @Override
+              public void onError(Throwable e) {
+                Log.d("", "");
+              }
+
+              @Override
+              public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
+                  checkHideShowFloating();
+                  getListProducts();
+
+                Log.d("", "");
+
+              }
+
+            });
+
+  }
+
+  public void sendJson(String jsonObject2) {
+
+    apiHelper.sendJson(jsonObject2)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<SendOrderModel>() {
+              @Override
+              public void onCompleted() {
+                Log.d("","");
+
+                myOrderActivity.showCompleteOrder();
+              }
+
+              @Override
+              public void onError(Throwable e) {
+                Log.d("Problem : ", e.getMessage());if (e.getMessage().equalsIgnoreCase("Failed to connect to /165.227.201.28:80")){
+
+                  myOrderActivity.sentErrorInternet();
+                }else {
+
+                  myOrderActivity.sentError();
+                }
+
+              }
+
+              @Override
+              public void onNext(SendOrderModel myorder) {
+
+                myOrderActivity.showSendOrder();
+
+                if (myorder.getError().toString().equalsIgnoreCase("false")) {
+
+                  myOrderActivity.deleteDatabase("ordinafacile.db");
+                  feedItemList.clear();
+                  myOrderActivity.listAdapter(feedItemList);
+
+                  myOrderActivity.goToMyOrderHistory();
+
+                }else if (myorder.getError().toString().equalsIgnoreCase("true")){
+
+                  myOrderActivity.tokenExpired();
+                  myOrderActivity.sentError();
+
+                }
+              }
+
+            });
+  }
+  public void dismissDialog(MaterialDialog dialog) {
+    if(dialog != null){
+      myOrderActivity.dismissDialog();
     }
+  }
 
-    public void getListProducts() {
+    public void checkHideShowFloating() {
         dbOperations.read().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<Orders>>() {
@@ -72,217 +305,20 @@ public class MyOrderPresenter {
                     public void onNext(List<Orders> orders) {
                         Log.d("", "");
 
-                        try {
-                            JSONObject jsonObj = new JSONObject();
-                            JSONArray jsonArr = new JSONArray();
-                            boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
-                            System.out.print(boolean_delivery_status);
-                            System.out.print(boolean_delivery_status);
-                            jsonObj.put("delivery", boolean_delivery_status);
-                            jsonObj.put("entity_id", saveData.getEntity());
-                            for (int i = 0; i < orders.size(); i++) {
-                                JSONObject pnObj = new JSONObject();
-                                pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
-                                pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
-                                pnObj.put("mId", orders.get(i).getmId());
-                                pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
-                                pnObj.put("mIdTable", orders.get(i).getmIdProduct());
-                                pnObj.put("mMetric", orders.get(i).getmMetric());
-                                pnObj.put("mName", orders.get(i).getmName());
-                                pnObj.put("mPrice", orders.get(i).getmPrice());
-                                pnObj.put("mQuantity", orders.get(i).getmQuantity());
-                                pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
-                                jsonArr.put(pnObj);
-                                jsonObj.put("order_items", jsonArr);
-                            }
-                            String json_array = jsonArr.toString();
-                            String json_obj = jsonObj.toString();
-                            JSONObject jsonAdd = new JSONObject();
-                            jsonAdd.put("device_token", saveData.getTokenFcm());
-                            jsonAdd.put("brand", Build.MANUFACTURER);
-                            jsonAdd.put("model", Build.MODEL);
-                            jsonObj.put("device", jsonAdd);
-                            String json_array2 = jsonArr.toString();
-                            String json_obj2 = jsonObj.toString();
-                            json_obj22 = jsonObj.toString();
-                            jsonObject = jsonObj;
+                        int size4 =  orders.size();
+                        int size2 =  orders.size();
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        if (size4>0){
+                            myOrderActivity.showFloating();
+                            String SJS = "SSS";
 
-                        feedItemList = new ArrayList<Orders>();
-                        for (int i = 0; i < orders.size(); i++) {
+                        }else if (size4<1){
 
-                            String ss = orders.get(i).getmName();
-                            feedItemList.add(orders.get(i));
+                            myOrderActivity.hideFloating();
+                            String SJHS = "SSS";
 
                         }
-                        myOrderActivity.listAdapter(feedItemList);
                     }
                 });
-    }
-
-    public void getListProductsSendJson() {
-        dbOperations.read().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Orders>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("", "");
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("", "");
-                    }
-
-                    @Override
-                    public void onNext(List<Orders> orders) {
-                        Log.d("", "");
-
-                        if (orders.size()==0){
-                            myOrderActivity.checkProduct();
-
-                        }else if (orders.size()>0){
-
-
-                        try {
-                            JSONObject jsonObj = new JSONObject();
-                            JSONArray jsonArr = new JSONArray();
-                            boolean boolean_delivery_status = Boolean.parseBoolean(saveData.getDeliveryStatus());
-                            System.out.print(boolean_delivery_status);
-                            System.out.print(boolean_delivery_status);
-                            jsonObj.put("delivery", boolean_delivery_status);
-                            jsonObj.put("entity_id", saveData.getEntity());
-                            for (int i = 0; i < orders.size(); i++) {
-                                JSONObject pnObj = new JSONObject();
-                                pnObj.put("mDescriptions", orders.get(i).getmDescriptions());
-                                pnObj.put("mFinalPrice", orders.get(i).getmFinalPrice());
-                                pnObj.put("mId", orders.get(i).getmId());
-                                pnObj.put("mIdProduct", orders.get(i).getmIdProduct());
-                                pnObj.put("mIdTable", orders.get(i).getmIdProduct());
-                                pnObj.put("mMetric", orders.get(i).getmMetric());
-                                pnObj.put("mName", orders.get(i).getmName());
-                                pnObj.put("mPrice", orders.get(i).getmPrice());
-                                pnObj.put("mQuantity", orders.get(i).getmQuantity());
-                                pnObj.put("mUrl_Image", orders.get(i).getmUrl_Image());
-                                jsonArr.put(pnObj);
-                                jsonObj.put("order_items", jsonArr);
-                            }
-
-                            String json_array = jsonArr.toString();
-                            String json_obj = jsonObj.toString();
-                            JSONObject jsonAdd = new JSONObject();
-                            jsonAdd.put("device_token", saveData.getTokenFcm());
-                            jsonAdd.put("brand", Build.MANUFACTURER);
-                            jsonAdd.put("model", Build.MODEL);
-                            jsonObj.put("device", jsonAdd);
-                            String json_array2 = jsonArr.toString();
-                            String json_obj2 = jsonObj.toString();
-                            json_obj22 = jsonObj.toString();
-                            sendJson(json_obj22);
-                            jsonObject = jsonObj;
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        feedItemList = new ArrayList<Orders>();
-                        for (int i = 0; i < orders.size(); i++) {
-
-                            String ss = orders.get(i).getmName();
-                            feedItemList.add(orders.get(i));
-
-                        }
-
-                        myOrderActivity.listAdapter(feedItemList);
-                    }
-
-                    }
-                });
-    }
-
-    public void delete(int id) {
-
-        dbOperations.delete2(id).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("", "");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("", "");
-                    }
-
-                    @Override
-                    public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
-
-                        getListProducts();
-
-                        Log.d("", "");
-
-                    }
-
-                });
-
-    }
-
-    public void sendJson(String jsonObject2) {
-
-        apiHelper.sendJson(jsonObject2)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<SendOrderModel>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("","");
-
-                        myOrderActivity.showCompleteOrder();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("Problem : ", e.getMessage());if (e.getMessage().equalsIgnoreCase("Failed to connect to /165.227.201.28:80")){
-
-                            myOrderActivity.sentErrorInternet();
-                        }else {
-
-                            myOrderActivity.sentError();
-                        }
-
-                    }
-
-                    @Override
-                    public void onNext(SendOrderModel myorder) {
-
-                        myOrderActivity.showSendOrder();
-
-                        if (myorder.getError().toString().equalsIgnoreCase("false")) {
-
-                        myOrderActivity.deleteDatabase("ordinafacile.db");
-                        feedItemList.clear();
-                        myOrderActivity.listAdapter(feedItemList);
-
-                        myOrderActivity.goToMyOrderHistory();
-
-                    }else if (myorder.getError().toString().equalsIgnoreCase("true")){
-
-                            myOrderActivity.tokenExpired();
-                            myOrderActivity.sentError();
-
-                        }
-                    }
-
-                });
-    }
-    public void dismissDialog(MaterialDialog dialog) {
-        if(dialog != null){
-            myOrderActivity.dismissDialog();
-        }
     }
 }
