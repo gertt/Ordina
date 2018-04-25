@@ -44,5 +44,7 @@
     <string name="not_successfully_internet">Check Internet-it !</string>
     <string name="try_again">Try again</string>
     <string name="no_product_in_cart">No product in card-it!</string>
+    <string name="main_menu">Main Menu-it</string>
+    <string name="yes">Si</string>
 
 </resources>

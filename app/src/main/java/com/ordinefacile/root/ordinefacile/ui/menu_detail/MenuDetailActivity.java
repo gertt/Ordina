@@ -9,7 +9,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -185,7 +184,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
         return super.onCreateOptionsMenu(menu);
     }
-
 
     public void onRestart()
     {

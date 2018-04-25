@@ -48,6 +48,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), ScannerActivity.class);
                 startActivity(intent);
 
@@ -81,7 +82,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
         final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
         final EditText edt_pin = (EditText) dialogView.findViewById(R.id.editText_inser_pin);
-        final TextView txt_pin = (TextView) dialogView.findViewById(R.id.textView_insert_pin);
+
+
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +97,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
             @Override
             public void onClick(View v) {
 
-                String pin_voucher = edt_pin.getText().toString();
+              //  String pin_voucher = edt_pin.getText().toString();
              //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
              //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
 

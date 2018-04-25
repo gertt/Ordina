@@ -36,7 +36,9 @@
     <string name="insert_pin">Insert Pin</string>
     <string name="scan_activity" />
     <string name="insert">INSERT</string>
+    <string name="yes">Yes</string>
     <string name="cancel">CANCEL</string>
+    <string name="no">No</string>
     <string name="qrcode_not_valid">Qr code is not valid</string>
     <string name="pin_not_valid">Pin code is not valid</string>
     <string name="ok">Ok</string>
@@ -57,5 +59,6 @@
     <string name="not_successfully_internet">Check Internet !</string>
     <string name="no_product_in_cart">No product in card!</string>
     <string name="try_again">Try again</string>
+    <string name="main_menu">Main Menu</string>
 
 </resources>

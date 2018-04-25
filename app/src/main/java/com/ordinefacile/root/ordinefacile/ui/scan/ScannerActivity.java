@@ -92,6 +92,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
                 break;
         }
     }
+
     @Override
     public void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
 
