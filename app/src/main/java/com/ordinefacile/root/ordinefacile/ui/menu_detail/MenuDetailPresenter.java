@@ -17,7 +17,7 @@ import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.ui.add_product.AddProductActivity;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,35 +94,6 @@ public class MenuDetailPresenter {
                     }
 
                 });
-    }
-
-    public void checkQuantityOrGoActivity(String quantity,String name,
-                                          String price, String metric, String description,
-                                          String urlImg,String id_product, View v) {
-
-        System.out.print(id_product);
-        if (!quantity.equalsIgnoreCase("Add")){
-
-            Intent intent = new Intent(context,AddProductActivity.class);
-            intent.putExtra("categoryDetailQuantity", quantity);
-            intent.putExtra("categoryDetailName", name);
-            intent.putExtra("categoryDetailPrice",price);
-            intent.putExtra("categoryDetailMetric", metric);
-            intent.putExtra("categoryDetailDescription", description);
-            intent.putExtra("categoryDetailUrlImg", urlImg);
-            intent.putExtra("categoryDetaiIdProduct", id_product);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-
-        }else {
-
-
-            if (!saveData.getNumberCharacter().equalsIgnoreCase("7")){
-                menuDetailActivity.checkQuantity();
-
-            }
-
-        }
     }
 
     public void checknumber() {

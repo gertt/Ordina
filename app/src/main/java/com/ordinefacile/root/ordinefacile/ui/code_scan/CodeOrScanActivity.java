@@ -15,11 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
+import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.PushHistory;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
+
+import java.util.Collection;
 
 
 public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScanView{
@@ -29,6 +34,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     private  AlertDialog alertDialog;
 
     CodeOrScanPresenter codeOrScanPresenter;
+
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,20 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
             }
         });
+
+        dbHelper = new DatabaseHelper(getApplicationContext());
+
+        PushHistory pushHistory = new PushHistory();
+
+        pushHistory.setDescriptions("heyhe");
+
+
+        //insert query
+        try {
+            dbHelper.getPushdao().create(pushHistory);
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

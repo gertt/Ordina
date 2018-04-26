@@ -60,7 +60,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         MenuDishesDatum  feedItem = feedItemList.get(position);
 
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
-        holder.price.setText("  "+feedItem.getPrice()+"  ");
+        holder.price.setText("  "+feedItem.getPrice());
         holder.metric.setText("  "+feedItem.getMetrics()+"  ");
 
         if (feedItem.getDescription()==null){

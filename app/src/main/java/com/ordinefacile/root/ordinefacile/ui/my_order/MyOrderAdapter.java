@@ -77,7 +77,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
 
         String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
 
-        holder.txt_price.setText(final_price);
+        holder.txt_price.setText(final_price+" €");
         holder.txt_metric.setText(feedItem.getmMetric());
         holder.txt_metric.setText(feedItem.getmMetric());
 

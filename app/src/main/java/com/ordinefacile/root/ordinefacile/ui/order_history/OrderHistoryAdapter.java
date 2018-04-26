@@ -66,7 +66,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         parseimage.parseimage(feedItem.getStoreImage().toString(),holder.imag_myorder_pick);
         holder.txt_name.setText(feedItem.getStore());
         holder.txt_status.setText("Status "+feedItem.getStatus());
-        holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice());
+        holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice()+" €");
         holder.txt_totalitems.setText("Total Items"+" "+feedItem.getTotalItems());
 
     //    for ( int i =0;i<feedItemListItem.size();i++) {

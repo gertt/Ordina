@@ -13,12 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
+
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
@@ -79,6 +78,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         //finish();
 
     }
+
     @Override
     public void callNumber(String numberCall) {
 
@@ -86,6 +86,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         startActivity(call);
 
     }
+
     @Override
     public void callNumberIncorrect() {
 
@@ -104,7 +105,6 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         if (id == R.id.action_profile) {
 
        showMaterialDialog();
-
 
         }
 
