@@ -8,6 +8,12 @@
         android:title="profile"
         app:showAsAction="always"  />
 
+    <item
+        android:id="@+id/action_push"
+        android:icon="@mipmap/ic_pushs"
+        android:title="profile"
+        app:showAsAction="always"  />
+
 </menu>
 
 

@@ -60,5 +60,6 @@
     <string name="no_product_in_cart">No product in card!</string>
     <string name="try_again">Try again</string>
     <string name="main_menu">Main Menu</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

@@ -7,6 +7,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
 
 /**
  * Created by Eljo on 2/4/2018.
@@ -15,18 +17,19 @@ import com.j256.ormlite.table.TableUtils;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME    = "ordinafacile.db";
-    private static final int    DATABASE_VERSION = 21;
+    private static final int    DATABASE_VERSION = 26;
 
     private Dao<Orders, Integer> mUserDao = null;
-    private  Dao<PushHistory, Integer> pushdao = null;
+    private Dao<PushHistory, Integer> pushdao = null;
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DatabaseHelper(Context context) { super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
+
             TableUtils.createTable(connectionSource, Orders.class);
             TableUtils.createTable(connectionSource, PushHistory.class);
 
@@ -36,9 +39,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
-                          int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+
         try {
+
             TableUtils.dropTable(connectionSource, Orders.class, true);
             TableUtils.dropTable(connectionSource, PushHistory.class, true);
 
@@ -49,7 +53,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     /* Orders */
-
     public Dao<Orders, Integer> getUserDao() throws SQLException {
         if (mUserDao == null) {
             try {
@@ -63,7 +66,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mUserDao;
     }
 
-    /* PushHistory */
+    /* PushHistoryActivity */
     public Dao<PushHistory, Integer> getPushdao() throws SQLException {
         if (pushdao == null) {
             try {
@@ -83,7 +86,5 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         pushdao  = null;
         super.close();
     }
-
-
 }
 

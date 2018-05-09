@@ -1,27 +1,21 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
-import android.view.View;
+
 import com.google.gson.Gson;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +35,7 @@ public class MenuDetailPresenter {
     Context context;
     MenuDetailAdapter menuDetailAdapter;
     List<MenuDishesDatum> feedItemList;
-    DatabaseOperationsImp dbOperations;
+    OrdersOperationsImp dbOperations;
     SaveData saveData;
     Orders orders;
     DatabaseHelper databaseHelper;
@@ -54,7 +48,7 @@ public class MenuDetailPresenter {
         menuDetailAdapter =  new  MenuDetailAdapter(context,feedItemList,this);
         saveData = new SaveData(context);
         orders = new Orders();
-        dbOperations = new DatabaseOperationsImp(context);
+        dbOperations = new OrdersOperationsImp(context);
         databaseHelper = new DatabaseHelper(context);
         userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);
 

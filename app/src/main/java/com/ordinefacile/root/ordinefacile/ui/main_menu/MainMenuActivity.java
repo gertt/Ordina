@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
 
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
@@ -105,6 +106,12 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         if (id == R.id.action_profile) {
 
        showMaterialDialog();
+
+        }
+        if (id == R.id.action_push) {
+
+           Intent intent = new Intent(getApplicationContext(),PushHistoryActivity.class);
+           startActivity(intent);
 
         }
 

@@ -1,4 +1,4 @@
-package com.ordinefacile.root.ordinefacile.data.db;
+package com.ordinefacile.root.ordinefacile.data.db.order;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

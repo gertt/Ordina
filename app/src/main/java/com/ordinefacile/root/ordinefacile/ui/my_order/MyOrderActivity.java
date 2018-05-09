@@ -17,8 +17,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
-import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
@@ -30,9 +29,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ordinefacile.root.ordinefacile.R2.color.myorder_titleproduct_black;
 import static com.ordinefacile.root.ordinefacile.R2.color.myorder_yellow;
-import static com.ordinefacile.root.ordinefacile.R2.color.red;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 

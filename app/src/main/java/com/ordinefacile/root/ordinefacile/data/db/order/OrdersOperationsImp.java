@@ -1,13 +1,14 @@
-package com.ordinefacile.root.ordinefacile.data.db;
+package com.ordinefacile.root.ordinefacile.data.db.order;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
+import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -18,17 +19,21 @@ import rx.Observable;
  * Created by Eljo on 2/7/2018.
  */
 
-public class DatabaseOperationsImp implements DatabaseOperations{
+public class OrdersOperationsImp implements OrdersOperations {
 
     DatabaseHelper helper;
     RuntimeExceptionDao<Orders, Integer> userDao;
+    RuntimeExceptionDao<PushHistory, Integer> pushdao;
 
-    public DatabaseOperationsImp(Context contex) {
+    public OrdersOperationsImp(Context contex) {
         helper = new DatabaseHelper(contex);
         userDao = helper.getRuntimeExceptionDao(Orders.class);
+        pushdao = helper.getRuntimeExceptionDao(PushHistory.class);
 
     }
 
+
+///////////// ORDERS \\\\\\\\\\\\
     @Override
     public Observable<Integer> create(Orders p) {
 
@@ -41,7 +46,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         });
 
     }
-
+    ///////////// ORDERS \\\\\\\\\\\\
     @Override
     public Observable<List<Orders>> read() {
 
@@ -55,7 +60,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
             }
         });
     }
-
+    ///////////// ORDERS \\\\\\\\\\\\
     @Override
     public boolean update(Orders p) {
         if(checkIfExist(p) == true){
@@ -75,7 +80,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         }
         return false;
     }
-
+    ///////////// ORDERS \\\\\\\\\\\\
     @Override
     public boolean delete(Orders p) {
         if(checkIfExist(p) == true){
@@ -92,6 +97,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
             return false;
         }
     }
+    ///////////// ORDERS \\\\\\\\\\\\
     @Override
     public boolean checkIfExist(Orders p) {
         List<Orders> results = null;
@@ -108,6 +114,7 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         }
     }
 
+    ///////////// ORDERS \\\\\\\\\\\\
     @Override
     public Observable<DeleteBuilder<Orders, Integer>>delete2(int d){
 
@@ -121,4 +128,20 @@ public class DatabaseOperationsImp implements DatabaseOperations{
         });
 
     }
+
+    /*
+    ///////////// PUSH-HISTORY \\\\\\\\\\\\
+    @Override
+    public Observable<Integer> insertPush(PushHistory p) {
+
+        return Observable.fromCallable(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                int integer = helper.getPushdao().create(p);
+                return integer;
+            }
+        });
+
+    }
+    */
 }

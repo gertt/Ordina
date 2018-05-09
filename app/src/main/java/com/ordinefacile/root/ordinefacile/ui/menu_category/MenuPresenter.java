@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
@@ -24,7 +24,7 @@ public class MenuPresenter {
 
     MenuActivity menuActivity;
     ApiHelper apiHelper;
-    DatabaseOperationsImp dbOperations;
+    OrdersOperationsImp dbOperations;
     Gson gson = new Gson();
     Context context;
     Orders orders;
@@ -36,7 +36,7 @@ public class MenuPresenter {
         this.context = context;
 
         apiHelper = new AppApiHelper();
-        dbOperations = new DatabaseOperationsImp(this.menuActivity);
+        dbOperations = new OrdersOperationsImp(this.menuActivity);
         orders = new Orders();
         databaseHelper = new DatabaseHelper(context);
     }

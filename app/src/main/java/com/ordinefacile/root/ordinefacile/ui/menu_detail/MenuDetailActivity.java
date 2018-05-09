@@ -58,9 +58,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
-
-
-
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
         itemAnimator.setRemoveDuration(1000);

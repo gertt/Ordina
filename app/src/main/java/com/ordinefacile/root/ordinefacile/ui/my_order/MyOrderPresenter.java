@@ -7,8 +7,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseOperationsImp;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
@@ -32,7 +32,7 @@ public class MyOrderPresenter {
   Context context;
   MyOrderActivity myOrderActivity;
   ApiHelper apiHelper;
-  DatabaseOperationsImp dbOperations;
+  OrdersOperationsImp dbOperations;
   Orders orders;
   DatabaseHelper databaseHelper;
   RuntimeExceptionDao<Orders, Integer> userDao;
@@ -46,7 +46,7 @@ public class MyOrderPresenter {
     this.context = context;
     this.myOrderActivity = myOrderActivity;
     apiHelper = new AppApiHelper();
-    dbOperations = new DatabaseOperationsImp(context);
+    dbOperations = new OrdersOperationsImp(context);
     orders = new Orders();
     databaseHelper = new DatabaseHelper(context);
     userDao = databaseHelper.getRuntimeExceptionDao(Orders.class);

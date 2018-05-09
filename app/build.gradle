@@ -54,7 +54,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
 
-
     //debug database and sharepreference
     debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
 
@@ -76,13 +75,18 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
 
-
     //adapter easy
     compile 'net.idik:slimadapter:2.1.2'
     compile 'org.greenrobot:eventbus:3.1.1'
 
     //material dialog,loading
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
+    //debug db web service
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+    compile 'com.facebook.stetho:stetho-js-rhino:1.5.0'
 
 }
 //firebase

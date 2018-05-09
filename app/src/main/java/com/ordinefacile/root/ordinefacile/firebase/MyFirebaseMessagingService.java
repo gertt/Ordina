@@ -14,6 +14,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
+import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryPresenter;
 
 /**
  * Created by ADMIN on 10/6/2017.
@@ -21,6 +22,8 @@ import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 
 public class MyFirebaseMessagingService  extends FirebaseMessagingService {
     private static final String TAG = "MyFirebaseMsgService";
+
+    PushHistoryPresenter pushHistoryPresenter;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -38,12 +41,16 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         if(remoteMessage.getNotification() != null) {
             Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
             Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
-            sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
+           // sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle(),"7788");
+            sendNotification2("test","test","7788");
            // sendNotification("order","ready");
         }
     }
 
-    private void sendNotification2(String body,String title) {
+    private void sendNotification2(String body,String title,String price) {
+
+        pushHistoryPresenter.inserData(body,title,price);
+
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
         notificationIntent.setAction("android.intent.action.MAIN");
         notificationIntent.addCategory("android.intent.category.LAUNCHER");

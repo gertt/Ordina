@@ -1,4 +1,4 @@
-package com.ordinefacile.root.ordinefacile.data.db;
+package com.ordinefacile.root.ordinefacile.data.db.push_history;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -10,17 +10,17 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = PushHistory.TABLE_PUSH_HISTORY) public class PushHistory {
 
     public static final String TABLE_PUSH_HISTORY = "History";
+    public static final String FIELD_NAME_ID     = "id22";
 
 
-    public static final String FIELD_NAME_ID     = "id";
     public static final String FIELD_TITTLE   = "tittle";
     public static final String FIELD_DESCRIPTION   = "description";
     public static final String FIELD_PRICE   = "price";
 
 
-    @DatabaseField(columnName = FIELD_NAME_ID, generatedId = true, unique = true)  private int id;
+   // @DatabaseField(columnName = FIELD_NAME_ID, generatedId = true, unique = true)  private int id;
 
-    @DatabaseField(columnName = FIELD_TITTLE)  private String name;
+    @DatabaseField(columnName = FIELD_TITTLE)  private String tittle;
 
     @DatabaseField(columnName = FIELD_DESCRIPTION)  private String descriptions;
 
@@ -31,27 +31,27 @@ import com.j256.ormlite.table.DatabaseTable;
         // Don't forget the empty constructor, needed by ORMLite.
     }
 
-    public void setmId(int id) {
-        this.id = id;
-    }
+   // public void setmId(int id) {
+    //    this.id = id;
+  //  }
 
-    public void setmName(String name) {
-        this.name = name;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
     }
 
-    public void set(String price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
     /** Getters **/
 
-    public static String getFieldNameId() {
-        return FIELD_NAME_ID;
-    }
+   // public static String getFieldNameId() {
+    //    return FIELD_NAME_ID;
+  //  }
 
     public static String getFieldTittle() {
         return FIELD_TITTLE;
@@ -68,12 +68,12 @@ import com.j256.ormlite.table.DatabaseTable;
 
     /** Setters **/
 
-    public int getId() {
-        return id;
-    }
+   // public int getId() {
+    //    return id;
+  //  }
 
-    public String getName() {
-        return name;
+    public String getTittle() {
+        return tittle;
     }
 
     public String getDescriptions() {

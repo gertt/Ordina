@@ -2,30 +2,20 @@ package com.ordinefacile.root.ordinefacile.ui.my_order;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
-import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 
 import com.ordinefacile.root.ordinefacile.ui.dialog.MaterialDialog;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
-import com.ordinefacile.root.ordinefacile.utils.GlideApp;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
-import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import org.greenrobot.eventbus.EventBus;
 

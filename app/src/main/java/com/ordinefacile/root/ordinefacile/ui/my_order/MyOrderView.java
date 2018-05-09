@@ -1,6 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.my_order;
 
-import com.ordinefacile.root.ordinefacile.data.db.Orders;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 
 import java.util.List;
 
