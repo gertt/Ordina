@@ -216,8 +216,10 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
                         Toast.makeText(getApplicationContext(),"u klikua",Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
-                        startActivity(intent);
+                        mainMenuPresenter.clearShare();
+
+                     //   Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+                       // startActivity(intent);
                     }
                 })
 

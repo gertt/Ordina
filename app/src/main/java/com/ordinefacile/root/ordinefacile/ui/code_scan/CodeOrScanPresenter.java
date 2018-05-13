@@ -110,7 +110,7 @@ public class CodeOrScanPresenter {
   }
 
     public void checkSharePreference() {
-    if(!saveData.getQrCode().equalsIgnoreCase("")||saveData.get){
+    if(!saveData.getQrCode().equalsIgnoreCase("")){
 
       codeOrScanActivity.goToMenuAtivitys();
     }

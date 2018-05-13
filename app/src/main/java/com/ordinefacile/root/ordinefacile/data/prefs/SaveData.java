@@ -109,6 +109,14 @@ public class SaveData {
         return preferences.getString("store_id", "");
 
     }
+
+
+    public void ClearAll(){
+
+        SharedPreferences settings;
+        editor.remove("qr_code");
+        editor.commit();
+    }
 }
 
 

@@ -37,4 +37,12 @@ public class MainMenuPresenter {
             mainMenuActivity.callNumberIncorrect();
         }
     }
+
+    public void clearShare() {
+        saveData.ClearAll();
+        if (saveData.getQrCode()==null){
+            mainMenuActivity.goToMenu();
+
+        }
+    }
 }
