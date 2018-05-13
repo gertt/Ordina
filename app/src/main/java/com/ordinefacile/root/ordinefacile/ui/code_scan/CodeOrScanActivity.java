@@ -38,6 +38,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
         codeOrScanPresenter = new CodeOrScanPresenter(getApplicationContext(),this);
         codeOrScanPresenter.checkForLanguage();
+        codeOrScanPresenter.checkSharePreference();
 
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
         btn_pin = (Button)findViewById(R.id.button_isert_pin);
@@ -62,7 +63,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
                 showMaterialDialog();
 
-            //    dialogInsertPin.feedback();
 
             }
         });
@@ -131,7 +131,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     public void goToMenuAtivity() {
         alertDialog.dismiss();
         Intent i = new Intent(this, MainMenuActivity.class);
-      //  i.putExtra("storeId",id);
         startActivity(i);
     }
 
@@ -143,6 +142,14 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     public void getAppLanguageEn() {
         LocaleHelper.setLocale(getApplicationContext(), "en");
     }
+
+    @Override
+    public void goToMenuAtivitys() {
+
+        Intent i = new Intent(this, MainMenuActivity.class);
+        startActivity(i);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -166,5 +173,4 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

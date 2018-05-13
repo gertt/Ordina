@@ -46,5 +46,7 @@
     <string name="no_product_in_cart">No product in card-it!</string>
     <string name="main_menu">Main Menu-it</string>
     <string name="yes">Si</string>
+    <string name="push_history">My History-it</string>
+    <string name="want_leave">Are you sure you want  to leave-it ?</string>
 
 </resources>

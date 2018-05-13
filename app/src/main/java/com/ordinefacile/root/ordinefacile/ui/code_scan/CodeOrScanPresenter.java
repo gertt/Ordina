@@ -44,7 +44,7 @@ public class CodeOrScanPresenter {
 
   public void getStoreDetailByPin(String pin) {
 
-    saveData.saveQrCode(pin);
+
     if (pin.equalsIgnoreCase("")||pin==null){
       codeOrScanActivity.pinInvalid();
     }else {
@@ -75,6 +75,7 @@ public class CodeOrScanPresenter {
 
                     saveData.saveEntity(pinModel.getData().getId().toString());
 
+                    saveData.saveQrCode(pin);
                     if (pinModel.getData().getStore().getPhone1()!=null){
                       saveData.saveNumberCall(pinModel.getData().getStore().getPhone1());
 
@@ -108,4 +109,11 @@ public class CodeOrScanPresenter {
     }
   }
 
+    public void checkSharePreference() {
+    if(!saveData.getQrCode().equalsIgnoreCase("")||saveData.get){
+
+      codeOrScanActivity.goToMenuAtivitys();
+    }
+
+    }
 }

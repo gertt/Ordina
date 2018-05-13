@@ -4,13 +4,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="140dp">
 
+    <View
+        android:background="@drawable/my_button_bg"
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+    </View>
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="82dp"
-        android:layout_height="44dp"
+        android:textColor="#ffffffff"
+        android:id="@+id/textView_tittle"
+        android:layout_width="318dp"
+        android:layout_height="23dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -18,21 +29,36 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.126" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="78dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="64dp"
+        android:id="@+id/textView_descriptions"
+        android:layout_width="318dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.272" />
+        android:textColor="#ffffffff"
+        app:layout_constraintEnd_toEndOf="@+id/textView_tittle"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_tittle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_tittle" />
+
+    <TextView
+        android:textColor="#ffffffff"
+        android:id="@+id/textView_price"
+        android:layout_width="159dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textView_tittle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_tittle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_descriptions"
+        tools:ignore="MissingConstraints" />
+
+
 </android.support.constraint.ConstraintLayout>

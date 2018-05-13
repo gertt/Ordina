@@ -1,8 +1,12 @@
 package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,8 +18,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
 
@@ -35,13 +43,12 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.main_menu);
 
 
         saveData = new SaveData(getApplicationContext());
         mainMenuPresenter = new MainMenuPresenter(this,getApplicationContext());
+
 
         button_menu = (Button)findViewById(R.id.button_menu);
         button_call_service = (Button)findViewById(R.id.button_call_service);
@@ -95,17 +102,14 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
         if (id == R.id.action_profile) {
 
-       showMaterialDialog();
+    //   showMaterialDialog();
+
+            materialDialog();
 
         }
         if (id == R.id.action_push) {
@@ -173,4 +177,60 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         alertDialog.show();
 
     }
+/*
+
+     new MaterialDialog.Builder(this)
+             .title("tittle")
+                .titleColorRes(R.color.colorPrimary)
+                .positiveText("yes")
+                .positiveColor(R.color.colorPrimary)
+                .negativeText("No")
+                .negativeColor(R.color.colorPrimary)
+                .show();
+*/
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public void onBackPressed()
+    {
+
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
+
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private  void materialDialog(){
+
+        new MaterialDialog.Builder(this)
+                .positiveText("yes")
+                .positiveColor( Color.parseColor("#ff0000"))
+                .title(R.string.want_leave)
+                .negativeText("No")
+                .negativeColor( Color.parseColor("#ff0000"))
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                        Toast.makeText(getApplicationContext(),"u klikua",Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+                        startActivity(intent);
+                    }
+                })
+
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                        dialog.dismiss();
+                    }
+                })
+
+                .show();
+    }
+
+
 }

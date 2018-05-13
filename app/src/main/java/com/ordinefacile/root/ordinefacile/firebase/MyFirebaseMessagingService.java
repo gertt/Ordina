@@ -16,11 +16,10 @@ import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryPresenter;
 
-/**
- * Created by ADMIN on 10/6/2017.
- */
+
 
 public class MyFirebaseMessagingService  extends FirebaseMessagingService {
+
     private static final String TAG = "MyFirebaseMsgService";
 
     PushHistoryPresenter pushHistoryPresenter;
@@ -29,27 +28,37 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
 
-        Log.d(TAG, "FROM:" + remoteMessage.getFrom());
-        //Check if the message contains data
-        if(remoteMessage.getData() !=null ) {
-            Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
-            Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
+                    Log.d(TAG, "FROM:" + remoteMessage.getFrom());
+                    //Check if the message contains data
+                    if(remoteMessage.getData() !=null ) {
+                        Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
+                        Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
 
+                      sendNotification2("test","test","7788");
 
-        }
-        //Check if the message contains notification
-        if(remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
-            Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
-           // sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle(),"7788");
-            sendNotification2("test","test","7788");
-           // sendNotification("order","ready");
-        }
+                    }
+                    //Check if the message contains notification
+                    if(remoteMessage.getNotification() != null) {
+                        Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
+                        Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
+                       //  sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle(),"7788");
+
+                      //  sendNotification2("test","test","7788");
+                        // sendNotification("order","ready");
+                    }
+
     }
 
     private void sendNotification2(String body,String title,String price) {
 
-        pushHistoryPresenter.inserData(body,title,price);
+
+       pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
+      //  pushHistoryPresenter.inserData("");
+      pushHistoryPresenter.inserData(body,title,price);
+
+      //  inserData(body,title,price);
+
+     //   pushHistoryPresenter.inserData("11","55","66");
 
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
         notificationIntent.setAction("android.intent.action.MAIN");
@@ -72,5 +81,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /*ID of notification*/, notifiBuilder.build());
     }
+
+
 }
 

@@ -38,7 +38,7 @@ public class PushHistoryAdapter  extends RecyclerView.Adapter<PushHistoryAdapter
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.menu_push_adapter, parent, false);
 
-      //  pushHistoryPresenter = new PushHistoryPresenter();
+
 
         return new PushHistoryAdapter.ViewHolder(itemView);
     }
@@ -49,7 +49,7 @@ public class PushHistoryAdapter  extends RecyclerView.Adapter<PushHistoryAdapter
         final PushHistory feedItem = feedItemList.get(position);
         holder.txt_tittle.setText(feedItem.getTittle());
         holder.txt_description.setText(feedItem.getDescriptions());
-     //   holder.txt_price.setText(feedItem.getPrice());
+        holder.txt_price.setText(feedItem.getPrice());
 
     }
 
@@ -69,9 +69,9 @@ public class PushHistoryAdapter  extends RecyclerView.Adapter<PushHistoryAdapter
         public ViewHolder(View itemView) {
             super(itemView);
 
-          txt_tittle = (TextView) itemView.findViewById(R.id.textView4);
-           txt_description = (TextView) itemView.findViewById(R.id.textView10);
-          //  txt_price = (TextView) itemView.findViewById(R.id.textView_myordser_price);
+          txt_tittle = (TextView) itemView.findViewById(R.id.textView_tittle);
+          txt_description = (TextView) itemView.findViewById(R.id.textView_descriptions);
+          txt_price = (TextView) itemView.findViewById(R.id.textView_price);
 
         }
     }

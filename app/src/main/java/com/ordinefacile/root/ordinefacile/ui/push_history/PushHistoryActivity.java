@@ -1,23 +1,19 @@
 package com.ordinefacile.root.ordinefacile.ui.push_history;
 
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.MenuItem;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
-import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
-
 import java.util.List;
 
 public class PushHistoryActivity extends AppCompatActivity  implements  PushHistoryInterface{
-
 
 
     PushHistoryPresenter pushHistoryPresenter;
@@ -25,16 +21,19 @@ public class PushHistoryActivity extends AppCompatActivity  implements  PushHist
 
     RecyclerView mRecyclerView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(R.string.menu_myorder);
 
 
         pushHistoryPresenter = new PushHistoryPresenter(this,this);
+        pushHistoryPresenter.getListPush();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle_pushHistory);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -43,10 +42,6 @@ public class PushHistoryActivity extends AppCompatActivity  implements  PushHist
         itemAnimator.setAddDuration(1000);
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
-
-      //  pushHistoryPresenter.inserData("","","");
-
-        pushHistoryPresenter.getListPush();
 
 
     }
@@ -58,5 +53,22 @@ public class PushHistoryActivity extends AppCompatActivity  implements  PushHist
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
