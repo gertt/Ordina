@@ -24,10 +24,12 @@
     <string name="add_to_cart">ADD TO CART-it</string>
     <string name="scanQR">Scan QR Code-it</string>
     <string name="insert_pin">Insert Pin-it</string>
+
     <string name="scan_activity" />
     <string name="qrcode_not_valid">Qr code is not valid-it</string>
     <string name="pin_not_valid">Pin code is not valid-it</string>
     <string name="ok">Ok-it</string>
+    <string name="send_sms">SEND-it</string>
     <string name="title_activity_dialog">Dialog-it</string>
     <string name="info">Information-it</string>
     <string name="my_history">My History-it</string>
@@ -48,5 +50,7 @@
     <string name="yes">Si</string>
     <string name="push_history">My History-it</string>
     <string name="want_leave">Are you sure you want  to leave-it ?</string>
+    <string name="send_sms_succees">The sms was send</string>
+    <string name="send_sms_error">The  sms wasnt send</string>
 
 </resources>

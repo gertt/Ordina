@@ -10,8 +10,10 @@ public interface MainMenuView   {
 
     void goToMenu();
 
-    void callNumber(String numberCall);
 
-    void callNumberIncorrect();
 
+
+    void showSendingSms();
+
+    void showErrorSending(String s);
 }

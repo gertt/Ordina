@@ -8,6 +8,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.SendSms;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 
 import org.json.JSONObject;
@@ -25,6 +26,8 @@ import rx.Observable;
  */
 
 public interface API {
+
+    //<<<GET>>>
 
     // scan and qrcocde
     @GET("qr_scan/{qrcode}")
@@ -46,14 +49,22 @@ public interface API {
     @GET("products/category/{id}")
     Observable<MenuDishes> getMenuDishes(@Path("id") int id);
 
+    //get my order history
+    @GET("orders/list/{token_fcm}")
+    Observable<OrderHistory> getOrderHistory(@Path("token_fcm") String token_fcm);
+
+
+    //<<<POST>>>
+
     //send order
     @FormUrlEncoded
     @POST("orders/create")
     Observable<SendOrderModel> sendOrderJson(@Field("data") String data);
 
-    //get my order history
-    @GET("orders/list/{token_fcm}")
-    Observable<OrderHistory> getOrderHistory(@Path("token_fcm") String token_fcm);
+    //send
+    @FormUrlEncoded
+    @POST("plusurl")
+    Observable<SendSms> sendSms(@Field("sms") String sms);
 
 }
 

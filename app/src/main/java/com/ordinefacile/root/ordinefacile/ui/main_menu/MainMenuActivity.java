@@ -1,12 +1,9 @@
 package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,21 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
-import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
-
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
-    Button button_menu ;
-    Button button_call_service ;
+    Button button_menu;
+    Button button_call_service;
     String id;
     MainMenuPresenter mainMenuPresenter;
     SaveData saveData;
@@ -45,13 +40,11 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.main_menu);
 
-
         saveData = new SaveData(getApplicationContext());
-        mainMenuPresenter = new MainMenuPresenter(this,getApplicationContext());
+        mainMenuPresenter = new MainMenuPresenter(this, getApplicationContext());
 
-
-        button_menu = (Button)findViewById(R.id.button_menu);
-        button_call_service = (Button)findViewById(R.id.button_call_service);
+        button_menu = (Button) findViewById(R.id.button_menu);
+        button_call_service = (Button) findViewById(R.id.button_call_service);
 
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +59,8 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             @Override
             public void onClick(View view) {
 
-                mainMenuPresenter.checknumber();
+
+                showMaterialDialog();
 
             }
         });
@@ -74,49 +68,58 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
     @Override
     public void getStoreId() {
-        id = saveData.getStoreId();
+        id = getIntent().getExtras().getString("storeId", "");
         mainMenuPresenter.goToMenu(id);
     }
 
     @Override
     public void goToMenu() {
         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-      //  i.putExtra("storeId",id);
+        i.putExtra("storeId", id);
         startActivity(i);
-        //finish();
 
     }
 
     @Override
-    public void callNumber(String numberCall) {
+    public void showSendingSms() {
 
-        Intent call = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", numberCall, null));
-        startActivity(call);
+        alertDialog.dismiss();
+
+       Toast.makeText(getApplicationContext(), R.string.send_sms_succees, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
-    public void callNumberIncorrect() {
+    public void showErrorSending(String s) {
 
-        Toast.makeText(getApplicationContext(),R.string.numberIncorrect,Toast.LENGTH_LONG).show();
+        alertDialog.dismiss();
+
+        Toast.makeText(getApplicationContext(), R.string.send_sms_error, Toast.LENGTH_LONG).show();
+    }
+
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public void onBackPressed()
+    {
+
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
         if (id == R.id.action_profile) {
 
-    //   showMaterialDialog();
-
-            materialDialog();
-
+            showMaterialDialogLogout();
         }
+
         if (id == R.id.action_push) {
-
-           Intent intent = new Intent(getApplicationContext(),PushHistoryActivity.class);
-           startActivity(intent);
-
+            Intent intent = new Intent(getApplicationContext(), PushHistoryActivity.class);
+            startActivity(intent);
         }
 
         switch (item.getItemId()) {
@@ -137,12 +140,11 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
     private void showMaterialDialog() {
 
+
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.custom_dialog_logout, null);
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_send, null);
         dialogBuilder.setView(dialogView);
-
-
 
         ViewGroup.LayoutParams params = getWindow().getAttributes();
         params.height = ViewGroup.LayoutParams.FILL_PARENT;
@@ -151,7 +153,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
         final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
         final EditText edt_pin = (EditText) dialogView.findViewById(R.id.editText_inser_pin);
-     //   final TextView txt_pin = (TextView) dialogView.findViewById(R.id.textView_insert_pin);
+        final TextView txt_pin = (TextView) dialogView.findViewById(R.id.textView_insert_pin);
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,10 +166,45 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String sms = edt_pin.getText().toString();
 
-                String pin_voucher = edt_pin.getText().toString();
-                //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
-                //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
+                mainMenuPresenter.sendSms(sms);
+
+            }
+        });
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+    }
+
+    private void showMaterialDialogLogout() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_logout, null);
+        dialogBuilder.setView(dialogView);
+
+        ViewGroup.LayoutParams params = getWindow().getAttributes();
+        params.height = ViewGroup.LayoutParams.FILL_PARENT;
+        getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+
+        final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
+        final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
+
+        //   final TextView txt_pin = (TextView) dialogView.findViewById(R.id.textView_insert_pin);
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+
+        btn_insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
 
@@ -177,62 +214,4 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         alertDialog.show();
 
     }
-/*
-
-     new MaterialDialog.Builder(this)
-             .title("tittle")
-                .titleColorRes(R.color.colorPrimary)
-                .positiveText("yes")
-                .positiveColor(R.color.colorPrimary)
-                .negativeText("No")
-                .negativeColor(R.color.colorPrimary)
-                .show();
-*/
-    @SuppressLint("ResourceAsColor")
-    @Override
-    public void onBackPressed()
-    {
-
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
-
-
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private  void materialDialog(){
-
-        new MaterialDialog.Builder(this)
-                .positiveText("yes")
-                .positiveColor( Color.parseColor("#ff0000"))
-                .title(R.string.want_leave)
-                .negativeText("No")
-                .negativeColor( Color.parseColor("#ff0000"))
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                        Toast.makeText(getApplicationContext(),"u klikua",Toast.LENGTH_LONG).show();
-
-                        mainMenuPresenter.clearShare();
-
-                     //   Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
-                       // startActivity(intent);
-                    }
-                })
-
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                        dialog.dismiss();
-                    }
-                })
-
-                .show();
-    }
-
-
 }

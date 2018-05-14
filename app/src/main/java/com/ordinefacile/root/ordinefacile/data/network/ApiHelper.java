@@ -6,6 +6,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.SendSms;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 import rx.Observable;
 
@@ -14,6 +15,8 @@ import rx.Observable;
  */
 
 public interface ApiHelper {
+
+      //<<<GET>>>
 
       Observable<QrCodeModel> getStoreDetails(String qrCode);
 
@@ -25,7 +28,11 @@ public interface ApiHelper {
 
       Observable<MenuDishes> getMenuDishes(int id);
 
+      Observable<OrderHistory> getOrderHistory(String token_fcm);
+
+      //<<<POST>>>
+
       Observable<SendOrderModel> sendJson(String data);
 
-      Observable<OrderHistory> getOrderHistory(String token_fcm);
+      Observable<SendSms> sendSms(String data);
 }

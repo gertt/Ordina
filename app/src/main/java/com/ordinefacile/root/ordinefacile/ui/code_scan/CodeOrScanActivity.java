@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
-import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
-import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
 import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
@@ -75,7 +73,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.custom_dialog_insertpin, null);
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_send, null);
         dialogBuilder.setView(dialogView);
 
         ViewGroup.LayoutParams params = getWindow().getAttributes();
