@@ -6,6 +6,7 @@ import android.util.Log;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.table.TableUtils;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
@@ -17,6 +18,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscriber;
@@ -217,6 +220,7 @@ public class MyOrderPresenter {
               @Override
               public void onError(Throwable e) {
                 Log.d("", "");
+
               }
 
               @Override
@@ -264,7 +268,16 @@ public class MyOrderPresenter {
 
                 if (myorder.getError().toString().equalsIgnoreCase("false")) {
 
-                  myOrderActivity.deleteDatabase("ordinafacile.db");
+                //  myOrderActivity.deleteDatabase("ordinafacile.db");
+
+           //         dropDb();
+
+                //    dbOperations.dropDb();
+
+                 //   userDao.dropTable(ConnectionSource, DatabaseTableConfig, boolean ignoreErrors)
+
+
+
                   feedItemList.clear();
                   myOrderActivity.listAdapter(feedItemList);
 
@@ -321,4 +334,13 @@ public class MyOrderPresenter {
                     }
                 });
     }
+    public void dropDb(){
+        try {
+            TableUtils.dropTable(userDao,true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

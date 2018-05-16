@@ -1,12 +1,14 @@
 package com.ordinefacile.root.ordinefacile.data.db.order;
 
 import android.content.Context;
+import android.database.SQLException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.j256.ormlite.table.TableUtils;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
 
@@ -28,7 +30,7 @@ public class OrdersOperationsImp implements OrdersOperations {
     public OrdersOperationsImp(Context contex) {
         helper = new DatabaseHelper(contex);
         userDao = helper.getRuntimeExceptionDao(Orders.class);
-        pushdao = helper.getRuntimeExceptionDao(PushHistory.class);
+
 
     }
 
@@ -127,6 +129,17 @@ public class OrdersOperationsImp implements OrdersOperations {
             }
         });
 
+    }
+
+
+    public void dropDb(){
+        try {
+            TableUtils.dropTable(userDao,true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /*

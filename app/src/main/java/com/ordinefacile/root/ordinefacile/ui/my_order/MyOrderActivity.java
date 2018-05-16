@@ -74,12 +74,16 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     itemAnimator.setRemoveDuration(1000);
     mRecyclerView.setItemAnimator(itemAnimator);
 
+
+
     fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
 
         myOrderPresenter.getListProductsSendJson();
+
+       // myOrderPresenter.dropDb();
       }
     });
 

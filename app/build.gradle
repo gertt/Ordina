@@ -7,8 +7,8 @@ android {
         applicationId "com.ordinefacile.root.ordinefacile"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 3
-        versionName "1.4"
+        versionCode 5
+        versionName "1.8"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -73,8 +73,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 
     //firebase
-    compile 'com.google.firebase:firebase-core:9.8.0'
-    compile 'com.google.firebase:firebase-messaging:9.8.0'
+    compile 'com.google.firebase:firebase-core:11.0.2'
+    compile 'com.google.firebase:firebase-messaging:11.0.2'
 
     //adapter easy
     compile 'net.idik:slimadapter:2.1.2'

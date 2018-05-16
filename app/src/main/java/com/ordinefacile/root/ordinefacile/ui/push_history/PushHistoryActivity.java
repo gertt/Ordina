@@ -43,6 +43,7 @@ public class PushHistoryActivity extends AppCompatActivity  implements  PushHist
         itemAnimator.setRemoveDuration(1000);
         mRecyclerView.setItemAnimator(itemAnimator);
 
+    //    pushHistoryPresenter.inserData("","","");
 
     }
 

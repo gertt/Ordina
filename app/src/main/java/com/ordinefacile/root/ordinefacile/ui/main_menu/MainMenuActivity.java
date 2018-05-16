@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
@@ -59,7 +60,6 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             @Override
             public void onClick(View view) {
 
-
                 showMaterialDialog();
 
             }
@@ -68,7 +68,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
     @Override
     public void getStoreId() {
-        id = getIntent().getExtras().getString("storeId", "");
+        id = saveData.getStoreId();
         mainMenuPresenter.goToMenu(id);
     }
 
@@ -206,6 +206,9 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             @Override
             public void onClick(View v) {
 
+            saveData.ClearAll();
+            Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+            startActivity(intent);
 
 
             }

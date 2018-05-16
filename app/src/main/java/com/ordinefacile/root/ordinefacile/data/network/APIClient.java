@@ -1,4 +1,7 @@
 package com.ordinefacile.root.ordinefacile.data.network;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,9 +17,15 @@ public class APIClient {
     private static Retrofit retrofit = null;
 
     public static Retrofit createAPI() {
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
+
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -25,9 +34,15 @@ public class APIClient {
     }
 
     public static Retrofit getClient() {
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
+
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

@@ -90,8 +90,6 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         numberInt++;
                         holder.txt_add.setText("" + numberInt);
 
-
-
                         Float quantity_float = Float.valueOf(numberInt);
                         Float quantity_price =Float.parseFloat(holder.price.getText().toString());
                         Float final_price = quantity_price * quantity_float;
