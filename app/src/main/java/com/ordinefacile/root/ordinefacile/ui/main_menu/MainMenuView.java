@@ -10,9 +10,6 @@ public interface MainMenuView   {
 
     void goToMenu();
 
-
-
-
     void showSendingSms();
 
     void showErrorSending(String s);

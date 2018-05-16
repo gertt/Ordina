@@ -70,6 +70,7 @@
             </intent-filter>
         </service>
 
+
         <activity
             android:name=".ui.select_language.SelectLanguageActivity"
             android:label="@string/title_activity_select_language"

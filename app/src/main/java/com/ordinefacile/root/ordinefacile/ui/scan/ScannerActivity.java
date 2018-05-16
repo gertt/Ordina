@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.scan;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,10 +12,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
+import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
@@ -202,4 +205,21 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         t.cancel();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

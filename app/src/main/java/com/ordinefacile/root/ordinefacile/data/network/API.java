@@ -1,19 +1,13 @@
 package com.ordinefacile.root.ordinefacile.data.network;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishes;
-import com.ordinefacile.root.ordinefacile.data.network.model.MyOrderSendJson;
 import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.SendSms;
+import com.ordinefacile.root.ordinefacile.data.network.model.CallService;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 
-import org.json.JSONObject;
-
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -63,8 +57,8 @@ public interface API {
 
     //send
     @FormUrlEncoded
-    @POST("plusurl")
-    Observable<SendSms> sendSms(@Field("sms") String sms);
+    @POST("call_service/{table_id}")
+    Observable<CallService> sendSms(@Path("table_id") String table_id,@Field("data") String data);
 
 }
 

@@ -6,7 +6,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.SendSms;
+import com.ordinefacile.root.ordinefacile.data.network.model.CallService;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 import rx.Observable;
 
@@ -34,5 +34,5 @@ public interface ApiHelper {
 
       Observable<SendOrderModel> sendJson(String data);
 
-      Observable<SendSms> sendSms(String data);
+      Observable<CallService> callService(String table_id,String data);
 }

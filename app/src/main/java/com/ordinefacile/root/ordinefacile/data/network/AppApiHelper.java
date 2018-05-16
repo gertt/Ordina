@@ -6,7 +6,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.OrderHistory;
 import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.SendOrderModel;
-import com.ordinefacile.root.ordinefacile.data.network.model.SendSms;
+import com.ordinefacile.root.ordinefacile.data.network.model.CallService;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 import rx.Observable;
 
@@ -50,8 +50,8 @@ public class AppApiHelper implements ApiHelper{
     }
 
     @Override
-    public Observable<SendSms> sendSms(String sms) {
-        return apiServiceSend.sendSms(sms);
+    public Observable<CallService> callService(String table_id,String data) {
+        return apiServiceSend.sendSms(table_id,data);
 
     }
 

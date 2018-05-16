@@ -166,9 +166,9 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sms = edt_pin.getText().toString();
 
-                mainMenuPresenter.sendSms(sms);
+
+                mainMenuPresenter.callService();
 
             }
         });

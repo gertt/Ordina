@@ -96,12 +96,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
                                 saveData.saveDishesId(data.getId().toString());
                                 Intent intent = new Intent(getApplicationContext(),MenuDetailActivity.class);
                                 startActivity(intent);
-
-
-                              //  intent.putExtra("categoryId", data.getId().toString()+"");
-                              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                               // getApplicationContext().startActivity(intent);
-
                             }
 
                         });
