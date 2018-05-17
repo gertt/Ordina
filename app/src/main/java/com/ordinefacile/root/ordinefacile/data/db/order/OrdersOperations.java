@@ -13,9 +13,6 @@ public interface OrdersOperations {
 
     Observable create(Orders p);
 
-
-
-
     Observable<List<Orders>> read();
 
     boolean update(Orders p);
@@ -23,6 +20,8 @@ public interface OrdersOperations {
     boolean delete(Orders p);
 
     Observable delete2(int p);
+
+    Observable deleteall(int p);
 
     boolean checkIfExist(Orders p);
 

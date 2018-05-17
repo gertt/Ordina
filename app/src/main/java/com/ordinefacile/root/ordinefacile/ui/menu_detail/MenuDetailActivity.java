@@ -1,17 +1,20 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
@@ -37,6 +40,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     FloatingActionButton fab;
 
     SaveData saveData;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +53,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         getSupportActionBar().setTitle(R.string.menu);
 
         saveData = new SaveData(getApplicationContext());
-
-
 
         menuDetailPresenter = new MenuDetailPresenter(getApplicationContext(),this);
         menuDetailPresenter.checkHideShowFloating();
@@ -112,19 +114,6 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         swipe_menu.setRefreshing(false);
     }
 
-    @Override
-    public void callNumber(String numberCall) {
-
-        Intent call = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", numberCall, null));
-        startActivity(call);
-
-    }
-
-    @Override
-    public void callNumberIncorrect() {
-        Toast.makeText(getApplicationContext(),R.string.numberIncorrect,Toast.LENGTH_LONG).show();
-
-    }
 
     @Override
     public void checkQuantity() {
@@ -145,6 +134,23 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     }
 
     @Override
+    public void showSendingSms() {
+
+        alertDialog.dismiss();
+
+        Toast.makeText(getApplicationContext(), R.string.send_sms_succees, Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void showErrorSending(String s) {
+
+        alertDialog.dismiss();
+
+        Toast.makeText(getApplicationContext(), R.string.send_sms_error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onBackPressed() {
         //super.onBackPressed();
         Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
@@ -157,7 +163,8 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         int id = item.getItemId();
         if (id == R.id.action_call_service) {
 
-            menuDetailPresenter.checknumber();
+            showMaterialDialog();
+
         }
 
         if (id == R.id.action_history) {
@@ -182,15 +189,52 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void onRestart()
-    {
+    public void onRestart() {
         super.onRestart();
         menuDetailPresenter.checkHideShowFloating();
         adapter = new MenuDetailAdapter(getApplicationContext(), feedItemList2,menuDetailPresenter);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+    }
+
+    private void showMaterialDialog() {
+
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_send, null);
+        dialogBuilder.setView(dialogView);
+
+        ViewGroup.LayoutParams params = getWindow().getAttributes();
+        params.height = ViewGroup.LayoutParams.FILL_PARENT;
+        getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+
+        final Button btn_insert = (Button) dialogView.findViewById(R.id.button_call_service);
+        final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
+
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+        btn_insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                menuDetailPresenter.callService();
+
+            }
+        });
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
 
     }
+
 }
 

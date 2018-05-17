@@ -52,5 +52,7 @@
     <string name="want_leave">Are you sure you want  to leave-it ?</string>
     <string name="send_sms_succees">The sms was send</string>
     <string name="send_sms_error">The  sms wasnt send</string>
+    <string name="type_text_here">Type text here-it</string>
+    <string name="want_call_service">You want a call service-it ?</string>
 
 </resources>

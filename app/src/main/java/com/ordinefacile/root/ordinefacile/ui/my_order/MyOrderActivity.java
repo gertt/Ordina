@@ -151,6 +151,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
   @Override
   public void dismissDialog() {
     alertDialog.dismiss();
+
   }
 
   @Override

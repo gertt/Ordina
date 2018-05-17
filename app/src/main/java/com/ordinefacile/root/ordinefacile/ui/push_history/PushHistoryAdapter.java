@@ -22,8 +22,6 @@ public class PushHistoryAdapter  extends RecyclerView.Adapter<PushHistoryAdapter
     PushHistoryActivity pushHistoryActivity;
     PushHistoryPresenter pushHistoryPresenter;
 
-
-
     public PushHistoryAdapter(Context context, List<PushHistory> feedItemList,PushHistoryActivity pushHistoryActivity) {
 
         this.feedItemList = feedItemList;

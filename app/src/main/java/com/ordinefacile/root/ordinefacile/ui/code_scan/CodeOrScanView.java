@@ -17,4 +17,6 @@ public interface CodeOrScanView {
     void getAppLanguageEn();
 
     void goToMenuAtivitys();
+
+
 }

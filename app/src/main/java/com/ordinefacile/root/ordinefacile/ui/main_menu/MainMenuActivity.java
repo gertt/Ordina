@@ -2,7 +2,6 @@ package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
+
 
 public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
 
@@ -138,6 +136,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         return super.onCreateOptionsMenu(menu);
     }
 
+
     private void showMaterialDialog() {
 
 
@@ -150,10 +149,9 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         params.height = ViewGroup.LayoutParams.FILL_PARENT;
         getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
 
-        final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
+        final Button btn_insert = (Button) dialogView.findViewById(R.id.button_call_service);
         final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
-        final EditText edt_pin = (EditText) dialogView.findViewById(R.id.editText_inser_pin);
-        final TextView txt_pin = (TextView) dialogView.findViewById(R.id.textView_insert_pin);
+
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +174,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         alertDialog.show();
 
     }
+
 
     private void showMaterialDialogLogout() {
 

@@ -31,7 +31,6 @@ public class OrdersOperationsImp implements OrdersOperations {
         helper = new DatabaseHelper(contex);
         userDao = helper.getRuntimeExceptionDao(Orders.class);
 
-
     }
 
 
@@ -132,29 +131,16 @@ public class OrdersOperationsImp implements OrdersOperations {
     }
 
 
-    public void dropDb(){
-        try {
-            TableUtils.dropTable(userDao,true);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*
-    ///////////// PUSH-HISTORY \\\\\\\\\\\\
     @Override
-    public Observable<Integer> insertPush(PushHistory p) {
+    public Observable<DeleteBuilder<Orders, Integer>>deleteall(int d){
 
-        return Observable.fromCallable(new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                int integer = helper.getPushdao().create(p);
-                return integer;
+        return Observable.fromCallable(new Callable<DeleteBuilder<Orders, Integer>>(){
+            public DeleteBuilder<Orders, Integer> call() throws Exception {
+                DeleteBuilder<Orders, Integer> deleteBuilder = userDao.deleteBuilder();
+                deleteBuilder.delete();
+                return deleteBuilder;
             }
         });
 
     }
-    */
 }

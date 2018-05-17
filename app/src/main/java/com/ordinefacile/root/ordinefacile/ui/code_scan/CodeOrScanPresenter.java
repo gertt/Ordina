@@ -88,7 +88,6 @@ public class CodeOrScanPresenter {
                     codeOrScanActivity.goToMenuAtivity();
 
 
-
                     System.out.println("imazhi "+id);
                   }else if (pinModel.getError() ==true){
 

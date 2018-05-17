@@ -102,7 +102,6 @@ public class PushHistoryPresenter {
                     public void onCompleted() {
                         Log.d("", "");
 
-
                     }
 
                     @Override

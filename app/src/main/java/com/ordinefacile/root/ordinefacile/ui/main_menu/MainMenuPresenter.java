@@ -28,7 +28,7 @@ public class MainMenuPresenter {
     Context context;
     SaveData saveData;
     ApiHelper apiHelper;
-    String json_obj1;
+
 
     public MainMenuPresenter(MainMenuActivity mainMenuActivity,  Context context) {
         this.mainMenuActivity = mainMenuActivity;
@@ -48,9 +48,7 @@ public class MainMenuPresenter {
         }
     }
 
-
     public void callService() {
-
 
         try {
             JSONObject jsonObj = new JSONObject();
@@ -61,7 +59,7 @@ public class MainMenuPresenter {
 
             String json_obj = jsonObj.toString();
 
-        apiHelper.callService("CN-562D",json_obj)
+                apiHelper.callService("CN-562D",json_obj)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<CallService>() {
@@ -75,37 +73,15 @@ public class MainMenuPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                      //  mainMenuActivity.showErrorSending(e.toString());
+                       mainMenuActivity.showErrorSending(e.toString());
 
                     }
 
                     @Override
                     public void onNext(CallService callService) {
 
-
                         String SJSJ = callService.getMessage().toString();
                         String SJuSJ = callService.getMessage().toString();
-
-                        String SJgSJ = callService.toString();
-                        String SJguhSJ = callService.toString();
-                        JSONObject jsonObject = null;
-
-                        Log.e("TAG", "response 33: "+new Gson().toJson(CallService.body()) );
-
-                        try {
-                            jsonObject = new JSONObject(SJSJ);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("eraldii "+ jsonObject);
-                        // JSONObject object1 = jsonObject.getJSONObject("status");
-
-                        //JSONObject object2 = object1.getJSONObject("status");
-                        try {
-                            String status = jsonObject.getString("status");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
                     }
 
@@ -114,7 +90,6 @@ public class MainMenuPresenter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
     }
 }

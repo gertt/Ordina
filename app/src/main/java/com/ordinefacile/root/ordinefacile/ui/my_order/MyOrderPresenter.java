@@ -270,7 +270,9 @@ public class MyOrderPresenter {
 
                 //  myOrderActivity.deleteDatabase("ordinafacile.db");
 
-           //         dropDb();
+                    deleteall(3);
+
+              //  dropDb();
 
                 //    dbOperations.dropDb();
 
@@ -342,5 +344,32 @@ public class MyOrderPresenter {
         }
     }
 
+    public void deleteall(int id) {
+
+        dbOperations.deleteall(id).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<DeleteBuilder<Orders, Integer>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("", "");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("", "");
+                    }
+
+                    @Override
+                    public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
+
+                        checkHideShowFloating();
+
+                        Log.d("", "");
+
+                    }
+
+                });
+
+    }
 
 }

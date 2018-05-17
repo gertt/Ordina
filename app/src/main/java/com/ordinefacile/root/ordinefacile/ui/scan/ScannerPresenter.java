@@ -48,7 +48,6 @@ public class ScannerPresenter {
 
     }
 
-
     public void getStoreDetail(final String qrCode) {
         System.out.println("qr code : "+qrCode);
         apiHelper.getStoreDetails(qrCode)

@@ -16,13 +16,13 @@ public interface MenuDetailView {
 
     void dissapearSwipeToRefresh();
 
-    void callNumber(String numberCall);
-
-    void callNumberIncorrect();
-
     void checkQuantity();
 
     void showFloating();
 
     void hideFloating();
+
+    void showSendingSms();
+
+    void showErrorSending(String s);
 }

@@ -34,7 +34,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
 
-                      sendNotification2("test","test","7788");
+                sendNotification2("test","test","7788");
 
                     }
                     //Check if the message contains notification
@@ -51,9 +51,8 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
     private void sendNotification2(String body,String title,String price) {
 
-
-       pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
-      pushHistoryPresenter.inserData(body,title,price);
+        pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
+        pushHistoryPresenter.inserData(body,title,price);
 
 
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
@@ -77,7 +76,6 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /*ID of notification*/, notifiBuilder.build());
     }
-
 
 }
 

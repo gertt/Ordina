@@ -66,14 +66,13 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         });
 
 
-
     }
 
     private void showMaterialDialog() {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.custom_dialog_send, null);
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_send_pin, null);
         dialogBuilder.setView(dialogView);
 
         ViewGroup.LayoutParams params = getWindow().getAttributes();
@@ -147,6 +146,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         Intent i = new Intent(this, MainMenuActivity.class);
         startActivity(i);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
