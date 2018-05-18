@@ -81,19 +81,15 @@ public class PushHistoryPresenter {
 
                         }
 
-
                     }
                 });
     }
 
-//Ordine Approvato
-    //L'ordine al tavolo : Tavolo 1, con prezzo totale : 12€, è stato approvato.
+    public void inserData(String title, String description, String price){
 
-    public void inserData(String final_price, String quantity, String name){
-
-       pushHistory.setTittle("Tittle : Ordine Approvato");
-       pushHistory.setDescriptions("Description : L'ordine al tavolo : Tavolo 1, con prezzo totale : 12€, è stato approvato");
-       pushHistory.setPrice("465.754 "+" €");
+       pushHistory.setTittle("Title"+title);
+       pushHistory.setDescriptions("Description:"+description);
+       pushHistory.setPrice("Price:"+price+" €");
 
         pushHistoryOperationsImp.insertPush(pushHistory).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -108,7 +104,6 @@ public class PushHistoryPresenter {
                     public void onError(Throwable e) {
                         Log.d("", "");
                     }
-
                     @Override
                     public void onNext(Integer push) {
 
@@ -117,6 +112,4 @@ public class PushHistoryPresenter {
                 });
 
     }
-
-
 }

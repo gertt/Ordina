@@ -34,7 +34,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
 
-                sendNotification2("test","test","7788");
+                sendNotification2(remoteMessage.getData().get("title"),remoteMessage.getData().get("description"),remoteMessage.getData().get("price"));
 
                     }
                     //Check if the message contains notification
@@ -49,10 +49,10 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
     }
 
-    private void sendNotification2(String body,String title,String price) {
+    private void sendNotification2(String title,String description,String price) {
 
         pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
-        pushHistoryPresenter.inserData(body,title,price);
+        pushHistoryPresenter.inserData(title,description,price);
 
 
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
@@ -68,7 +68,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_android)
                 .setContentTitle(title)
-                .setContentText(body)
+                .setContentText(price)
                 .setAutoCancel(true)
                 .setSound(notificationSound)
                 .setContentIntent(contentIntent);
@@ -76,6 +76,18 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /*ID of notification*/, notifiBuilder.build());
     }
+
+    /*
+    {
+ "to" : "fFAVZVh4-eo:APA91bGycWL9_35PjRsAynxQnzssbtwiurOa8uGrWIOBpTGWL9uMgmOuYbDBoO_bXrrpnuPJIF_B-seX0T9fsQti_WcFEjh2EBVaOgHrZpM9aRQp2SckwrLosoAkOMZOA5qzjJ0-14nC",
+ "collapse_key" : "type_a",
+ "data" : {
+     "title" : "test77  test99 test",
+     "description": "1234567890-0987654321234567890-",
+     "price" : "2.66"
+ }
+}
+     */
 
 }
 

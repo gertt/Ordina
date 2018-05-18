@@ -24,6 +24,7 @@
     <string name="add_to_cart">ADD TO CART-it</string>
     <string name="scanQR">Scan QR Code-it</string>
     <string name="insert_pin">Insert Pin-it</string>
+    <string name="menu_category">Category-it</string>
 
     <string name="scan_activity" />
     <string name="qrcode_not_valid">Qr code is not valid-it</string>

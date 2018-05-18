@@ -62,6 +62,8 @@
     <string name="no_product_in_cart">No product in card!</string>
     <string name="try_again">Try again</string>
     <string name="main_menu">Main Menu</string>
+    <string name="menu_category">Category</string>
+
     <string name="title_activity_main2">Main2Activity</string>
     <string name="insert_pin">Insert Pin</string>
     <string name="want_leave">Are you sure you want  to leave ?</string>

@@ -86,6 +86,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
                 onBackPressed();
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -106,10 +107,10 @@ public class OrderHistoryActivity extends AppCompatActivity implements OrderHist
     }
     @Override
     public void onBackPressed() {
-      //  super.onBackPressed();
+       super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(), MenuDetailActivity.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(getApplicationContext(), MenuDetailActivity.class);
+      //  startActivity(intent);
 
     }
 }

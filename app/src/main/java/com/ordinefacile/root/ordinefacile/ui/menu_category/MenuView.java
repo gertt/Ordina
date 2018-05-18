@@ -16,4 +16,7 @@ public interface MenuView {
 
     void dissapearSwipeToRefresh();
 
+    void showSendingSms();
+
+    void showErrorSending(String s);
 }
