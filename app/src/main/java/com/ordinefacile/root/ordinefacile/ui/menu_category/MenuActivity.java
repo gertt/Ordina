@@ -24,6 +24,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
@@ -152,7 +153,10 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
             Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);
             startActivity(intent);
         }
-
+        if (id == R.id.action_myorder) {
+            Intent intent = new Intent(getApplicationContext(),MyOrderActivity.class);
+            startActivity(intent);
+        }
 
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -165,7 +169,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        getMenuInflater().inflate(R.menu.menu_category, menu);
 
         return super.onCreateOptionsMenu(menu);
     }

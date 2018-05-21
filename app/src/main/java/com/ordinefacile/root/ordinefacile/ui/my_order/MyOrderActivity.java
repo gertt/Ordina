@@ -75,7 +75,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     itemAnimator.setRemoveDuration(1000);
     mRecyclerView.setItemAnimator(itemAnimator);
 
-
+    myOrderPresenter.checkHideShowFloating();
 
     fab = (Button) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +147,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
     Intent intent = new Intent(this, OrderHistoryActivity.class);
     startActivity(intent);
     finish();
+
   }
 
   @Override
@@ -218,6 +219,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
   protected void onPause() {
     super.onPause();
     EventBus.getDefault().unregister(this);
+
   }
 
   @Override

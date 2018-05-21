@@ -336,13 +336,7 @@ public class MyOrderPresenter {
                     }
                 });
     }
-    public void dropDb(){
-        try {
-            TableUtils.dropTable(userDao,true);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void deleteall(int id) {
 
