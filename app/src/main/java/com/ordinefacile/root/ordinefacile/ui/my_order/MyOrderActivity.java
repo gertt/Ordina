@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -46,7 +47,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
   ArrayList<Orders> muylis = new ArrayList<Orders>();
 
-  FloatingActionButton fab;
+  Button fab;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
 
 
-    fab = (FloatingActionButton) findViewById(R.id.fab);
+    fab = (Button) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -182,13 +183,17 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
 
   @Override
   public void showFloating() {
-    fab.show();
+   // fab.show();
+
+
+    fab.setVisibility(View.VISIBLE);
 
   }
 
   @Override
   public void hideFloating() {
-    fab.hide();
+    //fab.hide();
+    fab.setVisibility(View.GONE);
 
   }
 

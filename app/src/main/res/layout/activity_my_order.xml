@@ -22,13 +22,16 @@
 
     <include layout="@layout/content_my_order" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_gravity="bottom"
+    <Button
+        android:textColor="@color/white"
+        android:text="add_myorder"
+        android:background="@color/colorPrimary"
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_send_order" />
+        />
 
 
 </android.support.design.widget.CoordinatorLayout>
