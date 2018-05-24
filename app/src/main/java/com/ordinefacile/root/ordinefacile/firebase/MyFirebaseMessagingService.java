@@ -34,7 +34,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
 
-                sendNotification2(remoteMessage.getData().get("title"),remoteMessage.getData().get("description"),remoteMessage.getData().get("price"));
+                sendNotification2(remoteMessage.getData().get("title"),remoteMessage.getData().get("description"), Float.valueOf(remoteMessage.getData().get("price")));
 
                     }
                     //Check if the message contains notification
@@ -49,7 +49,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
     }
 
-    private void sendNotification2(String title,String description,String price) {
+    private void sendNotification2(String title,String description,Float price) {
 
         pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
         pushHistoryPresenter.inserData(title,description,price);
@@ -68,7 +68,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_android)
                 .setContentTitle(title)
-                .setContentText(price)
+                .setContentText(price.toString())
                 .setAutoCancel(true)
                 .setSound(notificationSound)
                 .setContentIntent(contentIntent);

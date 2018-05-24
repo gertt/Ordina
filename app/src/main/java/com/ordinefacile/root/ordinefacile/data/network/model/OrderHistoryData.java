@@ -28,7 +28,7 @@ public class OrderHistoryData {
     private String table;
     @SerializedName("total_price")
     @Expose
-    private String totalPrice;
+    private Float totalPrice;
     @SerializedName("total_items")
     @Expose
     private String totalItems;
@@ -79,11 +79,11 @@ public class OrderHistoryData {
         this.table = table;
     }
 
-    public String getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
     }
 

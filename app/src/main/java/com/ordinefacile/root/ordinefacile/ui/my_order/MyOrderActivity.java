@@ -105,6 +105,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
   @Override
   public void idProduct(int int_product) {
     myOrderPresenter.delete(int_product);
+
   }
 
   @Override

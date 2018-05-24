@@ -18,10 +18,10 @@ public class OrderHistoryItem {
     private String image;
     @SerializedName("price")
     @Expose
-    private String price;
+    private float price;
     @SerializedName("quantity")
     @Expose
-    private String quantity;
+    private Float quantity;
     @SerializedName("total")
     @Expose
     private String total;
@@ -42,19 +42,19 @@ public class OrderHistoryItem {
         this.image = image;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public Float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Float quantity) {
         this.quantity = quantity;
     }
 
