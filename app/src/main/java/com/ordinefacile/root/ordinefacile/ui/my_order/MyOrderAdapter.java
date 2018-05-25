@@ -73,8 +73,6 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         holder.txt_price.setText(final_price+" €");
 
 
-      //  holder.txt_metric.setText(feedItem.getmMetric());
-
         if (feedItem.getmMetric()==null){
 
             holder.txt_metric.setText("  "+"No Metric"+"  ");
