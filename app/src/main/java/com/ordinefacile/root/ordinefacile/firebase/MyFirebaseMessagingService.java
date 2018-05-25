@@ -51,8 +51,19 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
     private void sendNotification2(String title,String description,Float price) {
 
+
+        //String currentString = "L'ordine al tavolo : Tavolo 1, con prezzo totale : 23.5€, è stato approvato.";
+        String[] separated = description.split(",");
+
+        String ZERO = separated[0];
+        String ZERO1 = separated[1];
+        String ZERO2 = separated[2];
+
+        String SUPER =  ZERO+ZERO2;
+        String SUSPER =  ZERO+ZERO2;
+
         pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
-        pushHistoryPresenter.inserData(title,description,price);
+        pushHistoryPresenter.inserData(title,SUSPER,price);
 
 
         Intent notificationIntent = new Intent(this, OrderHistoryActivity.class);
@@ -68,7 +79,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_android)
                 .setContentTitle(title)
-                .setContentText(price.toString())
+                .setContentText("Price: "+price.toString())
                 .setAutoCancel(true)
                 .setSound(notificationSound)
                 .setContentIntent(contentIntent);

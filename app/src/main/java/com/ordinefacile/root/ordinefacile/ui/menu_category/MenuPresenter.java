@@ -100,7 +100,7 @@ public class MenuPresenter {
 
                 String json_obj = jsonObj.toString();
 
-                apiHelper.callService("CN-562D",json_obj)
+                apiHelper.callService(saveData.getQrCode(),json_obj)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Subscriber<CallService>() {

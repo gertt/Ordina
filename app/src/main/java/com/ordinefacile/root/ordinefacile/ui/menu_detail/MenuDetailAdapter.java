@@ -71,6 +71,18 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             holder.description.setText("  "+feedItem.getDescription()+"  ");
         }
 
+
+
+        if (feedItem.getMetrics()==null){
+
+            holder.metric.setText(" ");
+        }else {
+
+            holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+        }
+
+
+
         Integer emir = feedItem.getId();
         parseimage.parseimage(feedItem.getImage().toString(), holder.imageviews);
         urlImg = feedItem.getImage().toString();

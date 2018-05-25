@@ -101,7 +101,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
              //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
              //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
 
-                codeOrScanPresenter.checkCharacter("CN-562D");
+                codeOrScanPresenter.checkCharacter(pin_voucher);
 
             }
         });

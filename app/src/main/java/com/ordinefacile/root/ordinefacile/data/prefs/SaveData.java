@@ -111,6 +111,9 @@ public class SaveData {
     }
 
 
+
+
+
     public void ClearAll(){
 
         SharedPreferences settings;

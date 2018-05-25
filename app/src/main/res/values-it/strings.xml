@@ -55,5 +55,6 @@
     <string name="send_sms_error">The  sms wasnt send</string>
     <string name="type_text_here">Type text here-it</string>
     <string name="want_call_service">You want a call service-it ?</string>
+    <string name="total_price">Prezo Totale : </string>
 
 </resources>

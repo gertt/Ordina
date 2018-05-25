@@ -74,4 +74,5 @@
     <string name="send_sms_error">The  call wasnt send</string>
 
     <string name="type_text_here">Type text here</string>
+    <string name="total_price">Total Price : </string>
 </resources>

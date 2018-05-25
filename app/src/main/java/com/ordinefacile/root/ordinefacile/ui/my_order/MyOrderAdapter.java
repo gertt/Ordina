@@ -61,6 +61,9 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
     @Override
     public void onBindViewHolder(final MyOrderAdapter.ViewHolder holder, int position) {
 
+
+
+
         final Orders feedItem = feedItemList.get(position);
         holder.txt_name.setText(feedItem.getmName());
         holder.txt_name.setText(feedItem.getmName());
@@ -68,8 +71,17 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
         String final_price = String.valueOf(new DecimalFormat("##.##").format(feedItem.getmFinalPrice()));
 
         holder.txt_price.setText(final_price+" €");
-        holder.txt_metric.setText(feedItem.getmMetric());
-        holder.txt_metric.setText(feedItem.getmMetric());
+
+
+      //  holder.txt_metric.setText(feedItem.getmMetric());
+
+        if (feedItem.getmMetric()==null){
+
+            holder.txt_metric.setText("  "+"No Metric"+"  ");
+        }else {
+
+            holder.txt_metric.setText("  "+feedItem.getmMetric()+"  ");
+        }
 
         parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);
 
