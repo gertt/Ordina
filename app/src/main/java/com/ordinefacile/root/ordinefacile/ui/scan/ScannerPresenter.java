@@ -87,7 +87,7 @@ public class ScannerPresenter {
                             }
 
                             String str = Integer.toString(number_character);
-                            saveData.saveNumberCharacter(str);
+                         //   saveData.saveNumberCharacter(str);
 
                             saveData.saveDeliveryStatus(qrCodeModel.getData().getDelivery().toString());
 

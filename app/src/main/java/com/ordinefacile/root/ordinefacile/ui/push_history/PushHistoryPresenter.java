@@ -87,9 +87,9 @@ public class PushHistoryPresenter {
 
     public void inserData(String title, String description, Float price){
 
-       pushHistory.setTittle("Title"+title);
-       pushHistory.setDescriptions("Description:"+description);
-       pushHistory.setPrice("Price:"+price.toString()+" €");
+       pushHistory.setTittle("Title: "+title);
+       pushHistory.setDescriptions("Description: "+description);
+       pushHistory.setPrice("Price: "+price.toString()+" €");
 
         pushHistoryOperationsImp.insertPush(pushHistory).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

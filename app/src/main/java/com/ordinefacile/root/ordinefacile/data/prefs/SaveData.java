@@ -110,6 +110,14 @@ public class SaveData {
 
     }
 
+    public void clearPin(){
+
+        SharedPreferences settings;
+        editor.remove("number_character");
+        editor.remove("qr_code");
+        editor.commit();
+    }
+
 
 
 

@@ -40,6 +40,9 @@ public class CodeOrScanPresenter {
   public void checkCharacter(String pin_voucher) {
     getStoreDetailByPin(pin_voucher);
 
+
+
+
   }
 
   public void getStoreDetailByPin(String pin) {
@@ -55,6 +58,16 @@ public class CodeOrScanPresenter {
               .subscribe(new Subscriber<PinModel>() {
                 @Override
                 public void onCompleted() {
+
+                  int s = pin.length();
+                  int s1 = pin.length();
+
+
+                  String str = Integer.toString(s);
+                  String star = Integer.toString(s);
+                  saveData.saveNumberCharacter(str);
+
+
 
                 }
 
