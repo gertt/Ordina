@@ -184,8 +184,17 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
 
+        if (saveData.getNumberCharacter().equalsIgnoreCase("5")){
+
+            getMenuInflater().inflate(R.menu.menu_detail_withoutcall, menu);
+
+        }else {
+
+            getMenuInflater().inflate(R.menu.menu_detail, menu);
+
+
+        }
         return super.onCreateOptionsMenu(menu);
     }
 

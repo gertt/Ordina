@@ -37,11 +37,18 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.main_menu);
 
+
+
         saveData = new SaveData(getApplicationContext());
         mainMenuPresenter = new MainMenuPresenter(this, getApplicationContext());
 
+
+
+
         button_menu = (Button) findViewById(R.id.button_menu);
         button_call_service = (Button) findViewById(R.id.button_call_service);
+
+        mainMenuPresenter.checkCallservice();
 
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +98,12 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         alertDialog.dismiss();
 
         Toast.makeText(getApplicationContext(), R.string.send_sms_error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void callServiceGone() {
+
+        button_call_service.setVisibility(View.GONE);
     }
 
     @SuppressLint("ResourceAsColor")

@@ -1,14 +1,17 @@
 package com.ordinefacile.root.ordinefacile.ui.main_menu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.CallService;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,5 +94,14 @@ public class MainMenuPresenter {
             e.printStackTrace();
         }
 
+    }
+
+    public void checkCallservice() {
+        if (saveData.getNumberCharacter().equalsIgnoreCase("5")){
+
+
+            mainMenuActivity.callServiceGone();
+
+        }
     }
 }

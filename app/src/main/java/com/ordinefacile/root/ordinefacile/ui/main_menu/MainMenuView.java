@@ -13,4 +13,6 @@ public interface MainMenuView   {
     void showSendingSms();
 
     void showErrorSending(String s);
+
+    void callServiceGone();
 }

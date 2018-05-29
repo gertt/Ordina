@@ -169,7 +169,17 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_category, menu);
+        if (saveData.getNumberCharacter().equalsIgnoreCase("5")){
+
+            getMenuInflater().inflate(R.menu.menu_category_withoutcall, menu);
+
+        }else {
+
+
+            getMenuInflater().inflate(R.menu.menu_category, menu);
+
+
+        }
 
         return super.onCreateOptionsMenu(menu);
     }
