@@ -9,8 +9,8 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="555dp"
-        android:layout_height="160dp"
+        android:layout_width="562dp"
+        android:layout_height="175dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -18,7 +18,6 @@
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -28,41 +27,39 @@
     <ImageView
 
         android:id="@+id/imageView2"
-        android:layout_width="180dp"
-        android:layout_height="142dp"
+        android:layout_width="166dp"
+        android:layout_height="130dp"
 
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:textSize="18sp"
         android:id="@+id/textView5"
         android:layout_width="225dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="8dp"
         android:text="Titulli i Produktit"
         android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_description"
         app:layout_constraintStart_toStartOf="@+id/textView_description" />
 
     <TextView
         android:id="@+id/textView_description"
-        android:layout_width="340dp"
-        android:layout_height="35dp"
+        android:layout_width="368dp"
+        android:layout_height="74dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginTop="60dp"
-        android:maxLength="22"
+        android:layout_marginTop="44dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
         android:text="@string/description"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:layout_marginRight="12dp" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
 
@@ -77,17 +74,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView_description"
         app:layout_constraintTop_toBottomOf="@+id/textView_description" />
 
-    <TextView
-        android:id="@+id/textView_metric"
-        android:layout_width="56dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:text="250ml"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        tools:layout_editor_absoluteX="499dp" />
 
     <View
 
@@ -96,7 +82,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/view_round_corner"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/textView_description"

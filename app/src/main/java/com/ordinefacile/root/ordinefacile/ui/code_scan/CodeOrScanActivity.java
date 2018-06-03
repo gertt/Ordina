@@ -101,7 +101,7 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
              //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
              //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
 
-                codeOrScanPresenter.checkCharacter(pin_voucher);
+                codeOrScanPresenter.checkCharacter("RL-D7AE");
 
             }
         });

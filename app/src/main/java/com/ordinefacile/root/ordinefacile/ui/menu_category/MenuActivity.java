@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_category;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,11 +22,15 @@ import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
+import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
+import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailAdapter;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
+import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
@@ -32,6 +38,7 @@ import net.idik.lib.slimadapter.SlimAdapter;
 import net.idik.lib.slimadapter.SlimInjector;
 import net.idik.lib.slimadapter.viewinjector.IViewInjector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity implements MenuView{
@@ -44,6 +51,9 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     String id;
     SaveData saveData;
     AlertDialog alertDialog;
+
+    List<CategoriesDataModel> feedItemList2;
+    private CategoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +70,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
         menuPresenter = new MenuPresenter(this,getApplicationContext());
         menuPresenter.getStoreId();
 
-        parseImage = new ParseImage(getApplicationContext());
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
@@ -92,37 +102,10 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     @Override
     public void getListStoreCategories(List<CategoriesDataModel> feedItemList) {
 
-
-        slimAdapter.register(R.layout.menu_adapter, new SlimInjector<CategoriesDataModel>() {
-            @Override
-            public void onInject(final CategoriesDataModel data, IViewInjector injector) {
-
-                injector.with(R.id.imageView, new IViewInjector.Action<ImageView>() {
-                    @Override
-                    public void action(ImageView view) {
-
-                        System.out.print("imazhijone :"+data.getImage());
-
-                        parseImage.parseimage( data.getImage(),view);
-
-                    }
-                })
-                        .clicked(R.id.imageView, new View.OnClickListener() {
-
-                            @Override
-                            public void onClick(View view) {
-
-                                saveData.saveDishesId(data.getId().toString());
-                                Intent intent = new Intent(getApplicationContext(),MenuDetailActivity.class);
-                                startActivity(intent);
-                            }
-
-                        });
-            }
-        })
-                .attachTo(mRecyclerView)
-                .updateData(feedItemList);
-
+        feedItemList2 = feedItemList ;
+        adapter = new CategoryAdapter(getApplicationContext(), feedItemList2);
+        mRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         swipe_menu.setRefreshing(false);
     }
 
@@ -240,6 +223,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
         Toast.makeText(getApplicationContext(), R.string.send_sms_error, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void goToDetail(Context context) {
+
+
+    }
 
 
 }

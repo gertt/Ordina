@@ -26,7 +26,9 @@
     <string name="permission_denied">Permission Denied, You cannot access and camera</string>
     <string name="need_to_allow_access">You need to allow access to both the permissions</string>
     <string name="price">price</string>
-    <string name="description">description</string>
+    <string name="description">Test1 test2 test3 test4 test 5 test6 test 7 test 8 test 9 tets
+    10 test 11 test 12 Test1 test2 test3 test4 test 5 test6 test 7 test 8 test 9 tets
+    10 test 11 test 12 Test1 test2 test3</string>
     <string name="title_activity_add_product">AddProductActivity</string>
     <string name="setquantity">Se Quantity !</string>
     <string name="numberIncorrect">The Number Is Unviable</string>
@@ -63,16 +65,16 @@
     <string name="try_again">Try again</string>
     <string name="main_menu">Main Menu</string>
     <string name="menu_category">Category</string>
-
     <string name="title_activity_main2">Main2Activity</string>
     <string name="insert_pin">Insert Pin</string>
     <string name="want_leave">Are you sure you want  to leave ?</string>
-
     <string name="want_call_service">You want a call service ?</string>
-
     <string name="send_sms_succees">The call was send</string>
     <string name="send_sms_error">The  call wasnt send</string>
-
     <string name="type_text_here">Type text here</string>
     <string name="total_price">Total Price : </string>
+    <string name="add_myorder">Add Myorder </string>
+
+    <string name="call_send">The order was send</string>
+
 </resources>

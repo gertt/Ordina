@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="230dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView_myorder_history"
         android:layout_width="match_parent"
-        android:layout_height="184dp"
+        android:layout_height="164dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.69" />
 
 
     <TextView
@@ -35,24 +35,12 @@
         app:layout_constraintTop_toTopOf="@+id/imageView_myorder_history" />
 
     <TextView
-        android:id="@+id/textView_myorder_metric_history"
-        android:layout_width="273dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="58dp"
-        android:text="250ml"
-        android:textColor="@color/myorder_titleproduct_black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView_myorder_history"
-        app:layout_constraintTop_toTopOf="@+id/imageView_myorder_history" />
-
-    <TextView
 
         android:id="@+id/textView_myorder_price_history"
         android:layout_width="273dp"
         android:layout_height="40dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="60dp"
         android:paddingLeft="4dp"
         android:text="cmimi i produktit"
         android:textColor="@color/myorder_titleproduct_black"
@@ -76,27 +64,27 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:textSize="18sp"
         android:id="@+id/textview_totalitems_history"
         android:layout_width="273dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="116dp"
         android:background="#0000"
         android:textColor="@color/myorder_titleproduct_black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/imageView_myorder_history"
         app:layout_constraintTop_toTopOf="@+id/imageView_myorder_history"
         app:srcCompat="@drawable/ic_info" />
 
     <TextView
-        android:textSize="18sp"
         android:id="@+id/textview_status_history"
         android:layout_width="273dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="284dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="116dp"
         android:textColor="@color/myorder_titleproduct_black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView_myorder_history"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView_myorder_history"

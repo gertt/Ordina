@@ -69,6 +69,9 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice()+" €");
         holder.txt_totalitems.setText("Total Items"+" "+feedItem.getTotalItems());
 
+
+
+
     //    for ( int i =0;i<feedItemListItem.size();i++) {
     //        Toast.makeText(context,feedItemListItem.get(i).getTotal().toString(),Toast.LENGTH_LONG).show();
    //     }
@@ -108,7 +111,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         private TextView txt_totalitems;
         private CircularImageView imag_myorder_pick;
         private ImageButton btn_info;
-        private ImageView btn_delete;
+        private TextView txt_quantity;
         private ImageView img_bacground;
 
 
@@ -122,7 +125,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             txt_totalitems = (TextView) itemView.findViewById(R.id.textview_totalitems_history);
         //    btn_info = (ImageButton) itemView.findViewById(R.id.imageButton_myorder_info);
             img_bacground = (ImageView) itemView.findViewById(R.id.imageView_myorder_history);
-         //   btn_delete = (ImageView) itemView.findViewById(R.id.imageButton_delete);
+        //  txt_quantity = (TextView) itemView.findViewById(R.id.textView_myorder_metric_history);
         }
     }
 

@@ -98,8 +98,7 @@ public class MenuDetailPresenter {
     }
 
 
-    public void inserData(Float final_price, Float quantity, String name, Float price,
-                          String metric, String description,
+    public void inserData(Float final_price, Float quantity, String name, Float price,String description,
                           String urlImage,String id_table,String id_product,String id_product_card){
 
 
@@ -108,7 +107,7 @@ public class MenuDetailPresenter {
         orders.setmQuantity(quantity);
         orders.setmName(name);
         orders.setmPrice(price);
-        orders.setmMetric(metric);
+      //  orders.setmMetric(metric);
         orders.setmDescriptions(description);
         orders.setmUrl_Image(urlImage);
         orders.setmIdTable(id_table);
@@ -142,8 +141,7 @@ public class MenuDetailPresenter {
 
     }
 
-    public boolean update(Float final_price, Float quantity, String name, Float price,
-                          String metric, String description,
+    public boolean update(Float final_price, Float quantity, String name, Float price, String description,
                           String urlimage,String id_table,String id_product,String id_product_card) {
         //  if(checkIfExdist(name) == true){
         if(checkIfExdist(name) == true){
@@ -164,7 +162,7 @@ public class MenuDetailPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(final_price ,quantity,name,price,metric,description,urlimage,id_table,id_product,id_product_card);
+            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card);
 
         }
         return false;

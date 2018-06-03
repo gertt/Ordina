@@ -23,8 +23,9 @@
     <include layout="@layout/content_my_order" />
 
     <Button
+        android:gravity="center"
         android:textColor="@color/white"
-        android:text="add_myorder"
+        android:text="@string/add_myorder"
         android:background="@color/colorPrimary"
         android:id="@+id/fab"
         android:layout_width="match_parent"

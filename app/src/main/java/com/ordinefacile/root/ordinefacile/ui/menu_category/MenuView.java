@@ -1,5 +1,7 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_category;
 
+import android.content.Context;
+
 import com.ordinefacile.root.ordinefacile.data.network.model.CategoriesDataModel;
 
 import java.util.List;
@@ -19,4 +21,8 @@ public interface MenuView {
     void showSendingSms();
 
     void showErrorSending(String s);
+
+    void goToDetail(Context context);
 }
+
+

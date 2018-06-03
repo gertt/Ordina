@@ -33,6 +33,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
     String name;
     SaveData saveData;
     ViewHolder holder1;
+    Float final_price;
 
 
     public MenuDetailAdapter(Context context, List<MenuDishesDatum> feedItemList,  MenuDetailPresenter menuDetailPresenter) {
@@ -60,12 +61,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         MenuDishesDatum  feedItem = feedItemList.get(position);
 
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
-        holder.price.setText("  "+feedItem.getPrice());
-        holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+        holder.price.setText("  "+feedItem.getPrice()+" €");
+       // holder.metric.setText("  "+feedItem.getMetrics()+"  ");
 
         if (feedItem.getDescription()==null){
 
-            holder.description.setText("  "+"No Description"+"  ");
+            holder.description.setText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum");
         }else {
 
             holder.description.setText("  "+feedItem.getDescription()+"  ");
@@ -73,13 +74,13 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
 
 
-        if (feedItem.getMetrics()==null){
+      //  if (feedItem.getMetrics()==null){
 
-            holder.metric.setText(" ");
-        }else {
+       //     holder.metric.setText(" ");
+      //  }else {
 
-            holder.metric.setText("  "+feedItem.getMetrics()+"  ");
-        }
+      //      holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+      //  }
 
 
 
@@ -103,12 +104,12 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         holder.txt_add.setText("" + numberInt);
 
                         Float quantity_float = Float.valueOf(numberInt);
-                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
+                        Float quantity_price =Float.parseFloat(feedItem.getPrice());
                         Float final_price = quantity_price * quantity_float;
 
                         String id_product_cart = feedItem.getId().toString();
 
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                                 feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
 
@@ -120,10 +121,10 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         holder.txt_add.setText("" + numberInt);
 
                         Float quantity_float = Float.valueOf(numberInt);
-                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
+                        Float quantity_price =Float.parseFloat(feedItem.getPrice());
                         Float final_price = quantity_price * quantity_float;
                         String id_product_cart = feedItem.getId().toString();
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                                 feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
                     }
@@ -168,7 +169,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                         Float quantity_price =Float.parseFloat(holder.price.getText().toString());
                         Float final_price = quantity_price * quantity_float;
                         String id_product_cart = feedItem.getId().toString();
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,feedItem.getMetrics(),
+                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                                 feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
                     }

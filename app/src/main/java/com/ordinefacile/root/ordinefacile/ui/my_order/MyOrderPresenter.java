@@ -10,6 +10,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.table.TableUtils;
+import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
@@ -369,8 +370,11 @@ public class MyOrderPresenter {
                            Intent i = new Intent(context, CodeOrScanActivity.class);
                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                            Toast.makeText(context,"The order was send",Toast.LENGTH_LONG).show();
-                           context.startActivity(i);
+
+                            Toast.makeText(context, R.string.call_send,Toast.LENGTH_LONG).show();
+
+
+                            context.startActivity(i);
 
 
                         }
