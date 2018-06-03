@@ -23,6 +23,8 @@ import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
+import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
+
 import java.util.List;
 
 public class MenuDetailActivity extends AppCompatActivity implements MenuDetailView{
@@ -169,6 +171,12 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
         if (id == R.id.action_history) {
             Intent intent = new Intent(getApplicationContext(),OrderHistoryActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.action_push) {
+
+            Intent intent = new Intent(getApplicationContext(), PushHistoryActivity.class);
             startActivity(intent);
         }
 

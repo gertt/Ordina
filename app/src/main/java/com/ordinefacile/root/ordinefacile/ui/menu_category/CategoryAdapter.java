@@ -75,10 +75,7 @@ public class CategoryAdapter  extends RecyclerView.Adapter<CategoryAdapter.ViewH
             }
         });
 
-
       /*
-
-
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
