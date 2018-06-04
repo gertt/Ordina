@@ -1,5 +1,6 @@
 package com.ordinefacile.root.ordinefacile.service;
 
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.util.Log;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -30,18 +32,14 @@ public class MyJobService extends JobService {
 
         saveData = new SaveData(getApplicationContext());
 
-        saveData.getHours();
-        saveData.getMinits();
+        String firstTime =  saveData.getTime();
 
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         Date startDate = null;
         try {
 
-
-
-
-            startDate = simpleDateFormat.parse(  saveData.getHours()+":"+saveData.getMinits());
+            startDate = simpleDateFormat.parse(firstTime);
 
             String dgjdj = startDate.toString();
         } catch (ParseException e) {
@@ -49,16 +47,23 @@ public class MyJobService extends JobService {
         }
         Date endDate = null;
 
-        Calendar calendar = Calendar.getInstance();
-        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        String hourOfDayS = Integer.toString(hourOfDay);
-        String minuteS = Integer.toString(minute);
+
 
         try {
 
+            String currentDateTimeString2 = DateFormat.getDateTimeInstance().format(new Date());
 
-            endDate = simpleDateFormat.parse( hourOfDayS+":"+minuteS);
+            String[] separated = currentDateTimeString2.split(" ");
+
+            String s4 = separated[3];
+
+            String[] separated2 = s4.split(":");
+            String s11 = separated2[0];
+            String s22 = separated2[1];
+            String total = s11+":"+s22;
+
+
+            endDate = simpleDateFormat.parse( total);
             String djdj = endDate.toString();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -90,6 +95,12 @@ public class MyJobService extends JobService {
         if (min>3){
 
             Log.i("ALARM","Hours: ");
+
+
+            saveData.ClearAll();
+            Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
 
 

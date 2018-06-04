@@ -51,21 +51,21 @@ public class StartStopJobs {
         String hours = Integer.toString(hourOfDay);
         String minutes = Integer.toString(minute);
 
-        saveData.saveHours(hours);
-        saveData.saveMinits(minutes);
+
+
 
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
         String[] separated = currentDateTimeString.split(" ");
-        String ZERO = separated[0];
-        String ZERO1 = separated[1];
-        String ZERO2 = separated[2];
-        String ZERO2gg = separated[3];
 
-        String[] separated2 = ZERO2gg.split(":");
-        String ZgERO = separated2[0];
-        String ZfERO1 = separated2[1];
-        String total = ZgERO+":"+ZfERO1;
+        String s4 = separated[3];
+
+        String[] separated2 = s4.split(":");
+        String s11 = separated2[0];
+        String s22 = separated2[1];
+        String total = s11+":"+s22;
+
+        saveData.saveTime(total);
 
         Log.d(TAG, currentDateTimeString);
 
@@ -77,7 +77,7 @@ public class StartStopJobs {
                 .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
                 .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
-                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
                 .build();
         mDispatcher.mustSchedule(myJob);
         Toast.makeText(context, "jobs  start", Toast.LENGTH_LONG).show();

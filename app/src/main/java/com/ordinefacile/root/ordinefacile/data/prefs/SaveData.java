@@ -120,13 +120,13 @@ public class SaveData {
 
 
 
-    public void saveHours(String hours_hours) {
-        editor.putString("hours_hours", hours_hours);
+    public void saveTime(String time) {
+        editor.putString("time", time);
         editor.commit();
     }
 
-    public String getHours(){
-        return preferences.getString("hours_hours", "");
+    public String getTime(){
+        return preferences.getString("time", "");
 
     }
 
