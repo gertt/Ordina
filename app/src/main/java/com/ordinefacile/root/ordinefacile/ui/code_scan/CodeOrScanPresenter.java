@@ -2,6 +2,8 @@ package com.ordinefacile.root.ordinefacile.ui.code_scan;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -49,9 +51,6 @@ public class CodeOrScanPresenter {
   public void checkCharacter(String pin_voucher) {
     getStoreDetailByPin(pin_voucher);
 
-
-
-
   }
 
   public void getStoreDetailByPin(String pin) {
@@ -87,6 +86,7 @@ public class CodeOrScanPresenter {
 
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onNext(PinModel pinModel) {
                   // Log.d("Next  : ", pinModel.getData().getName());
@@ -109,7 +109,7 @@ public class CodeOrScanPresenter {
 
 
                     codeOrScanActivity.goToMenuAtivity();
-
+                    startStopJobs.scheduleJob();
 
                     System.out.println("imazhi "+id);
                   }else if (pinModel.getError() ==true){

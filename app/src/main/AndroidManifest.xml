@@ -27,6 +27,15 @@
         android:roundIcon="@mipmap/ic_android"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name=".service.MyJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+
+
         <activity
             android:name=".ui.code_scan.CodeOrScanActivity"
             android:screenOrientation="portrait">

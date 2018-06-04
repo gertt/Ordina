@@ -55,6 +55,18 @@ public class StartStopJobs {
         saveData.saveMinits(minutes);
 
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+
+        String[] separated = currentDateTimeString.split(" ");
+        String ZERO = separated[0];
+        String ZERO1 = separated[1];
+        String ZERO2 = separated[2];
+        String ZERO2gg = separated[3];
+
+        String[] separated2 = ZERO2gg.split(":");
+        String ZgERO = separated2[0];
+        String ZfERO1 = separated2[1];
+        String total = ZgERO+":"+ZfERO1;
+
         Log.d(TAG, currentDateTimeString);
 
         Job myJob = mDispatcher.newJobBuilder()

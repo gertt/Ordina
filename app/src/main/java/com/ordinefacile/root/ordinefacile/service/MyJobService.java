@@ -1,6 +1,7 @@
 package com.ordinefacile.root.ordinefacile.service;
 
 import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -36,13 +37,29 @@ public class MyJobService extends JobService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         Date startDate = null;
         try {
-            startDate = simpleDateFormat.parse("06:56");
+
+
+
+
+            startDate = simpleDateFormat.parse(  saveData.getHours()+":"+saveData.getMinits());
+
+            String dgjdj = startDate.toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
         Date endDate = null;
+
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        String hourOfDayS = Integer.toString(hourOfDay);
+        String minuteS = Integer.toString(minute);
+
         try {
-            endDate = simpleDateFormat.parse("07:00");
+
+
+            endDate = simpleDateFormat.parse( hourOfDayS+":"+minuteS);
+            String djdj = endDate.toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }

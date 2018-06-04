@@ -52,19 +52,9 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         //Open http://192.168.100.58:8080 in your browser
         //Open http://192.168.100.58:8080 in your browser
 
-        //Open http://192.168.100.89:8080 in your browser
+       //Open http://192.168.1.3:8080 in your browser
 
-        //Open http://192.168.100.58:8080 in your browser
-
-        //Open http://192.168.100.58:8080 in your browser
-
-        // Open http://192.168.1.3:8080 in your browser
-       // Open http://192.168.100.58:8080 in your browser
-
-        //Open http://192.168.0.177:8080 in your browser
-      //  Open http://192.168.100.58:8080 in your browser
-
-        //Open http://192.168.1.3:8080 in your browser
+        //MyJobServiceCk
 
         Boolean boolean1 = Boolean.valueOf("true");
         boolean boolean2 = Boolean.parseBoolean("true");
