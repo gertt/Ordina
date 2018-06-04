@@ -5,6 +5,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.google.gson.Gson;
 import com.google.zxing.common.StringUtils;
 import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
@@ -13,6 +15,7 @@ import com.ordinefacile.root.ordinefacile.data.network.model.PinModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.QrCodeModel;
 import com.ordinefacile.root.ordinefacile.data.network.model.VauchePinModel;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.service.StartStopJobs;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -30,11 +33,17 @@ public class CodeOrScanPresenter {
   SaveData saveData;
   Gson gson = new Gson();
 
+  StartStopJobs startStopJobs;
+
+
+
   public CodeOrScanPresenter(Context context, CodeOrScanActivity codeOrScanActivity) {
     this.context = context;
     this.codeOrScanActivity = codeOrScanActivity;
     apiHelper = new AppApiHelper();
     saveData = new SaveData(context);
+    startStopJobs = new StartStopJobs(context);
+
   }
 
   public void checkCharacter(String pin_voucher) {
@@ -98,6 +107,7 @@ public class CodeOrScanPresenter {
 
                     saveData.saveStoreId(id);
 
+
                     codeOrScanActivity.goToMenuAtivity();
 
 
@@ -128,4 +138,6 @@ public class CodeOrScanPresenter {
     }
 
     }
+
+
 }

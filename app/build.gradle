@@ -89,6 +89,14 @@ dependencies {
     compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
     compile 'com.facebook.stetho:stetho-js-rhino:1.5.0'
 
+    //material dialog,loading
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
+    //firebase-jobdispatcher service background
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
+
+
 }
 //firebase
 apply plugin: 'com.google.gms.google-services'

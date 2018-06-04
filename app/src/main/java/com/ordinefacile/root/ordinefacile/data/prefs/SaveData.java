@@ -120,6 +120,27 @@ public class SaveData {
 
 
 
+    public void saveHours(String hours_hours) {
+        editor.putString("hours_hours", hours_hours);
+        editor.commit();
+    }
+
+    public String getHours(){
+        return preferences.getString("hours_hours", "");
+
+    }
+
+
+
+    public void saveMinits(String hours_minute) {
+        editor.putString("hours_minute", hours_minute);
+        editor.commit();
+    }
+
+    public String getMinits(){
+        return preferences.getString("hours_minute", "");
+    }
+
 
 
     public void ClearAll(){
