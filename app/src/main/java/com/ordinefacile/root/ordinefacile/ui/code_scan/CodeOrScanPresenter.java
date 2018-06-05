@@ -140,4 +140,10 @@ public class CodeOrScanPresenter {
     }
 
 
+  public void checkService(String service) {
+    if (service.equalsIgnoreCase("schedulim_stop")){
+      codeOrScanActivity.showAlertLogout();
+
+    }
+  }
 }

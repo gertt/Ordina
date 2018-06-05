@@ -19,4 +19,5 @@ public interface CodeOrScanView {
     void goToMenuAtivitys();
 
 
+    void showAlertLogout();
 }

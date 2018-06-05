@@ -101,6 +101,13 @@ public class MyJobService extends JobService {
 
             saveData.ClearAll();
             startStopJobs.cancelJob(StartStopJobs.JOB_TAG);
+
+            Intent infoIntent = new Intent(getApplicationContext(), CodeOrScanActivity.class); //
+            infoIntent.putExtra("service", "schedulim_stop");
+            infoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(infoIntent);
+
+
             Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
