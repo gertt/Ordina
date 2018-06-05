@@ -11,6 +11,7 @@ import com.ordinefacile.root.ordinefacile.data.network.ApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.AppApiHelper;
 import com.ordinefacile.root.ordinefacile.data.network.model.CallService;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
+import com.ordinefacile.root.ordinefacile.service.StartStopJobs;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 
 import org.json.JSONArray;
@@ -31,6 +32,7 @@ public class MainMenuPresenter {
     Context context;
     SaveData saveData;
     ApiHelper apiHelper;
+    StartStopJobs startStopJobs;
 
 
     public MainMenuPresenter(MainMenuActivity mainMenuActivity,  Context context) {
@@ -38,6 +40,7 @@ public class MainMenuPresenter {
         this.context = context;
         saveData = new SaveData(context);
         apiHelper = new AppApiHelper();
+        startStopJobs = new StartStopJobs(context);
 
     }
 
@@ -103,5 +106,12 @@ public class MainMenuPresenter {
             mainMenuActivity.callServiceGone();
 
         }
+    }
+
+    public void logout() {
+        saveData.ClearAll();
+        startStopJobs.cancelJob(StartStopJobs.JOB_TAG);
+
+        mainMenuActivity.goToCodeOrScan();
     }
 }

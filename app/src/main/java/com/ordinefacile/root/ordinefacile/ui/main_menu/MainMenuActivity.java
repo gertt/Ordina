@@ -106,6 +106,14 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         button_call_service.setVisibility(View.GONE);
     }
 
+    @Override
+    public void goToCodeOrScan() {
+
+        Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
+        startActivity(intent);
+
+    }
+
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBackPressed()
@@ -216,9 +224,11 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
             @Override
             public void onClick(View v) {
 
-            saveData.ClearAll();
-            Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
-            startActivity(intent);
+
+                mainMenuPresenter.logout();
+
+
+
 
 
             }

@@ -15,4 +15,6 @@ public interface MainMenuView   {
     void showErrorSending(String s);
 
     void callServiceGone();
+
+    void goToCodeOrScan();
 }

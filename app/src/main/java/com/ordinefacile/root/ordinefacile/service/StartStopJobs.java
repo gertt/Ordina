@@ -29,7 +29,7 @@ public class StartStopJobs {
     Context context;
     FirebaseJobDispatcher mDispatcher;
     SaveData saveData;
-    private static final String JOB_TAG = "MyJobService";
+    public static final String JOB_TAG = "MyJobService";
     private static final String TAG = "MyJobServiceCk";
 
 
@@ -85,11 +85,13 @@ public class StartStopJobs {
         return currentDateTimeString;
     }
 
-    private void cancelJob(String jobTag) {
+    public void cancelJob(String jobTag) {
         if ("".equals(jobTag)) {
             mDispatcher.cancelAll();
+            Log.d(TAG,"1");
         } else {
             mDispatcher.cancel(jobTag);
+            Log.d(TAG,"2");
         }
         Toast.makeText(context, "jobs  stop", Toast.LENGTH_LONG).show();
     }

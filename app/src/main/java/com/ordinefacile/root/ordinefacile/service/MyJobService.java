@@ -24,6 +24,7 @@ public class MyJobService extends JobService {
     private static final String TAG = "MyJobService";
 
     SaveData saveData;
+    StartStopJobs startStopJobs;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -31,6 +32,7 @@ public class MyJobService extends JobService {
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
         saveData = new SaveData(getApplicationContext());
+        startStopJobs = new StartStopJobs(getApplicationContext());
 
         String firstTime =  saveData.getTime();
 
@@ -98,6 +100,7 @@ public class MyJobService extends JobService {
 
 
             saveData.ClearAll();
+            startStopJobs.cancelJob(StartStopJobs.JOB_TAG);
             Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -114,5 +117,6 @@ public class MyJobService extends JobService {
         Log.d(TAG, "Job cancelled!");
         return false;
     }
+
 }
 
