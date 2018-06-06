@@ -159,6 +159,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     }
 
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
