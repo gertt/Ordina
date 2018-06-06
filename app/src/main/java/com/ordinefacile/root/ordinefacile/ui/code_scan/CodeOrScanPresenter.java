@@ -141,9 +141,20 @@ public class CodeOrScanPresenter {
 
 
   public void checkService(String service) {
-    if (service.equalsIgnoreCase("schedulim_stop")){
-      codeOrScanActivity.showAlertLogout();
 
+
+
+    String shs =service;
+    String gshs =service;
+
+    if (service!=null){
+
+
+    if (service.equalsIgnoreCase("schedulim_stop")){
+
+    codeOrScanActivity.showAlertLogout();
+
+    }
     }
   }
 }

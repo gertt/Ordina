@@ -11,6 +11,7 @@ import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
+import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -94,7 +95,7 @@ public class MyJobService extends JobService {
         Log.i("log_tag","Hours: "+hours+", Mins: "+min);
 
 
-        if (min>3){
+        if (3>2){
 
             Log.i("ALARM","Hours: ");
 
@@ -107,10 +108,6 @@ public class MyJobService extends JobService {
             infoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(infoIntent);
 
-
-            Intent intent = new Intent(getApplicationContext(), CodeOrScanActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
         }
 
 

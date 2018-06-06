@@ -131,6 +131,15 @@ public class SaveData {
     }
 
 
+    public void saveTokenExPired(String token_expired) {
+        editor.putString("token_expired", token_expired);
+        editor.commit();
+    }
+
+    public String getTokenExpired(){
+        return preferences.getString("token_expired", "");
+
+    }
 
     public void saveMinits(String hours_minute) {
         editor.putString("hours_minute", hours_minute);

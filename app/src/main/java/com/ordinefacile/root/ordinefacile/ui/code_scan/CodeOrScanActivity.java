@@ -42,6 +42,8 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
         String service = intent.getStringExtra("service");
         codeOrScanPresenter.checkService(service);
 
+
+
         btn_scan = (Button)findViewById(R.id.button_scan_qr);
         btn_pin = (Button)findViewById(R.id.button_isert_pin);
 
@@ -159,8 +161,6 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
     }
 
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -189,39 +189,24 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.custom_dialog_send_pin, null);
+        final View dialogView = inflater.inflate(R.layout.custom_dialog_token_expired, null);
         dialogBuilder.setView(dialogView);
 
         ViewGroup.LayoutParams params = getWindow().getAttributes();
         params.height = ViewGroup.LayoutParams.FILL_PARENT;
         getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
 
-        final Button btn_insert = (Button) dialogView.findViewById(R.id.button_insert);
-        final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
-        final EditText edt_pin = (EditText) dialogView.findViewById(R.id.editText_inser_pin);
 
-
+       final Button btn_cancel = (Button) dialogView.findViewById(R.id.button_cancel);
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+
                 alertDialog.dismiss();
-
             }
         });
 
-        btn_insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String pin_voucher = edt_pin.getText().toString();
-                //   codeOrScanPresenter.getStoreDetailByPin(pin_voucher);
-                //   codeOrScanPresenter.getStoreDetailsByVoucherCode(pin_voucher);
-
-                codeOrScanPresenter.checkCharacter("RL-D7AE");
-
-            }
-        });
         alertDialog = dialogBuilder.create();
         alertDialog.show();
 
