@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/RxFinalEdition.iml" filepath="$PROJECT_DIR$/.idea/RxFinalEdition.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ordinafacilecambiamenti.iml" filepath="$PROJECT_DIR$/ordinafacilecambiamenti.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\RxFinalEdition\app\app.iml" filepath="C:\Users\user\AndroidStudioProjects\RxFinalEdition\app\app.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\RxFinalEdition\ordinafacilecambiamenti.iml" filepath="C:\Users\user\AndroidStudioProjects\RxFinalEdition\ordinafacilecambiamenti.iml" />
     </modules>
   </component>
 </project>

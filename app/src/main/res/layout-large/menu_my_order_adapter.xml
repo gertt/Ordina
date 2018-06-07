@@ -23,11 +23,12 @@
 
 
     <TextView
+        android:paddingLeft="3dp"
         android:id="@+id/textView_myorder_name"
         android:layout_width="247dp"
         android:layout_height="36dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:text="Titulli i produktit"
         android:textColor="@color/myorder_titleproduct_black"
@@ -41,20 +42,24 @@
         android:id="@+id/textView_myorder_metric"
         android:layout_width="200dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:text="250ml"
         android:textColor="@color/myorder_titleproduct_black"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="@+id/textView_myorder_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_myorder_name"
         app:layout_constraintTop_toBottomOf="@+id/textView_myorder_name" />
 
     <TextView
         android:id="@+id/textView_myorder_price"
         android:layout_width="85dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:paddingLeft="4dp"
         android:text="cmimi i produktit"
         android:textColor="@color/white"
@@ -83,13 +88,12 @@
         android:id="@+id/imageButton_myorder_info"
         android:layout_width="56dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="#0000"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_myorder"
         app:layout_constraintEnd_toEndOf="@+id/imageView_myorder"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="@+id/imageView_myorder"
         app:srcCompat="@drawable/ic_info" />
 
