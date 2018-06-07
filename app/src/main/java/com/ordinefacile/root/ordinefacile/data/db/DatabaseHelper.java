@@ -16,6 +16,12 @@ import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
+
+
+
+
+
+
     private static final String DATABASE_NAME    = "ordinafacile.db";
     private static final int    DATABASE_VERSION = 26;
 
