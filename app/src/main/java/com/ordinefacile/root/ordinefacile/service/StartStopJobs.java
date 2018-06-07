@@ -73,7 +73,7 @@ public class StartStopJobs {
                 .setService(MyJobService.class)
                 .setTag(JOB_TAG)
                 .setRecurring(true)
-                .setTrigger(Trigger.executionWindow(60, 60+1))
+                .setTrigger(Trigger.executionWindow(420, 420+10))
                 .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
                 .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_ANY_NETWORK)

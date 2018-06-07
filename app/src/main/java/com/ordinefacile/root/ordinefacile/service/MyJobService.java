@@ -1,17 +1,16 @@
 package com.ordinefacile.root.ordinefacile.service;
 
+
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
+
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
-
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
-import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -95,9 +94,9 @@ public class MyJobService extends JobService {
         Log.i("log_tag","Hours: "+hours+", Mins: "+min);
 
 
-        if (3>2){
+        if (min>20) {
 
-            Log.i("ALARM","Hours: ");
+            Log.i("ALARM", "Hours: ");
 
 
             saveData.ClearAll();
@@ -108,8 +107,8 @@ public class MyJobService extends JobService {
             infoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(infoIntent);
 
-        }
 
+        }
 
 
         Log.d(TAG, currentDateTimeString);
