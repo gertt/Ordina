@@ -23,7 +23,7 @@
     <string name="permission_denied">Autorizzazione negata, Non è possibile accedere alla fotocamera</string>
     <string name="need_to_allow_access">È necessario consentire laccesso a entrambe le autorizzazioni</string>
     <string name="numberIncorrect">Il numero non è valido</string>
-    <string name="menu_myorder">Storico Push</string>
+    <string name="menu_myorder">Continua ordine</string>
     <string name="add_to_cart">ADD TO CART-it</string>
     <string name="scanQR">Scan QR Code</string>
     <string name="insert_pin">Metti Il ​Pin</string>
