@@ -54,8 +54,8 @@
     <string name="yes">Si</string>
     <string name="push_history">My History-it</string>
     <string name="want_leave">Sei sicuro di uscire ?</string>
-    <string name="send_sms_succees">The sms was send</string>
-    <string name="send_sms_error">The  sms wasnt send</string>
+    <string name="send_sms_succees">La chiamata è stata efetuata</string>
+    <string name="send_sms_error">La chiamata non è stata efetuata</string>
     <string name="type_text_here">Inserici il text qui</string>
     <string name="want_call_service">Vuoi chiamare il cameriere ?</string>
     <string name="total_price">Prezo Totale : </string>
