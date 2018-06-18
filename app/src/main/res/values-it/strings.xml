@@ -10,6 +10,9 @@
     <string name="title_activity_menu">MenuActivity-it</string>
     <string name="menu">Menu</string>
     <string name="call_service">Ciamata Service</string>
+
+    <string name="call_service_menu">Chiamata Cameriere</string>
+
     <string name="title_activity_list_category">ListCategoryActivity-it</string>
     <string name="title_activity_my_order">MyOrderActivity-it</string>
     <string name="my_order">My Order-it</string>
@@ -25,7 +28,7 @@
     <string name="scanQR">Scan QR Code</string>
     <string name="insert_pin">Metti Il ​Pin</string>
     <string name="menu_category">Categoria</string>
-    <string name="cancel">CANCELA</string>
+    <string name="cancel">Cancella</string>
     <string name="scan_activity" />
     <string name="qrcode_not_valid">Il codice QR non è valido</string>
     <string name="pin_not_valid">Il codice PIN non è valido</string>
@@ -33,7 +36,7 @@
     <string name="send_sms">Invia</string>
     <string name="title_activity_dialog">Dialog</string>
     <string name="info">Information-it</string>
-    <string name="my_history">Il Storico</string>
+    <string name="my_history">Storico</string>
     <string name="check_quantity">Controla Quantita</string>
     <string name="cannot_make_order">you can not make the order-it</string>
     <string name="price_history">Prezzo</string>

@@ -33,7 +33,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/my_button_bg"
-        android:text="@string/call_service"
+        android:text="@string/call_service_menu"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/button_menu"
         app:layout_constraintHorizontal_bias="0.846"
