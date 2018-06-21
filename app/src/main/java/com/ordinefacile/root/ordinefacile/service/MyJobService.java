@@ -26,9 +26,6 @@ public class MyJobService extends JobService {
     SaveData saveData;
     StartStopJobs startStopJobs;
 
-    Date endDate ;
-    long difference;
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
@@ -50,7 +47,7 @@ public class MyJobService extends JobService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        Date endDate = null;
 
 
 
@@ -70,14 +67,11 @@ public class MyJobService extends JobService {
 
             endDate = simpleDateFormat.parse( total);
             String djdj = endDate.toString();
-
-             difference = endDate.getTime() - startDate.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-
-
+        long difference = endDate.getTime() - startDate.getTime();
         if(difference<0)
         {
             Date dateMax = null;
@@ -99,10 +93,11 @@ public class MyJobService extends JobService {
         int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
         Log.i("log_tag","Hours: "+hours+", Mins: "+min);
 
+
         if (min>20) {
 
-
-            Log.i("ALARM", "Hours: ");
+            if (!saveData.getQrCode().equalsIgnoreCase("")){
+                Log.i("ALARM", "Hours: ");
 
 
             saveData.ClearAll();
@@ -113,7 +108,7 @@ public class MyJobService extends JobService {
             infoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(infoIntent);
 
-
+        }
         }
 
 

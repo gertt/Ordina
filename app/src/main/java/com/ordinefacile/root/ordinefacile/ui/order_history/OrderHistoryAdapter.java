@@ -65,9 +65,30 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
         parseimage.parseimage(feedItem.getStoreImage().toString(),holder.imag_myorder_pick);
         holder.txt_name.setText(feedItem.getStore());
-        holder.txt_status.setText("Status "+feedItem.getStatus());
-        holder.txt_price.setText("Price"+" "+feedItem.getTotalPrice()+" €");
-        holder.txt_totalitems.setText("Total Items"+" "+feedItem.getTotalItems());
+
+        if (feedItem.getStatus().equalsIgnoreCase("pending")){
+
+            holder.txt_status.setText("Status "+context.getString(R.string.status_pending));
+
+        }
+
+        if (feedItem.getStatus().equalsIgnoreCase("approved")){
+
+            holder.txt_status.setText("Status "+context.getString(R.string.status_approved));
+
+        }
+
+
+        if (feedItem.getStatus().equalsIgnoreCase("declined")){
+
+            holder.txt_status.setText("Status "+context.getString(R.string.status_declined));
+
+        }
+
+
+
+        holder.txt_price.setText(context.getString(R.string.price)+" "+feedItem.getTotalPrice()+" €");
+        holder.txt_totalitems.setText(context.getString(R.string.quantita)+" "+feedItem.getTotalItems());
 
 
 

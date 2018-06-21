@@ -76,7 +76,7 @@
 
     <TextView
         android:id="@+id/textview_status_history"
-        android:layout_width="108dp"
+        android:layout_width="120dp"
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="284dp"

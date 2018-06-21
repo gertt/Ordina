@@ -28,7 +28,7 @@
     <string name="permission_granted">Permission Granted, Now you can access camera</string>
     <string name="permission_denied">Permission Denied, You cannot access and camera</string>
     <string name="need_to_allow_access">You need to allow access to both the permissions</string>
-    <string name="price">price</string>
+    <string name="price">Price</string>
     <string name="description">Test1 test2 test3 test4 test 5 test6 test 7 test 8 test 9 tets
     10 test 11 test 12 Test1 test2 test3 test4 test 5 test6 test 7 test 8 test 9 tets
     10 test 11 test 12 Test1 test2 test3</string>
@@ -79,5 +79,10 @@
     <string name="add_myorder">Add Myorder </string>
 
     <string name="call_send">The order was send</string>
+    <string name="title1">cmimi</string>
+    <string name="status_pending">pending</string>
+    <string name="status_approved">approved</string>
+    <string name="status_declined">declined</string>
+    <string name="quantita">Total Item</string>
 
 </resources>

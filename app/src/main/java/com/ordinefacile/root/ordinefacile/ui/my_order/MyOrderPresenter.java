@@ -363,6 +363,7 @@ public class MyOrderPresenter {
                     @Override
                     public void onNext(DeleteBuilder<Orders, Integer> deleteBuilder) {
 
+                        /*
                         if (saveData.getNumberCharacter().equalsIgnoreCase("5")){
 
 
@@ -379,7 +380,7 @@ public class MyOrderPresenter {
 
                         }
 
-
+*/
                         checkHideShowFloating();
 
                         Log.d("", "");
