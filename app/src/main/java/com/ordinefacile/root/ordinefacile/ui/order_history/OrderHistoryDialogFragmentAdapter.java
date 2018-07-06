@@ -48,8 +48,8 @@ public class OrderHistoryDialogFragmentAdapter extends RecyclerView.Adapter<Orde
         holder.img_bacground_dialog.setBackgroundColor(position % 2 == 0 ? Color.parseColor("#00D26A"): Color.parseColor("#F29C20"));
 
             holder.txt_name.setText("  "+feedItem.getName()+"  ");
-            holder.txt_name_dialog.setText("Total Price  "+feedItem.getTotal()+"  ");
-            holder.txt_price_dialog.setText("Price "+feedItem.getPrice()+"  ");
+            holder.txt_name_dialog.setText("Total Price  "+feedItem.getTotal()+" €");
+            holder.txt_price_dialog.setText("Price "+feedItem.getPrice()+" €");
             holder.txt_quantity_dialog.setText("Quantity "+feedItem.getQuantity()+"  ");
             parseImage.parseimage(feedItem.getImage(),holder.imag_myorder_pick);
 

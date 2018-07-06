@@ -39,7 +39,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     List<MenuDishesDatum> feedItemList2;
 
-    FloatingActionButton fab;
+    Button fab;
 
     SaveData saveData;
     AlertDialog alertDialog;
@@ -76,7 +76,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         });
 
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (Button) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,14 +125,17 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
     @Override
     public void showFloating() {
-        fab.show();
+       // fab.show();
+
+        fab.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideFloating() {
 
-        fab.hide();
+        fab.setVisibility(View.GONE);
+
     }
 
     @Override

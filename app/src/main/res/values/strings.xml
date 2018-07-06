@@ -88,5 +88,6 @@
     <string name="status_approved">approved</string>
     <string name="status_declined">declined</string>
     <string name="quantita">Total Item</string>
+    <string name="add_product">Insert</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.menu_detail;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.network.model.MenuDishesDatum;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
@@ -62,7 +63,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
         holder.txt_name.setText("  "+feedItem.getName()+"  ");
         holder.price.setText("  "+feedItem.getPrice()+" €");
-       // holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+        // holder.metric.setText("  "+feedItem.getMetrics()+"  ");
 
         if (feedItem.getDescription()==null){
 
@@ -74,13 +75,13 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
 
 
-      //  if (feedItem.getMetrics()==null){
+        //  if (feedItem.getMetrics()==null){
 
-       //     holder.metric.setText(" ");
-      //  }else {
+        //     holder.metric.setText(" ");
+        //  }else {
 
-      //      holder.metric.setText("  "+feedItem.getMetrics()+"  ");
-      //  }
+        //      holder.metric.setText("  "+feedItem.getMetrics()+"  ");
+        //  }
 
 
 
@@ -94,43 +95,47 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             @Override
             public void onClick(View v) {
 
-                    String textnumberstring = holder.txt_add.getText().toString();
+                String textnumberstring = holder.txt_add.getText().toString();
 
-                    if (textnumberstring.equalsIgnoreCase("Add")) {
+                if (textnumberstring.equalsIgnoreCase("Add")) {
 
-                        int score = 0;
-                        int numberInt = score;
-                        numberInt++;
-                        holder.txt_add.setText("" + numberInt);
+                    int score = 0;
+                    int numberInt = score;
+                    numberInt++;
+                    holder.txt_add.setText("" + numberInt);
 
-                        Float quantity_float = Float.valueOf(numberInt);
-                        Float quantity_price =Float.parseFloat(feedItem.getPrice());
-                        Float final_price = quantity_price * quantity_float;
+                    Float quantity_float = Float.valueOf(numberInt);
+                    Float quantity_price =Float.parseFloat(feedItem.getPrice());
+                    Float final_price = quantity_price * quantity_float;
 
-                        String id_product_cart = feedItem.getId().toString();
-
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
-                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
+                    String id_product_cart = feedItem.getId().toString();
 
 
-                    } else if (!textnumberstring.equalsIgnoreCase("Add")) {
-                        int score = Integer.parseInt(textnumberstring);
-                        int numberInt = score;
 
-                        numberInt++;
-                        holder.txt_add.setText("" + numberInt);
+                    menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
+                            feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart,quantity_float.toString());
 
-                        Float quantity_float = Float.valueOf(numberInt);
-                        Float quantity_price =Float.parseFloat(feedItem.getPrice());
-                        Float final_price = quantity_price * quantity_float;
-                        String id_product_cart = feedItem.getId().toString();
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
-                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
-                    }
+                } else if (!textnumberstring.equalsIgnoreCase("Add")) {
+                    int score = Integer.parseInt(textnumberstring);
+                    int numberInt = score;
 
-                    Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    numberInt++;
+                    holder.txt_add.setText("" + numberInt);
+
+                    Float quantity_float = Float.valueOf(numberInt);
+                    Float quantity_price =Float.parseFloat(feedItem.getPrice());
+                    Float final_price = quantity_price * quantity_float;
+                    String id_product_cart = feedItem.getId().toString();
+
+
+                    menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
+                            feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),
+                            feedItem.getId().toString(),id_product_cart,quantity_float.toString());
+
+                }
+
+
             }
         });
 
@@ -138,43 +143,45 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
             @Override
             public void onClick(View v) {
 
-                    String textnumberstring = holder.txt_add.getText().toString();
+                String textnumberstring = holder.txt_add.getText().toString();
 
-                    if (textnumberstring.equalsIgnoreCase("Add")) {
+                if (textnumberstring.equalsIgnoreCase("Add")) {
 
-                        holder.txt_add.setText("" + "Add");
-
-
-                    } else {
-                        score = Integer.parseInt(textnumberstring);
-                    }
-
-                    if (score == 1) {
-
-                        holder.txt_add.setText("" + "Add");
+                    holder.txt_add.setText("" + "Add");
 
 
-                        int int_product = Integer.parseInt(feedItem.getId().toString());
-                        menuDetailPresenter.delete(int_product);
+                } else {
+                    score = Integer.parseInt(textnumberstring);
+                }
 
-                    } else if (score > 1) {
+                if (score == 1) {
 
-                        score = Integer.parseInt(textnumberstring);
-                        int numberInt = score;
+                    holder.txt_add.setText("" + "Add");
 
-                        numberInt--;
-                        holder.txt_add.setText("" + numberInt);
 
-                        Float quantity_float = Float.valueOf(numberInt);
-                        Float quantity_price =Float.parseFloat(holder.price.getText().toString());
-                        Float final_price = quantity_price * quantity_float;
-                        String id_product_cart = feedItem.getId().toString();
-                        menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
-                                feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
+                    int int_product = Integer.parseInt(feedItem.getId().toString());
+                    menuDetailPresenter.delete(int_product);
 
-                    }
+                } else if (score > 1) {
 
-                    Snackbar.make(v, holder.txt_name.getText(), Snackbar.LENGTH_LONG);
+                    score = Integer.parseInt(textnumberstring);
+                    int numberInt = score;
+
+                    numberInt--;
+                    holder.txt_add.setText("" + numberInt);
+
+                    Float quantity_float = Float.valueOf(numberInt);
+
+                    Float quantity_price =Float.parseFloat(feedItem.getPrice());
+                    Float final_price = quantity_price * quantity_float;
+                    String id_product_cart = feedItem.getId().toString();
+                    menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
+                            feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),
+                            feedItem.getId().toString(),id_product_cart,quantity_float.toString());
+
+                }
+
+
 
             }
         });

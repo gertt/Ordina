@@ -23,18 +23,16 @@
 
     <include layout="@layout/content_menu_detail" />
 
-    <android.support.design.widget.FloatingActionButton
+    <Button
 
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        app:useCompatPadding="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="@string/add_product"
+        android:background="@color/colorPrimary"
         android:id="@+id/fab"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom|end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@mipmap/ic_last_menu" />
-
+        />
 </android.support.design.widget.CoordinatorLayout>

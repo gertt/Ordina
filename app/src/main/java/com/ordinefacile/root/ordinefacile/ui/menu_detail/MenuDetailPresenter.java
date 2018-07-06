@@ -98,16 +98,18 @@ public class MenuDetailPresenter {
     }
 
 
-    public void inserData(Float final_price, Float quantity, String name, Float price,String description,
-                          String urlImage,String id_table,String id_product,String id_product_card){
+  //  public void inserData(Float final_price, Float quantity, String name, Float price,String description,
+    //                      String urlImage,String id_table,String id_product,String id_product_card,String metric){
 
 
+        public void inserData(Float final_price, Float quantity, String name, Float price,String description,
+                String urlImage,String id_table,String id_product,String id_product_card,String metric){
 
         orders.setmFinalPrice(final_price);
         orders.setmQuantity(quantity);
         orders.setmName(name);
         orders.setmPrice(price);
-      //  orders.setmMetric(metric);
+        orders.setmMetric(metric);
         orders.setmDescriptions(description);
         orders.setmUrl_Image(urlImage);
         orders.setmIdTable(id_table);
@@ -142,7 +144,11 @@ public class MenuDetailPresenter {
     }
 
     public boolean update(Float final_price, Float quantity, String name, Float price, String description,
-                          String urlimage,String id_table,String id_product,String id_product_card) {
+                          String urlimage,String id_table,String id_product,String id_product_card,String metric) {
+
+
+      //  public boolean update(Float final_price, Float quantity, String name, Float price, String description,
+        //        String urlimage,String id_table,String id_product,String id_product_card) {
         //  if(checkIfExdist(name) == true){
         if(checkIfExdist(name) == true){
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
@@ -150,6 +156,7 @@ public class MenuDetailPresenter {
                 updateBuilder.where().eq("name",name);
                 updateBuilder.updateColumnValue("quantity" ,quantity);
                 updateBuilder.updateColumnValue("final_price" ,final_price);
+                updateBuilder.updateColumnValue("metric" ,metric);
                 updateBuilder.update();
 
 
@@ -162,7 +169,7 @@ public class MenuDetailPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card);
+            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card,metric);
 
         }
         return false;
