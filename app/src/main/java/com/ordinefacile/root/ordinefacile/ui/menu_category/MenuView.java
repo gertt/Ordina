@@ -23,6 +23,8 @@ public interface MenuView {
     void showErrorSending(String s);
 
     void goToDetail(Context context);
+
+    void showSendingSmsWait();
 }
 
 

@@ -25,4 +25,6 @@ public interface MenuDetailView {
     void showSendingSms();
 
     void showErrorSending(String s);
+
+    void showSendingSmsWait();
 }

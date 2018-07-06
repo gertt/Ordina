@@ -114,6 +114,14 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
     }
 
+    @Override
+    public void showSendingSmsWait() {
+
+        alertDialog.dismiss();
+        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+
+    }
+
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBackPressed()

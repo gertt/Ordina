@@ -153,6 +153,13 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     }
 
     @Override
+    public void showSendingSmsWait() {
+
+        alertDialog.dismiss();
+        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onBackPressed() {
         //super.onBackPressed();
         Intent intent = new Intent(getApplicationContext(),MenuActivity.class);

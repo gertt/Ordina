@@ -80,7 +80,7 @@ public class StartStopJobs {
                 .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
                 .build();
         mDispatcher.mustSchedule(myJob);
-        Toast.makeText(context, "jobs  start", Toast.LENGTH_LONG).show();
+    //    Toast.makeText(context, "jobs  start", Toast.LENGTH_LONG).show();
 
         return currentDateTimeString;
     }
@@ -93,6 +93,6 @@ public class StartStopJobs {
             mDispatcher.cancel(jobTag);
             Log.d(TAG,"2");
         }
-        Toast.makeText(context, "jobs  stop", Toast.LENGTH_LONG).show();
+   //     Toast.makeText(context, "jobs  stop", Toast.LENGTH_LONG).show();
     }
 }

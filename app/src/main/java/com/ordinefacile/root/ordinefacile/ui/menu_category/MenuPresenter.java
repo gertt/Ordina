@@ -108,7 +108,7 @@ public class MenuPresenter {
                             public void onCompleted() {
                                 Log.d("","");
 
-                                menuActivity.showSendingSms();
+
 
                             }
 
@@ -120,6 +120,20 @@ public class MenuPresenter {
 
                             @Override
                             public void onNext(CallService callService) {
+
+
+
+
+                                if (callService.getError()==true){
+
+                                    menuActivity.showSendingSmsWait();
+
+                                }else  if (callService.getError()==false){
+
+                                    menuActivity.showSendingSms();
+
+                                }
+
 
                                 String SJSJ = callService.getMessage().toString();
                                 String SJuSJ = callService.getMessage().toString();

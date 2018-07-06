@@ -62,6 +62,13 @@
 
     <string name="add_myorder">Invia ordine</string>
 
+
+
+
+
+    <string name="send_sms_succees_wait">Per favore aspetta 5 minuti</string>
+
+
     <string name="price">Prezzo</string>
 
     <string name="status_pending">In attesa</string>

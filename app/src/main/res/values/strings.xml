@@ -72,7 +72,11 @@
     <string name="insert_pin">Insert Pin</string>
     <string name="want_leave">Are you sure you want  to leave ?</string>
     <string name="want_call_service">You want a call service ?</string>
-    <string name="send_sms_succees">The call was made</string>
+    <string name="send_sms_succees">The call was made</string>   per favore aspetta 5 minuti
+
+
+    <string name="send_sms_succees_wait">Please wait 5 minutes</string>
+
     <string name="send_sms_error">The  call wasnt made</string>
     <string name="type_text_here">Type text here</string>
     <string name="total_price">Total Price : </string>

@@ -229,5 +229,13 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
 
     }
 
+    @Override
+    public void showSendingSmsWait() {
+
+        alertDialog.dismiss();
+        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+
+    }
+
 
 }

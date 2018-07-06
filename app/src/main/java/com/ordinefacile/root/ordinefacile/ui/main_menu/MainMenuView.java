@@ -17,4 +17,6 @@ public interface MainMenuView   {
     void callServiceGone();
 
     void goToCodeOrScan();
+
+    void showSendingSmsWait();
 }
