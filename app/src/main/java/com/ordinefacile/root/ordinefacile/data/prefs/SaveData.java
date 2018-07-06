@@ -156,6 +156,7 @@ public class SaveData {
 
         SharedPreferences settings;
         editor.remove("qr_code");
+        editor.remove("number_character");
         editor.commit();
     }
 }
