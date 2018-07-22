@@ -78,7 +78,7 @@ public class MyOrderAdapter   extends RecyclerView.Adapter<MyOrderAdapter.ViewHo
             holder.txt_metric.setText("  "+"No Metric"+"  ");
         }else {
 
-            holder.txt_metric.setText("  "+feedItem.getmMetric()+"  ");
+            holder.txt_metric.setText("  "+feedItem.getmQuantity()+"  ");
         }
 
         parseimage.parseimage(feedItem.getmUrl_Image().toString(),holder.imag_myorder_pick);

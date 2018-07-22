@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.table.TableUtils;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
@@ -47,6 +48,13 @@ public class MenuDetailPresenter {
     Orders orders;
     DatabaseHelper databaseHelper;
     RuntimeExceptionDao<Orders, Integer> userDao;
+
+    float pricedb;
+    float  finalPrice;
+
+    float quntitydb;
+
+    float finalquntiry;
 
     public MenuDetailPresenter( Context context,MenuDetailActivity menuDetailActivity) {
         this.menuDetailActivity = menuDetailActivity;
@@ -144,23 +152,56 @@ public class MenuDetailPresenter {
     }
 
     public boolean update(Float final_price, Float quantity, String name, Float price, String description,
-                          String urlimage,String id_table,String id_product,String id_product_card,String metric) {
+                               String urlimage,String id_table,String id_product,String id_product_card,String metric) {
 
 
-      //  public boolean update(Float final_price, Float quantity, String name, Float price, String description,
+
+
+
+        //  public boolean update(Float final_price, Float quantity, String name, Float price, String description,
         //        String urlimage,String id_table,String id_product,String id_product_card) {
         //  if(checkIfExdist(name) == true){
         if(checkIfExdist(name) == true){
+
+
             UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
             try {
+
+
+
+                QueryBuilder<Orders, Integer> queryBuilder = userDao.queryBuilder();
+                queryBuilder.where().eq(Orders.FIELD_ID_TABLE, id_table);
+                List<Orders> accountList = queryBuilder.query();
+
+
+                for (int i = 0 ;i<accountList.size();i++) {
+                    pricedb = accountList.get(i).getmPrice();
+
+                    float finalpricedb = accountList.get(i).getmFinalPrice();
+                    finalPrice = pricedb+finalpricedb;
+
+
+                    quntitydb  = accountList.get(i).getmQuantity();
+                    float quntgitydb  = accountList.get(i).getmQuantity();
+
+
+                    float   aaa=  quantity;
+
+                    finalquntiry = quntitydb+1;
+                    float finalquhntiry = quntitydb+aaa;
+                }
+
+
+
                 updateBuilder.where().eq("name",name);
-                updateBuilder.updateColumnValue("quantity" ,quantity);
-                updateBuilder.updateColumnValue("final_price" ,final_price);
+
+                updateBuilder.updateColumnValue("quantity" ,finalquntiry);
+                updateBuilder.updateColumnValue("final_price" ,finalPrice);
                 updateBuilder.updateColumnValue("metric" ,metric);
                 updateBuilder.update();
 
 
-           //     addProductActivity.goToMyOrder();
+                //     addProductActivity.goToMyOrder();
 
                 return true;
             } catch (java.sql.SQLException e) {
@@ -181,7 +222,7 @@ public class MenuDetailPresenter {
         List<Orders> results1 = null;
         try {
             results = userDao.queryBuilder().where().eq("name",p).query();
-          //  results1 = userDao.queryBuilder().where().eq("id_product_cart",p).query();
+            //  results1 = userDao.queryBuilder().where().eq("id_product_cart",p).query();
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
             return false;
@@ -192,6 +233,74 @@ public class MenuDetailPresenter {
             return true;
         }
     }
+
+    public boolean updateDecrement(Float final_price, Float quantity, String name, Float price, String description,
+                          String urlimage,String id_table,String id_product,String id_product_card,String metric) {
+
+
+
+
+
+        //  public boolean update(Float final_price, Float quantity, String name, Float price, String description,
+        //        String urlimage,String id_table,String id_product,String id_product_card) {
+        //  if(checkIfExdist(name) == true){
+        if(checkIfExdist(name) == true){
+
+
+            UpdateBuilder<Orders, Integer> updateBuilder = userDao.updateBuilder();
+            try {
+
+
+
+                QueryBuilder<Orders, Integer> queryBuilder = userDao.queryBuilder();
+                queryBuilder.where().eq(Orders.FIELD_ID_TABLE, id_table);
+                List<Orders> accountList = queryBuilder.query();
+
+
+                for (int i = 0 ;i<accountList.size();i++) {
+                    pricedb = accountList.get(i).getmPrice();
+
+                    float finalpricedb = accountList.get(i).getmFinalPrice();
+                    finalPrice = finalpricedb-pricedb;
+
+
+                    quntitydb  = accountList.get(i).getmQuantity();
+                    float quntgitydb  = accountList.get(i).getmQuantity();
+
+
+                    float   aaa=  quantity;
+
+                    finalquntiry = quntitydb-1;
+                    float finalquhntiry = quntitydb+aaa;
+                }
+
+
+
+                updateBuilder.where().eq("name",name);
+
+                updateBuilder.updateColumnValue("quantity" ,finalquntiry);
+                updateBuilder.updateColumnValue("final_price" ,finalPrice);
+                updateBuilder.updateColumnValue("metric" ,metric);
+                updateBuilder.update();
+
+
+                //     addProductActivity.goToMyOrder();
+
+                return true;
+            } catch (java.sql.SQLException e) {
+                e.printStackTrace();
+                return false;
+
+            }
+        }else if (checkIfExdist(name) == false){
+            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card,metric);
+
+        }
+        return false;
+    }
+
+
+
     public void delete(int id) {
 
         dbOperations.delete2(id).subscribeOn(Schedulers.newThread())

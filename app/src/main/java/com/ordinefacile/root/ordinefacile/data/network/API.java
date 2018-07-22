@@ -47,7 +47,6 @@ public interface API {
     @GET("orders/list/{token_fcm}")
     Observable<OrderHistory> getOrderHistory(@Path("token_fcm") String token_fcm);
 
-
     //<<<POST>>>
 
     //send order

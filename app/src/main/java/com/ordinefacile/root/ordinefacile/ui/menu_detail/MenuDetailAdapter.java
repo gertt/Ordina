@@ -175,7 +175,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     Float quantity_price =Float.parseFloat(feedItem.getPrice());
                     Float final_price = quantity_price * quantity_float;
                     String id_product_cart = feedItem.getId().toString();
-                    menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
+                    menuDetailPresenter.updateDecrement(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                             feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),
                             feedItem.getId().toString(),id_product_cart,quantity_float.toString());
 

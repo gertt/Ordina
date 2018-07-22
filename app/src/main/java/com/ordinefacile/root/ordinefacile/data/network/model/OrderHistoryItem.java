@@ -21,7 +21,7 @@ public class OrderHistoryItem {
     private float price;
     @SerializedName("quantity")
     @Expose
-    private Float quantity;
+    private Integer quantity;
     @SerializedName("total")
     @Expose
     private String total;
@@ -50,11 +50,11 @@ public class OrderHistoryItem {
         this.price = price;
     }
 
-    public Float getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Float quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
