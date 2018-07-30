@@ -11,9 +11,11 @@ import android.view.MenuItem;
 
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.push_history.PushHistory;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
+
 import java.util.List;
 
-public class PushHistoryActivity extends AppCompatActivity  implements  PushHistoryInterface{
+public class PushHistoryActivity extends BaseActivity implements  PushHistoryInterface{
 
 
     PushHistoryPresenter pushHistoryPresenter;

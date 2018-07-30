@@ -33,6 +33,7 @@ import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderAdapter;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 import net.idik.lib.slimadapter.SlimAdapter;
 import net.idik.lib.slimadapter.SlimInjector;
@@ -41,7 +42,7 @@ import net.idik.lib.slimadapter.viewinjector.IViewInjector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuActivity extends AppCompatActivity implements MenuView{
+public class MenuActivity extends BaseActivity implements MenuView{
 
     MenuPresenter menuPresenter;
     PullRefreshLayout swipe_menu;
@@ -211,7 +212,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
 
         alertDialog.dismiss();
 
-        Toast.makeText(getApplicationContext(), R.string.send_sms_succees, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "La chiamata è stata efetuata", Toast.LENGTH_LONG).show();
 
     }
 
@@ -233,7 +234,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView{
     public void showSendingSmsWait() {
 
         alertDialog.dismiss();
-        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Si Prega di attendere almeno 5 minuti.Grazie", Toast.LENGTH_LONG).show();
 
     }
 

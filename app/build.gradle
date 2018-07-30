@@ -7,8 +7,8 @@ android {
         applicationId "com.ordinefacile.root.ordinefacile"
         minSdkVersion 18
         targetSdkVersion 27
-        versionCode 5
-        versionName "1.8"
+        versionCode 6
+        versionName "1.9"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

@@ -20,6 +20,7 @@ import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 import com.ordinefacile.root.ordinefacile.utils.ParseImage;
 
 import net.idik.lib.slimadapter.SlimAdapter;
@@ -32,7 +33,7 @@ import java.util.List;
 
 import static com.ordinefacile.root.ordinefacile.R2.color.myorder_yellow;
 
-public class MyOrderActivity extends AppCompatActivity implements MyOrderView {
+public class MyOrderActivity extends BaseActivity implements MyOrderView {
 
   private static final String TAG = "My Debug";
   private RecyclerView mRecyclerView;

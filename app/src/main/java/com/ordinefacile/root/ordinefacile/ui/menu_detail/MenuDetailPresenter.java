@@ -9,7 +9,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
-import com.j256.ormlite.table.TableUtils;
 import com.ordinefacile.root.ordinefacile.data.db.DatabaseHelper;
 import com.ordinefacile.root.ordinefacile.data.db.order.OrdersOperationsImp;
 import com.ordinefacile.root.ordinefacile.data.db.order.Orders;
@@ -24,7 +23,6 @@ import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Subscriber;
@@ -106,18 +104,14 @@ public class MenuDetailPresenter {
     }
 
 
-  //  public void inserData(Float final_price, Float quantity, String name, Float price,String description,
-    //                      String urlImage,String id_table,String id_product,String id_product_card,String metric){
-
-
-        public void inserData(Float final_price, Float quantity, String name, Float price,String description,
-                String urlImage,String id_table,String id_product,String id_product_card,String metric){
+        public void inserData(Float final_price, int quantity, String name, Float price,String description,
+                String urlImage,String id_table,String id_product,String id_product_card){
 
         orders.setmFinalPrice(final_price);
         orders.setmQuantity(quantity);
         orders.setmName(name);
         orders.setmPrice(price);
-        orders.setmMetric(metric);
+   //     orders.setmMetric(metric);
         orders.setmDescriptions(description);
         orders.setmUrl_Image(urlImage);
         orders.setmIdTable(id_table);
@@ -151,8 +145,8 @@ public class MenuDetailPresenter {
 
     }
 
-    public boolean update(Float final_price, Float quantity, String name, Float price, String description,
-                               String urlimage,String id_table,String id_product,String id_product_card,String metric) {
+    public boolean update(Float final_price, int quantity, String name, Float price, String description,
+                               String urlimage,String id_table,String id_product,String id_product_card) {
 
 
 
@@ -170,9 +164,11 @@ public class MenuDetailPresenter {
 
 
                 QueryBuilder<Orders, Integer> queryBuilder = userDao.queryBuilder();
-                queryBuilder.where().eq(Orders.FIELD_ID_TABLE, id_table);
+                queryBuilder.where().eq(Orders.FIELD_ID_PRODUCT, id_product);
                 List<Orders> accountList = queryBuilder.query();
 
+
+            //    results = userDao.queryBuilder().where().eq("name",p).query();
 
                 for (int i = 0 ;i<accountList.size();i++) {
                     pricedb = accountList.get(i).getmPrice();
@@ -187,17 +183,18 @@ public class MenuDetailPresenter {
 
                     float   aaa=  quantity;
 
-                    finalquntiry = quntitydb+1;
+
                     float finalquhntiry = quntitydb+aaa;
                 }
 
+                finalquntiry = quntitydb+1;
 
 
                 updateBuilder.where().eq("name",name);
 
                 updateBuilder.updateColumnValue("quantity" ,finalquntiry);
                 updateBuilder.updateColumnValue("final_price" ,finalPrice);
-                updateBuilder.updateColumnValue("metric" ,metric);
+              //  updateBuilder.updateColumnValue("metric" ,metric);
                 updateBuilder.update();
 
 
@@ -210,7 +207,7 @@ public class MenuDetailPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card,metric);
+            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card);
 
         }
         return false;
@@ -234,8 +231,8 @@ public class MenuDetailPresenter {
         }
     }
 
-    public boolean updateDecrement(Float final_price, Float quantity, String name, Float price, String description,
-                          String urlimage,String id_table,String id_product,String id_product_card,String metric) {
+    public boolean updateDecrement(Float final_price, int quantity, String name, Float price, String description,
+                                   String urlimage, String id_table, String id_product, String id_product_card) {
 
 
 
@@ -253,7 +250,7 @@ public class MenuDetailPresenter {
 
 
                 QueryBuilder<Orders, Integer> queryBuilder = userDao.queryBuilder();
-                queryBuilder.where().eq(Orders.FIELD_ID_TABLE, id_table);
+                queryBuilder.where().eq(Orders.FIELD_ID_PRODUCT, id_product);
                 List<Orders> accountList = queryBuilder.query();
 
 
@@ -280,7 +277,7 @@ public class MenuDetailPresenter {
 
                 updateBuilder.updateColumnValue("quantity" ,finalquntiry);
                 updateBuilder.updateColumnValue("final_price" ,finalPrice);
-                updateBuilder.updateColumnValue("metric" ,metric);
+           //     updateBuilder.updateColumnValue("metric" ,metric);
                 updateBuilder.update();
 
 
@@ -293,7 +290,7 @@ public class MenuDetailPresenter {
 
             }
         }else if (checkIfExdist(name) == false){
-            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card,metric);
+            inserData(final_price ,quantity,name,price,description,urlimage,id_table,id_product,id_product_card);
 
         }
         return false;

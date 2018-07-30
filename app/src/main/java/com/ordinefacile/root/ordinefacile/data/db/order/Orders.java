@@ -28,7 +28,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
     @DatabaseField(columnName = FIELD_NAME_NAME)  private String mName;
 
-    @DatabaseField(columnName = FIELD_QUANTITY_NAME)  private Float mQuantity;
+    @DatabaseField(columnName = FIELD_QUANTITY_NAME)  private int mQuantity;
 
     @DatabaseField(columnName = FIELD_DESCRIPTION)  private String mDescriptions;
 
@@ -60,7 +60,7 @@ import com.j256.ormlite.table.DatabaseTable;
         this.mName = mName;
     }
 
-    public void setmQuantity(Float mQuantity) {
+    public void setmQuantity(int mQuantity) {
         this.mQuantity = mQuantity;
     }
 
@@ -159,7 +159,7 @@ import com.j256.ormlite.table.DatabaseTable;
         return mName;
     }
 
-    public Float getmQuantity() {
+    public int getmQuantity() {
         return mQuantity;
     }
 

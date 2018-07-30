@@ -1,7 +1,6 @@
 package com.ordinefacile.root.ordinefacile.ui.scan;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,13 +16,13 @@ import android.widget.Toast;
 import com.google.zxing.Result;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
-import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
-import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
+import com.ordinefacile.root.ordinefacile.utils.LocaleManager;
 import com.ordinefacile.root.ordinefacile.utils.Util;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class ScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler,ScannerView {
+public class ScannerActivity extends BaseActivity implements ZXingScannerView.ResultHandler,ScannerView {
 
     private String TAG = "ScannerActivity ";
 
@@ -110,11 +109,11 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
 
     @Override
     public void getAppLanguageIt() {
-        LocaleHelper.setLocale(getApplicationContext(), "it");
+      // LocaleManager.setLocale(getApplicationContext(), "it");
     }
     @Override
     public void getAppLanguageEn() {
-        LocaleHelper.setLocale(getApplicationContext(), "en");
+     //   LocaleManager.setLocale(getApplicationContext(), "en");
     }
 
     @Override

@@ -18,9 +18,10 @@ import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 
 
-public class MainMenuActivity extends AppCompatActivity implements  MainMenuView {
+public class MainMenuActivity extends BaseActivity implements  MainMenuView {
 
     Button button_menu;
     Button button_call_service;
@@ -35,7 +36,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.main_menu);
+        getSupportActionBar().setTitle(R.string.main_menu_main);
 
 
 
@@ -88,7 +89,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
 
         alertDialog.dismiss();
 
-       Toast.makeText(getApplicationContext(), R.string.send_sms_succees, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "La chiamata è stata efetuata", Toast.LENGTH_LONG).show();
 
     }
 
@@ -118,7 +119,7 @@ public class MainMenuActivity extends AppCompatActivity implements  MainMenuView
     public void showSendingSmsWait() {
 
         alertDialog.dismiss();
-        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Si Prega di attendere almeno 5 minuti.Grazie", Toast.LENGTH_LONG).show();
 
     }
 

@@ -41,7 +41,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
 
                     Log.d(TAG, "FROM:" + remoteMessage.getFrom());
                     //Check if the message contains data
-                    if(remoteMessage.getData() !=null ) {
+                    if(remoteMessage.getData().size()>0 ) {
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
                         Log.d(TAG, "Message data: " + remoteMessage.getData().toString());
 
@@ -55,9 +55,11 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
                     if(remoteMessage.getNotification() != null) {
                         Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
                         Log.d(TAG, "Mesage body:" + remoteMessage.getNotification().getBody());
-                       //  sendNotification2(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle(),"7788");
+                        createNotification77(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
 
-                      //  sendNotification2("test","test","7788");
+                      //  createNotification77(remoteMessage.getBody().get("title"),remoteMessage.getData().get("description"), Float.valueOf(remoteMessage.getData().get("price")));
+
+                        //  sendNotification2("test","test","7788");
                         // sendNotification("order","ready");
                     }
 
@@ -132,6 +134,56 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         mBuilder.setSmallIcon(R.mipmap.ic_android);
         mBuilder.setContentTitle(title)
                 .setContentText(SUSPER)
+                .setAutoCancel(false)
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setContentIntent(resultPendingIntent);
+
+        mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            assert mNotificationManager != null;
+            mBuilder.setChannelId(NOTIFICATION_CHANNEL_ID);
+            mNotificationManager.createNotificationChannel(notificationChannel);
+        }
+        assert mNotificationManager != null;
+        mNotificationManager.notify(0 /* Request Code */, mBuilder.build());
+    }
+
+
+    public void createNotification77(String title, String description) {
+
+      //  String[] separated = description.split(",");
+
+      //  String ZERO = separated[0];
+      //  String ZERO1 = separated[1];
+    //   String ZERO2 = separated[2];
+
+
+    //    String SUPER =  ZERO+ZERO2;
+   //     String SUSPER =  ZERO+ZERO2;
+
+   //     pushHistoryPresenter = new PushHistoryPresenter(getApplicationContext());
+    //    pushHistoryPresenter.inserData(title,SUSPER,price);
+
+
+        /**Creates an explicit intent for an Activity in your app**/
+        Intent resultIntent = new Intent(this , OrderHistoryActivity.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this,
+                0 /* Request code */, resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setSmallIcon(R.mipmap.ic_android);
+        mBuilder.setContentTitle(title)
+                .setContentText(description)
                 .setAutoCancel(false)
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setContentIntent(resultPendingIntent);

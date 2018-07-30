@@ -75,8 +75,6 @@ public class CategoryAdapter  extends RecyclerView.Adapter<CategoryAdapter.ViewH
             }
         });
 
-
-
     }
 
     @Override

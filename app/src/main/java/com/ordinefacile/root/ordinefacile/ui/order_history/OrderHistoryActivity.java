@@ -18,12 +18,13 @@ import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailActivity;
 import com.ordinefacile.root.ordinefacile.ui.menu_detail.MenuDetailPresenter;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 
 import java.util.List;
 import static com.ordinefacile.root.ordinefacile.R2.color.myorder_yellow;
 
 
-public class OrderHistoryActivity extends AppCompatActivity implements OrderHistoryView {
+public class OrderHistoryActivity extends BaseActivity implements OrderHistoryView {
 
     OrderHistoryPresenter orderHistoryPresenter;
     String categoryId;

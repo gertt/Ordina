@@ -9,11 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
 import com.amitshekhar.DebugDB;
 import com.ordinefacile.root.ordinefacile.R;
 import com.ordinefacile.root.ordinefacile.data.prefs.SaveData;
 import com.ordinefacile.root.ordinefacile.ui.code_scan.CodeOrScanActivity;
-import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
+import com.ordinefacile.root.ordinefacile.utils.LocaleManager;
+
+import static com.ordinefacile.root.ordinefacile.utils.LocaleManager.LANGUAGE_ENGLISH;
+import static com.ordinefacile.root.ordinefacile.utils.LocaleManager.LANGUAGE_ITALIAN;
 
 public class SelectLanguageActivity extends AppCompatActivity  implements  SelectLanguageView{
 
@@ -84,7 +89,9 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         button_en.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocaleHelper.setLocale(getApplicationContext(), "en");
+
+                setNewLocale(LANGUAGE_ENGLISH, false);
+
                 saveData.saveLanguage("en");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,CodeOrScanActivity.class);
                 startActivity(refreshIntent);
@@ -94,7 +101,9 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         button_it.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocaleHelper.setLocale(getApplicationContext(), "it");
+
+                setNewLocale(LANGUAGE_ITALIAN, false);
+
                 saveData.saveLanguage("it");
                 Intent refreshIntent=new Intent(SelectLanguageActivity.this,CodeOrScanActivity.class);
                 startActivity(refreshIntent);
@@ -130,5 +139,19 @@ public class SelectLanguageActivity extends AppCompatActivity  implements  Selec
         button_en.setChecked(false);
         button_it.setChecked(false);
 
+    }
+
+    private boolean setNewLocale(String language, boolean restartProcess) {
+        LocaleManager.setNewLocale(this, language);
+
+        Intent i = new Intent(this, SelectLanguageActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+
+        if (restartProcess) {
+            System.exit(0);
+        } else {
+            Toast.makeText(this, "Activity restarted", Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }

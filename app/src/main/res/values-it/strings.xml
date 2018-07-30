@@ -32,7 +32,7 @@
     <string name="scan_activity" />
     <string name="qrcode_not_valid">Il codice QR non è valido</string>
     <string name="pin_not_valid">Il codice PIN non è valido</string>
-    <string name="ok">Ok-it</string>
+    <string name="ok">Ok</string>
     <string name="send_sms">Invia</string>
     <string name="title_activity_dialog">Dialog</string>
     <string name="info">Information-it</string>
@@ -50,7 +50,7 @@
     <string name="not_successfully_internet">Controlla la connessione Internet !</string>
     <string name="try_again">Prova Dinuovo</string>
     <string name="no_product_in_cart">Nessun prodotto in card !</string>
-    <string name="main_menu">Menu Principale</string>
+    <string name="main_menu_main">Menu Principale</string>
     <string name="yes">Si</string>
     <string name="push_history">My History-it</string>
     <string name="want_leave">Sei sicuro di uscire ?</string>
@@ -62,7 +62,7 @@
 
     <string name="add_myorder">Invia ordine</string>
 
-    <string name="send_sms_succees_wait">Per favore aspetta 5 minuti</string>
+    <string name="send_sms_succees_wait">E possibile richiedere il servizio uno ogni cinque minuti</string>
 
     <string name="price">Prezzo</string>
 
@@ -71,7 +71,7 @@
     <string name="call_send">Chiamata inviata</string>
     <string name="title1">cmimi-it</string>
     <string name="status_approved">Pronto</string>
-    <string name="status_declined">rifiutato</string>
+    <string name="status_declined">Rifiutato</string>
     <string name="quantita">Quantita </string>
 
 

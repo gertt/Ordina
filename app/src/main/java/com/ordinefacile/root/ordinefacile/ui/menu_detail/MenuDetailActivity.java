@@ -24,10 +24,11 @@ import com.ordinefacile.root.ordinefacile.ui.menu_category.MenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.my_order.MyOrderActivity;
 import com.ordinefacile.root.ordinefacile.ui.order_history.OrderHistoryActivity;
 import com.ordinefacile.root.ordinefacile.ui.push_history.PushHistoryActivity;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 
 import java.util.List;
 
-public class MenuDetailActivity extends AppCompatActivity implements MenuDetailView{
+public class MenuDetailActivity extends BaseActivity implements MenuDetailView{
 
     String categoryId;
     MenuDetailPresenter menuDetailPresenter;
@@ -59,6 +60,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
         menuDetailPresenter = new MenuDetailPresenter(getApplicationContext(),this);
         menuDetailPresenter.checkHideShowFloating();
         menuDetailPresenter.getCategoryId();
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setPadding(25, 25, 25, 25);
@@ -143,7 +145,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
 
         alertDialog.dismiss();
 
-        Toast.makeText(getApplicationContext(), R.string.send_sms_succees, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "La chiamata è stata efetuata", Toast.LENGTH_LONG).show();
 
     }
 
@@ -159,7 +161,7 @@ public class MenuDetailActivity extends AppCompatActivity implements MenuDetailV
     public void showSendingSmsWait() {
 
         alertDialog.dismiss();
-        Toast.makeText(getApplicationContext(), R.string.send_sms_succees_wait, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Si Prega di attendere almeno 5 minuti.Grazie", Toast.LENGTH_LONG).show();
     }
 
     @Override

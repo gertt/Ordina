@@ -35,7 +35,7 @@
     <string name="title_activity_add_product">AddProductActivity</string>
     <string name="setquantity">Se Quantity !</string>
     <string name="numberIncorrect">The Number Is Unviable</string>
-    <string name="menu_myorder">My Order</string>
+    <string name="menu_myorder">Notifiche</string>
     <string name="push_history">My History</string>
     <string name="add_to_cart">ADD TO CART</string>
     <string name="scanQR">Scan QR Code</string>
@@ -66,16 +66,14 @@
     <string name="not_successfully_internet">Check Internet !</string>
     <string name="no_product_in_cart">No product in card!</string>
     <string name="try_again">Try again</string>
-    <string name="main_menu">Main Menu</string>
+    <string name="main_menu_main">Main Menu</string>
     <string name="menu_category">Category</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="insert_pin">Insert Pin</string>
     <string name="want_leave">Are you sure you want  to leave ?</string>
     <string name="want_call_service">You want a call service ?</string>
     <string name="send_sms_succees">The call was made</string>   per favore aspetta 5 minuti
-
-
-    <string name="send_sms_succees_wait">Please wait 5 minutes</string>
+    <string name="send_sms_succees_wait">You can request service one in every five minutes</string>
 
     <string name="send_sms_error">The  call wasnt made</string>
     <string name="type_text_here">Type text here</string>

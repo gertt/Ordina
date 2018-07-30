@@ -18,10 +18,11 @@ import com.ordinefacile.root.ordinefacile.ui.help.HelpActivity;
 import com.ordinefacile.root.ordinefacile.ui.main_menu.MainMenuActivity;
 import com.ordinefacile.root.ordinefacile.ui.scan.ScannerActivity;
 import com.ordinefacile.root.ordinefacile.ui.select_language.SelectLanguageActivity;
-import com.ordinefacile.root.ordinefacile.utils.LocaleHelper;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
+import com.ordinefacile.root.ordinefacile.utils.LocaleManager;
 
 
-public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScanView{
+public class CodeOrScanActivity extends BaseActivity implements  CodeOrScanView{
 
     private Button btn_scan;
     private Button btn_pin;
@@ -139,11 +140,11 @@ public class CodeOrScanActivity extends AppCompatActivity implements  CodeOrScan
 
     @Override
     public void getAppLanguageIt() {
-        LocaleHelper.setLocale(getApplicationContext(), "it");
+      //  LocaleManager.setLocale(getApplicationContext(), "it");
     }
     @Override
     public void getAppLanguageEn() {
-        LocaleHelper.setLocale(getApplicationContext(), "en");
+      //  LocaleManager.setLocale(getApplicationContext(), "en");
     }
 
     @Override

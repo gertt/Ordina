@@ -104,16 +104,15 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     numberInt++;
                     holder.txt_add.setText("" + numberInt);
 
-                    Float quantity_float = Float.valueOf(numberInt);
+                    int quantity_float = numberInt;
                     Float quantity_price =Float.parseFloat(feedItem.getPrice());
                     Float final_price = quantity_price * quantity_float;
 
                     String id_product_cart = feedItem.getId().toString();
 
 
-
                     menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
-                            feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart,quantity_float.toString());
+                            feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),feedItem.getId().toString(),id_product_cart);
 
 
                 } else if (!textnumberstring.equalsIgnoreCase("Add")) {
@@ -123,7 +122,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     numberInt++;
                     holder.txt_add.setText("" + numberInt);
 
-                    Float quantity_float = Float.valueOf(numberInt);
+                    int quantity_float = numberInt;
                     Float quantity_price =Float.parseFloat(feedItem.getPrice());
                     Float final_price = quantity_price * quantity_float;
                     String id_product_cart = feedItem.getId().toString();
@@ -131,7 +130,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
 
                     menuDetailPresenter.update(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                             feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),
-                            feedItem.getId().toString(),id_product_cart,quantity_float.toString());
+                            feedItem.getId().toString(),id_product_cart);
 
                 }
 
@@ -170,14 +169,14 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
                     numberInt--;
                     holder.txt_add.setText("" + numberInt);
 
-                    Float quantity_float = Float.valueOf(numberInt);
+                    int quantity_float = numberInt;
 
                     Float quantity_price =Float.parseFloat(feedItem.getPrice());
                     Float final_price = quantity_price * quantity_float;
                     String id_product_cart = feedItem.getId().toString();
                     menuDetailPresenter.updateDecrement(final_price,quantity_float,  holder.txt_name.getText().toString(),quantity_price,
                             feedItem.getDescription(),feedItem.getImage(),saveData.getEntity(),
-                            feedItem.getId().toString(),id_product_cart,quantity_float.toString());
+                            feedItem.getId().toString(),id_product_cart);
 
                 }
 

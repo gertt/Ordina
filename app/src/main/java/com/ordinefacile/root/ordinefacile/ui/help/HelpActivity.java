@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ordinefacile.root.ordinefacile.R;
+import com.ordinefacile.root.ordinefacile.utils.BaseActivity;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends BaseActivity {
 
     Button buttonBackHelp;
 
