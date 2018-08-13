@@ -36,11 +36,15 @@ public class MainMenuActivity extends BaseActivity implements  MainMenuView {
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.main_menu_main);
-
-
-
         saveData = new SaveData(getApplicationContext());
+
+
+        getSupportActionBar().setTitle(R.string.main_menu_main);
+       // getSupportActionBar().setTitle(saveData.getMainMenu());
+
+
+
+
         mainMenuPresenter = new MainMenuPresenter(this, getApplicationContext());
 
 

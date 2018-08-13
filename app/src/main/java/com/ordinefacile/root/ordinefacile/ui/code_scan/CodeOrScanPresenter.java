@@ -89,6 +89,14 @@ public class CodeOrScanPresenter {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onNext(PinModel pinModel) {
+
+
+
+                 String emri = pinModel.getData().getStore().getName();
+                  String emri2 = pinModel.getData().getStore().getName();
+
+
+                  saveData.saveMainMenu(pinModel.getData().getStore().getName());
                   // Log.d("Next  : ", pinModel.getData().getName());
                   if(pinModel.getError() == false){
                     //  String id = gson.toJson(pinModel.getData().getStoreId());

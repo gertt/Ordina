@@ -131,6 +131,19 @@ public class SaveData {
     }
 
 
+    public void saveMainMenu(String menu) {
+        editor.putString("menu", menu);
+        editor.commit();
+    }
+
+    public String getMainMenu(){
+        return preferences.getString("menu", "");
+
+    }
+
+
+
+
     public void saveTokenExPired(String token_expired) {
         editor.putString("token_expired", token_expired);
         editor.commit();
